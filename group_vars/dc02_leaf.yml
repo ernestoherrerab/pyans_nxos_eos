@@ -1,0 +1,8141 @@
+cs_conf_access_lists:
+  DMZ:
+    sequence_numbers:
+      5:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      10:
+        action: permit icmp 10.59.0.0/16 10.59.0.0/16
+      15:
+        action: permit icmp 192.168.0.0/16 192.168.0.0/16
+      20:
+        action: permit icmp 10.59.0.0/16 192.168.0.0/16
+      25:
+        action: permit icmp 192.168.0.0/16 10.59.0.0/16
+      70:
+        action: deny ip 192.168.0.0/16 192.168.0.0/16
+      75:
+        action: deny ip 192.168.0.0/16 172.16.0.0/12
+      80:
+        action: deny ip 192.168.0.0/16 10.0.0.0/8
+      85:
+        action: deny ip 10.59.0.0/16 10.0.0.0/8
+      90:
+        action: deny ip 10.59.0.0/16 192.168.0.0/16
+      95:
+        action: deny ip 10.59.0.0/16 172.16.0.0/12
+      100:
+        action: permit ip 10.59.0.0/16 any
+      105:
+        action: permit ip 192.168.0.0/16 any
+  DMZ-DT:
+    sequence_numbers:
+      5:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      20:
+        action: permit icmp 10.230.0.0/16 10.230.0.0/16
+      25:
+        action: permit icmp 192.168.0.0/16 192.168.0.0/16
+      30:
+        action: permit icmp 10.230.0.0/16 192.168.0.0/16
+      35:
+        action: permit icmp 192.168.0.0/16 10.230.0.0/16
+      40:
+        action: permit icmp 192.168.0.0/16 10.232.0.0/16
+      45:
+        action: permit icmp 10.232.0.0/16 192.168.0.0/16
+      50:
+        action: permit ip 10.60.37.64/26 10.232.28.128/26
+      55:
+        action: deny ip 10.232.0.0/16 10.0.0.0/8
+      60:
+        action: deny ip 10.232.0.0/16 192.168.0.0/16
+      65:
+        action: deny ip 10.232.0.0/16 172.16.0.0/12
+      70:
+        action: deny ip 192.168.0.0/16 192.168.0.0/16
+      75:
+        action: deny ip 192.168.0.0/16 172.16.0.0/12
+      80:
+        action: deny ip 192.168.0.0/16 10.0.0.0/8
+      85:
+        action: deny ip 10.230.0.0/16 10.0.0.0/8
+      90:
+        action: deny ip 10.230.0.0/16 192.168.0.0/16
+      95:
+        action: deny ip 10.230.0.0/16 172.16.0.0/12
+      100:
+        action: permit ip 10.230.0.0/16 any
+      105:
+        action: permit ip 192.168.0.0/16 any
+      110:
+        action: permit ip 10.232.0.0/16 any
+  DT-dataguard:
+    sequence_numbers:
+      10:
+        action: permit tcp any 10.230.128.0/17 eq 1521
+      20:
+        action: permit tcp 10.230.128.0/17 eq 1521 any range 1024 65535
+      30:
+        action: permit ip 224.0.0.102/32 any
+      40:
+        action: permit ip any 224.0.0.102/32
+      50:
+        action: permit icmp any 10.230.128.0/17 echo
+      60:
+        action: permit icmp any 10.230.128.0/17 echo-reply
+      70:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      80:
+        action: permit tcp 10.230.168.0/25 range 1024 65535 10.230.130.128/25 eq 22
+      90:
+        action: permit tcp 10.230.130.128/25 eq 22 10.230.168.0/25 range 1024 65535
+      100:
+        action: permit tcp any 10.232.0.0/24 eq 1521
+      110:
+        action: permit tcp 10.232.0.0/24 eq 1521 any range 1024 65535
+      120:
+        action: permit icmp any 10.232.0.0/24 echo
+      130:
+        action: permit icmp any 10.232.0.0/24 echo-reply
+      140:
+        action: permit tcp any 10.230.128.0/17 eq 22
+      150:
+        action: permit tcp any 10.232.0.0/24 eq 22
+      160:
+        action: permit icmp any 10.232.0.0/16 echo
+      170:
+        action: permit icmp any 10.232.0.0/16 echo-reply
+      180:
+        action: permit tcp any 10.232.0.0/16 eq 1521
+      190:
+        action: permit tcp 10.232.0.0/16 eq 1521 any range 1024 65535
+      200:
+        action: permit tcp any 10.232.0.0/16 eq 22
+      210:
+        action: permit tcp 10.232.0.0/16 eq 22 any range 1024 65535
+      220:
+        action: permit ip 10.232.0.0/24 10.230.248.64/27
+      230:
+        action: permit ip 10.232.0.0/24 10.230.167.128/25
+      240:
+        action: permit tcp any 10.230.128.0/17 eq 1526
+      250:
+        action: permit tcp 10.230.128.0/17 eq 1526 any range 1024 65535
+      260:
+        action: permit tcp 10.230.130.203/32 eq 2049 10.230.168.50/32 eq 2049
+      270:
+        action: permit tcp 10.230.130.203/32 eq sunrpc 10.230.168.50/32 eq sunrpc
+      280:
+        action: permit tcp 10.232.0.0/24 10.232.21.114/32 eq 2049
+      290:
+        action: permit tcp 10.232.0.0/24 10.232.21.114/32 eq sunrpc
+      300:
+        action: permit ip 10.232.0.0/24 10.232.21.0/25
+      310:
+        action: permit ip 10.232.21.0/25 10.232.0.0/24
+  DT-dataguard-JDA:
+    sequence_numbers:
+      10:
+        action: permit tcp any 10.230.128.0/17 eq 1521
+      20:
+        action: permit tcp 10.230.128.0/17 eq 1521 any range 1024 65535
+      30:
+        action: permit ip 224.0.0.102/32 any
+      40:
+        action: permit ip any 224.0.0.102/32
+      50:
+        action: permit icmp any 10.230.128.0/17 echo
+      60:
+        action: permit icmp any 10.230.128.0/17 echo-reply
+      70:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      80:
+        action: permit ip any 10.230.168.0/25
+      90:
+        action: permit ip 10.230.168.0/25 any
+  DT-management-dataguard:
+    sequence_numbers:
+      10:
+        action: permit ip 10.230.181.96/27 10.230.181.96/27
+      20:
+        action: permit ip 10.230.181.96/27 10.230.181.128/26
+      30:
+        action: permit ip 10.230.181.128/26 10.230.181.96/27
+      40:
+        action: permit ip 10.230.181.128/26 10.230.181.128/26
+      50:
+        action: permit ip 224.0.0.102/32 any
+      60:
+        action: permit ip any 224.0.0.102/32
+  NTP_Peer:
+    sequence_numbers:
+      10:
+        action: permit ip any any
+  NTP_Utility:
+    sequence_numbers:
+      10:
+        action: deny ip any any
+  PROD-dataguard:
+    sequence_numbers:
+      10:
+        action: permit tcp any 10.59.0.0/16 eq 1521
+      20:
+        action: permit tcp 10.59.0.0/16 eq 1521 any range 1024 65535
+      30:
+        action: permit tcp any 10.59.0.0/16 eq 22
+      40:
+        action: permit tcp 10.59.0.0/16 eq 22 any range 1024 65535
+      50:
+        action: permit icmp any 10.59.0.0/16 echo
+      60:
+        action: permit icmp any 10.59.0.0/16 echo-reply
+      70:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      80:
+        action: permit tcp 10.59.0.128/25 10.59.1.0/25 range 7809 7820
+      90:
+        action: permit tcp 10.59.1.0/25 range 7809 7820 10.59.0.128/25 range 1024 65535
+      100:
+        action: permit tcp 10.59.1.0/25 10.59.0.128/25 range 7809 7820
+      110:
+        action: permit tcp 10.59.0.128/25 range 7809 7820 10.59.1.0/25 range 1024 65535
+      120:
+        action: permit tcp any 10.59.0.0/16 eq 1526
+      130:
+        action: permit tcp 10.59.0.0/16 eq 1526 any range 1024 65535
+      140:
+        action: permit tcp 10.59.21.136/29 10.59.117.40/29
+  PROD-dataguard-JDA:
+    sequence_numbers:
+      10:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      20:
+        action: permit ip 10.59.1.0/25 10.59.51.0/25
+      30:
+        action: permit ip 10.59.51.0/25 10.59.1.0/25
+      40:
+        action: permit icmp any 10.59.0.0/16 echo
+      50:
+        action: permit icmp any 10.59.0.0/16 echo-reply
+      60:
+        action: permit ip 10.59.51.0/25 10.59.0.128/25
+      70:
+        action: permit ip 10.59.0.128/25 10.59.51.0/25
+      140:
+        action: permit ip 10.59.58.0/25 10.59.51.0/25
+      150:
+        action: permit ip 10.59.51.0/25 10.59.58.0/25
+      160:
+        action: permit tcp any 10.59.0.0/16 eq 1521
+      170:
+        action: permit tcp 10.59.0.0/16 eq 1521 any range 1024 65535
+      180:
+        action: permit tcp any 10.59.0.0/16 eq 22
+      190:
+        action: permit tcp 10.59.0.0/16 eq 22 any range 1024 65535
+      200:
+        action: permit icmp any 10.59.0.0/16 echo
+      210:
+        action: permit icmp any 10.59.0.0/16 echo-reply
+      220:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      230:
+        action: permit tcp 10.59.0.128/25 10.59.1.0/25 range 7809 7820
+      240:
+        action: permit tcp 10.59.1.0/25 range 7809 7820 10.59.0.128/25 range 1024 65535
+      250:
+        action: permit tcp 10.59.1.0/25 10.59.0.128/25 range 7809 7820
+      260:
+        action: permit tcp 10.59.0.128/25 range 7809 7820 10.59.1.0/25 range 1024 65535
+      270:
+        action: permit tcp any 10.59.0.0/16 eq 1526
+      280:
+        action: permit tcp 10.59.0.0/16 eq 1526 any range 1024 65535
+      290:
+        action: permit ip 10.59.91.0/25 10.59.90.128/25
+      300:
+        action: permit ip 10.59.90.128/25 10.59.91.0/25
+      310:
+        action: permit tcp 10.59.91.0/25 10.59.90.128/25 range 7809 7820
+      320:
+        action: permit tcp 10.59.91.0/25 range 7809 7820 10.59.90.128/25 range 1024 65535
+      340:
+        action: permit tcp 10.59.90.128/25 10.59.91.0/25 range 7809 7820
+      350:
+        action: permit tcp 10.59.90.128/25 range 7809 7820 10.59.91.0/25 range 1024 65535
+  TEMP-exa:
+    sequence_numbers:
+      10:
+        action: permit tcp 10.230.181.48/28 10.230.105.142/32 eq 1521
+      20:
+        action: permit tcp 10.230.105.142/32 eq 1521 any range 1024 65535
+  backup_client:
+    sequence_numbers:
+      10:
+        action: permit tcp any 172.30.210.0/26 eq 1500
+      20:
+        action: permit tcp 172.30.210.0/26 eq 1500 any range 1024 65535
+      30:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      40:
+        action: permit icmp any 172.30.210.0/24 echo
+      50:
+        action: permit icmp any 172.23.128.0/24 echo
+      60:
+        action: permit icmp any 172.23.128.0/24 echo-reply
+      70:
+        action: permit icmp any 172.30.210.0/24 echo-reply
+      80:
+        action: permit icmp any 172.30.13.0/24 echo
+      90:
+        action: permit icmp any 172.30.13.0/24 echo-reply
+      100:
+        action: permit icmp any 172.30.20.0/24 echo
+      110:
+        action: permit icmp any 172.30.20.0/24 echo-reply
+      120:
+        action: permit icmp any 172.30.52.0/24 echo
+      130:
+        action: permit icmp any 172.30.52.0/24 echo-reply
+      140:
+        action: permit icmp any 172.30.53.0/24 echo
+      150:
+        action: permit icmp any 172.30.53.0/24 echo-reply
+      160:
+        action: permit icmp any 172.30.57.0/24 echo
+      170:
+        action: permit icmp any 172.30.57.0/24 echo-reply
+      180:
+        action: permit icmp any 172.30.62.0/24 echo
+      190:
+        action: permit icmp any 172.30.62.0/24 echo-reply
+      200:
+        action: permit tcp any 172.30.210.64/26 eq 2049
+      210:
+        action: permit udp any 172.30.210.64/26 eq 2049
+      220:
+        action: permit tcp any 172.30.210.64/26 eq sunrpc
+      230:
+        action: permit udp any 172.30.210.64/26 eq sunrpc
+      240:
+        action: permit udp any 172.30.210.93/32 range 32000 65535
+      250:
+        action: permit udp any 172.30.210.94/32 range 32000 65535
+      260:
+        action: permit udp any 172.30.210.95/32 range 32000 65535
+      270:
+        action: permit udp any 172.30.210.96/32 range 32000 65535
+      280:
+        action: permit tcp any 172.30.210.93/32 range 32000 65535
+      290:
+        action: permit tcp any 172.30.210.94/32 range 32000 65535
+      300:
+        action: permit tcp any 172.30.210.95/32 range 32000 65535
+      310:
+        action: permit tcp any 172.30.210.96/32 range 32000 65535
+      320:
+        action: permit tcp any 172.30.210.128/28 eq 22
+      330:
+        action: permit tcp 172.30.210.128/28 eq 22 any range 100 65535
+      340:
+        action: permit tcp any 172.30.210.128/28 eq 2049
+      350:
+        action: permit tcp 172.30.210.128/28 eq 2049 any range 100 65535
+      360:
+        action: permit udp any 172.30.210.128/28 eq sunrpc
+      370:
+        action: permit udp 172.30.210.128/28 eq sunrpc any range 100 65535
+      380:
+        action: permit udp any 172.30.210.128/28 eq 2049
+      390:
+        action: permit udp 172.30.210.128/28 eq 2049 any range 100 65535
+      400:
+        action: permit tcp any 172.30.210.128/28 eq sunrpc
+      410:
+        action: permit tcp 172.30.210.128/28 eq sunrpc any range 100 65535
+      420:
+        action: permit tcp any 172.30.210.128/28 eq 635
+      430:
+        action: permit udp any 172.30.210.128/28 eq 635
+      440:
+        action: permit udp any 172.30.210.128/28 eq 4045
+      450:
+        action: permit tcp any 172.30.210.128/28 eq 4045
+      460:
+        action: permit tcp any 172.30.210.128/28 eq 4046
+      470:
+        action: permit udp any 172.30.210.128/28 eq 4046
+      480:
+        action: permit udp any 172.30.210.128/28 eq 4049
+      490:
+        action: permit tcp any 172.30.210.128/28 eq 4049
+      500:
+        action: permit tcp 172.30.210.128/28 eq 635 any range 100 65535
+      510:
+        action: permit udp 172.30.210.128/28 eq 635 any range 100 65535
+      520:
+        action: permit tcp 172.30.210.128/28 eq 4045 any range 100 65535
+      530:
+        action: permit udp 172.30.210.128/28 eq 4045 any range 100 65535
+      540:
+        action: permit tcp 172.30.210.128/28 eq 4046 any range 100 65535
+      550:
+        action: permit udp 172.30.210.128/28 eq 4046 any range 100 65535
+      560:
+        action: permit tcp 172.30.210.128/28 eq 4049 any range 100 65535
+      570:
+        action: permit udp 172.30.210.128/28 eq 4049 any range 100 65535
+      580:
+        action: permit icmp 172.30.210.128/28 any echo
+      590:
+        action: permit icmp 172.30.210.128/28 any echo-reply
+      600:
+        action: permit udp any 172.30.210.99/32 range 32000 65535
+      610:
+        action: permit udp any 172.30.210.105/32 range 32000 65535
+      620:
+        action: permit tcp any 172.30.210.105/32 range 32000 65535
+      650:
+        action: permit tcp any 172.30.210.99/32 range 32000 65535
+      750:
+        action: permit tcp any 172.30.211.0/26 eq 2049
+      760:
+        action: permit udp any 172.30.211.0/26 eq 2049
+      770:
+        action: permit tcp any 172.30.211.0/26 eq sunrpc
+      780:
+        action: permit udp any 172.30.211.0/26 eq sunrpc
+      790:
+        action: permit tcp any 172.23.246.0/24 range 4045 4046
+      800:
+        action: permit tcp any 172.23.246.0/24 eq 4049
+      810:
+        action: permit udp any 172.23.246.0/24 range 4045 4046
+      820:
+        action: permit udp any 172.23.246.0/24 eq 4049
+      830:
+        action: permit tcp any 172.30.211.0/26 range 4045 4046
+      840:
+        action: permit tcp any 172.30.211.0/26 eq 4049
+      850:
+        action: permit udp any 172.30.211.0/26 range 4045 4046
+      860:
+        action: permit udp any 172.30.211.0/26 eq 4049
+      870:
+        action: permit tcp any 172.23.246.0/24 eq 2049
+      880:
+        action: permit udp any 172.23.246.0/24 eq 2049
+      890:
+        action: permit tcp any 172.23.246.0/24 eq sunrpc
+      900:
+        action: permit udp any 172.23.246.0/24 eq sunrpc
+      910:
+        action: permit tcp any 172.23.246.0/24 eq 635
+      920:
+        action: permit udp any 172.23.246.0/24 eq 635
+      930:
+        action: permit tcp any 172.23.246.0/24 range 4045 4046
+      940:
+        action: permit tcp any 172.23.246.0/24 eq 4049
+      950:
+        action: permit udp any 172.23.246.0/24 range 4045 4046
+      960:
+        action: permit udp any 172.23.246.0/24 eq 4049
+      970:
+        action: permit icmp any 172.23.246.0/24 echo
+      980:
+        action: permit icmp any 172.23.246.0/24 echo-reply
+      990:
+        action: permit icmp any 172.30.211.0/26 echo
+      1000:
+        action: permit icmp any 172.30.211.0/26 echo-reply
+      1010:
+        action: permit tcp any 172.30.211.0/26 eq 635
+      1020:
+        action: permit udp any 172.30.211.0/26 eq 635
+      1030:
+        action: permit tcp any 172.23.246.0/24 eq www
+      1040:
+        action: permit tcp any 172.23.246.0/24 eq 443
+      1050:
+        action: permit tcp any 172.23.246.0/24 eq 22
+      1060:
+        action: permit tcp any 172.30.211.0/26 eq www
+      1070:
+        action: permit tcp any 172.30.211.0/26 eq 443
+      1080:
+        action: permit tcp any 172.30.211.0/26 eq 22
+      1130:
+        action: permit tcp any 172.30.210.110/32 eq 32771
+      1140:
+        action: permit tcp any 172.30.210.110/32 eq 22
+      1150:
+        action: permit tcp any 172.30.210.110/32 eq 1521
+      1155:
+        action: permit tcp any 172.24.107.128/32 eq 2049
+      1160:
+        action: permit udp any 172.24.107.128/32 eq 2049
+      1165:
+        action: permit tcp any 172.24.107.128/32 eq sunrpc
+      1170:
+        action: permit udp any 172.24.107.128/32 eq sunrpc
+      1175:
+        action: permit tcp any 172.24.107.128/32 range 4045 4046
+      1180:
+        action: permit tcp any 172.24.107.128/32 range 32000 65535
+      1190:
+        action: permit tcp any 172.24.107.128/32 eq 9003
+      1200:
+        action: permit ip 172.23.168.10/32 172.24.107.128/32
+      1210:
+        action: permit tcp 172.30.9.42/32 172.24.105.35/32 eq 2049
+      1220:
+        action: permit ip 172.23.143.120/32 172.24.9.1/32
+      1230:
+        action: permit tcp 172.30.9.42/32 172.24.105.35/32 eq sunrpc
+      1240:
+        action: permit ip 172.23.143.189/32 172.24.9.1/32
+      1250:
+        action: permit icmp 172.30.9.42/32 172.24.105.35/32 echo
+      1260:
+        action: permit ip 172.30.221.87/32 172.30.220.6/32
+      1270:
+        action: permit tcp 172.30.9.42/32 172.24.105.35/32 eq 20048
+      1280:
+        action: permit ip 172.23.150.122/32 172.23.150.125/32
+      1290:
+        action: permit ip 172.23.150.125/32 172.23.150.122/32
+      1300:
+        action: permit ip 172.23.150.123/32 172.23.150.125/32
+      1310:
+        action: permit ip 172.23.150.125/32 172.23.150.123/32
+      1330:
+        action: permit icmp any any echo
+      1340:
+        action: permit icmp any any echo-reply
+      1350:
+        action: permit tcp any 172.30.210.110/32 range 32000 65535
+      1360:
+        action: permit udp any 172.30.210.110/32 range 32000 65535
+      1380:
+        action: permit ip 172.30.57.0/24 172.30.56.0/24
+      1390:
+        action: permit ip 172.23.150.17/32 172.23.169.1/32
+      1400:
+        action: permit ip 172.23.136.21/32 172.30.45.190/32
+      1410:
+        action: permit tcp 172.23.153.0/24 eq 2049 172.24.28.0/23 range 100 65535
+      1420:
+        action: permit udp 172.23.153.0/24 eq 2049 172.24.28.0/23 range 100 65535
+      1430:
+        action: permit tcp 172.23.153.0/24 eq sunrpc 172.24.28.0/23 range 100 65535
+      1440:
+        action: permit udp 172.23.153.0/24 eq sunrpc 172.24.28.0/23 range 100 65535
+      1450:
+        action: permit tcp 172.23.153.0/24 172.24.28.116/32
+      1460:
+        action: permit ip 172.23.150.242/32 172.24.112.139/32
+      1470:
+        action: permit ip 172.30.57.0/24 172.30.210.0/25
+      1480:
+        action: permit ip 172.30.57.0/24 172.30.130.0/26
+      1490:
+        action: permit ip 172.30.57.0/24 172.30.211.0/26
+      1500:
+        action: permit ip 172.30.62.0/25 172.30.210.0/25
+      1510:
+        action: permit ip 172.30.62.0/25 172.30.130.0/26
+      1520:
+        action: permit ip 172.30.62.0/25 172.30.211.0/26
+      1530:
+        action: permit tcp 172.23.153.0/24 eq 2049 172.24.112.79/32 range 100 65535
+      1540:
+        action: permit udp 172.23.153.0/24 eq 2049 172.24.112.79/32 range 100 65535
+      1550:
+        action: permit tcp 172.23.153.0/24 eq sunrpc 172.24.112.79/32 range 100 65535
+      1560:
+        action: permit ip 172.23.150.3/32 172.23.149.59/32
+      1570:
+        action: permit ip 172.23.249.88/32 172.23.149.29/32
+      1571:
+        action: permit ip 172.30.42.225/32 172.24.111.69/32
+      1580:
+        action: permit ip 172.30.42.224/32 172.30.210.110/32
+      1590:
+        action: permit ip 172.23.249.145/32 172.24.107.128/32
+      1600:
+        action: permit ip 172.23.150.92/32 172.24.107.128/32
+      1601:
+        action: permit ip 172.23.153.41/32 172.24.107.128/32
+      1602:
+        action: permit ip 172.30.221.91/32 172.30.220.5/32
+      1603:
+        action: permit ip 172.23.153.6/32 172.23.154.37/32
+      1610:
+        action: permit tcp any 172.26.40.0/23 eq sunrpc
+      1620:
+        action: permit tcp any 172.26.40.0/23 eq 443
+      1630:
+        action: permit tcp any 172.26.40.0/23 eq 2049
+      1640:
+        action: permit udp any 172.26.40.0/23 eq 2049
+      1650:
+        action: permit tcp any 172.26.40.0/23 eq 1514
+      1660:
+        action: permit tcp any 172.26.40.0/23 range 32764 32769
+      1670:
+        action: permit udp any 172.26.40.0/23 range 32764 32769
+      1680:
+        action: permit udp any 172.26.40.0/23 range netbios-ns netbios-dgm
+      1690:
+        action: permit tcp any 172.26.40.0/23 eq 139
+      1700:
+        action: permit tcp any 172.26.40.0/23 eq 445
+      1710:
+        action: permit tcp any 172.24.12.0/25 eq sunrpc
+      1720:
+        action: permit tcp any 172.24.12.0/25 eq 443
+      1730:
+        action: permit tcp any 172.24.12.0/25 eq 2049
+      1740:
+        action: permit udp any 172.24.12.0/25 eq 2049
+      1750:
+        action: permit tcp any 172.24.12.0/25 eq 1514
+      1760:
+        action: permit tcp any 172.24.12.0/25 range 32764 32769
+      1770:
+        action: permit udp any 172.24.12.0/25 range 32764 32769
+      1780:
+        action: permit udp any 172.24.12.0/25 range netbios-ns netbios-dgm
+      1790:
+        action: permit tcp any 172.24.12.0/25 eq 139
+      1800:
+        action: permit tcp any 172.24.12.0/25 eq 445
+      1810:
+        action: permit ip 172.23.249.192/32 172.23.149.29/32
+      1820:
+        action: permit icmp any 172.26.40.0/23 echo
+      1830:
+        action: permit icmp any 172.26.40.0/23 echo-reply
+      1840:
+        action: permit tcp any 172.23.154.0/24 eq 2049
+      1850:
+        action: permit udp any 172.23.154.0/24 eq 2049
+      1860:
+        action: permit tcp any 172.23.154.0/24 eq sunrpc
+      1870:
+        action: permit udp any 172.23.154.0/24 eq sunrpc
+      1880:
+        action: permit tcp any 172.24.107.0/24 eq 2049
+      1890:
+        action: permit udp any 172.24.107.0/24 eq 2049
+      1900:
+        action: permit tcp any eq 902 172.26.40.0/23
+      1910:
+        action: permit tcp any range 32764 32769 172.26.40.0/23
+      1920:
+        action: permit tcp any range 12800 12801 172.26.40.0/23
+      1930:
+        action: permit tcp any eq 902 172.26.38.0/23
+      1940:
+        action: permit tcp any range 32764 32769 172.26.38.0/23
+      1950:
+        action: permit tcp any range 12800 12801 172.26.38.0/23
+      1960:
+        action: permit tcp any eq 902 172.26.3.64/26
+      1970:
+        action: permit ip 172.30.229.0/24 172.30.210.110/32
+      1980:
+        action: permit tcp any range 12800 12801 172.26.3.64/26
+      1990:
+        action: permit tcp any 172.23.154.0/24 range 9001 9019
+      2000:
+        action: permit ip any 172.26.38.0/23
+      2010:
+        action: permit ip any 172.26.40.0/23
+      2020:
+        action: permit ip any 172.26.3.64/26
+      2030:
+        action: permit ip 172.30.22.0/24 172.30.210.110/32
+      2040:
+        action: permit tcp 172.30.212.192/26 172.30.212.128/26 range 11104 11105
+      2060:
+        action: permit udp 172.30.212.192/26 172.30.212.128/26 eq snmp
+      2080:
+        action: permit icmp 172.30.212.192/26 172.30.212.128/26 echo
+      2090:
+        action: permit icmp 172.30.212.192/26 172.30.212.128/26 echo-reply
+      2091:
+        action: permit tcp 172.30.212.192/26 range 11104 11105 172.30.212.128/26 range 1024 65535
+      2092:
+        action: permit udp 172.30.212.192/26 eq snmp 172.30.212.128/26 range 1024 65535
+      2100:
+        action: permit tcp any 172.30.210.110/32
+      2110:
+        action: permit udp any 172.30.210.110/32
+      2111:
+        action: permit ip 172.23.133.0/24 172.23.160.129/32
+      2151:
+        action: permit ip 172.23.133.53/32 172.23.133.19/32
+      2152:
+        action: permit ip 172.23.133.54/32 172.23.133.19/32
+      2153:
+        action: permit ip 172.23.133.19/32 172.23.133.54/32
+      2154:
+        action: permit ip 172.23.133.19/32 172.23.133.53/32
+      2155:
+        action: permit ip 172.30.30.9/32 172.23.143.4/32
+      2156:
+        action: permit ip 172.23.143.4/32 172.30.30.9/32
+      2157:
+        action: permit ip 172.30.221.90/32 172.30.220.7/32
+      2158:
+        action: permit ip 172.23.249.201/32 172.30.210.110/32
+      2160:
+        action: permit ip 172.30.57.0/24 172.30.65.64/26
+      2170:
+        action: permit ip 172.30.65.64/26 172.30.57.0/24
+      2180:
+        action: permit ip 172.30.57.0/24 172.30.56.0/24
+      2190:
+        action: permit ip 172.30.57.0/24 172.30.63.64/26
+      2200:
+        action: permit ip 172.30.57.0/24 172.23.132.0/25
+      2210:
+        action: permit ip 172.30.65.64/26 172.30.56.0/24
+      2220:
+        action: permit ip 172.30.65.64/26 172.30.63.64/26
+      2230:
+        action: permit ip 172.30.65.64/26 172.23.132.0/25
+      2232:
+        action: permit ip 172.23.150.88/32 172.24.107.128/32
+      2242:
+        action: permit ip 172.23.249.0/24 172.24.9.1/32
+      2250:
+        action: permit tcp 172.23.150.63/32 172.23.169.16/32 eq 2049
+      2260:
+        action: permit udp 172.23.150.63/32 172.23.169.16/32 eq 2049
+      2270:
+        action: permit tcp 172.23.150.63/32 172.23.169.16/32 eq sunrpc
+      2280:
+        action: permit ip 172.23.150.63/32 172.23.169.16/32
+      2290:
+        action: permit ip 172.30.43.3/32 172.24.111.69/32
+      2300:
+        action: permit udp any 172.24.111.69/32 eq 2049
+      2310:
+        action: permit tcp any 172.24.111.69/32 eq sunrpc
+      2320:
+        action: permit udp any 172.24.111.69/32 eq sunrpc
+      2330:
+        action: permit icmp any 172.30.130.0/26 echo
+      2340:
+        action: permit icmp any 172.30.130.0/26 echo-reply
+      2350:
+        action: permit tcp any 172.30.130.0/26 eq 635
+      2360:
+        action: permit udp any 172.30.130.0/26 eq 635
+      2370:
+        action: permit tcp any 172.30.130.0/26 eq 2049
+      2380:
+        action: permit udp any 172.30.130.0/26 eq 2049
+      2390:
+        action: permit tcp any 172.30.130.0/26 eq sunrpc
+      2400:
+        action: permit udp any 172.30.130.0/26 eq sunrpc
+      2410:
+        action: permit tcp any 172.30.130.0/26 range 4045 4046
+      2420:
+        action: permit tcp any 172.30.130.0/26 eq 4049
+      2430:
+        action: permit udp any 172.30.130.0/26 range 4045 4046
+      2440:
+        action: permit tcp any 172.30.45.24/32 eq 2049
+      2450:
+        action: permit tcp any 172.30.45.24/32 eq sunrpc
+      2480:
+        action: permit tcp any 172.23.246.0/24 eq 3260
+      2570:
+        action: permit tcp 172.23.160.32/32 eq sunrpc 172.23.150.3/32
+      2580:
+        action: permit tcp 172.23.160.32/32 eq 1521 172.23.150.3/32
+      2590:
+        action: permit tcp 172.23.160.32/32 eq 2049 172.23.150.3/32
+      2600:
+        action: permit tcp 172.23.150.3/32 eq 2049 172.23.160.32/32
+      2610:
+        action: permit tcp 172.23.150.3/32 eq sunrpc 172.23.160.32/32
+      2620:
+        action: permit tcp 172.23.150.3/32 eq 1521 172.23.160.32/32
+      2630:
+        action: permit ip 172.23.150.3/32 172.23.160.32/32
+      2640:
+        action: permit ip 172.30.217.4/32 172.30.27.68/32
+      2650:
+        action: permit ip 172.30.217.4/32 172.30.27.73/32
+      2660:
+        action: permit ip 172.30.217.4/32 172.30.27.89/31
+      2690:
+        action: permit tcp any 172.30.130.0/26 eq 3260
+      2700:
+        action: permit ip 172.23.168.1/32 172.23.150.124/32
+      2710:
+        action: permit ip 172.23.150.124/32 172.23.168.1/32
+      2720:
+        action: permit ip 172.30.218.172/32 172.30.229.41/32
+      2730:
+        action: permit ip 172.30.229.41/32 172.30.218.172/32
+      2740:
+        action: permit ip 172.23.150.124/32 172.23.168.44/32
+      2750:
+        action: permit ip 172.23.168.44/32 172.23.150.124/32
+      2760:
+        action: permit ip 172.23.153.61/32 172.23.169.24/32
+      2770:
+        action: permit ip 172.23.168.4/32 172.24.112.133/32
+      2780:
+        action: permit ip 172.30.216.206/27 172.30.27.190/32
+      2790:
+        action: permit ip 172.30.217.127/24 172.30.27.190/32
+      2800:
+        action: permit ip 172.23.133.65/32 172.23.133.66/32
+      2810:
+        action: permit ip 172.23.133.65/32 172.23.133.67/32
+      2820:
+        action: permit ip 172.23.133.65/32 172.23.133.68/32
+      2830:
+        action: permit ip 172.23.133.68/32 172.23.133.65/32
+      2840:
+        action: permit ip 172.23.133.67/32 172.23.133.65/32
+      2850:
+        action: permit ip 172.23.133.66/32 172.23.133.65/32
+      2860:
+        action: permit ip 172.30.218.81/32 172.30.22.194/32
+      2870:
+        action: permit ip 172.23.248.214/32 172.30.22.194/32
+      2880:
+        action: permit ip 172.30.22.194/32 172.30.218.81/32
+      2890:
+        action: permit ip 172.30.22.194/32 172.23.248.214/32
+      2900:
+        action: permit ip 172.23.143.4/32 172.23.169.31/32
+      2910:
+        action: permit ip 172.23.169.31/32 172.23.143.4/32
+      2920:
+        action: permit ip 172.30.22.177/32 172.30.21.119/32
+      2930:
+        action: permit ip 172.30.24.62/32 172.30.216.8/32
+      2940:
+        action: permit ip 172.30.216.8/32 172.30.24.62/32
+      2950:
+        action: permit ip 172.24.107.128/32 172.23.150.213/32
+      2960:
+        action: permit ip 172.23.150.213/32 172.24.107.128/32
+      2970:
+        action: permit ip 172.30.221.0/24 172.30.44.0/23
+      2980:
+        action: permit tcp any 172.30.231.160/28 eq 443
+      2990:
+        action: permit tcp any 172.30.231.160/28 eq www
+      3000:
+        action: permit ip any 172.23.133.0/24
+      3010:
+        action: permit ip 172.23.133.0/24 any
+      3020:
+        action: permit ip 172.30.20.10/32 172.30.20.73/32
+      3030:
+        action: permit ip 172.30.20.4/31 172.30.20.73/32
+      3040:
+        action: permit ip 172.30.20.15/31 172.30.20.73/32
+      3050:
+        action: permit ip 172.30.20.17/32 172.30.20.73/32
+      3060:
+        action: permit ip 172.30.24.2/31 172.30.20.73/32
+      3070:
+        action: permit ip 172.30.24.10/32 172.30.20.73/32
+      3080:
+        action: permit ip 172.30.221.68/32 172.30.16.234/32
+      3090:
+        action: permit ip 172.30.16.234/32 172.30.221.68/32
+      3100:
+        action: permit ip 172.30.30.197/32 172.30.221.68/32
+      3110:
+        action: permit ip 172.30.221.68/32 172.30.30.197/32
+      3120:
+        action: permit ip 172.30.221.88/32 172.30.77.60/32
+      3130:
+        action: permit ip 172.30.221.89/32 172.30.77.60/32
+      3140:
+        action: permit ip 172.30.221.68/32 172.30.16.234/32
+      3150:
+        action: permit ip 172.30.16.234/32 172.30.221.68/32
+      3155:
+        action: permit ip 172.30.11.0/24 172.30.21.0/24
+      3160:
+        action: permit ip 172.30.22.0/24 172.30.218.0/24
+      3170:
+        action: permit ip 172.30.21.1/32 172.30.217.166/32
+      3180:
+        action: permit ip 172.30.217.166/32 172.30.21.1/32
+  backup_lc:
+    sequence_numbers: {}
+  backup_server:
+    sequence_numbers:
+      10:
+        action: permit tcp 172.30.210.0/26 eq 1500 any range 1024 65535
+      20:
+        action: permit tcp 172.30.210.0/26 172.30.0.0/16 established
+      30:
+        action: permit tcp 172.30.210.0/26 172.23.0.0/16 established
+      40:
+        action: permit ip 172.30.210.0/26 172.30.210.0/26
+      50:
+        action: permit udp 172.30.210.0/26 224.0.0.2/32 eq 1985
+      60:
+        action: permit icmp 172.30.210.0/26 172.30.0.0/16 echo
+      70:
+        action: permit icmp 172.30.210.0/26 172.23.0.0/16 echo
+      75:
+        action: permit icmp 172.30.210.0/26 172.26.0.0/16 echo
+      80:
+        action: permit icmp 172.30.210.0/26 any echo-reply
+      90:
+        action: permit icmp 172.30.52.0/24 172.30.210.0/26 echo
+      100:
+        action: permit icmp 172.30.52.0/24 172.30.210.0/26 echo-reply
+      110:
+        action: permit icmp 172.30.210.64/26 172.30.0.0/16 echo
+      120:
+        action: permit icmp 172.30.210.64/26 172.23.0.0/16 echo
+      130:
+        action: permit icmp 172.30.210.64/26 any echo-reply
+      140:
+        action: permit tcp 172.30.210.64/26 eq 2049 any
+      150:
+        action: permit udp 172.30.210.64/26 eq 2049 any
+      190:
+        action: permit tcp 172.30.210.64/26 eq sunrpc any
+      200:
+        action: permit udp 172.30.210.64/26 eq sunrpc any
+      210:
+        action: permit udp 172.30.210.93/32 range 32000 65535 any
+      220:
+        action: permit udp 172.30.210.94/32 range 32000 65535 any
+      230:
+        action: permit udp 172.30.210.95/32 range 32000 65535 any
+      240:
+        action: permit udp 172.30.210.96/32 range 32000 65535 any
+      250:
+        action: permit tcp 172.30.210.93/32 range 32000 65535 any
+      260:
+        action: permit tcp 172.30.210.94/32 range 32000 65535 any
+      270:
+        action: permit tcp 172.30.210.95/32 range 32000 65535 any
+      280:
+        action: permit tcp 172.30.210.96/32 range 32000 65535 any
+      290:
+        action: permit tcp 172.30.210.91/32 172.30.210.38/32 eq 1500
+      300:
+        action: permit tcp 172.30.210.38/32 eq 1500 172.30.210.91/32 range 1024 65535
+      310:
+        action: permit ip 172.30.210.32/27 172.30.52.0/23
+      320:
+        action: permit ip 172.30.210.0/26 172.26.0.0/16
+      330:
+        action: permit tcp any 172.30.231.160/28 eq 443
+      340:
+        action: permit tcp any 172.30.231.160/28 eq www
+  management-dataguard:
+    sequence_numbers:
+      10:
+        action: permit ip 10.59.28.192/26 10.59.28.192/26
+      20:
+        action: permit ip 10.59.28.192/26 10.59.29.0/25
+      30:
+        action: permit ip 10.59.29.0/25 10.59.28.192/26
+      40:
+        action: permit ip 10.59.29.0/25 10.59.29.0/25
+      50:
+        action: permit ip 224.0.0.102/32 any
+      60:
+        action: permit ip any 224.0.0.102/32
+  management-servers-admin:
+    sequence_numbers:
+      10:
+        action: permit ip 172.30.60.40/32 any
+      20:
+        action: permit ip 172.30.60.25/32 any
+      30:
+        action: permit ip 172.30.60.22/32 any
+  management-servers-cspc:
+    sequence_numbers:
+      10:
+        action: permit ip 172.30.60.62/32 any
+  tac-reply:
+    sequence_numbers:
+      10:
+        action: permit icmp 172.30.212.37/32 172.30.212.38/32
+      20:
+        action: permit ip any any
+  tac-request:
+    sequence_numbers:
+      10:
+        action: permit icmp 172.30.212.38/32 172.30.212.37/32
+      20:
+        action: permit ip any any
+  vlan302-dataguard:
+    sequence_numbers:
+      10:
+        action: permit ip 10.59.1.0/25 10.59.58.0/25
+      20:
+        action: permit ip 10.59.1.0/25 10.59.51.0/25
+      30:
+        action: permit ip 10.59.1.0/25 10.59.45.128/25
+      40:
+        action: permit ip 10.59.45.128/25 10.59.1.0/25
+      50:
+        action: permit ip 224.0.0.102/32 any
+      60:
+        action: permit ip any 224.0.0.102/32
+      70:
+        action: permit ip 10.59.51.0/25 10.59.1.0/25
+      80:
+        action: permit ip 10.59.58.0/25 10.59.1.0/25
+      90:
+        action: permit ip 10.59.1.0/25 10.59.0.128/25
+      100:
+        action: permit ip 10.59.0.128/25 10.59.1.0/25
+      110:
+        action: permit icmp any 10.59.0.0/16 echo
+      120:
+        action: permit icmp any 10.59.0.0/16 echo-reply
+      130:
+        action: permit tcp 10.59.1.0/25 10.59.131.0/25 eq 1521
+      140:
+        action: permit tcp 10.59.1.0/25 eq 1521 10.59.131.0/25 range 1024 65535
+cs_conf_vlan_interfaces:
+  Vlan2602:
+    access_group_in: backup_server
+  Vlan2603:
+    access_group_in: backup_server
+  Vlan2608:
+    access_group_in: DMZ-DT
+  Vlan2610:
+    access_group_in: PROD-dataguard
+  Vlan2611:
+    access_group_in: DMZ
+  Vlan2638:
+    access_group_in: backup_server
+  Vlan602:
+    pvlan_mapping: '603'
+  Vlan637:
+    pvlan_mapping: '638'
+  Vlan679:
+    access_group_in: DT-dataguard
+  Vlan831:
+    access_group_in: backup_server
+  Vlan844:
+    access_group_in: backup_server
+  Vlan852:
+    access_group_in: backup_server
+  Vlan870:
+    access_group_in: DMZ-DT
+  Vlan879:
+    access_group_in: DMZ-DT
+  Vlan880:
+    access_group_in: DMZ
+  Vlan894:
+    access_group_in: DT-dataguard
+  Vlan895:
+    access_group_in: PROD-dataguard
+cs_conf_vlans:
+  304:
+    name: mgnt_DC02_inf_iso
+    private_vlan:
+      primary_vlan: 303
+      type: isolated
+  306:
+    name: mgnt_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 305
+      type: isolated
+  323:
+    name: DT_mgmt_DC02_fw_iso
+    private_vlan:
+      primary_vlan: 322
+      type: isolated
+  339:
+    name: mgnt8_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 338
+      type: isolated
+  356:
+    name: mgnt2_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 355
+      type: isolated
+  372:
+    name: mgnt3_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 371
+      type: isolated
+  378:
+    name: mgnt_DC02_inf2_iso
+    private_vlan:
+      primary_vlan: 377
+      type: isolated
+  381:
+    name: mgnt4_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 380
+      type: isolated
+  393:
+    name: mgnt5_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 392
+      type: isolated
+  403:
+    name: mgnt6_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 402
+      type: isolated
+  408:
+    name: DT_mgnt_DC02_inf1_fw_iso
+    private_vlan:
+      primary_vlan: 407
+      type: isolated
+  421:
+    name: mgnt_DC02_inf4_fw_iso
+    private_vlan:
+      primary_vlan: 420
+      type: isolated
+  423:
+    name: DT_mgnt_DC02_inf2_fw_iso
+    private_vlan:
+      primary_vlan: 422
+      type: isolated
+  438:
+    name: inf11_DC02_priv_fw_iso
+    private_vlan:
+      primary_vlan: 437
+      type: isolated
+  440:
+    name: inf12_DC02_priv_fw_iso
+    private_vlan:
+      primary_vlan: 439
+      type: isolated
+  445:
+    name: mgnt_DC02_publ_priv_fw_iso
+    private_vlan:
+      primary_vlan: 444
+      type: isolated
+  449:
+    name: DT_mgnt_DC02_publ_fw_iso
+    private_vlan:
+      primary_vlan: 448
+      type: isolated
+  453:
+    name: mgnt_DC02_publ2_fw_iso
+    private_vlan:
+      primary_vlan: 452
+      type: isolated
+  463:
+    name: DT_mgnt_DC02_publ1_fw_iso
+    private_vlan:
+      primary_vlan: 462
+      type: isolated
+  471:
+    name: DT_inf11_DC02_priv_fw_iso
+    private_vlan:
+      primary_vlan: 470
+      type: isolated
+  473:
+    name: DT_inf12_DC02_priv_fw_iso
+    private_vlan:
+      primary_vlan: 472
+      type: isolated
+  479:
+    name: mgnt_DC02_inf5_fw_iso
+    private_vlan:
+      primary_vlan: 478
+      type: isolated
+  482:
+    name: mgnt_DC02_publ2_lb_fw_iso
+    private_vlan:
+      primary_vlan: 481
+      type: isolated
+  502:
+    name: DT_mgnt_DC02_inf3_fw_iso
+    private_vlan:
+      primary_vlan: 501
+      type: isolated
+  504:
+    name: mgnt_DC02_inf6_fw_iso
+    private_vlan:
+      primary_vlan: 503
+      type: isolated
+  521:
+    name: mgnt_DC02_inf7_fw_iso
+    private_vlan:
+      primary_vlan: 520
+      type: isolated
+  523:
+    name: mgnt7_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 522
+      type: isolated
+  539:
+    name: DT_mgnt_DC02_inf4_fw_iso
+    private_vlan:
+      primary_vlan: 538
+      type: isolated
+  548:
+    name: mgnt_DC02_inf8_fw_iso
+    private_vlan:
+      primary_vlan: 547
+      type: isolated
+  603:
+    name: mgnt_CN_publ_fw_iso
+    private_vlan:
+      primary_vlan: 602
+      type: isolated
+  625:
+    name: mgnt_CN_publ2_fw_iso
+    private_vlan:
+      primary_vlan: 624
+      type: isolated
+  629:
+    name: mgnt_CN_publ3_lb_fw_iso
+    private_vlan:
+      primary_vlan: 628
+      type: isolated
+  635:
+    name: ret1_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 634
+      type: isolated
+  638:
+    name: DT_mgnt_CN_publ2_fw_iso
+    private_vlan:
+      primary_vlan: 637
+      type: isolated
+  644:
+    name: ret2_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 643
+      type: isolated
+  646:
+    name: ret2_CN_fw_iso
+    private_vlan:
+      primary_vlan: 645
+      type: isolated
+  648:
+    name: ret3_CN_fw_iso
+    private_vlan:
+      primary_vlan: 647
+      type: isolated
+  652:
+    name: ret5_CN_fw_iso
+    private_vlan:
+      primary_vlan: 651
+      type: isolated
+  656:
+    name: DT_mgnt_CN_publ_lb_fw_iso
+    private_vlan:
+      primary_vlan: 655
+      type: isolated
+  661:
+    name: DT_ret2_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 660
+      type: isolated
+  663:
+    name: DT_ret2_CN_fw_iso
+    private_vlan:
+      primary_vlan: 662
+      type: isolated
+  667:
+    name: DT_ret4_CN_fw_iso
+    private_vlan:
+      primary_vlan: 666
+      type: isolated
+  702:
+    name: inf5_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 701
+      type: isolated
+  704:
+    name: inf6_CN_fw_iso
+    private_vlan:
+      primary_vlan: 703
+      type: isolated
+  713:
+    name: DT_inf2_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 712
+      type: isolated
+  715:
+    name: DT_inf6_CN_fw_iso
+    private_vlan:
+      primary_vlan: 714
+      type: isolated
+  753:
+    name: DT_ret8_CN_fw_iso
+    private_vlan:
+      primary_vlan: 752
+      type: isolated
+  759:
+    name: DT_ret5_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 758
+      type: isolated
+  776:
+    name: DT_ret9_CN_fw_iso
+    private_vlan:
+      primary_vlan: 775
+      type: isolated
+  778:
+    name: ret9_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 777
+      type: isolated
+  780:
+    name: ret10_CN_fw_iso
+    private_vlan:
+      primary_vlan: 779
+      type: isolated
+  783:
+    name: DT_ret10_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 782
+      type: isolated
+  785:
+    name: DT_ret11_CN_fw_iso
+    private_vlan:
+      primary_vlan: 784
+      type: isolated
+  787:
+    name: DT_ret12_CN_fw_iso
+    private_vlan:
+      primary_vlan: 786
+      type: isolated
+  790:
+    name: DT_ret14_CN_fw_iso
+    private_vlan:
+      primary_vlan: 789
+      type: isolated
+  2301:
+    name: DT_mgnt_DC02_inf5_fw_iso
+    private_vlan:
+      primary_vlan: 2300
+      type: isolated
+  2305:
+    name: mgnt_DC02_inf9_fw_iso
+    private_vlan:
+      primary_vlan: 2304
+      type: isolated
+  2314:
+    name: mgnt_DC02_inf21_fw_iso
+    private_vlan:
+      primary_vlan: 2313
+      type: isolated
+  2319:
+    name: mgnt_DC02_inf22_fw_iso
+    private_vlan:
+      primary_vlan: 2318
+      type: isolated
+  2323:
+    name: DT_mgnt_DC02_priv5_fw_iso
+    private_vlan:
+      primary_vlan: 2322
+      type: isolated
+  2325:
+    name: mgnt_DC02_priv5_fw_iso
+    private_vlan:
+      primary_vlan: 2324
+      type: isolated
+  2342:
+    name: DT_mgnt_DC02_inf6_fw_iso
+    private_vlan:
+      primary_vlan: 2341
+      type: isolated
+  2357:
+    name: DT_mgnt_DC02_inf7_fw_iso
+    private_vlan:
+      primary_vlan: 2356
+      type: isolated
+  2376:
+    name: mgnt_DC02_priv7_fw_iso
+    private_vlan:
+      primary_vlan: 2375
+      type: isolated
+  2389:
+    name: DT_mgnt_DC02_inf8_fw_iso
+    private_vlan:
+      primary_vlan: 2388
+      type: isolated
+  2391:
+    name: mgnt_DC02_inf10_fw_iso
+    private_vlan:
+      primary_vlan: 2390
+      type: isolated
+  2424:
+    name: mgnt12_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 2423
+      type: isolated
+  2435:
+    name: mgnt13_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 2434
+      type: isolated
+  2457:
+    name: mgnt_DC02_inf20_fw_iso
+    private_vlan:
+      primary_vlan: 2456
+      type: isolated
+  2460:
+    name: mgnt_DC02_drac_iso
+    private_vlan:
+      primary_vlan: 2459
+      type: isolated
+  2468:
+    name: DT_mgnt_DC02_inf18_fw_iso
+    private_vlan:
+      primary_vlan: 2467
+      type: isolated
+  2471:
+    name: inf71_DC02_fw_iso
+    private_vlan:
+      primary_vlan: 2470
+      type: isolated
+  2478:
+    name: mgnt1_DC02_drac_iso
+    private_vlan:
+      primary_vlan: 2477
+      type: isolated
+  2491:
+    name: mgnt14_DC02_ilo_iso
+    private_vlan:
+      primary_vlan: 2490
+      type: isolated
+  2495:
+    name: mgnt_DC02_inf24_fw_iso
+    private_vlan:
+      primary_vlan: 2494
+      type: isolated
+  2510:
+    name: DT_mgnt_DC02_inf22_fw_iso
+    private_vlan:
+      primary_vlan: 2509
+      type: isolated
+  2519:
+    name: DT_mgnt_DC02_inf23_fw_iso
+    private_vlan:
+      primary_vlan: 2518
+      type: isolated
+  2541:
+    name: DT_mgnt_DC02_inf24_fw_iso
+    private_vlan:
+      primary_vlan: 2540
+      type: isolated
+  2543:
+    name: DT_mgnt_DC02_inf25_fw_iso
+    private_vlan:
+      primary_vlan: 2542
+      type: isolated
+  2545:
+    name: mgnt_DC02_inf28_fw_iso
+    private_vlan:
+      primary_vlan: 2544
+      type: isolated
+  2569:
+    name: mgnt_DC02_inf29_fw_iso
+    private_vlan:
+      primary_vlan: 2568
+      type: isolated
+  2571:
+    name: mgnt_DC02_inf30_fw_iso
+    private_vlan:
+      primary_vlan: 2570
+      type: isolated
+  2573:
+    name: mgnt_DC02_inf31_fw_iso
+    private_vlan:
+      primary_vlan: 2572
+      type: isolated
+  2626:
+    name: DT_ret22_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 2625
+      type: isolated
+  2628:
+    name: DT_ret23_CN_fw_iso
+    private_vlan:
+      primary_vlan: 2627
+      type: isolated
+  2630:
+    name: ret11_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 2629
+      type: isolated
+  2632:
+    name: ret17_CN_fw_iso
+    private_vlan:
+      primary_vlan: 2631
+      type: isolated
+  2642:
+    name: ret18_CN_fw_iso
+    private_vlan:
+      primary_vlan: 2641
+      type: isolated
+  2645:
+    name: ret12_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 2644
+      type: isolated
+tenants:
+  acmegrp:
+    enable_mlag_ibgp_peering_vrfs: true
+    l2vlans:
+      301:
+        name: mgnt_DC02_san_fw
+        tags:
+          - dc02
+      302:
+        name: inf_DC02_fw
+        tags:
+          - dc02
+      303:
+        name: mgnt_DC02_inf
+        tags:
+          - dc02
+      304:
+        name: mgnt_DC02_inf_iso
+        tags:
+          - dc02
+      305:
+        name: mgnt_DC02_ilo
+        tags:
+          - dc02
+      306:
+        name: mgnt_DC02_ilo_iso
+        tags:
+          - dc02
+      307:
+        name: supl4_DC02_fw
+        tags:
+          - dc02
+      308:
+        name: mgnt5_DC02_hmc
+        tags:
+          - dc02
+      309:
+        name: bi_DC02_fw
+        tags:
+          - dc02
+      310:
+        name: unnamed_310
+        tags:
+          - dc02
+      311:
+        name: qua_DC02_fw
+        tags:
+          - dc02
+      312:
+        name: inst_DC02_fw
+        tags:
+          - dc02
+      313:
+        name: DT_inf6_DC02_fw
+        tags:
+          - dc02
+      314:
+        name: mgnt_DC02_rac
+        tags:
+          - dc02
+      315:
+        name: ret_DC02
+        tags:
+          - dc02
+      316:
+        name: scp_DC02
+        tags:
+          - dc02
+      317:
+        name: DT_inst_DC02_fw
+        tags:
+          - dc02
+      318:
+        name: fin_DC02_fw
+        tags:
+          - dc02
+      319:
+        name: mgnt_DC02_hmc
+        tags:
+          - dc02
+      320:
+        name: DT_inf_DC02_fw
+        tags:
+          - dc02
+      321:
+        name: DT_supl1_DC02_fw
+        tags:
+          - dc02
+      322:
+        name: DT_mgmt_DC02_fw
+        tags:
+          - dc02
+      323:
+        name: DT_mgmt_DC02_fw_iso
+        tags:
+          - dc02
+      324:
+        name: mgnt_DC02_wmconsole_fw
+        tags:
+          - dc02
+      325:
+        name: mgnt_DC02_vmotion
+        tags:
+          - dc02
+      326:
+        name: DT_scp_DC02_con
+        tags:
+          - dc02
+      327:
+        name: inf2_DC02
+        tags:
+          - dc02
+      328:
+        name: mgnt2_DC02_hmc
+        tags:
+          - dc02
+      329:
+        name: mgnt2_DC02_rac
+        tags:
+          - dc02
+      330:
+        name: supl1_DC02_fw
+        tags:
+          - dc02
+      331:
+        name: DT_supl2_DC02_fw
+        tags:
+          - dc02
+      332:
+        name: omr_DC02_fw
+        tags:
+          - dc02
+      333:
+        name: omr_DC02
+        tags:
+          - dc02
+      334:
+        name: prop_DC02
+        tags:
+          - dc02
+      335:
+        name: DT_inf2_DC02
+        tags:
+          - dc02
+      336:
+        name: DT_ret_DC02
+        tags:
+          - dc02
+      337:
+        name: inf3_DC02_fw
+        tags:
+          - dc02
+      338:
+        name: mgnt8_DC02_ilo
+        tags:
+          - dc02
+      339:
+        name: mgnt8_DC02_ilo_iso
+        tags:
+          - dc02
+      340:
+        name: DT_bi_DC02
+        tags:
+          - dc02
+      341:
+        name: inf4_DC02_fw
+        tags:
+          - dc02
+      342:
+        name: unnamed_342
+        tags:
+          - dc02
+      343:
+        name: inf2_DC02_fw
+        tags:
+          - dc02
+      344:
+        name: DT_ret_DC02_lb
+        tags:
+          - dc02
+      345:
+        name: ret_DC02_lb
+        tags:
+          - dc02
+      346:
+        name: inf_DC02_lb_fw
+        tags:
+          - dc02
+      347:
+        name: DT_bi_DC02_lb
+        tags:
+          - dc02
+      348:
+        name: bi_DC02_lb
+        tags:
+          - dc02
+      349:
+        name: mgnt5_DC02_rac
+        tags:
+          - dc02
+      350:
+        name: DT_inf4_DC02
+        tags:
+          - dc02
+      351:
+        name: DT_mgmt_DC02_hearb
+        tags:
+          - dc02
+      352:
+        name: DT_inf6_DC02
+        tags:
+          - dc02
+      353:
+        name: fin_DC02
+        tags:
+          - dc02
+      354:
+        name: inf5_DC02
+        tags:
+          - dc02
+      355:
+        name: mgnt2_DC02_ilo
+        tags:
+          - dc02
+      356:
+        name: mgnt2_DC02_ilo_iso
+        tags:
+          - dc02
+      357:
+        name: inf6_DC02
+        tags:
+          - dc02
+      358:
+        name: hrm_DC02
+        tags:
+          - dc02
+      359:
+        name: DT_local_DC02
+        tags:
+          - dc02
+      360:
+        name: DT_pim_DC02
+        tags:
+          - dc02
+      361:
+        name: DT_pim_DC02_lb
+        tags:
+          - dc02
+      362:
+        name: pim_DC02
+        tags:
+          - dc02
+      363:
+        name: pim_DC02_lb
+        tags:
+          - dc02
+      364:
+        name: ret1_DC02_fw
+        tags:
+          - dc02
+      365:
+        name: ret1_DC02_lb_fw
+        tags:
+          - dc02
+      366:
+        name: ret2_DC02_fw
+        tags:
+          - dc02
+      367:
+        name: ret4_DC02_fw
+        tags:
+          - dc02
+      368:
+        name: inf5_DC02_fw
+        tags:
+          - dc02
+      369:
+        name: DT_inf3_DC02_fw
+        tags:
+          - dc02
+      370:
+        name: Heartb1_DC02_Win
+        tags:
+          - dc02
+      371:
+        name: mgnt3_DC02_ilo
+        tags:
+          - dc02
+      372:
+        name: mgnt3_DC02_ilo_iso
+        tags:
+          - dc02
+      373:
+        name: inf8_DC02_fw
+        tags:
+          - dc02
+      374:
+        name: inf8_DC02_lb_fw
+        tags:
+          - dc02
+      375:
+        name: DT_inf8_DC02_fw
+        tags:
+          - dc02
+      376:
+        name: DT_inf8_DC02_lb_fw
+        tags:
+          - dc02
+      377:
+        name: mgnt_DC02_inf2
+        tags:
+          - dc02
+      378:
+        name: mgnt_DC02_inf2_iso
+        tags:
+          - dc02
+      379:
+        name: DT_inf2_DC02_fw
+        tags:
+          - dc02
+      380:
+        name: mgnt4_DC02_ilo
+        tags:
+          - dc02
+      381:
+        name: mgnt4_DC02_ilo_iso
+        tags:
+          - dc02
+      382:
+        name: DT_mgnt11_DC02_rac
+        tags:
+          - dc02
+      383:
+        name: ret3_DC02_fw
+        tags:
+          - dc02
+      384:
+        name: ret3_DC02_lb_fw
+        tags:
+          - dc02
+      385:
+        name: DT_ret3_DC02_fw
+        tags:
+          - dc02
+      386:
+        name: unnamed_386
+        tags:
+          - dc02
+      387:
+        name: DT_ret1_DC02_lb_fw
+        tags:
+          - dc02
+      388:
+        name: DT_ret1_DC02_fw
+        tags:
+          - dc02
+      389:
+        name: DT_ret2_DC02_fw
+        tags:
+          - dc02
+      390:
+        name: DT_inf5_DC02_fw
+        tags:
+          - dc02
+      391:
+        name: mgnt_DC02_bck
+        tags:
+          - dc02
+      392:
+        name: mgnt5_DC02_ilo
+        tags:
+          - dc02
+      393:
+        name: mgnt5_DC02_ilo_iso
+        tags:
+          - dc02
+      394:
+        name: mgnt17_DC02_rac
+        tags:
+          - dc02
+      395:
+        name: DT_inf9_DC02
+        tags:
+          - dc02
+      396:
+        name: DT_ret5_DC02_fw
+        tags:
+          - dc02
+      397:
+        name: ret5_DC02_fw
+        tags:
+          - dc02
+      398:
+        name: DT_inf9_DC02_fw
+        tags:
+          - dc02
+      399:
+        name: inf9_DC02_fw
+        tags:
+          - dc02
+      400:
+        name: mgnt_DC02_inf3
+        tags:
+          - dc02
+      401:
+        name: DT_mgnt_DC02_inf3
+        tags:
+          - dc02
+      402:
+        name: mgnt6_DC02_ilo
+        tags:
+          - dc02
+      403:
+        name: mgnt6_DC02_ilo_iso
+        tags:
+          - dc02
+      404:
+        name: inf10_DC02
+        tags:
+          - dc02
+      405:
+        name: DT_inf10_DC02
+        tags:
+          - dc02
+      406:
+        name: mgnt26_DC02_rac
+        tags:
+          - dc02
+      407:
+        name: DT_mgnt_DC02_inf1_fw
+        tags:
+          - dc02
+      408:
+        name: DT_mgnt_DC02_inf1_fw_iso
+        tags:
+          - dc02
+      409:
+        name: DT_pim_DC02_lb_fw
+        tags:
+          - dc02
+      410:
+        name: DT_mgnt41_DC02_rac
+        tags:
+          - dc02
+      411:
+        name: DT_supl_DC02_fw
+        tags:
+          - dc02
+      412:
+        name: DT_supl_DC02_lb_fw
+        tags:
+          - dc02
+      413:
+        name: supl_DC02_lb_fw
+        tags:
+          - dc02
+      414:
+        name: pim_DC02_fw
+        tags:
+          - dc02
+      415:
+        name: DT_pim_dc02_fw
+        tags:
+          - dc02
+      416:
+        name: inf10_DC02_fw
+        tags:
+          - dc02
+      417:
+        name: supl_DC02_lb
+        tags:
+          - dc02
+      418:
+        name: bi2_DC02
+        tags:
+          - dc02
+      419:
+        name: DT_inf7_DC02_fw
+        tags:
+          - dc02
+      420:
+        name: mgnt_DC02_inf4_fw
+        tags:
+          - dc02
+      421:
+        name: mgnt_DC02_inf4_fw_iso
+        tags:
+          - dc02
+      422:
+        name: DT_mgnt_DC02_inf2_fw
+        tags:
+          - dc02
+      423:
+        name: DT_mgnt_DC02_inf2_fw_iso
+        tags:
+          - dc02
+      424:
+        name: mgnt33_DC02_rac
+        tags:
+          - dc02
+      425:
+        name: inst2_DC02_fw
+        tags:
+          - dc02
+      426:
+        name: bi2_DC02_fw
+        tags:
+          - dc02
+      427:
+        name: unnamed_427
+        tags:
+          - dc02
+      428:
+        name: supl2_DC02_fw
+        tags:
+          - dc02
+      429:
+        name: unnamed_429
+        tags:
+          - dc02
+      430:
+        name: ret_DC02_fw
+        tags:
+          - dc02
+      431:
+        name: fin_DC02_lb
+        tags:
+          - dc02
+      432:
+        name: DT_ret_DC02_fw
+        tags:
+          - dc02
+      433:
+        name: mgnt39_DC02_rac
+        tags:
+          - dc02
+      434:
+        name: mgnt_DC02_publ_fw
+        tags:
+          - dc02
+      435:
+        name: DT_fin_DC02
+        tags:
+          - dc02
+      436:
+        name: DT_it4it_DC02
+        tags:
+          - dc02
+      437:
+        name: inf11_DC02_priv_fw
+        tags:
+          - dc02
+      438:
+        name: inf11_DC02_priv_fw_iso
+        tags:
+          - dc02
+      439:
+        name: inf12_DC02_priv_fw
+        tags:
+          - dc02
+      440:
+        name: inf12_DC02_priv_fw_iso
+        tags:
+          - dc02
+      441:
+        name: inf14_DC02
+        tags:
+          - dc02
+      442:
+        name: inf_DC02_lb
+        tags:
+          - dc02
+      443:
+        name: DT_inf_DC02_lb
+        tags:
+          - dc02
+      444:
+        name: mgnt_DC02_publ_priv_fw
+        tags:
+          - dc02
+      445:
+        name: mgnt_DC02_publ_priv_fw_iso
+        tags:
+          - dc02
+      446:
+        name: mgnt_DC02_priv_fw
+        tags:
+          - dc02
+      447:
+        name: inf13_DC02
+        tags:
+          - dc02
+      448:
+        name: DT_mgnt_DC02_publ_fw
+        tags:
+          - dc02
+      449:
+        name: DT_mgnt_DC02_publ_fw_iso
+        tags:
+          - dc02
+      450:
+        name: DT_mgnt_DC02_priv_fw
+        tags:
+          - dc02
+      451:
+        name: DT_inf13_DC02
+        tags:
+          - dc02
+      452:
+        name: mgnt_DC02_publ2_fw
+        tags:
+          - dc02
+      453:
+        name: mgnt_DC02_publ2_fw_iso
+        tags:
+          - dc02
+      454:
+        name: mgnt_DC02_priv2_fw
+        tags:
+          - dc02
+      455:
+        name: DT_fin_DC02_lb
+        tags:
+          - dc02
+      456:
+        name: DT_fin_DC02_fw
+        tags:
+          - dc02
+      457:
+        name: DT_inst1_DC02_fw
+        tags:
+          - dc02
+      458:
+        name: pim1_DC02
+        tags:
+          - dc02
+      459:
+        name: inf1_DC02_fw
+        tags:
+          - dc02
+      460:
+        name: unnamed_460
+        tags:
+          - dc02
+      461:
+        name: unnamed_461
+        tags:
+          - dc02
+      462:
+        name: DT_mgnt_DC02_publ1_fw
+        tags:
+          - dc02
+      463:
+        name: DT_mgnt_DC02_publ1_fw_iso
+        tags:
+          - dc02
+      464:
+        name: DT_mgnt_DC02_priv1_fw
+        tags:
+          - dc02
+      465:
+        name: DT_supr_DC02
+        tags:
+          - dc02
+      466:
+        name: DT_supr_DC02_lb
+        tags:
+          - dc02
+      467:
+        name: pim1_DC02_fw
+        tags:
+          - dc02
+      468:
+        name: DT_pim1_DC02_fw
+        tags:
+          - dc02
+      469:
+        name: mgnt_DC02_priv1_fw
+        tags:
+          - dc02
+      470:
+        name: DT_inf11_DC02_priv_fw
+        tags:
+          - dc02
+      471:
+        name: DT_inf11_DC02_priv_fw_iso
+        tags:
+          - dc02
+      472:
+        name: DT_inf12_DC02_priv_fw
+        tags:
+          - dc02
+      473:
+        name: DT_inf12_DC02_priv_fw_iso
+        tags:
+          - dc02
+      474:
+        name: supr1_DC02_fw
+        tags:
+          - dc02
+      475:
+        name: DT_supr1_DC02_fw
+        tags:
+          - dc02
+      476:
+        name: DT_pim2_DC02_FW
+        tags:
+          - dc02
+      477:
+        name: DT_pim2_DC02_lb_FW
+        tags:
+          - dc02
+      478:
+        name: mgnt_DC02_inf5_fw
+        tags:
+          - dc02
+      479:
+        name: mgnt_DC02_inf5_fw_iso
+        tags:
+          - dc02
+      480:
+        name: DT_inf14_DC02
+        tags:
+          - dc02
+      481:
+        name: mgnt_DC02_publ2_lb_fw
+        tags:
+          - dc02
+      482:
+        name: mgnt_DC02_publ2_lb_fw_iso
+        tags:
+          - dc02
+      483:
+        name: mgnt_DC02_priv2_lb_fw
+        tags:
+          - dc02
+      484:
+        name: inf15_DC02
+        tags:
+          - dc02
+      485:
+        name: DT_inf15_DC02
+        tags:
+          - dc02
+      486:
+        name: fin_DC02_lb_fw
+        tags:
+          - dc02
+      487:
+        name: DT_fin_DC02_lb_fw
+        tags:
+          - dc02
+      488:
+        name: inf15_DC02_fw
+        tags:
+          - dc02
+      489:
+        name: inf15_DC02_lb_fw
+        tags:
+          - dc02
+      490:
+        name: DT_inf11_DC02_fw
+        tags:
+          - dc02
+      491:
+        name: DT_inf11_DC02_lb_fw
+        tags:
+          - dc02
+      492:
+        name: inf7_DC02_fw
+        tags:
+          - dc02
+      493:
+        name: inf14_DC02_fw
+        tags:
+          - dc02
+      494:
+        name: DT_inf14_DC02_fw
+        tags:
+          - dc02
+      495:
+        name: DT_mgnt43_DC02_rac
+        tags:
+          - dc02
+      496:
+        name: mgnt44_DC02_rac
+        tags:
+          - dc02
+      497:
+        name: mgnt44_dc02_rac
+        tags:
+          - dc02
+      498:
+        name: DT_mgnt42_DC02_rac
+        tags:
+          - dc02
+      499:
+        name: mgnt3_DC02_hmc
+        tags:
+          - dc02
+      500:
+        name: DT_ret4_DC02_fw
+        tags:
+          - dc02
+      501:
+        name: DT_mgnt_DC02_inf3_fw
+        tags:
+          - dc02
+      502:
+        name: DT_mgnt_DC02_inf3_fw_iso
+        tags:
+          - dc02
+      503:
+        name: mgnt_DC02_inf6_fw
+        tags:
+          - dc02
+      504:
+        name: mgnt_DC02_inf6_fw_iso
+        tags:
+          - dc02
+      505:
+        name: supl3_DC02_fw
+        tags:
+          - dc02
+      506:
+        name: supl3_DC02_lb_fw
+        tags:
+          - dc02
+      507:
+        name: supr2_DC02_fw
+        tags:
+          - dc02
+      508:
+        name: mgnt_DC02_lpm
+        tags:
+          - dc02
+      509:
+        name: supr1_DC02_lb_fw
+        tags:
+          - dc02
+      510:
+        name: DT_inf16_DC02_fw
+        tags:
+          - dc02
+      511:
+        name: DT_inf16_DC02_lb_fw
+        tags:
+          - dc02
+      512:
+        name: inf16_DC02_fw
+        tags:
+          - dc02
+      513:
+        name: inf16_DC02_lb_fw
+        tags:
+          - dc02
+      514:
+        name: DT_supr1_DC02_lb_fw
+        tags:
+          - dc02
+      515:
+        name: DT_supl1_DC02_lb_fw
+        tags:
+          - dc02
+      516:
+        name: DT_supl_DC02_lb
+        tags:
+          - dc02
+      517:
+        name: inf17_DC02_fw
+        tags:
+          - dc02
+      518:
+        name: DT_supr2_DC02_fw
+        tags:
+          - dc02
+      519:
+        name: DT_supl_DC02
+        tags:
+          - dc02
+      520:
+        name: mgnt_DC02_inf7_fw
+        tags:
+          - dc02
+      521:
+        name: mgnt_DC02_inf7_fw_iso
+        tags:
+          - dc02
+      522:
+        name: mgnt7_DC02_ilo
+        tags:
+          - dc02
+      523:
+        name: mgnt7_DC02_ilo_iso
+        tags:
+          - dc02
+      524:
+        name: mgnt49_dc02_rac
+        tags:
+          - dc02
+      525:
+        name: mgnt_dc02_publ_lb_fw
+        tags:
+          - dc02
+      526:
+        name: inf18_DC02_fw
+        tags:
+          - dc02
+      527:
+        name: inf6_DC02_lb_fw
+        tags:
+          - dc02
+      528:
+        name: DT_inf10_DC02_lb_fw
+        tags:
+          - dc02
+      529:
+        name: inf17_DC02
+        tags:
+          - dc02
+      530:
+        name: unnamed_530
+        tags:
+          - dc02
+      531:
+        name: unnamed_531
+        tags:
+          - dc02
+      532:
+        name: mgnt56_dc02_rac
+        tags:
+          - dc02
+      533:
+        name: DT_inf17_DC02_fw
+        tags:
+          - dc02
+      534:
+        name: DT_inf18_DC02_fw
+        tags:
+          - dc02
+      535:
+        name: DT_inf18_DC02_lb_fw
+        tags:
+          - dc02
+      536:
+        name: inf3_DC02
+        tags:
+          - dc02
+      537:
+        name: supl2_DC02_lb_fw
+        tags:
+          - dc02
+      538:
+        name: DT_mgnt_DC02_inf4_fw
+        tags:
+          - dc02
+      539:
+        name: DT_mgnt_DC02_inf4_fw_iso
+        tags:
+          - dc02
+      540:
+        name: unnamed_540
+        tags:
+          - dc02
+      541:
+        name: unnamed_541
+        tags:
+          - dc02
+      542:
+        name: inf19_DC02_fw
+        tags:
+          - dc02
+      543:
+        name: inf19_DC02_lb_fw
+        tags:
+          - dc02
+      544:
+        name: DT_inf19_DC02_fw
+        tags:
+          - dc02
+      545:
+        name: ret6_DC02_fw
+        tags:
+          - dc02
+      546:
+        name: DT_ret6_DC02_fw
+        tags:
+          - dc02
+      547:
+        name: mgnt_DC02_inf8_fw
+        tags:
+          - dc02
+      548:
+        name: mgnt_DC02_inf8_fw_iso
+        tags:
+          - dc02
+      549:
+        name: DT_inf12_DC02_fw
+        tags:
+          - dc02
+      550:
+        name: DT_mgnt52_DC02_rac
+        tags:
+          - dc02
+      551:
+        name: unnamed_551
+        tags:
+          - dc02
+      552:
+        name: DT_inf20_DC02_fw
+        tags:
+          - dc02
+      553:
+        name: inf23_DC02_fw
+        tags:
+          - dc02
+      554:
+        name: inf20_DC02_fw
+        tags:
+          - dc02
+      555:
+        name: inf20_DC02_lb_fw
+        tags:
+          - dc02
+      556:
+        name: inf21_DC02_fw
+        tags:
+          - dc02
+      557:
+        name: mgnt3_DC02_con
+        tags:
+          - dc02
+      558:
+        name: unnamed_558
+        tags:
+          - dc02
+      559:
+        name: mgnt2_DC02_con
+        tags:
+          - dc02
+      560:
+        name: unnamed_560
+        tags:
+          - dc02
+      561:
+        name: inf12_DC02_fw
+        tags:
+          - dc02
+      562:
+        name: inf13_DC02_fw
+        tags:
+          - dc02
+      563:
+        name: DT_supr_DC02_con
+        tags:
+          - dc02
+      564:
+        name: supr_DC02_con
+        tags:
+          - dc02
+      565:
+        name: DT_inf1_DC02_con
+        tags:
+          - dc02
+      566:
+        name: inf1_DC02_con
+        tags:
+          - dc02
+      567:
+        name: DT_fin_DC02_con
+        tags:
+          - dc02
+      568:
+        name: DT_mgnt_DC02_publ_con
+        tags:
+          - dc02
+      569:
+        name: mgnt_DC02_publ_con
+        tags:
+          - dc02
+      570:
+        name: mgnt1_DC02_con
+        tags:
+          - dc02
+      571:
+        name: mgnt_DC02_priv_log
+        tags:
+          - dc02
+      572:
+        name: DT_inf5_DC02_con
+        tags:
+          - dc02
+      573:
+        name: DT_ret1_DC02_con
+        tags:
+          - dc02
+      574:
+        name: ret2_DC02_con
+        tags:
+          - dc02
+      575:
+        name: pim_DC02_con
+        tags:
+          - dc02
+      576:
+        name: DT_inf1_DC02_fw
+        tags:
+          - dc02
+      577:
+        name: DT_inf4_DC02_fw
+        tags:
+          - dc02
+      578:
+        name: inf2_DC02_con
+        tags:
+          - dc02
+      579:
+        name: DT_pim_DC02_con
+        tags:
+          - dc02
+      580:
+        name: mgnt_DC02_con
+        tags:
+          - dc02
+      581:
+        name: unnamed_581
+        tags:
+          - dc02
+      582:
+        name: unnamed_582
+        tags:
+          - dc02
+      583:
+        name: bi_DC02_con
+        tags:
+          - dc02
+      584:
+        name: DT_bi_DC02_con
+        tags:
+          - dc02
+      585:
+        name: unnamed_585
+        tags:
+          - dc02
+      586:
+        name: DT_ret_DC02_con
+        tags:
+          - dc02
+      587:
+        name: ret1_DC02_con
+        tags:
+          - dc02
+      588:
+        name: scp_DC02_con
+        tags:
+          - dc02
+      589:
+        name: unnamed_589
+        tags:
+          - dc02
+      590:
+        name: fin_DC02_con
+        tags:
+          - dc02
+      591:
+        name: omr_DC02_con
+        tags:
+          - dc02
+      592:
+        name: DT_omr_DC02_con
+        tags:
+          - dc02
+      593:
+        name: unnamed_593
+        tags:
+          - dc02
+      594:
+        name: DT_inf_DC02_con
+        tags:
+          - dc02
+      595:
+        name: DT_DC02_publ_con
+        tags:
+          - dc02
+      596:
+        name: DC02_publ_con
+        tags:
+          - dc02
+      597:
+        name: unnamed_597
+        tags:
+          - dc02
+      598:
+        name: unnamed_598
+        tags:
+          - dc02
+      599:
+        name: unnamed_599
+        tags:
+          - dc02
+      600:
+        name: mgmt_CN_priv_fw
+        tags:
+          - dc02
+      601:
+        name: inf1_CN
+        tags:
+          - dc02
+      602:
+        name: mgnt_CN_publ_fw
+        tags:
+          - dc02
+      603:
+        name: mgnt_CN_publ_fw_iso
+        tags:
+          - dc02
+      604:
+        name: unnamed_604
+        tags:
+          - dc02
+      605:
+        name: inf3_CN
+        tags:
+          - dc02
+      606:
+        name: DT_inf3_CN
+        tags:
+          - dc02
+      607:
+        name: DT_inf1_CN
+        tags:
+          - dc02
+      608:
+        name: mgnt_CN_nfs
+        tags:
+          - dc02
+      609:
+        name: DT_mgnt_CN_nfs
+        tags:
+          - dc02
+      610:
+        name: bz_cn_inf
+        tags:
+          - dc02
+      611:
+        name: bz_CN_fw
+        tags:
+          - dc02
+      612:
+        name: unnamed_612
+        tags:
+          - dc02
+      613:
+        name: bz_CN_fw_con
+        tags:
+          - dc02
+      614:
+        name: unnamed_614
+        tags:
+          - dc02
+      615:
+        name: mgnt_BZ_CN_ilo
+        tags:
+          - dc02
+      616:
+        name: bz_CN_inf_con
+        tags:
+          - dc02
+      617:
+        name: bz2_CN_fw
+        tags:
+          - dc02
+      618:
+        name: DT_ret3_CN_fw
+        tags:
+          - dc02
+      619:
+        name: unnamed_619
+        tags:
+          - dc02
+      620:
+        name: ret7_CN_fw
+        tags:
+          - dc02
+      621:
+        name: ret7_CN_lb_fw
+        tags:
+          - dc02
+      622:
+        name: mgnt_CN_priv2_fw
+        tags:
+          - dc02
+      623:
+        name: inf_CN_lb
+        tags:
+          - dc02
+      624:
+        name: mgnt_CN_publ2_fw
+        tags:
+          - dc02
+      625:
+        name: mgnt_CN_publ2_fw_iso
+        tags:
+          - dc02
+      626:
+        name: mgnt_CN_priv3_lb_fw
+        tags:
+          - dc02
+      627:
+        name: DT_inf2_CN
+        tags:
+          - dc02
+      628:
+        name: mgnt_CN_publ3_lb_fw
+        tags:
+          - dc02
+      629:
+        name: mgnt_CN_publ3_lb_fw_iso
+        tags:
+          - dc02
+      630:
+        name: mgnt_CN_publ3_fw
+        tags:
+          - dc02
+      631:
+        name: unnamed_631
+        tags:
+          - dc02
+      632:
+        name: unnamed_632
+        tags:
+          - dc02
+      633:
+        name: mgnt_CN_priv6_fw
+        tags:
+          - dc02
+      634:
+        name: ret1_CN_lb_fw
+        tags:
+          - dc02
+      635:
+        name: ret1_CN_lb_fw_iso
+        tags:
+          - dc02
+      636:
+        name: DT_mgnt_CN_priv2_fw
+        tags:
+          - dc02
+      637:
+        name: DT_mgnt_CN_publ2_fw
+        tags:
+          - dc02
+      638:
+        name: DT_mgnt_CN_publ2_fw_iso
+        tags:
+          - dc02
+      639:
+        name: scp_CN
+        tags:
+          - dc02
+      640:
+        name: scp_CN_lb
+        tags:
+          - dc02
+      641:
+        name: ret_CN
+        tags:
+          - dc02
+      642:
+        name: ret_CN_lb
+        tags:
+          - dc02
+      643:
+        name: ret2_CN_lb_fw
+        tags:
+          - dc02
+      644:
+        name: ret2_CN_lb_fw_iso
+        tags:
+          - dc02
+      645:
+        name: ret2_CN_fw
+        tags:
+          - dc02
+      646:
+        name: ret2_CN_fw_iso
+        tags:
+          - dc02
+      647:
+        name: ret3_CN_fw
+        tags:
+          - dc02
+      648:
+        name: ret3_CN_fw_iso
+        tags:
+          - dc02
+      649:
+        name: ret4_CN_fw
+        tags:
+          - dc02
+      650:
+        name: mgnt_CN_vmotion
+        tags:
+          - dc02
+      651:
+        name: ret5_CN_fw
+        tags:
+          - dc02
+      652:
+        name: ret5_CN_fw_iso
+        tags:
+          - dc02
+      653:
+        name: ret6_CN_fw
+        tags:
+          - dc02
+      654:
+        name: inf_CN_fw
+        tags:
+          - dc02
+      655:
+        name: DT_mgnt_CN_publ_lb_fw
+        tags:
+          - dc02
+      656:
+        name: DT_mgnt_CN_publ_lb_fw_iso
+        tags:
+          - dc02
+      657:
+        name: DT_mgmt_CN_priv_fw_lb
+        tags:
+          - dc02
+      658:
+        name: DT_inf_CN_fw
+        tags:
+          - dc02
+      659:
+        name: DT_ret_CN_lb
+        tags:
+          - dc02
+      660:
+        name: DT_ret2_CN_lb_fw
+        tags:
+          - dc02
+      661:
+        name: DT_ret2_CN_lb_fw_iso
+        tags:
+          - dc02
+      662:
+        name: DT_ret2_CN_fw
+        tags:
+          - dc02
+      663:
+        name: DT_ret2_CN_fw_iso
+        tags:
+          - dc02
+      664:
+        name: DT_inf_CN_lb
+        tags:
+          - dc02
+      665:
+        name: inf2_CN_lb
+        tags:
+          - dc02
+      666:
+        name: DT_ret4_CN_fw
+        tags:
+          - dc02
+      667:
+        name: DT_ret4_CN_fw_iso
+        tags:
+          - dc02
+      668:
+        name: unnamed_668
+        tags:
+          - dc02
+      669:
+        name: unnamed_669
+        tags:
+          - dc02
+      670:
+        name: DT_ret6_CN_fw
+        tags:
+          - dc02
+      671:
+        name: DT_scp_CN_lb
+        tags:
+          - dc02
+      672:
+        name: mgmt_CN_rac
+        tags:
+          - dc02
+      673:
+        name: DT_ret_CN
+        tags:
+          - dc02
+      674:
+        name: DT_scp_CN
+        tags:
+          - dc02
+      675:
+        name: inf2_CN_fw
+        tags:
+          - dc02
+      676:
+        name: DT_inf2_CN_fw
+        tags:
+          - dc02
+      677:
+        name: inf2_CN
+        tags:
+          - dc02
+      678:
+        name: DT_supl_CN_fw
+        tags:
+          - dc02
+      679:
+        name: DT_omr_CN_lb_fw
+        tags:
+          - dc02
+      680:
+        name: supl_CN_fw
+        tags:
+          - dc02
+      681:
+        name: omr_CN_lb_fw
+        tags:
+          - dc02
+      682:
+        name: inf3_CN_lb_fw
+        tags:
+          - dc02
+      683:
+        name: inf1_CN_fw
+        tags:
+          - dc02
+      684:
+        name: unnamed_684
+        tags:
+          - dc02
+      685:
+        name: unnamed_685
+        tags:
+          - dc02
+      686:
+        name: mgnt_CN_mail
+        tags:
+          - dc02
+      687:
+        name: mgnt_CN_priv5_fw
+        tags:
+          - dc02
+      688:
+        name: inf6_CN_lb_fw
+        tags:
+          - dc02
+      689:
+        name: inf5_CN_fw
+        tags:
+          - dc02
+      690:
+        name: DT_mgnt_CN_mail
+        tags:
+          - dc02
+      691:
+        name: DT_mgnt_CN_priv5_fw
+        tags:
+          - dc02
+      692:
+        name: unnamed_692
+        tags:
+          - dc02
+      693:
+        name: DT_inf7_CN_lb_fw
+        tags:
+          - dc02
+      694:
+        name: unnamed_694
+        tags:
+          - dc02
+      695:
+        name: unnamed_695
+        tags:
+          - dc02
+      696:
+        name: DT_inf4_CN_fw
+        tags:
+          - dc02
+      697:
+        name: DT_inf4_CN_lb_fw
+        tags:
+          - dc02
+      698:
+        name: inf4_CN_fw
+        tags:
+          - dc02
+      699:
+        name: inf4_CN_lb_fw
+        tags:
+          - dc02
+      700:
+        name: DT_inf7_CN_fw
+        tags:
+          - dc02
+      701:
+        name: inf5_CN_lb_fw
+        tags:
+          - dc02
+      702:
+        name: inf5_CN_lb_fw_iso
+        tags:
+          - dc02
+      703:
+        name: inf6_CN_fw
+        tags:
+          - dc02
+      704:
+        name: inf6_CN_fw_iso
+        tags:
+          - dc02
+      705:
+        name: unnamed_705
+        tags:
+          - dc02
+      706:
+        name: unnamed_706
+        tags:
+          - dc02
+      707:
+        name: DT_fin_cn
+        tags:
+          - dc02
+      708:
+        name: DT_fin_CN-lb
+        tags:
+          - dc02
+      709:
+        name: unnamed_709
+        tags:
+          - dc02
+      710:
+        name: unnamed_710
+        tags:
+          - dc02
+      711:
+        name: Haertb1_CN_Linux
+        tags:
+          - dc02
+      712:
+        name: DT_inf2_CN_lb_fw
+        tags:
+          - dc02
+      713:
+        name: DT_inf2_CN_lb_fw_iso
+        tags:
+          - dc02
+      714:
+        name: DT_inf6_CN_fw
+        tags:
+          - dc02
+      715:
+        name: DT_inf6_CN_fw_iso
+        tags:
+          - dc02
+      716:
+        name: heartb1_CN
+        tags:
+          - dc02
+      717:
+        name: DT_heartb1_CN
+        tags:
+          - dc02
+      718:
+        name: proc_CN
+        tags:
+          - dc02
+      719:
+        name: proc_CN_lb
+        tags:
+          - dc02
+      720:
+        name: DT_proc_CN
+        tags:
+          - dc02
+      721:
+        name: DT_proc_CN_lb
+        tags:
+          - dc02
+      722:
+        name: inf8_CN_fw
+        tags:
+          - dc02
+      723:
+        name: inf8_CN_lb_fw
+        tags:
+          - dc02
+      724:
+        name: DT_inf8_CN_fw
+        tags:
+          - dc02
+      725:
+        name: DT_inf8_CN_lb_fw
+        tags:
+          - dc02
+      726:
+        name: inf9_CN_lb_fw
+        tags:
+          - dc02
+      727:
+        name: inf9_CN_fw
+        tags:
+          - dc02
+      728:
+        name: inf10_cn_fw
+        tags:
+          - dc02
+      729:
+        name: inf10_cn_lb_fw
+        tags:
+          - dc02
+      730:
+        name: inf12_cn_lb_fw
+        tags:
+          - dc02
+      731:
+        name: inf12_cn_fw
+        tags:
+          - dc02
+      732:
+        name: inf13_cn_lb_fw
+        tags:
+          - dc02
+      733:
+        name: inf13_cn_fw
+        tags:
+          - dc02
+      734:
+        name: DT_INF9_cn_lb_fw
+        tags:
+          - dc02
+      735:
+        name: DT_inf9_cn_fw
+        tags:
+          - dc02
+      736:
+        name: DT_inf10_cn_fw
+        tags:
+          - dc02
+      737:
+        name: DT_inf10_cn_lb_fw
+        tags:
+          - dc02
+      738:
+        name: DT_inf12_cn_lb_fw
+        tags:
+          - dc02
+      739:
+        name: DT_inf12_cn_fw
+        tags:
+          - dc02
+      740:
+        name: DT_inf13_cn_lb_fw
+        tags:
+          - dc02
+      741:
+        name: DT_inf13_cn_fw
+        tags:
+          - dc02
+      742:
+        name: DT_inf3_CN_lb_fw
+        tags:
+          - dc02
+      743:
+        name: DT_inf1_CN_fw
+        tags:
+          - dc02
+      744:
+        name: DT_inf14_CN_fw
+        tags:
+          - dc02
+      745:
+        name: DT_inf14_CN_lb_fw
+        tags:
+          - dc02
+      746:
+        name: DT_inf16_CN_lb_fw
+        tags:
+          - dc02
+      747:
+        name: inf7_CN_lb_fw
+        tags:
+          - dc02
+      748:
+        name: ret8_CN_fw
+        tags:
+          - dc02
+      749:
+        name: DT_ret7_CN_fw
+        tags:
+          - dc02
+      750:
+        name: mgnt_CN_publ5_fw
+        tags:
+          - dc02
+      751:
+        name: mgnt_CN_publ5_lb_fw
+        tags:
+          - dc02
+      752:
+        name: DT_ret8_CN_fw
+        tags:
+          - dc02
+      753:
+        name: DT_ret8_CN_fw_iso
+        tags:
+          - dc02
+      754:
+        name: DT_inf27_CN_fw
+        tags:
+          - dc02
+      755:
+        name: DT_inf27_CN_lb_fw
+        tags:
+          - dc02
+      756:
+        name: DT_inf28_CN_lb_fw
+        tags:
+          - dc02
+      757:
+        name: unnamed_757
+        tags:
+          - dc02
+      758:
+        name: DT_ret5_CN_lb_fw
+        tags:
+          - dc02
+      759:
+        name: DT_ret5_CN_lb_fw_iso
+        tags:
+          - dc02
+      760:
+        name: DT_inf29_CN_lb_fw
+        tags:
+          - dc02
+      761:
+        name: unnamed_761
+        tags:
+          - dc02
+      762:
+        name: unnamed_762
+        tags:
+          - dc02
+      763:
+        name: inf15_CN_fw
+        tags:
+          - dc02
+      764:
+        name: inf15_CN_lb_fw
+        tags:
+          - dc02
+      765:
+        name: inf16_CN_fw
+        tags:
+          - dc02
+      766:
+        name: inf16_CN_lb_fw
+        tags:
+          - dc02
+      767:
+        name: mgnt_CN_ADC_fw
+        tags:
+          - dc02
+      768:
+        name: bz3_CN_fw
+        tags:
+          - dc02
+      769:
+        name: unnamed_769
+        tags:
+          - dc02
+      770:
+        name: DT_inf30_CN_lb_fw
+        tags:
+          - dc02
+      771:
+        name: DT_mgnt_CN_priv3_fw
+        tags:
+          - dc02
+      772:
+        name: bz4_CN_fw
+        tags:
+          - dc02
+      773:
+        name: inf17_CN_fw
+        tags:
+          - dc02
+      774:
+        name: inf18_CN_fw
+        tags:
+          - dc02
+      775:
+        name: DT_ret9_CN_fw
+        tags:
+          - dc02
+      776:
+        name: DT_ret9_CN_fw_iso
+        tags:
+          - dc02
+      777:
+        name: ret9_CN_lb_fw
+        tags:
+          - dc02
+      778:
+        name: ret9_CN_lb_fw_iso
+        tags:
+          - dc02
+      779:
+        name: ret10_CN_fw
+        tags:
+          - dc02
+      780:
+        name: ret10_CN_fw_iso
+        tags:
+          - dc02
+      781:
+        name: ret11_CN_fw
+        tags:
+          - dc02
+      782:
+        name: DT_ret10_CN_lb_fw
+        tags:
+          - dc02
+      783:
+        name: DT_ret10_CN_lb_fw_iso
+        tags:
+          - dc02
+      784:
+        name: DT_ret11_CN_fw
+        tags:
+          - dc02
+      785:
+        name: DT_ret11_CN_fw_iso
+        tags:
+          - dc02
+      786:
+        name: DT_ret12_CN_fw
+        tags:
+          - dc02
+      787:
+        name: DT_ret12_CN_fw_iso
+        tags:
+          - dc02
+      788:
+        name: DT_ret13_CN_fw
+        tags:
+          - dc02
+      789:
+        name: DT_ret14_CN_fw
+        tags:
+          - dc02
+      790:
+        name: DT_ret14_CN_fw_iso
+        tags:
+          - dc02
+      791:
+        name: inf19_CN_fw
+        tags:
+          - dc02
+      792:
+        name: DT_inf33_CN_fw
+        tags:
+          - dc02
+      793:
+        name: unnamed_793
+        tags:
+          - dc02
+      794:
+        name: unnamed_794
+        tags:
+          - dc02
+      795:
+        name: DT_mgnt_CN_publ3_fw
+        tags:
+          - dc02
+      796:
+        name: DT_mgnt_CN_publ3_lb_fw
+        tags:
+          - dc02
+      797:
+        name: DT_inf34_CN_lb_fw
+        tags:
+          - dc02
+      798:
+        name: DT_inf44_cn_lb_fw
+        tags:
+          - dc02
+      799:
+        name: DT_inf45_cn_fw
+        tags:
+          - dc02
+      800:
+        name: inf46_CN_lb_fw
+        tags:
+          - dc02
+      801:
+        name: DT_inf46_cn_lb_fw
+        tags:
+          - dc02
+      802:
+        name: DT_ret1_CN
+        tags:
+          - dc02
+      803:
+        name: ret12_CN
+        tags:
+          - dc02
+      804:
+        name: inf47_CN
+        tags:
+          - dc02
+      805:
+        name: inf48_CN_fw
+        tags:
+          - dc02
+      806:
+        name: inf48_cn_lb_fw
+        tags:
+          - dc02
+      807:
+        name: inf49_cn_fw
+        tags:
+          - dc02
+      808:
+        name: inf49_cn_lb_fw
+        tags:
+          - dc02
+      809:
+        name: inf50_cn_fw
+        tags:
+          - dc02
+      810:
+        name: inf50_cn_lb_fw
+        tags:
+          - dc02
+      811:
+        name: inf51_cn_fw
+        tags:
+          - dc02
+      812:
+        name: inf51_cn_lb_fw
+        tags:
+          - dc02
+      813:
+        name: inf52_cn_fw
+        tags:
+          - dc02
+      814:
+        name: inf52_cn_lb_fw
+        tags:
+          - dc02
+      815:
+        name: inf53_cn_fw
+        tags:
+          - dc02
+      816:
+        name: inf53_cn_lb_fw
+        tags:
+          - dc02
+      817:
+        name: inf54_cn_fw
+        tags:
+          - dc02
+      818:
+        name: inf54_cn_lb_fw
+        tags:
+          - dc02
+      819:
+        name: DT_inf46_CN_fw
+        tags:
+          - dc02
+      820:
+        name: DT_inf7_CN_con
+        tags:
+          - dc02
+      821:
+        name: DT_inf47_CN_fw
+        tags:
+          - dc02
+      822:
+        name: DT_inf48_CN_fw
+        tags:
+          - dc02
+      823:
+        name: inf59_CN_fw
+        tags:
+          - dc02
+      824:
+        name: inf60_CN_fw
+        tags:
+          - dc02
+      825:
+        name: inf61_CN_fw
+        tags:
+          - dc02
+      826:
+        name: DT_inf8_CN_con
+        tags:
+          - dc02
+      827:
+        name: unnamed_827
+        tags:
+          - dc02
+      828:
+        name: inf9_CN_con
+        tags:
+          - dc02
+      829:
+        name: DT_inf10_CN_con
+        tags:
+          - dc02
+      830:
+        name: inf10_CN_con
+        tags:
+          - dc02
+      831:
+        name: mgnt_CN_nfs1
+        tags:
+          - dc02
+      832:
+        name: inf_CN_nfs1
+        tags:
+          - dc02
+      833:
+        name: DT_inf49_CN_fw
+        tags:
+          - dc02
+      834:
+        name: DT_inf50_CN_lb_fw
+        tags:
+          - dc02
+      835:
+        name: unnamed_835
+        tags:
+          - dc02
+      836:
+        name: DT_inf52_CN_fw
+        tags:
+          - dc02
+      837:
+        name: DT_inf53_CN_fw
+        tags:
+          - dc02
+      838:
+        name: inf63_CN_fw
+        tags:
+          - dc02
+      839:
+        name: inf64_CN_fw
+        tags:
+          - dc02
+      840:
+        name: DT_inf54_CN_fw
+        tags:
+          - dc02
+      841:
+        name: inf65_CN_fw
+        tags:
+          - dc02
+      842:
+        name: inf66_CN_fw
+        tags:
+          - dc02
+      843:
+        name: DT_inf55_CN_fw
+        tags:
+          - dc02
+      844:
+        name: DT_mgnt_CN_nas
+        tags:
+          - dc02
+      845:
+        name: DT_inf56_CN_fw
+        tags:
+          - dc02
+      846:
+        name: DT_inf57_CN_fw
+        tags:
+          - dc02
+      847:
+        name: DT_inf58_CN_fw
+        tags:
+          - dc02
+      848:
+        name: DT_inf59_CN_fw
+        tags:
+          - dc02
+      849:
+        name: DT_inf60_CN_fw
+        tags:
+          - dc02
+      850:
+        name: mgnt_CN_publ6_fw
+        tags:
+          - dc02
+      851:
+        name: mgnt_CN_publ6_lb_fw
+        tags:
+          - dc02
+      852:
+        name: DT_mgnt_CN_priv6_fw
+        tags:
+          - dc02
+      853:
+        name: DT_inf61_CN_fw
+        tags:
+          - dc02
+      854:
+        name: DT_inf65_CN_fw
+        tags:
+          - dc02
+      855:
+        name: DT_inf63_CN_fw
+        tags:
+          - dc02
+      856:
+        name: inf67_CN_fw
+        tags:
+          - dc02
+      857:
+        name: DT_ret15_CN_fw
+        tags:
+          - dc02
+      858:
+        name: DT_inf66_CN_fw
+        tags:
+          - dc02
+      859:
+        name: inf68_CN_fw
+        tags:
+          - dc02
+      860:
+        name: unnamed_860
+        tags:
+          - dc02
+      861:
+        name: inf69_CN_fw
+        tags:
+          - dc02
+      862:
+        name: mgmt_cn_sdw_fw
+        tags:
+          - dc02
+      863:
+        name: DT_inf67_CN_fw
+        tags:
+          - dc02
+      864:
+        name: unnamed_864
+        tags:
+          - dc02
+      865:
+        name: inf01_DC018_con
+        tags:
+          - dc02
+      866:
+        name: DT_pim_CN
+        tags:
+          - dc02
+      867:
+        name: DT_pim_CN_lb
+        tags:
+          - dc02
+      868:
+        name: pim_CN
+        tags:
+          - dc02
+      869:
+        name: pim_CN_lb
+        tags:
+          - dc02
+      870:
+        name: inf4_CN_DT_con
+        tags:
+          - dc02
+      871:
+        name: DT_inf3_CN_con
+        tags:
+          - dc02
+      872:
+        name: inf4_CN_con
+        tags:
+          - dc02
+      873:
+        name: DT_inf1_CN_con
+        tags:
+          - dc02
+      874:
+        name: mgnt2_CN_con
+        tags:
+          - dc02
+      875:
+        name: mgnt_CN_priv_log_con
+        tags:
+          - dc02
+      876:
+        name: DT_mgnt_CN_con
+        tags:
+          - dc02
+      877:
+        name: DT_inf6_CN_con
+        tags:
+          - dc02
+      878:
+        name: inf6_CN_con
+        tags:
+          - dc02
+      879:
+        name: inf3_CN_DT_con
+        tags:
+          - dc02
+      880:
+        name: inf3_CN_con
+        tags:
+          - dc02
+      881:
+        name: DT_inf2_CN_con
+        tags:
+          - dc02
+      882:
+        name: inf2_CN_con
+        tags:
+          - dc02
+      883:
+        name: DT_omr_CN_con
+        tags:
+          - dc02
+      884:
+        name: unnamed_884
+        tags:
+          - dc02
+      885:
+        name: unnamed_885
+        tags:
+          - dc02
+      886:
+        name: unnamed_886
+        tags:
+          - dc02
+      887:
+        name: DT_ret_CN_con
+        tags:
+          - dc02
+      888:
+        name: ret_CN_con
+        tags:
+          - dc02
+      889:
+        name: DT_mgnt_CN_publ_con
+        tags:
+          - dc02
+      890:
+        name: CN_DT_transit_fw
+        tags:
+          - dc02
+      891:
+        name: CN_DT_transit_con
+        tags:
+          - dc02
+      892:
+        name: mgmt_CN_priv_log
+        tags:
+          - dc02
+      893:
+        name: CN_D2_transit_fw
+        tags:
+          - dc02
+      894:
+        name: DT_inf01_DC018_fw
+        tags:
+          - dc02
+      895:
+        name: inf01_DC018_fw
+        tags:
+          - dc02
+      896:
+        name: mgnt_CN_publ_con
+        tags:
+          - dc02
+      897:
+        name: mgnt_CN_priv_con
+        tags:
+          - dc02
+      898:
+        name: SWEp-CN-1_state
+        tags:
+          - dc02
+      899:
+        name: DT_inf01_DC018_con
+        tags:
+          - dc02
+      900:
+        name: unnamed_900
+        tags:
+          - dc02
+      901:
+        name: unnamed_901
+        tags:
+          - dc02
+      902:
+        name: unnamed_902
+        tags:
+          - dc02
+      903:
+        name: unnamed_903
+        tags:
+          - dc02
+      904:
+        name: unnamed_904
+        tags:
+          - dc02
+      905:
+        name: unnamed_905
+        tags:
+          - dc02
+      906:
+        name: unnamed_906
+        tags:
+          - dc02
+      907:
+        name: unnamed_907
+        tags:
+          - dc02
+      908:
+        name: unnamed_908
+        tags:
+          - dc02
+      909:
+        name: unnamed_909
+        tags:
+          - dc02
+      910:
+        name: unnamed_910
+        tags:
+          - dc02
+      911:
+        name: unnamed_911
+        tags:
+          - dc02
+      912:
+        name: unnamed_912
+        tags:
+          - dc02
+      913:
+        name: unnamed_913
+        tags:
+          - dc02
+      914:
+        name: unnamed_914
+        tags:
+          - dc02
+      915:
+        name: unnamed_915
+        tags:
+          - dc02
+      916:
+        name: unnamed_916
+        tags:
+          - dc02
+      917:
+        name: unnamed_917
+        tags:
+          - dc02
+      918:
+        name: unnamed_918
+        tags:
+          - dc02
+      919:
+        name: unnamed_919
+        tags:
+          - dc02
+      920:
+        name: unnamed_920
+        tags:
+          - dc02
+      921:
+        name: unnamed_921
+        tags:
+          - dc02
+      922:
+        name: unnamed_922
+        tags:
+          - dc02
+      923:
+        name: unnamed_923
+        tags:
+          - dc02
+      924:
+        name: unnamed_924
+        tags:
+          - dc02
+      925:
+        name: unnamed_925
+        tags:
+          - dc02
+      926:
+        name: unnamed_926
+        tags:
+          - dc02
+      927:
+        name: unnamed_927
+        tags:
+          - dc02
+      928:
+        name: unnamed_928
+        tags:
+          - dc02
+      929:
+        name: unnamed_929
+        tags:
+          - dc02
+      930:
+        name: unnamed_930
+        tags:
+          - dc02
+      931:
+        name: unnamed_931
+        tags:
+          - dc02
+      932:
+        name: unnamed_932
+        tags:
+          - dc02
+      933:
+        name: unnamed_933
+        tags:
+          - dc02
+      934:
+        name: unnamed_934
+        tags:
+          - dc02
+      935:
+        name: unnamed_935
+        tags:
+          - dc02
+      936:
+        name: unnamed_936
+        tags:
+          - dc02
+      937:
+        name: unnamed_937
+        tags:
+          - dc02
+      938:
+        name: unnamed_938
+        tags:
+          - dc02
+      939:
+        name: unnamed_939
+        tags:
+          - dc02
+      940:
+        name: unnamed_940
+        tags:
+          - dc02
+      941:
+        name: unnamed_941
+        tags:
+          - dc02
+      942:
+        name: unnamed_942
+        tags:
+          - dc02
+      943:
+        name: unnamed_943
+        tags:
+          - dc02
+      944:
+        name: unnamed_944
+        tags:
+          - dc02
+      945:
+        name: unnamed_945
+        tags:
+          - dc02
+      946:
+        name: unnamed_946
+        tags:
+          - dc02
+      947:
+        name: unnamed_947
+        tags:
+          - dc02
+      948:
+        name: unnamed_948
+        tags:
+          - dc02
+      949:
+        name: unnamed_949
+        tags:
+          - dc02
+      950:
+        name: unnamed_950
+        tags:
+          - dc02
+      951:
+        name: unnamed_951
+        tags:
+          - dc02
+      952:
+        name: unnamed_952
+        tags:
+          - dc02
+      953:
+        name: unnamed_953
+        tags:
+          - dc02
+      954:
+        name: unnamed_954
+        tags:
+          - dc02
+      955:
+        name: unnamed_955
+        tags:
+          - dc02
+      956:
+        name: unnamed_956
+        tags:
+          - dc02
+      957:
+        name: unnamed_957
+        tags:
+          - dc02
+      958:
+        name: unnamed_958
+        tags:
+          - dc02
+      959:
+        name: unnamed_959
+        tags:
+          - dc02
+      960:
+        name: unnamed_960
+        tags:
+          - dc02
+      961:
+        name: unnamed_961
+        tags:
+          - dc02
+      962:
+        name: unnamed_962
+        tags:
+          - dc02
+      963:
+        name: unnamed_963
+        tags:
+          - dc02
+      964:
+        name: unnamed_964
+        tags:
+          - dc02
+      965:
+        name: unnamed_965
+        tags:
+          - dc02
+      966:
+        name: unnamed_966
+        tags:
+          - dc02
+      967:
+        name: unnamed_967
+        tags:
+          - dc02
+      968:
+        name: unnamed_968
+        tags:
+          - dc02
+      969:
+        name: unnamed_969
+        tags:
+          - dc02
+      970:
+        name: unnamed_970
+        tags:
+          - dc02
+      971:
+        name: unnamed_971
+        tags:
+          - dc02
+      972:
+        name: unnamed_972
+        tags:
+          - dc02
+      973:
+        name: unnamed_973
+        tags:
+          - dc02
+      974:
+        name: unnamed_974
+        tags:
+          - dc02
+      975:
+        name: unnamed_975
+        tags:
+          - dc02
+      976:
+        name: unnamed_976
+        tags:
+          - dc02
+      977:
+        name: unnamed_977
+        tags:
+          - dc02
+      978:
+        name: unnamed_978
+        tags:
+          - dc02
+      979:
+        name: unnamed_979
+        tags:
+          - dc02
+      980:
+        name: unnamed_980
+        tags:
+          - dc02
+      981:
+        name: unnamed_981
+        tags:
+          - dc02
+      982:
+        name: unnamed_982
+        tags:
+          - dc02
+      983:
+        name: unnamed_983
+        tags:
+          - dc02
+      984:
+        name: unnamed_984
+        tags:
+          - dc02
+      985:
+        name: unnamed_985
+        tags:
+          - dc02
+      986:
+        name: unnamed_986
+        tags:
+          - dc02
+      987:
+        name: unnamed_987
+        tags:
+          - dc02
+      988:
+        name: unnamed_988
+        tags:
+          - dc02
+      989:
+        name: unnamed_989
+        tags:
+          - dc02
+      990:
+        name: unnamed_990
+        tags:
+          - dc02
+      991:
+        name: unnamed_991
+        tags:
+          - dc02
+      992:
+        name: unnamed_992
+        tags:
+          - dc02
+      993:
+        name: unnamed_993
+        tags:
+          - dc02
+      994:
+        name: unnamed_994
+        tags:
+          - dc02
+      995:
+        name: unnamed_995
+        tags:
+          - dc02
+      996:
+        name: unnamed_996
+        tags:
+          - dc02
+      997:
+        name: unnamed_997
+        tags:
+          - dc02
+      998:
+        name: unnamed_998
+        tags:
+          - dc02
+      999:
+        name: unnamed_999
+        tags:
+          - dc02
+      1000:
+        name: unnamed_1000
+        tags:
+          - dc02
+      1001:
+        name: dummy
+        tags:
+          - dc02
+      2300:
+        name: DT_mgnt_DC02_inf5_fw
+        tags:
+          - dc02
+      2301:
+        name: DT_mgnt_DC02_inf5_fw_iso
+        tags:
+          - dc02
+      2302:
+        name: DT_ret7_DC02_fw
+        tags:
+          - dc02
+      2303:
+        name: DT_ret2_DC02
+        tags:
+          - dc02
+      2304:
+        name: mgnt_DC02_inf9_fw
+        tags:
+          - dc02
+      2305:
+        name: mgnt_DC02_inf9_fw_iso
+        tags:
+          - dc02
+      2306:
+        name: pim2_DC02_fw
+        tags:
+          - dc02
+      2307:
+        name: unnamed_2307
+        tags:
+          - dc02
+      2308:
+        name: DT_pim3_DC02_fw
+        tags:
+          - dc02
+      2309:
+        name: inf22_DC02_fw
+        tags:
+          - dc02
+      2310:
+        name: inf24_DC02_fw
+        tags:
+          - dc02
+      2311:
+        name: DT_inf21_DC02_fw
+        tags:
+          - dc02
+      2312:
+        name: inf27_DC02_fw
+        tags:
+          - dc02
+      2313:
+        name: mgnt_DC02_inf21_fw
+        tags:
+          - dc02
+      2314:
+        name: mgnt_DC02_inf21_fw_iso
+        tags:
+          - dc02
+      2315:
+        name: inf69_DC02_fw
+        tags:
+          - dc02
+      2316:
+        name: unnamed_2316
+        tags:
+          - dc02
+      2317:
+        name: inf70_DC02_fw
+        tags:
+          - dc02
+      2318:
+        name: mgnt_DC02_inf22_fw
+        tags:
+          - dc02
+      2319:
+        name: mgnt_DC02_inf22_fw_iso
+        tags:
+          - dc02
+      2320:
+        name: unnamed_2320
+        tags:
+          - dc02
+      2321:
+        name: mgnt1_DC02_exa_fw
+        tags:
+          - dc02
+      2322:
+        name: DT_mgnt_DC02_priv5_fw
+        tags:
+          - dc02
+      2323:
+        name: DT_mgnt_DC02_priv5_fw_iso
+        tags:
+          - dc02
+      2324:
+        name: mgnt_DC02_priv5_fw
+        tags:
+          - dc02
+      2325:
+        name: mgnt_DC02_priv5_fw_iso
+        tags:
+          - dc02
+      2326:
+        name: mgnt2_DC02_exa_fw
+        tags:
+          - dc02
+      2327:
+        name: mgnt3_DC02_exa_fw
+        tags:
+          - dc02
+      2328:
+        name: inf28_DC02_fw
+        tags:
+          - dc02
+      2329:
+        name: inf29_DC02_fw
+        tags:
+          - dc02
+      2330:
+        name: inf30_DC02_fw
+        tags:
+          - dc02
+      2331:
+        name: DT_inf24_DC02_fw
+        tags:
+          - dc02
+      2332:
+        name: DT_inf25_DC02_fw
+        tags:
+          - dc02
+      2333:
+        name: DT_inf26_DC02_fw
+        tags:
+          - dc02
+      2334:
+        name: mgnt1_DC02_dg
+        tags:
+          - dc02
+      2335:
+        name: mgnt2_DC02_dg
+        tags:
+          - dc02
+      2336:
+        name: mgnt3_DC02_dg
+        tags:
+          - dc02
+      2337:
+        name: DT_mgnt1_DC02_dg
+        tags:
+          - dc02
+      2338:
+        name: DT_mgnt2_DC02_dg
+        tags:
+          - dc02
+      2339:
+        name: DT_mgnt3_DC02_dg
+        tags:
+          - dc02
+      2340:
+        name: inf1_DC02_exa_fw
+        tags:
+          - dc02
+      2341:
+        name: DT_mgnt_DC02_inf6_fw
+        tags:
+          - dc02
+      2342:
+        name: DT_mgnt_DC02_inf6_fw_iso
+        tags:
+          - dc02
+      2343:
+        name: mgnt65_DC02_rac
+        tags:
+          - dc02
+      2344:
+        name: mgnt66_DC02_rac
+        tags:
+          - dc02
+      2345:
+        name: mgnt_DC02_ADC_fw
+        tags:
+          - dc02
+      2346:
+        name: inf31_DC02_fw
+        tags:
+          - dc02
+      2347:
+        name: mgnt67_DC02_rac
+        tags:
+          - dc02
+      2348:
+        name: mgnt68_DC02_rac
+        tags:
+          - dc02
+      2349:
+        name: unnamed_2349
+        tags:
+          - dc02
+      2350:
+        name: inf32_DC02_fw
+        tags:
+          - dc02
+      2351:
+        name: mgnt69_DC02_rac
+        tags:
+          - dc02
+      2352:
+        name: mgnt70_DC02_rac
+        tags:
+          - dc02
+      2353:
+        name: mgnt71_DC02_rac
+        tags:
+          - dc02
+      2354:
+        name: DT_inf27_DC02_fw
+        tags:
+          - dc02
+      2355:
+        name: unnamed_2355
+        tags:
+          - dc02
+      2356:
+        name: DT_mgnt_DC02_inf7_fw
+        tags:
+          - dc02
+      2357:
+        name: DT_mgnt_DC02_inf7_fw_iso
+        tags:
+          - dc02
+      2358:
+        name: DT_mgnt53_DC02_rac
+        tags:
+          - dc02
+      2359:
+        name: DT_inf2_DC02_con
+        tags:
+          - dc02
+      2360:
+        name: DT_inf4_DC02_con
+        tags:
+          - dc02
+      2361:
+        name: inf4_DC02_con
+        tags:
+          - dc02
+      2362:
+        name: inf6_DC02_con
+        tags:
+          - dc02
+      2363:
+        name: inf33_DC02_fw
+        tags:
+          - dc02
+      2364:
+        name: DT_inf28_DC02_fw
+        tags:
+          - dc02
+      2365:
+        name: inf34_DC02_fw
+        tags:
+          - dc02
+      2366:
+        name: DT_inf29_DC02_fw
+        tags:
+          - dc02
+      2367:
+        name: unnamed_2367
+        tags:
+          - dc02
+      2368:
+        name: unnamed_2368
+        tags:
+          - dc02
+      2369:
+        name: unnamed_2369
+        tags:
+          - dc02
+      2370:
+        name: unnamed_2370
+        tags:
+          - dc02
+      2371:
+        name: unnamed_2371
+        tags:
+          - dc02
+      2372:
+        name: unnamed_2372
+        tags:
+          - dc02
+      2373:
+        name: unnamed_2373
+        tags:
+          - dc02
+      2374:
+        name: unnamed_2374
+        tags:
+          - dc02
+      2375:
+        name: unnamed_2375
+        tags:
+          - dc02
+      2376:
+        name: unnamed_2376
+        tags:
+          - dc02
+      2377:
+        name: unnamed_2377
+        tags:
+          - dc02
+      2378:
+        name: unnamed_2378
+        tags:
+          - dc02
+      2379:
+        name: unnamed_2379
+        tags:
+          - dc02
+      2380:
+        name: unnamed_2380
+        tags:
+          - dc02
+      2381:
+        name: unnamed_2381
+        tags:
+          - dc02
+      2382:
+        name: unnamed_2382
+        tags:
+          - dc02
+      2383:
+        name: unnamed_2383
+        tags:
+          - dc02
+      2384:
+        name: unnamed_2384
+        tags:
+          - dc02
+      2385:
+        name: unnamed_2385
+        tags:
+          - dc02
+      2386:
+        name: unnamed_2386
+        tags:
+          - dc02
+      2387:
+        name: unnamed_2387
+        tags:
+          - dc02
+      2388:
+        name: unnamed_2388
+        tags:
+          - dc02
+      2389:
+        name: unnamed_2389
+        tags:
+          - dc02
+      2390:
+        name: unnamed_2390
+        tags:
+          - dc02
+      2391:
+        name: unnamed_2391
+        tags:
+          - dc02
+      2392:
+        name: unnamed_2392
+        tags:
+          - dc02
+      2393:
+        name: unnamed_2393
+        tags:
+          - dc02
+      2394:
+        name: unnamed_2394
+        tags:
+          - dc02
+      2395:
+        name: unnamed_2395
+        tags:
+          - dc02
+      2396:
+        name: unnamed_2396
+        tags:
+          - dc02
+      2397:
+        name: unnamed_2397
+        tags:
+          - dc02
+      2398:
+        name: unnamed_2398
+        tags:
+          - dc02
+      2399:
+        name: unnamed_2399
+        tags:
+          - dc02
+      2400:
+        name: unnamed_2400
+        tags:
+          - dc02
+      2401:
+        name: unnamed_2401
+        tags:
+          - dc02
+      2402:
+        name: unnamed_2402
+        tags:
+          - dc02
+      2403:
+        name: unnamed_2403
+        tags:
+          - dc02
+      2404:
+        name: unnamed_2404
+        tags:
+          - dc02
+      2405:
+        name: unnamed_2405
+        tags:
+          - dc02
+      2406:
+        name: unnamed_2406
+        tags:
+          - dc02
+      2407:
+        name: unnamed_2407
+        tags:
+          - dc02
+      2408:
+        name: unnamed_2408
+        tags:
+          - dc02
+      2409:
+        name: unnamed_2409
+        tags:
+          - dc02
+      2410:
+        name: unnamed_2410
+        tags:
+          - dc02
+      2411:
+        name: unnamed_2411
+        tags:
+          - dc02
+      2412:
+        name: unnamed_2412
+        tags:
+          - dc02
+      2413:
+        name: unnamed_2413
+        tags:
+          - dc02
+      2414:
+        name: unnamed_2414
+        tags:
+          - dc02
+      2415:
+        name: unnamed_2415
+        tags:
+          - dc02
+      2416:
+        name: unnamed_2416
+        tags:
+          - dc02
+      2417:
+        name: unnamed_2417
+        tags:
+          - dc02
+      2418:
+        name: unnamed_2418
+        tags:
+          - dc02
+      2419:
+        name: unnamed_2419
+        tags:
+          - dc02
+      2420:
+        name: unnamed_2420
+        tags:
+          - dc02
+      2421:
+        name: unnamed_2421
+        tags:
+          - dc02
+      2422:
+        name: unnamed_2422
+        tags:
+          - dc02
+      2423:
+        name: unnamed_2423
+        tags:
+          - dc02
+      2424:
+        name: unnamed_2424
+        tags:
+          - dc02
+      2425:
+        name: unnamed_2425
+        tags:
+          - dc02
+      2426:
+        name: unnamed_2426
+        tags:
+          - dc02
+      2427:
+        name: unnamed_2427
+        tags:
+          - dc02
+      2428:
+        name: unnamed_2428
+        tags:
+          - dc02
+      2429:
+        name: unnamed_2429
+        tags:
+          - dc02
+      2430:
+        name: unnamed_2430
+        tags:
+          - dc02
+      2431:
+        name: unnamed_2431
+        tags:
+          - dc02
+      2432:
+        name: unnamed_2432
+        tags:
+          - dc02
+      2433:
+        name: unnamed_2433
+        tags:
+          - dc02
+      2434:
+        name: unnamed_2434
+        tags:
+          - dc02
+      2435:
+        name: unnamed_2435
+        tags:
+          - dc02
+      2436:
+        name: unnamed_2436
+        tags:
+          - dc02
+      2437:
+        name: unnamed_2437
+        tags:
+          - dc02
+      2438:
+        name: unnamed_2438
+        tags:
+          - dc02
+      2439:
+        name: unnamed_2439
+        tags:
+          - dc02
+      2440:
+        name: unnamed_2440
+        tags:
+          - dc02
+      2441:
+        name: unnamed_2441
+        tags:
+          - dc02
+      2442:
+        name: unnamed_2442
+        tags:
+          - dc02
+      2443:
+        name: unnamed_2443
+        tags:
+          - dc02
+      2444:
+        name: unnamed_2444
+        tags:
+          - dc02
+      2445:
+        name: unnamed_2445
+        tags:
+          - dc02
+      2446:
+        name: unnamed_2446
+        tags:
+          - dc02
+      2447:
+        name: unnamed_2447
+        tags:
+          - dc02
+      2448:
+        name: unnamed_2448
+        tags:
+          - dc02
+      2449:
+        name: unnamed_2449
+        tags:
+          - dc02
+      2450:
+        name: unnamed_2450
+        tags:
+          - dc02
+      2451:
+        name: mgnt4_DC02_con
+        tags:
+          - dc02
+      2452:
+        name: DT_mgnt_DC02_con
+        tags:
+          - dc02
+      2453:
+        name: unnamed_2453
+        tags:
+          - dc02
+      2454:
+        name: unnamed_2454
+        tags:
+          - dc02
+      2455:
+        name: inf68_DC02
+        tags:
+          - dc02
+      2456:
+        name: unnamed_2456
+        tags:
+          - dc02
+      2457:
+        name: unnamed_2457
+        tags:
+          - dc02
+      2458:
+        name: unnamed_2458
+        tags:
+          - dc02
+      2459:
+        name: unnamed_2459
+        tags:
+          - dc02
+      2460:
+        name: unnamed_2460
+        tags:
+          - dc02
+      2461:
+        name: mgnt_DC02_publ5_fw
+        tags:
+          - dc02
+      2462:
+        name: mgnt_DC02_publ8_fw
+        tags:
+          - dc02
+      2463:
+        name: mgnt_DC02_publ7_fw
+        tags:
+          - dc02
+      2464:
+        name: DT_inf68_DC02_fw
+        tags:
+          - dc02
+      2465:
+        name: mgnt75_DC02_rac
+        tags:
+          - dc02
+      2466:
+        name: DT_inf70_DC02_fw
+        tags:
+          - dc02
+      2467:
+        name: DT_mgnt_DC02_inf18_fw
+        tags:
+          - dc02
+      2468:
+        name: DT_mgnt_DC02_inf18_fw_iso
+        tags:
+          - dc02
+      2469:
+        name: DT_mgnt44_DC02_rac
+        tags:
+          - dc02
+      2470:
+        name: inf71_DC02_fw
+        tags:
+          - dc02
+      2471:
+        name: inf71_DC02_fw_iso
+        tags:
+          - dc02
+      2472:
+        name: DT_inf38_DC02_fw
+        tags:
+          - dc02
+      2473:
+        name: DT_inf71_DC02_fw
+        tags:
+          - dc02
+      2474:
+        name: DT_inf72_DC02_fw
+        tags:
+          - dc02
+      2475:
+        name: inf72_DC02_fw
+        tags:
+          - dc02
+      2476:
+        name: inf73_DC02_fw
+        tags:
+          - dc02
+      2477:
+        name: mgnt1_DC02_drac
+        tags:
+          - dc02
+      2478:
+        name: mgnt1_DC02_drac_iso
+        tags:
+          - dc02
+      2479:
+        name: inf74_DC02_fw
+        tags:
+          - dc02
+      2480:
+        name: DT_mgnt70_DC02_RAC
+        tags:
+          - dc02
+      2481:
+        name: mgnt59_DC02_rac
+        tags:
+          - dc02
+      2482:
+        name: mgnt1_DC02_lpm
+        tags:
+          - dc02
+      2483:
+        name: DT_inf74_DC02_fw
+        tags:
+          - dc02
+      2484:
+        name: unnamed_2484
+        tags:
+          - dc02
+      2485:
+        name: DT_inf73_DC02_fw
+        tags:
+          - dc02
+      2486:
+        name: DT_mgnt_DC02_inf19_fw
+        tags:
+          - dc02
+      2487:
+        name: inf76_DC02_fw
+        tags:
+          - dc02
+      2488:
+        name: DT_inf81_DC02_fw
+        tags:
+          - dc02
+      2489:
+        name: mgnt_DC02_inf23_fw
+        tags:
+          - dc02
+      2490:
+        name: mgnt14_DC02_ilo
+        tags:
+          - dc02
+      2491:
+        name: mgnt14_DC02_ilo_iso
+        tags:
+          - dc02
+      2492:
+        name: inf78_DC02_fw
+        tags:
+          - dc02
+      2493:
+        name: inf79_DC02_fw
+        tags:
+          - dc02
+      2494:
+        name: mgnt_DC02_inf24_fw
+        tags:
+          - dc02
+      2495:
+        name: mgnt_DC02_inf24_fw_iso
+        tags:
+          - dc02
+      2496:
+        name: inf79_DC02
+        tags:
+          - dc02
+      2497:
+        name: inf80_DC02_fw
+        tags:
+          - dc02
+      2498:
+        name: inf81_DC02_fw
+        tags:
+          - dc02
+      2499:
+        name: DT_mgnt_DC02_inf20_fw
+        tags:
+          - dc02
+      2500:
+        name: mgnt_DC02_inf25_fw
+        tags:
+          - dc02
+      2501:
+        name: unnamed_2501
+        tags:
+          - dc02
+      2502:
+        name: inf83_DC02_fw
+        tags:
+          - dc02
+      2503:
+        name: inf84_DC02_fw
+        tags:
+          - dc02
+      2504:
+        name: DT_inf76_DC02_fw
+        tags:
+          - dc02
+      2505:
+        name: inf85_DC02
+        tags:
+          - dc02
+      2506:
+        name: unnamed_2506
+        tags:
+          - dc02
+      2507:
+        name: DT_mgnt_DC02_inf21_fw
+        tags:
+          - dc02
+      2508:
+        name: unnamed_2508
+        tags:
+          - dc02
+      2509:
+        name: DT_mgnt_DC02_inf22_fw
+        tags:
+          - dc02
+      2510:
+        name: DT_mgnt_DC02_inf22_fw_iso
+        tags:
+          - dc02
+      2511:
+        name: DT_inf77_DC02_fw
+        tags:
+          - dc02
+      2512:
+        name: DT_inf36_DC02
+        tags:
+          - dc02
+      2513:
+        name: inf86_DC02
+        tags:
+          - dc02
+      2514:
+        name: DT_INF78_DC02
+        tags:
+          - dc02
+      2515:
+        name: inf88_DC02
+        tags:
+          - dc02
+      2516:
+        name: DT_inf78_DC02_fw
+        tags:
+          - dc02
+      2517:
+        name: DT_inf79_DC02_fw
+        tags:
+          - dc02
+      2518:
+        name: DT_mgnt_DC02_inf23_fw
+        tags:
+          - dc02
+      2519:
+        name: DT_mgnt_DC02_inf23_fw_iso
+        tags:
+          - dc02
+      2520:
+        name: DT_inf80_DC02_fw
+        tags:
+          - dc02
+      2521:
+        name: unnamed_2521
+        tags:
+          - dc02
+      2522:
+        name: unnamed_2522
+        tags:
+          - dc02
+      2523:
+        name: unnamed_2523
+        tags:
+          - dc02
+      2524:
+        name: unnamed_2524
+        tags:
+          - dc02
+      2525:
+        name: unnamed_2525
+        tags:
+          - dc02
+      2526:
+        name: inf85_DC02_bck_fw
+        tags:
+          - dc02
+      2527:
+        name: unnamed_2527
+        tags:
+          - dc02
+      2528:
+        name: inf90_DC02_fw
+        tags:
+          - dc02
+      2529:
+        name: unnamed_2529
+        tags:
+          - dc02
+      2530:
+        name: unnamed_2530
+        tags:
+          - dc02
+      2531:
+        name: unnamed_2531
+        tags:
+          - dc02
+      2532:
+        name: inf85_DC02_fw
+        tags:
+          - dc02
+      2533:
+        name: mgnt_DC02_publ9_fw
+        tags:
+          - dc02
+      2534:
+        name: DT_inf7_DC02_con
+        tags:
+          - dc02
+      2535:
+        name: unnamed_2535
+        tags:
+          - dc02
+      2536:
+        name: unnamed_2536
+        tags:
+          - dc02
+      2537:
+        name: unnamed_2537
+        tags:
+          - dc02
+      2538:
+        name: inf91_DC02
+        tags:
+          - dc02
+      2539:
+        name: DT_inf82_DC02_fw
+        tags:
+          - dc02
+      2540:
+        name: DT_mgnt_DC02_inf24_fw
+        tags:
+          - dc02
+      2541:
+        name: DT_mgnt_DC02_inf24_fw_iso
+        tags:
+          - dc02
+      2542:
+        name: DT_mgnt_DC02_inf25_fw
+        tags:
+          - dc02
+      2543:
+        name: DT_mgnt_DC02_inf25_fw_iso
+        tags:
+          - dc02
+      2544:
+        name: mgnt_DC02_inf28_fw
+        tags:
+          - dc02
+      2545:
+        name: mgnt_DC02_inf28_fw_iso
+        tags:
+          - dc02
+      2546:
+        name: DT_inf8_DC02_con
+        tags:
+          - dc02
+      2547:
+        name: DT_inf83_DC02_fw
+        tags:
+          - dc02
+      2548:
+        name: DT_inf84_DC02_fw
+        tags:
+          - dc02
+      2549:
+        name: inf86_DC02_fw
+        tags:
+          - dc02
+      2550:
+        name: inf87_DC02_fw
+        tags:
+          - dc02
+      2551:
+        name: unnamed_2551
+        tags:
+          - dc02
+      2552:
+        name: unnamed_2552
+        tags:
+          - dc02
+      2553:
+        name: inf88_DC02_fw
+        tags:
+          - dc02
+      2554:
+        name: unnamed_2554
+        tags:
+          - dc02
+      2555:
+        name: unnamed_2555
+        tags:
+          - dc02
+      2556:
+        name: unnamed_2556
+        tags:
+          - dc02
+      2557:
+        name: unnamed_2557
+        tags:
+          - dc02
+      2558:
+        name: unnamed_2558
+        tags:
+          - dc02
+      2559:
+        name: unnamed_2559
+        tags:
+          - dc02
+      2560:
+        name: unnamed_2560
+        tags:
+          - dc02
+      2561:
+        name: unnamed_2561
+        tags:
+          - dc02
+      2562:
+        name: unnamed_2562
+        tags:
+          - dc02
+      2563:
+        name: unnamed_2563
+        tags:
+          - dc02
+      2564:
+        name: unnamed_2564
+        tags:
+          - dc02
+      2565:
+        name: unnamed_2565
+        tags:
+          - dc02
+      2566:
+        name: unnamed_2566
+        tags:
+          - dc02
+      2567:
+        name: unnamed_2567
+        tags:
+          - dc02
+      2568:
+        name: unnamed_2568
+        tags:
+          - dc02
+      2569:
+        name: unnamed_2569
+        tags:
+          - dc02
+      2570:
+        name: unnamed_2570
+        tags:
+          - dc02
+      2571:
+        name: unnamed_2571
+        tags:
+          - dc02
+      2572:
+        name: unnamed_2572
+        tags:
+          - dc02
+      2573:
+        name: unnamed_2573
+        tags:
+          - dc02
+      2574:
+        name: unnamed_2574
+        tags:
+          - dc02
+      2575:
+        name: unnamed_2575
+        tags:
+          - dc02
+      2576:
+        name: unnamed_2576
+        tags:
+          - dc02
+      2577:
+        name: unnamed_2577
+        tags:
+          - dc02
+      2578:
+        name: unnamed_2578
+        tags:
+          - dc02
+      2579:
+        name: unnamed_2579
+        tags:
+          - dc02
+      2580:
+        name: unnamed_2580
+        tags:
+          - dc02
+      2581:
+        name: unnamed_2581
+        tags:
+          - dc02
+      2582:
+        name: unnamed_2582
+        tags:
+          - dc02
+      2583:
+        name: unnamed_2583
+        tags:
+          - dc02
+      2584:
+        name: unnamed_2584
+        tags:
+          - dc02
+      2585:
+        name: unnamed_2585
+        tags:
+          - dc02
+      2586:
+        name: unnamed_2586
+        tags:
+          - dc02
+      2587:
+        name: unnamed_2587
+        tags:
+          - dc02
+      2588:
+        name: unnamed_2588
+        tags:
+          - dc02
+      2589:
+        name: unnamed_2589
+        tags:
+          - dc02
+      2590:
+        name: unnamed_2590
+        tags:
+          - dc02
+      2591:
+        name: unnamed_2591
+        tags:
+          - dc02
+      2592:
+        name: unnamed_2592
+        tags:
+          - dc02
+      2593:
+        name: unnamed_2593
+        tags:
+          - dc02
+      2594:
+        name: unnamed_2594
+        tags:
+          - dc02
+      2595:
+        name: unnamed_2595
+        tags:
+          - dc02
+      2596:
+        name: unnamed_2596
+        tags:
+          - dc02
+      2597:
+        name: unnamed_2597
+        tags:
+          - dc02
+      2598:
+        name: unnamed_2598
+        tags:
+          - dc02
+      2599:
+        name: unnamed_2599
+        tags:
+          - dc02
+      2600:
+        name: DT_inf31_CN_fw
+        tags:
+          - dc02
+      2601:
+        name: DT_inf32_CN_fw
+        tags:
+          - dc02
+      2602:
+        name: DT_mgnt_CN_priv7_fw
+        tags:
+          - dc02
+      2603:
+        name: mgnt_CN_priv7_fw
+        tags:
+          - dc02
+      2604:
+        name: mgnt_CN_publ8_fw
+        tags:
+          - dc02
+      2605:
+        name: mgnt_CN_publ9_fw
+        tags:
+          - dc02
+      2606:
+        name: unnamed_2606
+        tags:
+          - dc02
+      2607:
+        name: DT_mgnt_CN_publ9_fw
+        tags:
+          - dc02
+      2608:
+        name: DT_inf68_CN_fw
+        tags:
+          - dc02
+      2609:
+        name: mgnt_CN_publ10_fw
+        tags:
+          - dc02
+      2610:
+        name: inf55_CN_fw
+        tags:
+          - dc02
+      2611:
+        name: inf74_CN_fw
+        tags:
+          - dc02
+      2612:
+        name: DT_ret16_CN_fw
+        tags:
+          - dc02
+      2613:
+        name: ret12_CN_fw
+        tags:
+          - dc02
+      2614:
+        name: unnamed_2614
+        tags:
+          - dc02
+      2615:
+        name: DT_ret17_CN_fw
+        tags:
+          - dc02
+      2616:
+        name: DT_ret18_CN_fw
+        tags:
+          - dc02
+      2617:
+        name: DT_ret19_CN_fw
+        tags:
+          - dc02
+      2618:
+        name: DT_ret20_CN_fw
+        tags:
+          - dc02
+      2619:
+        name: DT_ret21_CN_lb_fw
+        tags:
+          - dc02
+      2620:
+        name: ret13_CN_fw
+        tags:
+          - dc02
+      2621:
+        name: ret14_CN_fw
+        tags:
+          - dc02
+      2622:
+        name: ret15_CN_fw
+        tags:
+          - dc02
+      2623:
+        name: ret16_CN_fw
+        tags:
+          - dc02
+      2624:
+        name: ret10_CN_lb_fw
+        tags:
+          - dc02
+      2625:
+        name: DT_ret22_CN_lb_fw
+        tags:
+          - dc02
+      2626:
+        name: DT_ret22_CN_lb_fw_iso
+        tags:
+          - dc02
+      2627:
+        name: DT_ret23_CN_fw
+        tags:
+          - dc02
+      2628:
+        name: DT_ret23_CN_fw_iso
+        tags:
+          - dc02
+      2629:
+        name: ret11_CN_lb_fw
+        tags:
+          - dc02
+      2630:
+        name: ret11_CN_lb_fw_iso
+        tags:
+          - dc02
+      2631:
+        name: ret17_CN_fw
+        tags:
+          - dc02
+      2632:
+        name: ret17_CN_fw_iso
+        tags:
+          - dc02
+      2633:
+        name: SWEp-CN-DC018PA10-HA1-B
+        tags:
+          - dc02
+      2634:
+        name: SWEp-CN-DC018PA10-HA2-B
+        tags:
+          - dc02
+      2635:
+        name: SWEp-CN-DC018PA12-HA1-B
+        tags:
+          - dc02
+      2636:
+        name: SWEp-CN-DC018PA12-HA2-B
+        tags:
+          - dc02
+      2637:
+        name: inf2_CN_nfs1
+        tags:
+          - dc02
+      2638:
+        name: mgnt2_CN_nfs1
+        tags:
+          - dc02
+      2639:
+        name: DT_inf69_CN_fw
+        tags:
+          - dc02
+      2640:
+        name: DT_inf70_CN_fw
+        tags:
+          - dc02
+      2641:
+        name: ret18_CN_fw
+        tags:
+          - dc02
+      2642:
+        name: ret18_CN_fw_iso
+        tags:
+          - dc02
+      2643:
+        name: ret19_CN_fw
+        tags:
+          - dc02
+      2644:
+        name: ret12_CN_lb_fw
+        tags:
+          - dc02
+      2645:
+        name: ret12_CN_lb_fw_iso
+        tags:
+          - dc02
+      2646:
+        name: inf76_CN_fw
+        tags:
+          - dc02
+      2647:
+        name: Local_WH_104_DC018
+        tags:
+          - dc02
+      2648:
+        name: DT_inf71_DC018_fw
+        tags:
+          - dc02
+      2649:
+        name: inf05_DC018_fw
+        tags:
+          - dc02
+      2650:
+        name: inf06_DC018_fw
+        tags:
+          - dc02
+      2651:
+        name: inf07_DC018_fw
+        tags:
+          - dc02
+      2652:
+        name: unnamed_2652
+        tags:
+          - dc02
+      2653:
+        name: unnamed_2653
+        tags:
+          - dc02
+      2654:
+        name: DC018-AC_fail
+        tags:
+          - dc02
+      2655:
+        name: DC018-DT-AC_fail
+        tags:
+          - dc02
+      2656:
+        name: unnamed_2656
+        tags:
+          - dc02
+      2657:
+        name: adm02_DC018_con
+        tags:
+          - dc02
+      2658:
+        name: inf03_DC018_con
+        tags:
+          - dc02
+      2659:
+        name: DT_inf72_DC018_fw
+        tags:
+          - dc02
+      2660:
+        name: unnamed_2660
+        tags:
+          - dc02
+      2661:
+        name: unnamed_2661
+        tags:
+          - dc02
+      2662:
+        name: unnamed_2662
+        tags:
+          - dc02
+      2663:
+        name: unnamed_2663
+        tags:
+          - dc02
+      2664:
+        name: unnamed_2664
+        tags:
+          - dc02
+      2665:
+        name: unnamed_2665
+        tags:
+          - dc02
+      2666:
+        name: unnamed_2666
+        tags:
+          - dc02
+      2667:
+        name: unnamed_2667
+        tags:
+          - dc02
+      2668:
+        name: unnamed_2668
+        tags:
+          - dc02
+      2669:
+        name: unnamed_2669
+        tags:
+          - dc02
+      2670:
+        name: unnamed_2670
+        tags:
+          - dc02
+      2671:
+        name: unnamed_2671
+        tags:
+          - dc02
+      2672:
+        name: unnamed_2672
+        tags:
+          - dc02
+      2673:
+        name: unnamed_2673
+        tags:
+          - dc02
+      2674:
+        name: unnamed_2674
+        tags:
+          - dc02
+      2675:
+        name: unnamed_2675
+        tags:
+          - dc02
+      2676:
+        name: unnamed_2676
+        tags:
+          - dc02
+      2677:
+        name: unnamed_2677
+        tags:
+          - dc02
+      2678:
+        name: unnamed_2678
+        tags:
+          - dc02
+      2679:
+        name: unnamed_2679
+        tags:
+          - dc02
+      2680:
+        name: unnamed_2680
+        tags:
+          - dc02
+      2681:
+        name: unnamed_2681
+        tags:
+          - dc02
+      2682:
+        name: unnamed_2682
+        tags:
+          - dc02
+      2683:
+        name: unnamed_2683
+        tags:
+          - dc02
+      2684:
+        name: unnamed_2684
+        tags:
+          - dc02
+      2685:
+        name: unnamed_2685
+        tags:
+          - dc02
+      2686:
+        name: unnamed_2686
+        tags:
+          - dc02
+      2687:
+        name: unnamed_2687
+        tags:
+          - dc02
+      2688:
+        name: unnamed_2688
+        tags:
+          - dc02
+      2689:
+        name: unnamed_2689
+        tags:
+          - dc02
+      2690:
+        name: unnamed_2690
+        tags:
+          - dc02
+      2691:
+        name: unnamed_2691
+        tags:
+          - dc02
+      2692:
+        name: unnamed_2692
+        tags:
+          - dc02
+      2693:
+        name: unnamed_2693
+        tags:
+          - dc02
+      2694:
+        name: unnamed_2694
+        tags:
+          - dc02
+      2695:
+        name: unnamed_2695
+        tags:
+          - dc02
+      2696:
+        name: unnamed_2696
+        tags:
+          - dc02
+      2697:
+        name: unnamed_2697
+        tags:
+          - dc02
+      2698:
+        name: unnamed_2698
+        tags:
+          - dc02
+      2699:
+        name: unnamed_2699
+        tags:
+          - dc02
+      2700:
+        name: unnamed_2700
+        tags:
+          - dc02
+      2701:
+        name: unnamed_2701
+        tags:
+          - dc02
+      2702:
+        name: unnamed_2702
+        tags:
+          - dc02
+      2703:
+        name: unnamed_2703
+        tags:
+          - dc02
+      2704:
+        name: unnamed_2704
+        tags:
+          - dc02
+      2705:
+        name: unnamed_2705
+        tags:
+          - dc02
+      2706:
+        name: unnamed_2706
+        tags:
+          - dc02
+      2707:
+        name: unnamed_2707
+        tags:
+          - dc02
+      2708:
+        name: unnamed_2708
+        tags:
+          - dc02
+      2709:
+        name: unnamed_2709
+        tags:
+          - dc02
+      2710:
+        name: unnamed_2710
+        tags:
+          - dc02
+      2711:
+        name: unnamed_2711
+        tags:
+          - dc02
+      2712:
+        name: unnamed_2712
+        tags:
+          - dc02
+    mac_vrf_vni_base: 10000
+    vrfs:
+      Admin-DC02-Log:
+        mlag_ibgp_peering_vlan: 4001
+        svis:
+          570:
+            enabled: false
+            ip_address_virtual: 172.30.212.12/29
+            name: mgnt1_DC02_con
+            tags:
+              - dc02
+          571:
+            enabled: false
+            ip_address_virtual: 172.30.249.254/24
+            name: mgnt_DC02_priv_log
+            tags:
+              - dc02
+        vrf_vni: 4401
+      Admin-main:
+        mlag_ibgp_peering_vlan: 4002
+        svis:
+          559:
+            enabled: false
+            ip_address_virtual: 172.30.212.27/29
+            name: mgnt2_DC02_con
+            tags:
+              - dc02
+          580:
+            enabled: false
+            ip_address_virtual: 172.30.250.140/29
+            name: mgnt_DC02_con
+            tags:
+              - dc02
+          609:
+            enabled: false
+            ip_address_virtual: 172.23.135.126/26
+            name: DT_mgnt_CN_nfs
+            tags:
+              - dc02
+          874:
+            enabled: false
+            ip_address_virtual: 172.30.212.35/29
+            name: mgnt2_CN_con
+            tags:
+              - dc02
+          897:
+            enabled: false
+            ip_address_virtual: 172.30.1.252/29
+            name: mgnt_CN_priv_log
+            tags:
+              - dc02
+          2451:
+            enabled: false
+            ip_address_virtual: 172.30.212.54/29
+            name: mgnt4_DC02_con
+            tags:
+              - dc02
+          2452:
+            enabled: false
+            ip_address_virtual: 172.23.140.54/29
+            name: DT_mgnt_DC02_con
+            tags:
+              - dc02
+          2531:
+            enabled: false
+            ip_address_virtual: 172.30.64.133/29
+            name: mgnt8_DC02_con
+            tags:
+              - dc02
+          2546:
+            enabled: false
+            ip_address_virtual: 172.23.255.44/29
+            name: DT_inf8_DC02_con
+            tags:
+              - dc02
+          2656:
+            enabled: false
+            ip_address_virtual: 172.23.255.35/29
+            name: DT_mgnt_DC018_Priv_con
+            tags:
+              - dc02
+        vrf_vni: 4402
+      D2:
+        mlag_ibgp_peering_vlan: 4023
+        svis:
+          893:
+            enabled: false
+            ip_address_virtual: 10.62.191.190/29
+            name: CN_D2_transit_fw
+            tags:
+              - dc02
+        vrf_vni: 4423
+      DMZ:
+        mlag_ibgp_peering_vlan: 4003
+        svis:
+          437:
+            enabled: false
+            ip_address_virtual: 10.59.59.126/25
+            name: inf11_DC02_priv_fw
+            tags:
+              - dc02
+          561:
+            enabled: false
+            ip_address_virtual: 10.59.231.94/27
+            name: inf12_DC02_fw
+            tags:
+              - dc02
+          880:
+            enabled: false
+            ip_address_virtual: 192.168.36.254/24
+            name: inf3_CN_con
+            tags:
+              - dc02
+          2475:
+            enabled: false
+            ip_address_virtual: 10.59.213.190/26
+            name: inf72_DC02_fw
+            tags:
+              - dc02
+          2611:
+            enabled: false
+            ip_address_virtual: 10.59.215.62/26
+            name: inf74_CN_fw
+            tags:
+              - dc02
+        vrf_vni: 4403
+      DMZ-DT:
+        mlag_ibgp_peering_vlan: 4004
+        svis:
+          470:
+            enabled: false
+            ip_address_virtual: 10.230.188.126/25
+            name: DT_inf11_DC02_priv_fw
+            tags:
+              - dc02
+          576:
+            enabled: false
+            ip_address_virtual: 10.230.246.94/27
+            name: DT_inf1_DC02_fw
+            tags:
+              - dc02
+          870:
+            enabled: false
+            ip_address_virtual: 192.168.52.126/25
+            name: inf4_CN_DT_con
+            tags:
+              - dc02
+          879:
+            enabled: false
+            ip_address_virtual: 192.168.48.254/24
+            name: inf3_CN_DT_con
+            tags:
+              - dc02
+          2473:
+            enabled: false
+            ip_address_virtual: 10.232.37.190/26
+            name: DT_inf71_DC02_fw
+            tags:
+              - dc02
+          2608:
+            enabled: false
+            ip_address_virtual: 10.232.28.190/26
+            name: DT_inf68_CN_fw
+            tags:
+              - dc02
+        vrf_vni: 4404
+      DPBA-DC02-Admin:
+        mlag_ibgp_peering_vlan: 4005
+        svis:
+          2537:
+            enabled: false
+            ip_address_virtual: 172.30.64.189/29
+            name: mgnt11_DC02_dpba_con
+            tags:
+              - dc02
+        vrf_vni: 4405
+      DT:
+        mlag_ibgp_peering_vlan: 4006
+        svis:
+          313:
+            enabled: false
+            ip_address_virtual: 10.230.139.254/24
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf6_DC02
+            tags:
+              - dc02
+          317:
+            enabled: false
+            ip_address_virtual: 10.230.249.62/27
+            ip_helpers:
+              10.230.170.143: {}
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inst_DC02_fw
+            tags:
+              - dc02
+          326:
+            enabled: false
+            ip_address_virtual: 10.230.248.30/27
+            name: DT_scp_DC02_con
+            tags:
+              - dc02
+          335:
+            enabled: false
+            ip_address_virtual: 10.230.137.254/24
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf2_DC02
+            tags:
+              - dc02
+          336:
+            enabled: false
+            ip_address_virtual: 10.230.142.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+              172.20.10.67: {}
+            name: DT_inf2_DC02
+            tags:
+              - dc02
+          340:
+            enabled: false
+            ip_address_virtual: 10.230.145.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_bi_DC02
+            tags:
+              - dc02
+          352:
+            enabled: false
+            ip_address_virtual: 10.230.150.254/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf6_DC02
+            tags:
+              - dc02
+          359:
+            enabled: false
+            ip_address_virtual: 10.230.151.254/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_local_DC02
+            tags:
+              - dc02
+          360:
+            enabled: false
+            ip_address_virtual: 10.230.155.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_pim_DC02
+            tags:
+              - dc02
+          395:
+            enabled: false
+            ip_address_virtual: 10.230.250.30/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf9_DC02
+            tags:
+              - dc02
+          405:
+            enabled: false
+            ip_address_virtual: 10.230.167.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf10_DC02
+            tags:
+              - dc02
+          435:
+            enabled: false
+            ip_address_virtual: 10.230.174.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: DT_fin_DC02
+            tags:
+              - dc02
+          457:
+            enabled: false
+            ip_address_virtual: 10.230.250.126/27
+            ip_helpers:
+              10.230.170.143: {}
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inst1_DC02_fw
+            tags:
+              - dc02
+          465:
+            enabled: false
+            ip_address_virtual: 10.230.185.126/25
+            name: DT_supr_DC02
+            tags:
+              - dc02
+          480:
+            enabled: false
+            ip_address_virtual: 10.230.198.30/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: DT_inf14_DC02
+            tags:
+              - dc02
+          485:
+            enabled: false
+            ip_address_virtual: 10.230.194.254/24
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: inf15_DC02
+            tags:
+              - dc02
+          518:
+            enabled: false
+            ip_address_virtual: 10.230.251.126/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: dt_supr2_dc02_fw
+            tags:
+              - dc02
+          519:
+            enabled: false
+            ip_address_virtual: 10.230.204.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: dt_supl_dc02
+            tags:
+              - dc02
+          563:
+            enabled: false
+            ip_address_virtual: 10.230.250.254/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+              172.20.10.67: {}
+            name: DT_supr_DC02_con
+            tags:
+              - dc02
+          565:
+            enabled: false
+            ip_address_virtual: 10.230.250.190/27
+            name: DT_inf1_DC02_con
+            tags:
+              - dc02
+          567:
+            enabled: false
+            ip_address_virtual: 10.230.255.222/29
+            name: DT_fin_DC02_con
+            tags:
+              - dc02
+          568:
+            enabled: false
+            ip_address_virtual: 10.230.255.238/29
+            name: DT_mgnt_DC02_publ_con
+            tags:
+              - dc02
+          572:
+            enabled: false
+            ip_address_virtual: 10.230.255.206/29
+            name: DT_inf5_DC02_con
+            tags:
+              - dc02
+          573:
+            enabled: false
+            ip_address_virtual: 10.230.255.198/29
+            name: DT_ret1_DC02_con
+            tags:
+              - dc02
+          579:
+            enabled: false
+            ip_address_virtual: 10.230.250.62/27
+            name: DT_pim_DC02_con
+            tags:
+              - dc02
+          586:
+            enabled: false
+            ip_address_virtual: 10.230.247.30/27
+            name: DT_ret_DC02_con
+            tags:
+              - dc02
+          592:
+            enabled: false
+            ip_address_virtual: 10.230.255.166/29
+            name: DT_omr_DC02_con
+            tags:
+              - dc02
+          594:
+            enabled: false
+            ip_address_virtual: 10.230.255.134/29
+            name: DT_inf_DC02_con
+            tags:
+              - dc02
+          595:
+            enabled: false
+            ip_address_virtual: 10.230.255.94/28
+            name: DT_DC02_publ_con
+            tags:
+              - dc02
+          606:
+            enabled: false
+            ip_address_virtual: 10.230.240.30/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf3_CN
+            tags:
+              - dc02
+          607:
+            enabled: false
+            ip_address_virtual: 10.230.132.190/26
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf1_CN
+            tags:
+              - dc02
+          627:
+            enabled: false
+            ip_address_virtual: 10.230.140.126/25
+            name: DT_inf2_CN
+            tags:
+              - dc02
+          673:
+            enabled: false
+            ip_address_virtual: 10.230.131.254/25
+            name: DT_ret_CN
+            tags:
+              - dc02
+          674:
+            enabled: false
+            ip_address_virtual: 10.230.132.126/25
+            name: DT_scp_CN
+            tags:
+              - dc02
+          707:
+            enabled: false
+            ip_address_virtual: 10.230.154.254/25
+            name: DT_fin_CN
+            tags:
+              - dc02
+          720:
+            enabled: false
+            ip_address_virtual: 10.230.159.126/25
+            name: DT_proc_CN
+            tags:
+              - dc02
+          802:
+            enabled: false
+            ip_address_virtual: 10.232.7.254/23
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_ret1_CN
+            tags:
+              - dc02
+          826:
+            enabled: false
+            ip_address_virtual: 10.232.10.158/29
+            name: DT_inf8_CN_con
+            tags:
+              - dc02
+          829:
+            enabled: false
+            ip_address_virtual: 10.232.11.118/29
+            name: DT_inf10_CN_con
+            tags:
+              - dc02
+          866:
+            enabled: false
+            ip_address_virtual: 10.230.218.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_pim_CN
+            tags:
+              - dc02
+          871:
+            enabled: false
+            ip_address_virtual: 10.230.254.6/29
+            name: DT_inf3_CN_con
+            tags:
+              - dc02
+          873:
+            enabled: false
+            ip_address_virtual: 10.230.249.214/29
+            name: DT_inf1_CN_con
+            tags:
+              - dc02
+          881:
+            enabled: false
+            ip_address_virtual: 10.230.255.182/29
+            name: DT_inf2_CN_con
+            tags:
+              - dc02
+          883:
+            enabled: false
+            ip_address_virtual: 10.230.255.150/29
+            name: DT_omr_CN_con
+            tags:
+              - dc02
+          887:
+            enabled: false
+            ip_address_virtual: 10.230.255.142/29
+            name: DT_ret_con
+            tags:
+              - dc02
+          889:
+            enabled: false
+            ip_address_virtual: 10.230.255.110/28
+            name: DT_mgnt_CN_publ_con
+            tags:
+              - dc02
+          891:
+            enabled: false
+            ip_address_virtual: 10.230.255.54/29
+            name: CN_transit_fw
+            tags:
+              - dc02
+          899:
+            enabled: false
+            ip_address_virtual: 10.232.11.125/29
+            name: DT_inf01_DC018_con
+            tags:
+              - dc02
+          2303:
+            enabled: false
+            ip_address_virtual: 10.230.152.254/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+              172.20.10.67: {}
+            name: DT_ret2_DC02
+            tags:
+              - dc02
+          2359:
+            enabled: false
+            ip_address_virtual: 10.230.239.30/29
+            name: DT_inf2_DC02_con
+            tags:
+              - dc02
+          2360:
+            enabled: false
+            ip_address_virtual: 10.230.239.22/29
+            name: DT_inf4_DC02_con
+            tags:
+              - dc02
+          2385:
+            enabled: false
+            ip_address_virtual: 10.230.225.254/23
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf35_DC02
+            tags:
+              - dc02
+          2409:
+            enabled: false
+            ip_address_virtual: 10.232.4.62/26
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_adm01_DC02
+            tags:
+              - dc02
+          2416:
+            enabled: false
+            ip_address_virtual: 10.232.10.150/29
+            name: DT_adm02_DC02_con
+            tags:
+              - dc02
+          2421:
+            enabled: false
+            ip_address_virtual: 10.232.11.110/29
+            name: DT_inf6_DC02_con
+            tags:
+              - dc02
+          2512:
+            enabled: false
+            ip_address_virtual: 10.232.47.254/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf36_DC02
+            tags:
+              - dc02
+          2514:
+            enabled: false
+            ip_address_virtual: 10.232.38.62/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_INF78_DC02
+            tags:
+              - dc02
+          2534:
+            enabled: false
+            ip_address_virtual: 10.232.48.100/29
+            name: DT_inf7_DC02_con
+            tags:
+              - dc02
+          2560:
+            enabled: false
+            ip_address_virtual: 10.232.67.126/26
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf37_DC02
+            tags:
+              - dc02
+          2561:
+            enabled: false
+            ip_address_virtual: 172.26.16.254/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf38_DC02
+            tags:
+              - dc02
+          2652:
+            enabled: false
+            ip_address_virtual: 10.232.17.30/29
+            name: DT_inf02_DC018_con
+            tags:
+              - dc02
+        vrf_vni: 4406
+      DT-Ext-CC78:
+        svis: {}
+      DT-PostGresDB:
+        mlag_ibgp_peering_vlan: 4007
+        svis:
+          2449:
+            enabled: false
+            ip_address_virtual: 10.232.25.124/27
+            name: DT_inf65_DC02_fw
+            tags:
+              - dc02
+        vrf_vni: 4407
+      DT-dataguard:
+        mlag_ibgp_peering_vlan: 4008
+        svis:
+          320:
+            enabled: false
+            ip_address_virtual: 10.230.128.98/25
+            name: DT_inf_DC02_fw
+            tags:
+              - dc02
+          321:
+            enabled: false
+            ip_address_virtual: 10.230.130.236/25
+            name: DT_supl1_DC02_fw
+            tags:
+              - dc02
+          369:
+            enabled: false
+            ip_address_virtual: 10.230.164.206/25
+            name: DT_inf3_DC02_fw
+            tags:
+              - dc02
+          379:
+            enabled: false
+            ip_address_virtual: 10.230.158.124/25
+            name: DT_inf2_DC02_fw
+            tags:
+              - dc02
+          390:
+            enabled: false
+            ip_address_virtual: 10.230.152.119/25
+            name: DT_inf5_DC02_fw
+            tags:
+              - dc02
+          411:
+            enabled: false
+            ip_address_virtual: 10.230.169.228/25
+            name: DT_supl_DC02_fw
+            tags:
+              - dc02
+          515:
+            enabled: false
+            ip_address_virtual: 10.230.172.125/25
+            name: DT_supl1_DC02_lb_fw
+            tags:
+              - dc02
+          549:
+            enabled: false
+            ip_address_virtual: 10.230.241.45/25
+            name: DT_inf12_DC02_fw
+            tags:
+              - dc02
+          552:
+            enabled: false
+            ip_address_virtual: 10.230.207.252/25
+            name: DT_inf20_DC02_fw
+            tags:
+              - dc02
+          679:
+            enabled: false
+            ip_address_virtual: 10.230.135.239/25
+            name: DT_omr_CN_lb_fw
+            tags:
+              - dc02
+          894:
+            enabled: false
+            ip_address_virtual: 10.232.48.61/27
+            name: DT_inf01_DC018_fw
+            tags:
+              - dc02
+          2337:
+            enabled: false
+            ip_address_virtual: 10.230.181.158/28
+            name: DT_mgnt1_DC02_dg
+            tags:
+              - dc02
+          2338:
+            enabled: false
+            ip_address_virtual: 10.230.181.174/28
+            name: DT_mgnt2_DC02_dg
+            tags:
+              - dc02
+          2339:
+            enabled: false
+            ip_address_virtual: 10.230.181.190/28
+            name: DT_mgnt3_DC02_dg
+            tags:
+              - dc02
+          2354:
+            enabled: false
+            ip_address_virtual: 10.230.198.252/25
+            name: DT_inf27_DC02_fw
+            tags:
+              - dc02
+          2366:
+            enabled: false
+            ip_address_virtual: 10.230.238.252/24
+            name: DT_inf29_DC02_fw
+            tags:
+              - dc02
+          2384:
+            enabled: false
+            ip_address_virtual: 10.230.233.252/24
+            name: DT_inf34_DC02_fw
+            tags:
+              - dc02
+          2405:
+            enabled: false
+            ip_address_virtual: 10.232.0.252/24
+            name: DT_inf36_DC02_fw
+            tags:
+              - dc02
+          2441:
+            enabled: false
+            ip_address_virtual: 10.232.23.252/24
+            name: DT_inf62_DC02_fw
+            tags:
+              - dc02
+          2466:
+            enabled: false
+            ip_address_virtual: 10.232.35.252/24
+            name: DT_inf70_DC02_fw
+            tags:
+              - dc02
+          2539:
+            enabled: false
+            ip_address_virtual: 10.232.61.253/24
+            name: DT_inf82_DC02_fw
+            tags:
+              - dc02
+        vrf_vni: 4408
+      DTA:
+        mlag_ibgp_peering_vlan: 4024
+        svis:
+          876:
+            enabled: false
+            ip_address_virtual: 172.23.140.38/29
+            name: DT_mgnt_CN_con
+            tags:
+              - dc02
+        vrf_vni: 4424
+      DT_Client:
+        mlag_ibgp_peering_vlan: 4025
+        svis:
+          864:
+            enabled: false
+            ip_address_virtual: 10.62.223.78/29
+            name: CN_DT_Client_transit_fw
+            tags:
+              - dc02
+        vrf_vni: 4425
+      DT_IHP2-DC02:
+        mlag_ibgp_peering_vlan: 4009
+        svis:
+          387:
+            enabled: false
+            ip_address_virtual: 10.230.247.126/27
+            name: DT_IHP2-DC02
+            tags:
+              - dc02
+          877:
+            enabled: false
+            ip_address_virtual: 10.230.248.120/27
+            name: DT_IHP2-DC02
+            tags:
+              - dc02
+        vrf_vni: 4409
+      DT_mgnt_CN_publ2_fw:
+        mlag_ibgp_peering_vlan: 4010
+        svis:
+          637:
+            enabled: false
+            ip_helpers:
+              10.57.154.141: {}
+              10.63.174.116: {}
+              172.20.10.67: {}
+            name: Only
+            tags:
+              - dc02
+        vrf_vni: 4410
+      Ext-CC78:
+        svis: {}
+      IHP2-DC02:
+        mlag_ibgp_peering_vlan: 4011
+        svis:
+          365:
+            enabled: false
+            ip_address_virtual: 10.59.227.94/27
+            name: IHP2-DC02
+            tags:
+              - dc02
+          878:
+            enabled: false
+            ip_address_virtual: 10.59.228.91/27
+            name: IHP2-DC02
+            tags:
+              - dc02
+        vrf_vni: 4411
+      ACME-GENERAL:
+        mlag_ibgp_peering_vlan: 4012
+        svis:
+          1:
+            enabled: false
+            name: unnamed_1
+            tags:
+              - dc02
+          312:
+            enabled: false
+            ip_address_virtual: 10.59.70.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inst_DC02_fw
+            tags:
+              - dc02
+          315:
+            enabled: false
+            ip_address_virtual: 10.59.2.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: ret_DC02
+            tags:
+              - dc02
+          316:
+            enabled: false
+            ip_address_virtual: 10.59.4.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: scp_DC02
+            tags:
+              - dc02
+          318:
+            enabled: false
+            ip_address_virtual: 10.59.13.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: fin_dc02_fw
+            tags:
+              - dc02
+          327:
+            enabled: false
+            ip_address_virtual: 10.59.14.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf2_DC02
+            tags:
+              - dc02
+          333:
+            enabled: false
+            ip_address_virtual: 10.59.11.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: omr_DC02
+            tags:
+              - dc02
+          334:
+            enabled: false
+            ip_address_virtual: 10.59.12.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: prop_DC02
+            tags:
+              - dc02
+          337:
+            enabled: false
+            ip_address_virtual: 10.59.18.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf3_DC02_fw
+            tags:
+              - dc02
+          353:
+            enabled: false
+            ip_address_virtual: 10.59.23.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: fin_DC02
+            tags:
+              - dc02
+          354:
+            enabled: false
+            ip_address_virtual: 10.59.25.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf5_DC02
+            tags:
+              - dc02
+          362:
+            enabled: false
+            ip_address_virtual: 10.59.33.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: pim_DC02
+            tags:
+              - dc02
+          404:
+            enabled: false
+            ip_address_virtual: 10.59.49.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf10_DC02
+            tags:
+              - dc02
+          425:
+            enabled: false
+            ip_address_virtual: 10.59.225.222/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inst2_DC02_fw
+            tags:
+              - dc02
+          427:
+            enabled: false
+            name: unnamed_427
+            tags:
+              - dc02
+          428:
+            enabled: false
+            ip_address_virtual: 10.59.54.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: supl2_dc02_fw
+            tags:
+              - dc02
+          441:
+            enabled: false
+            ip_address_virtual: 10.59.68.30/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf14_DC02
+            tags:
+              - dc02
+          458:
+            enabled: false
+            ip_address_virtual: 10.59.65.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: pim1_DC02
+            tags:
+              - dc02
+          467:
+            enabled: false
+            ip_address_virtual: 10.59.65.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: pim1_dc02_fw
+            tags:
+              - dc02
+          484:
+            enabled: false
+            ip_address_virtual: 10.59.75.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf15_DC02
+            tags:
+              - dc02
+          507:
+            enabled: false
+            ip_address_virtual: 10.59.230.254/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: supr2_dc02_fw
+            tags:
+              - dc02
+          529:
+            enabled: false
+            ip_address_virtual: 10.59.92.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf17_DC02
+            tags:
+              - dc02
+          536:
+            enabled: false
+            ip_address_virtual: 10.59.94.190/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf3_DC02
+            tags:
+              - dc02
+          557:
+            enabled: false
+            ip_address_virtual: 10.59.251.6/29
+            name: mgnt3_DC02_con
+            tags:
+              - dc02
+          564:
+            enabled: false
+            ip_address_virtual: 10.59.254.214/29
+            name: supr_DC02_con
+            tags:
+              - dc02
+          566:
+            enabled: false
+            ip_address_virtual: 10.59.254.198/29
+            name: inf1_DC02_con
+            tags:
+              - dc02
+          569:
+            enabled: false
+            ip_address_virtual: 10.59.254.174/29
+            name: mgnt_DC02_publ_con
+            tags:
+              - dc02
+          574:
+            enabled: false
+            ip_address_virtual: 10.59.254.150/29
+            name: ret2_DC02_con
+            tags:
+              - dc02
+          575:
+            enabled: false
+            ip_address_virtual: 10.59.230.94/27
+            name: pim_DC02_con
+            tags:
+              - dc02
+          578:
+            enabled: false
+            ip_address_virtual: 10.59.254.142/29
+            name: inf2_DC02_con
+            tags:
+              - dc02
+          587:
+            enabled: false
+            ip_address_virtual: 10.59.228.254/27
+            name: ret1_DC02_con
+            tags:
+              - dc02
+          588:
+            enabled: false
+            ip_address_virtual: 10.59.228.30/27
+            name: scp_DC02_con
+            tags:
+              - dc02
+          590:
+            enabled: false
+            ip_address_virtual: 10.59.254.110/29
+            name: inf2_DC02
+            tags:
+              - dc02
+          591:
+            enabled: false
+            ip_address_virtual: 10.59.254.94/29
+            name: omr_DC02_con
+            tags:
+              - dc02
+          596:
+            enabled: false
+            ip_address_virtual: 10.59.254.46/28
+            name: DC02_publ_con
+            tags:
+              - dc02
+          601:
+            enabled: false
+            ip_address_virtual: 10.59.101.62/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf1_CN
+            tags:
+              - dc02
+          605:
+            enabled: false
+            ip_address_virtual: 10.59.240.30/27
+            name: inf3_CN
+            tags:
+              - dc02
+          610:
+            enabled: false
+            ip_address_virtual: 10.62.192.254/24
+            name: BZ_CN_inf
+            tags:
+              - dc02
+          613:
+            enabled: false
+            ip_address_virtual: 10.62.255.254/29
+            name: BZ_CN_fw_con
+            tags:
+              - dc02
+          616:
+            enabled: false
+            ip_address_virtual: 10.62.255.230/29
+            name: BZ_CN_inf_con
+            tags:
+              - dc02
+          639:
+            enabled: false
+            ip_address_virtual: 10.59.5.126/25
+            name: scp_CN
+            tags:
+              - dc02
+          641:
+            enabled: false
+            ip_address_virtual: 10.59.3.126/25
+            name: ret_CN
+            tags:
+              - dc02
+          677:
+            enabled: false
+            ip_address_virtual: 10.59.7.254/25
+            name: inf2_CN
+            tags:
+              - dc02
+          680:
+            enabled: false
+            ip_address_virtual: 10.59.10.254/25
+            name: supl_CN_fw
+            tags:
+              - dc02
+          718:
+            enabled: false
+            ip_address_virtual: 10.59.40.254/25
+            name: Proc_CN
+            tags:
+              - dc02
+          803:
+            enabled: false
+            ip_address_virtual: 10.59.203.254/23
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: ret12_CN
+            tags:
+              - dc02
+          804:
+            enabled: false
+            ip_address_virtual: 10.59.221.254/23
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf47_CN
+            tags:
+              - dc02
+          827:
+            enabled: false
+            ip_address_virtual: 10.59.233.150/29
+            name: inf8_CN_con
+            tags:
+              - dc02
+          830:
+            enabled: false
+            ip_address_virtual: 10.59.223.158/29
+            name: inf10_CN_con
+            tags:
+              - dc02
+          832:
+            enabled: false
+            ip_address_virtual: 10.59.223.254/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf_CN_nfs1
+            tags:
+              - dc02
+          865:
+            enabled: false
+            ip_address_virtual: 10.59.219.109/29
+            name: inf01_DC018_con
+            tags:
+              - dc02
+          868:
+            enabled: false
+            ip_address_virtual: 10.59.106.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: pim_CN
+            tags:
+              - dc02
+          872:
+            enabled: false
+            ip_address_virtual: 10.59.254.238/29
+            name: inf4_CN_con
+            tags:
+              - dc02
+          882:
+            enabled: false
+            ip_address_virtual: 10.59.254.118/29
+            name: inf2_CN_con
+            tags:
+              - dc02
+          888:
+            enabled: false
+            ip_address_virtual: 10.59.254.62/29
+            name: ret_CN_con
+            tags:
+              - dc02
+          890:
+            enabled: false
+            ip_address_virtual: 10.230.255.46/29
+            name: CN_transit_con
+            tags:
+              - dc02
+          896:
+            enabled: false
+            ip_address_virtual: 10.59.254.6/29
+            name: mgnt_CN_publ_con
+            tags:
+              - dc02
+          2361:
+            enabled: false
+            ip_address_virtual: 10.59.251.14/29
+            name: inf4_DC02_con
+            tags:
+              - dc02
+          2362:
+            enabled: false
+            ip_address_virtual: 10.59.233.158/29
+            name: inf6_DC02_con
+            tags:
+              - dc02
+          2383:
+            enabled: false
+            ip_address_virtual: 10.59.115.254/23
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf40_DC02
+            tags:
+              - dc02
+          2392:
+            enabled: false
+            ip_address_virtual: 10.59.119.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf41_DC02
+            tags:
+              - dc02
+          2397:
+            enabled: false
+            ip_address_virtual: 10.59.120.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf42_DC02
+            tags:
+              - dc02
+          2406:
+            enabled: false
+            ip_address_virtual: 10.59.222.190/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: adm01_DC02
+            tags:
+              - dc02
+          2415:
+            enabled: false
+            ip_address_virtual: 10.59.101.110/29
+            name: adm02_DC02_con
+            tags:
+              - dc02
+          2422:
+            enabled: false
+            ip_address_virtual: 10.59.239.222/29
+            name: inf8_DC02_con
+            tags:
+              - dc02
+          2455:
+            enabled: false
+            ip_address_virtual: 10.59.129.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf68_DC02
+            tags:
+              - dc02
+          2496:
+            enabled: false
+            ip_address_virtual: 10.59.148.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf79_DC02
+            tags:
+              - dc02
+          2505:
+            enabled: false
+            ip_address_virtual: 10.59.150.254/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf85_DC02
+            tags:
+              - dc02
+          2513:
+            enabled: false
+            ip_address_virtual: 10.59.156.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf86_DC02
+            tags:
+              - dc02
+          2515:
+            enabled: false
+            ip_address_virtual: 10.59.140.222/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf88_DC02
+            tags:
+              - dc02
+          2529:
+            enabled: false
+            ip_address_virtual: 10.59.219.125/29
+            name: mgnt5_DC02_con
+            tags:
+              - dc02
+          2530:
+            enabled: false
+            ip_address_virtual: 10.59.154.109/29
+            name: inf9_DC02_con
+            tags:
+              - dc02
+          2538:
+            enabled: false
+            ip_address_virtual: 10.59.154.126/28
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf91_DC02
+            tags:
+              - dc02
+          2555:
+            enabled: false
+            ip_address_virtual: 10.59.215.254/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf92_DC02
+            tags:
+              - dc02
+          2556:
+            enabled: false
+            ip_address_virtual: 172.26.16.62/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf93_DC02
+            tags:
+              - dc02
+          2564:
+            enabled: false
+            ip_address_virtual: 10.59.187.254/22
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf94_DC02
+            tags:
+              - dc02
+          2637:
+            enabled: false
+            ip_address_virtual: 10.59.156.62/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf2_CN_nfs1
+            tags:
+              - dc02
+          2647:
+            enabled: false
+            ip_address_virtual: 10.59.162.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: Local_WH_104_DC018
+            tags:
+              - dc02
+          2653:
+            enabled: false
+            ip_address_virtual: 10.59.214.22/29
+            name: inf02_DC018_con
+            tags:
+              - dc02
+          2658:
+            enabled: false
+            ip_address_virtual: 10.59.219.118/29
+            name: inf03_DC018_con
+            tags:
+              - dc02
+        vrf_vni: 4412
+      ACME-Voice:
+        mlag_ibgp_peering_vlan: 4013
+        svis:
+          2501:
+            enabled: false
+            ip_address_virtual: 10.59.153.158/27
+            name: inf82_DC02
+            tags:
+              - dc02
+        vrf_vni: 4413
+      SDWAN-control:
+        mlag_ibgp_peering_vlan: 4014
+        svis:
+          860:
+            enabled: false
+            ip_address_virtual: 10.59.219.222/27
+            name: mgnt_CN_publ7_fw
+            tags:
+              - dc02
+          862:
+            enabled: false
+            ip_address_virtual: 10.57.255.62/29
+            name: mgnt_CN_sdw_fw
+            tags:
+              - dc02
+          2462:
+            enabled: false
+            ip_address_virtual: 10.59.219.190/27
+            name: mgnt_DC02_publ8_fw
+            tags:
+              - dc02
+          2463:
+            enabled: false
+            ip_address_virtual: 10.59.232.254/28
+            name: mgnt_DC02_publ7_fw
+            tags:
+              - dc02
+          2533:
+            enabled: false
+            ip_address_virtual: 10.59.193.190/28
+            name: mgnt_DC02_publ9_fw
+            tags:
+              - dc02
+        vrf_vni: 4414
+      Vz-mgmt:
+        mlag_ibgp_peering_vlan: 4015
+        svis:
+          2502:
+            enabled: false
+            ip_address_virtual: 10.59.153.190/27
+            name: inf83_DC02_fw
+            tags:
+              - dc02
+        vrf_vni: 4415
+      backup:
+        mlag_ibgp_peering_vlan: 4016
+        svis:
+          303:
+            enabled: false
+            ip_address_virtual: 172.30.5.249/24
+            name: mgnt_DC02_inf
+            tags:
+              - dc02
+          322:
+            enabled: false
+            ip_address_virtual: 172.23.251.249/24
+            name: DT_mgnt_DC02_fw
+            tags:
+              - dc02
+          377:
+            enabled: false
+            ip_address_virtual: 172.30.11.249/24
+            name: mgnt_DC02_inf2
+            tags:
+              - dc02
+          391:
+            enabled: false
+            ip_address_virtual: 172.30.210.62/27
+            name: mgnt_DC02_bck
+            tags:
+              - dc02
+          400:
+            enabled: false
+            ip_address_virtual: 172.30.13.249/25
+            name: mgnt_DC02_inf3
+            tags:
+              - dc02
+          401:
+            enabled: false
+            ip_address_virtual: 172.23.128.249/25
+            name: DT_mgnt_DC02_inf3
+            tags:
+              - dc02
+          407:
+            enabled: false
+            ip_address_virtual: 172.23.146.249/24
+            name: DT_mgnt_DC02_fw
+            tags:
+              - dc02
+          420:
+            enabled: false
+            ip_address_virtual: 172.30.16.249/24
+            name: mgnt_DC02_inf4
+            tags:
+              - dc02
+          422:
+            enabled: false
+            ip_address_virtual: 172.23.145.252/24
+            name: DT_mgnt_DC02_inf2_fw
+            tags:
+              - dc02
+          446:
+            enabled: false
+            ip_address_virtual: 172.30.59.249/24
+            name: DT_mgnt_DC02_priv1_fw
+            tags:
+              - dc02
+          450:
+            enabled: false
+            ip_address_virtual: 172.23.130.249/24
+            name: DT_mgnt_DC02_inf3
+            tags:
+              - dc02
+          454:
+            enabled: false
+            ip_address_virtual: 172.30.57.249/24
+            name: DT_mgnt_DC02_priv2_fw
+            tags:
+              - dc02
+          464:
+            enabled: false
+            ip_address_virtual: 172.23.131.249/25
+            name: DT_mgnt_DC02_priv1_fw
+            tags:
+              - dc02
+          469:
+            enabled: false
+            ip_address_virtual: 172.30.61.249/24
+            name: mgnt_DC02_priv1_fw
+            tags:
+              - dc02
+          478:
+            enabled: false
+            ip_address_virtual: 172.30.20.249/24
+            name: mgnt_DC02_inf5
+            tags:
+              - dc02
+          483:
+            enabled: false
+            ip_address_virtual: 172.30.62.121/25
+            name: mgnt_DC02_priv2_lb_fw
+            tags:
+              - dc02
+          501:
+            enabled: false
+            ip_address_virtual: 172.23.150.249/24
+            name: DT_mgnt_DC02_inf3_fw
+            tags:
+              - dc02
+          503:
+            enabled: false
+            ip_address_virtual: 172.30.22.249/24
+            name: mgnt_DC02_inf6_fw
+            tags:
+              - dc02
+          520:
+            enabled: false
+            ip_address_virtual: 172.30.24.249/24
+            name: mgnt_DC02_inf7_fw
+            tags:
+              - dc02
+          538:
+            enabled: false
+            ip_address_virtual: 172.23.133.249/24
+            name: DT_mgnt_DC02_inf4_fw
+            tags:
+              - dc02
+          547:
+            enabled: false
+            ip_address_virtual: 172.30.30.249/24
+            name: mgnt_DC02_inf8_fw
+            tags:
+              - dc02
+          831:
+            enabled: false
+            ip_address_virtual: 172.30.211.62/26
+            name: mgnt_CN_nfs1
+            tags:
+              - dc02
+          844:
+            enabled: false
+            ip_address_virtual: 172.23.246.254/24
+            name: DT_mgnt_CN_nas
+            tags:
+              - dc02
+          852:
+            enabled: false
+            ip_address_virtual: 172.23.228.28/27
+            name: DT_mgnt_CN_priv6_fw
+            tags:
+              - dc02
+          2300:
+            enabled: false
+            ip_address_virtual: 172.23.134.249/24
+            name: DT_mgnt_DC02_inf5_fw
+            tags:
+              - dc02
+          2304:
+            enabled: false
+            ip_address_virtual: 172.30.43.249/23
+            name: mgnt_DC02_inf9_fw
+            tags:
+              - dc02
+          2313:
+            enabled: false
+            ip_address_virtual: 172.30.219.252/24
+            name: mgnt_DC02_inf21_fw
+            tags:
+              - dc02
+          2318:
+            enabled: false
+            ip_address_virtual: 172.30.221.252/24
+            name: mgnt_DC02_inf22_fw
+            tags:
+              - dc02
+          2322:
+            enabled: false
+            ip_address_virtual: 172.23.135.60/27
+            name: DT_mgnt_DC02_priv5_fw
+            tags:
+              - dc02
+          2324:
+            enabled: false
+            ip_address_virtual: 172.30.65.60/27
+            name: mgnt_DC02_priv5_fw
+            tags:
+              - dc02
+          2326:
+            enabled: false
+            ip_address_virtual: 172.30.8.250/24
+            name: mgnt2_DC02_exa_fw
+            tags:
+              - dc02
+          2327:
+            enabled: false
+            ip_address_virtual: 172.30.9.252/24
+            name: mgnt3_DC02_exa_fw
+            tags:
+              - dc02
+          2341:
+            enabled: false
+            ip_address_virtual: 172.23.137.252/23
+            name: DT_mgnt_DC02_inf6_fw
+            tags:
+              - dc02
+          2356:
+            enabled: false
+            ip_address_virtual: 172.23.143.252/23
+            name: DT_mgnt_DC02_inf7_fw
+            tags:
+              - dc02
+          2375:
+            enabled: false
+            ip_address_virtual: 172.30.67.124/25
+            name: mgnt_DC02_priv7_fw
+            tags:
+              - dc02
+          2378:
+            enabled: false
+            ip_address_virtual: 172.30.215.251/24
+            name: mgnt_DC02_priv1_lb_fw
+            tags:
+              - dc02
+          2388:
+            enabled: false
+            ip_address_virtual: 172.23.153.252/24
+            name: DT_mgnt_DC02_inf8_fw
+            tags:
+              - dc02
+          2390:
+            enabled: false
+            ip_address_virtual: 172.30.229.252/24
+            name: mgnt_DC02_inf10_fw
+            tags:
+              - dc02
+          2393:
+            enabled: false
+            ip_address_virtual: 172.23.159.252/23
+            name: DT_mgnt_DC02_inf9_fw
+            tags:
+              - dc02
+          2396:
+            enabled: false
+            ip_address_virtual: 172.30.48.252/25
+            name: mgnt_DC02_inf12_fw
+            tags:
+              - dc02
+          2408:
+            enabled: false
+            ip_address_virtual: 172.30.65.123/26
+            name: mgnt1_DC02_priv2_lb_fw
+            tags:
+              - dc02
+          2411:
+            enabled: false
+            ip_address_virtual: 172.23.155.123/25
+            name: DT_mgnt_DC02_priv1_lb_fw
+            tags:
+              - dc02
+          2412:
+            enabled: false
+            ip_address_virtual: 172.23.155.252/25
+            name: DT_mgnt_DC02_inf10_fw
+            tags:
+              - dc02
+          2413:
+            enabled: false
+            ip_address_virtual: 172.23.132.252/27
+            name: DT_mgnt_DC02_inf11_fw
+            tags:
+              - dc02
+          2414:
+            enabled: false
+            ip_address_virtual: 172.30.231.92/27
+            name: mgnt_DC02_inf13_fw
+            tags:
+              - dc02
+          2419:
+            enabled: false
+            ip_address_virtual: 172.30.65.188/26
+            name: mgnt_DC02_inf14_fw
+            tags:
+              - dc02
+          2425:
+            enabled: false
+            ip_address_virtual: 172.30.212.252/26
+            name: mgnt_dc02_nas_fw
+            tags:
+              - dc02
+          2426:
+            enabled: false
+            ip_address_virtual: 172.30.71.252/24
+            name: mgnt_DC02_inf15_fw
+            tags:
+              - dc02
+          2427:
+            enabled: false
+            ip_address_virtual: 172.30.230.252/24
+            name: mgnt_DC02_inf16_fw
+            tags:
+              - dc02
+          2428:
+            enabled: false
+            ip_address_virtual: 172.30.208.252/24
+            name: mgnt_DC02_inf17_fw
+            tags:
+              - dc02
+          2429:
+            enabled: false
+            ip_address_virtual: 172.23.243.252/24
+            name: DT_mgnt_DC02_inf12_fw
+            tags:
+              - dc02
+          2430:
+            enabled: false
+            ip_address_virtual: 172.23.231.252/24
+            name: DT_mgnt_DC02_inf13_fw
+            tags:
+              - dc02
+          2431:
+            enabled: false
+            ip_address_virtual: 172.23.229.252/24
+            name: DT_mgnt_DC02_inf14_fw
+            tags:
+              - dc02
+          2437:
+            enabled: false
+            ip_address_virtual: 172.23.244.124/26
+            name: DT_mgnt_DC02_inf15_fw
+            tags:
+              - dc02
+          2453:
+            enabled: false
+            ip_address_virtual: 172.30.78.252/26
+            name: mgnt_DC02_inf19_fw
+            tags:
+              - dc02
+          2456:
+            enabled: false
+            ip_address_virtual: 172.30.217.252/23
+            name: mgnt_DC02_inf20_fw
+            tags:
+              - dc02
+          2467:
+            enabled: false
+            ip_address_virtual: 172.23.249.252/24
+            name: DT_mgnt_DC02_inf18_fw
+            tags:
+              - dc02
+          2486:
+            enabled: false
+            ip_address_virtual: 172.23.225.252/25
+            name: DT_mgnt_DC02_inf19_fw
+            tags:
+              - dc02
+          2489:
+            enabled: false
+            ip_address_virtual: 172.30.209.124/25
+            name: mgnt_DC02_inf23_fw
+            tags:
+              - dc02
+          2494:
+            enabled: false
+            ip_address_virtual: 172.30.225.252/24
+            name: mgnt_DC02_inf24_fw
+            tags:
+              - dc02
+          2499:
+            enabled: false
+            ip_address_virtual: 172.23.254.252/24
+            name: DT_mgnt_DC02_inf20_fw
+            tags:
+              - dc02
+          2500:
+            enabled: false
+            ip_address_virtual: 172.30.233.252/24
+            name: mgnt_DC02_inf25_fw
+            tags:
+              - dc02
+          2506:
+            enabled: false
+            ip_address_virtual: 172.30.235.254/24
+            name: mgnt_DC02_inf26
+            tags:
+              - dc02
+          2507:
+            enabled: false
+            ip_address_virtual: 172.23.162.252/25
+            name: DT_mgnt_DC02_inf21_fw
+            tags:
+              - dc02
+          2508:
+            enabled: false
+            ip_address_virtual: 172.30.209.252/25
+            name: mgnt_DC02_inf26_fw
+            tags:
+              - dc02
+          2509:
+            enabled: false
+            ip_address_virtual: 172.23.164.252/24
+            name: DT_mgnt_DC02_inf22_fw
+            tags:
+              - dc02
+          2518:
+            enabled: false
+            ip_address_virtual: 172.23.166.252/24
+            name: DT_mgnt_DC02_inf23_fw
+            tags:
+              - dc02
+          2527:
+            enabled: false
+            ip_address_virtual: 172.30.130.253/26
+            name: mgnt_DC02_inf27_fw
+            tags:
+              - dc02
+          2535:
+            enabled: false
+            ip_address_virtual: 172.30.64.158/28
+            name: mgnt9_DC02_con
+            tags:
+              - dc02
+          2536:
+            enabled: false
+            ip_address_virtual: 172.30.64.174/28
+            name: mgnt10_DC02_con
+            tags:
+              - dc02
+          2540:
+            enabled: false
+            ip_address_virtual: 172.23.226.252/24
+            name: DT_mgnt_DC02_inf24_fw
+            tags:
+              - dc02
+          2542:
+            enabled: false
+            ip_address_virtual: 172.23.168.253/24
+            name: DT_mgnt_DC02_inf25_fw
+            tags:
+              - dc02
+          2544:
+            enabled: false
+            ip_address_virtual: 172.30.244.253/24
+            name: mgnt_DC02_inf28_fw
+            tags:
+              - dc02
+          2568:
+            enabled: false
+            ip_address_virtual: 172.30.134.253/24
+            name: mgnt_DC02_inf29_fw
+            tags:
+              - dc02
+          2570:
+            enabled: false
+            ip_address_virtual: 172.30.135.253/24
+            name: mgnt_DC02_inf30_fw
+            tags:
+              - dc02
+          2572:
+            enabled: false
+            ip_address_virtual: 172.30.236.252/24
+            name: mgnt_DC02_inf31_fw
+            tags:
+              - dc02
+          2602:
+            enabled: false
+            ip_address_virtual: 172.23.224.252/24
+            name: DT_mgnt_CN_priv7_fw
+            tags:
+              - dc02
+          2603:
+            enabled: false
+            ip_address_virtual: 172.30.79.252/24
+            name: DT_mgnt_CN_priv7_fw
+            tags:
+              - dc02
+          2638:
+            enabled: false
+            ip_address_virtual: 172.30.130.62/26
+            name: mgnt2_CN_nfs1
+            tags:
+              - dc02
+          2657:
+            enabled: false
+            ip_address_virtual: 172.30.231.158/28
+            name: adm02_DC018_con
+            tags:
+              - dc02
+        vrf_vni: 4416
+      comm_admin:
+        mlag_ibgp_peering_vlan: 4017
+        svis:
+          300:
+            enabled: false
+            name: mgnt_DC02_access_fw
+            tags:
+              - dc02
+        vrf_vni: 4417
+      dataguard:
+        mlag_ibgp_peering_vlan: 4018
+        svis:
+          302:
+            enabled: false
+            ip_address_virtual: 10.59.1.124/25
+            name: inf_DC02_fw
+            tags:
+              - dc02
+          307:
+            enabled: false
+            ip_address_virtual: 10.59.233.124/25
+            name: supl4_DC02_fw
+            tags:
+              - dc02
+          343:
+            enabled: false
+            ip_address_virtual: 10.59.31.119/25
+            name: inf2_DC02_fw
+            tags:
+              - dc02
+          368:
+            enabled: false
+            ip_address_virtual: 10.59.37.122/25
+            name: inf5_DC02_fw
+            tags:
+              - dc02
+          413:
+            enabled: false
+            ip_address_virtual: 10.59.51.125/25
+            name: supl_DC02_lb_fw
+            tags:
+              - dc02
+          416:
+            enabled: false
+            ip_address_virtual: 10.59.52.240/25
+            name: inf10_DC02_fw
+            tags:
+              - dc02
+          517:
+            enabled: false
+            ip_address_virtual: 10.59.88.252/25
+            name: inf17_DC02_fw
+            tags:
+              - dc02
+          526:
+            enabled: false
+            ip_address_virtual: 10.59.90.122/25
+            name: inf18_DC02_fw
+            tags:
+              - dc02
+          527:
+            enabled: false
+            ip_address_virtual: 10.59.90.239/25
+            name: inf6_DC02_lb_fw
+            tags:
+              - dc02
+          556:
+            enabled: false
+            ip_address_virtual: 10.59.105.252/25
+            name: inf21_DC02_fw
+            tags:
+              - dc02
+          895:
+            enabled: false
+            ip_address_virtual: 10.59.160.253/24
+            name: inf01_DC018_fw
+            tags:
+              - dc02
+          2317:
+            enabled: false
+            ip_address_virtual: 10.59.138.252/24
+            name: inf70_DC02_fw
+            tags:
+              - dc02
+          2334:
+            enabled: false
+            ip_address_virtual: 10.59.29.62/27
+            name: mgnt1_DC02_dg
+            tags:
+              - dc02
+          2335:
+            enabled: false
+            ip_address_virtual: 10.59.29.94/27
+            name: mgnt2_DC02_dg
+            tags:
+              - dc02
+          2336:
+            enabled: false
+            ip_address_virtual: 10.59.29.126/27
+            name: mgnt3_DC02_dg
+            tags:
+              - dc02
+          2346:
+            enabled: false
+            ip_address_virtual: 10.59.27.252/25
+            name: inf31_DC02_fw
+            tags:
+              - dc02
+          2363:
+            enabled: false
+            ip_address_virtual: 10.59.236.252/24
+            name: inf33_DC02_fw
+            tags:
+              - dc02
+          2365:
+            enabled: false
+            ip_address_virtual: 10.59.21.252/25
+            name: inf34_DC02_fw
+            tags:
+              - dc02
+          2448:
+            enabled: false
+            ip_address_virtual: 10.59.211.252/24
+            name: inf67_DC02_fw
+            tags:
+              - dc02
+          2458:
+            enabled: false
+            ip_address_virtual: 10.59.131.252/25
+            name: inf68_DC02_fw
+            tags:
+              - dc02
+          2492:
+            enabled: false
+            ip_address_virtual: 10.59.143.252/24
+            name: inf78_DC02_fw
+            tags:
+              - dc02
+          2610:
+            enabled: false
+            ip_address_virtual: 10.59.139.252/25
+            name: inf55_CN_fw
+            tags:
+              - dc02
+        vrf_vni: 4418
+      management:
+        svis: {}
+      mgnt_CN_publ_fw:
+        mlag_ibgp_peering_vlan: 4026
+        svis:
+          602:
+            enabled: false
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: Only
+            tags:
+              - dc02
+        vrf_vni: 4426
+      mgnt_log:
+        mlag_ibgp_peering_vlan: 4027
+        svis:
+          875:
+            enabled: false
+            ip_address_virtual: 172.30.250.156/28
+            name: mgnt_CN_priv_log_con
+            tags:
+              - dc02
+          892:
+            enabled: false
+            ip_address_virtual: 172.30.251.254/24
+            name: mgnt_CN_priv_log
+            tags:
+              - dc02
+        vrf_vni: 4427

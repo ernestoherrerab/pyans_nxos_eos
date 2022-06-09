@@ -1,0 +1,333 @@
+---
+
+fabric_name: acme_fabric
+
+underlay_routing_protocol: EBGP
+
+p2p_uplinks_mtu: 9216
+
+### Cli Config Gen ###
+custom_structured_configuration_prefix: [ cs_conf_, cs_fabric_, cs_dh01_, cs_dc01, cs_dc02_]
+custom_structured_configuration_list_merge: append
+
+### Local Users ###
+local_users:
+  admin:
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$QXHB/2tY5j2qegFs$sEF21pxlDw9mXEsH8izA7K2Z7iFowWFMRldRqysmSdkpPDDWM7xqAKFbVrkHRcYNJEzM2o4JycEv/EUo9luSg1
+  cnmm:
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$cqjbtceNqS7jy2xU$Cf1pux3KlWTOej1Zh9IgreWnyGPUKAhZ5wn1CsKpxE0wtn/GYM1T.XZsC.gI8KjR4zibXVpXCLN8fbjs4.G8u.
+  cvpadmin:
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$VJju0.7hS08ObHpT$1/2ZJFUCXx6s8g0BToFKkjORf8GjfccYsvHHAnBOyOJZpdbG/8G89ry1Ib6rYWyfbzsSiqqkXW4PJcpl8Tcey.
+
+### Management Interface ###
+mgmt_vrf_routing: true
+
+cs_fabric_management_api_http:
+  enable_http: false
+  enable_https: true
+  enable_vrfs:
+    MGMT:
+      access_group: limit-admin
+
+### DNS ###
+cs_fabric_dns_domain: acme.com
+
+cs_fabric_ip_domain_lookup:
+  source_interfaces:
+    management1:
+      vrf: MGMT
+
+cs_fabric_domain_list:
+  - acme.com
+  - acme.com
+  - acmedt.com
+
+name_servers:
+  - 10.59.253.2
+  - 10.59.67.9
+
+### NTP ###
+ntp_servers:
+  - 10.57.255.253
+  - 10.57.255.252
+
+timezone: 'CET'
+
+### LLDP ###
+cs_fabric_lldp:
+  management_address: all
+  vrf: MGMT
+  run: true
+
+### AAA ###
+cs_fabric_aaa_server_groups:
+  - name: TACACS
+    type: tacacs+
+    servers:
+      - server: 10.59.56.199
+        vrf: MGMT
+      - server: 10.59.57.14
+        vrf: MGMT
+
+cs_fabric_aaa_root:
+  secret:
+    sha512_password: "$6$6LsnJUSPNe45PxYo$KkNdCV/O2FG4Cy9MR6gpGu3gvobIjkJS/YVmBqTiqRpGHQaPj9r3N5Mnmx9hNiRNJSYXji0/3E1x.efVzCxBg0"
+cs_fabric_ip_tacacs_source_interfaces:
+    - name: Management1
+      vrf: MGMT
+
+cs_fabric_aaa_authentication:
+  login:
+    default: group TACACS local
+    serial_console: local
+  enable:
+    default: group TACACS local
+
+cs_fabric_aaa_authorization:
+  exec:
+    default: group TACACS local
+  config_commands: false
+  serial_console: false
+  commands:
+    all_default: group TACACS local
+
+cs_fabric_aaa_accounting:
+  exec:
+    default:
+      type: start-stop
+      group: TACACS
+  commands:
+    commands_default:
+      - commands: all
+        type: start-stop
+        group: TACACS
+        logging: true
+
+cs_fabric_tacacs_servers:
+  hosts:
+    - host: 10.59.56.199
+      vrf: MGMT
+      key: 011C0808425F13
+    - host: 10.59.57.14
+      vrf: MGMT
+      key: 151D05001D7E3E
+      timeout: 5
+
+### ARP Timers ###
+cs_fabric_config_arp:
+  aging:
+    timeout_default: 275
+
+### ERRDISABLE ###
+cs_fabric_errdisable:
+  detect:
+    causes:
+      - link-change
+  recovery:
+    causes:
+      - link-flap
+    interval: 30
+
+### DCI ###
+l3_edge:
+  p2p_links_ip_pools: 
+    dci_pool: 10.253.5.0/28
+  p2p_links_profiles:
+    dci-profile:
+      ip_pool: dci_pool
+      include_in_underlay_protocol: true
+  p2p_links:
+    - id: 1
+      ip_pool: dci_pool
+      subnet: 10.253.5.0/31
+      nodes: [swex-dc01-bl01a, swex-dc02-bl01a]
+      interfaces: [Ethernet27, Ethernet27]
+      as: [64559, 64599]
+      profile: dci-profile
+    - id: 2
+      ip_pool: dci_pool
+      subnet: 10.253.5.2/31
+      nodes: [swex-dc01-bl01b, swex-dc02-bl01b]
+      interfaces: [Ethernet28, Ethernet28]
+      as: [64559, 64599]
+      profile: dci-profile
+
+### SNMP ###
+cs_fabric_snmp_server:
+  contact: ICN-Global
+  location: Sweden,DC01,Elmhult
+  users:
+    - name: cnmm
+      group: network-admin
+      version: v3
+      auth: md5
+      auth_passphrase: 0xbb160a55d261f32960de6c1b068c3596
+      priv: aes 
+      priv_passphrase: 0xbb160a55d261f32960de6c1b068c3596
+    - name: admin
+      group: network-admin
+      version: v3
+      auth: md5
+      auth_passphrase: 0x02e43600d81511db3e6d7afff8503cc4
+      priv: aes 
+      priv_passphrase: 0x02e43600d81511db3e6d7afff8503cc4
+  hosts:
+    - host: 172.30.60.25
+      vrf: MGMT
+      users:
+        - username: cnmm
+          authentication_level: auth
+          version: 3
+   
+### Management ACCESS-LISTS ###
+cs_fabric_management_ssh:
+  access_groups:
+    - name: limit-admin
+      vrf: MGMT
+  idle_timeout: 300
+
+### EXTENDED ACCESS-LISTS ###
+cs_fabric_access_lists:
+  limit-admin:
+    sequence_numbers:
+      10:
+        action: "permit tcp 10.59.57.23/32 any eq 22"
+      20:
+        action: "permit tcp 10.59.56.147/32 any eq 22"
+      30:
+        action: "permit tcp 10.59.56.205/32 any eq 22"
+      40:
+        action: "permit tcp 10.59.56.162/32 any eq 22"
+      50:
+        action: "permit tcp 10.59.56.180/32 any eq 22"
+      60:
+        action: "permit tcp 10.230.183.34/32 any eq 22"
+      70:
+        action: "permit tcp 10.230.183.16/32 any eq 22"
+      80:
+        action: "permit tcp 10.59.249.44/32 any eq 22"
+      90:
+        action: "permit tcp 10.59.249.45/32 any eq 22"
+      100:
+        action: "permit tcp 10.59.62.0/24 any eq 22"
+      110:
+        action: "permit tcp 10.59.63.0/24 any eq 22"
+      120:
+        action: "permit tcp 172.26.250.5/32 any eq 22"
+      130:
+        action: "permit tcp 10.57.246.53/32 any eq 22"
+      140:
+        action: "permit tcp 10.59.110.29/32 any eq 22"
+      150:
+        action: "permit tcp 10.59.111.44/32 any eq 22"
+      160:
+        action: "permit tcp 10.230.223.1/32 any eq 22"
+      170:
+        action: "permit tcp 10.59.196.17/32 any eq 22"
+      180:
+        action: "permit tcp 10.59.196.19/32 any eq 22"
+      190:
+        action: "permit tcp 10.59.196.20/32 any eq 22"
+      200:
+        action: "permit tcp 10.59.196.23/32 any eq 22"
+      210:
+        action: "permit tcp 10.232.8.9/32 any eq 22"
+      220:
+        action: "permit tcp 10.232.8.12/32 any eq 22"
+      230:
+        action: "permit tcp 10.232.8.13/32 any eq 22"
+      240:
+        action: "permit tcp 10.59.56.159/32 any eq 22"
+      250:
+        action: "permit tcp 10.59.56.139/32 any eq 22"
+      260:
+        action: "permit tcp 10.232.8.18/32 any eq 22"
+      270:
+        action: "permit tcp 10.232.8.20/32 any eq 22"
+      280:
+        action: "permit tcp 10.230.183.17/32 any eq 22"
+      290:
+        action: "permit tcp 10.59.56.159/32 any eq 443"
+      300:
+        action: "permit tcp 10.59.56.139/32 any eq 443"
+      310:
+        action: "permit tcp 10.62.35.12/32 any eq 443"
+      320:
+        action: "permit tcp 10.62.37.131/32 any eq 443"
+      330:
+        action: "permit tcp 10.59.56.154/32 any eq 443"
+      340:
+        action: "permit tcp 10.59.56.155/32 any eq 443"
+      350:
+        action: "permit tcp 10.59.56.156/32 any eq 443"
+      360:
+        action: "permit tcp 10.62.37.131/32 any eq 22"
+      370:
+        action: "permit tcp 10.62.37.154/32 any eq 22"
+      380:
+        action: "permit tcp 10.59.56.154/32 any eq 22"
+      390:
+        action: "permit tcp 10.59.56.155/32 any eq 22"
+      400:
+        action: "permit tcp 10.59.56.156/32 any eq 22"
+ 
+### STANDARD ACCESS-LISTS ###
+cs_fabric_standard_access_lists:
+  discovery-servers:
+    sequence_numbers:
+      10:
+        action: "permit 10.59.226.107/32"
+      20:
+        action: "permit 10.59.226.106/32"
+      30:
+        action: "permit 10.59.226.105/32"
+      40:
+        action: "permit 10.59.226.104/32"
+      50:
+        action: "permit 10.59.168.193/32"
+      60:
+        action: "permit 10.59.168.194/32"
+      70:
+        action: "permit 10.59.168.195/32"
+  management-servers-operator:
+    sequence_numbers:
+      10:
+        action: "permit 10.59.56.198/32"
+      20:
+        action: "permit 10.59.56.162/32"
+      30:
+        action: "permit 10.59.56.180/32"
+      40:
+        action: "permit 10.59.26.48/32"
+      50:
+        action: "permit 10.59.26.49/32"
+
+### BANNER ###
+cs_fabric_banners:
+  motd: |
+    #########################################################################################
+    #                                                                                      
+    #       Warning Notice                                                                 
+    #
+    #       This system is restricted solely to authorized users for legitimate business
+    #       purposes only. The actual or attempted unauthorized access, use, or modification
+    #       of this system is strictly prohibited.
+    #
+    #       The use of this system will be monitored and recorded for administrative
+    #       and security reasons. Anyone accessing this system expressly consents
+    #       to such monitoring and is advised that if monitoring reveals possible
+    #       evidence of criminal activity the evidence of such activity will be
+    #       provided to law enforcement officials.
+    #
+    #########################################################################################
+    EOF
+
+### CUSTOM way to use EOS CLI commands thats not yet supported ###
+cs_fabric_eos_cli: |
+  service unsupported-transceiver ACME 39f63da3

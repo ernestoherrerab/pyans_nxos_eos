@@ -1,0 +1,42 @@
+---
+- name: Set up Folders and files
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Local Output Folders
+      import_role:
+        name: arista.avd.build_output_folders
+      run_once: true
+
+    - name: Generate Structured Data From Python Script
+      script: py_avdParsing.py
+      args:
+        executable: python3
+      run_once: true
+
+- hosts: dh01_fabric
+  gather_facts: false
+  tasks:
+
+    - name: Generate intented variables
+      import_role:
+         name: arista.avd.eos_designs
+
+- hosts: dc_fabric
+  gather_facts: false
+  tasks:
+
+    - name: Generate intented variables
+      import_role:
+         name: arista.avd.eos_designs
+      
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Clean Up intended configs with Python Script
+      script: py_consolidateStruct.py
+      args:
+        executable: python3
+      run_once: true
+

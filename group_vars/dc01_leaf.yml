@@ -1,0 +1,8322 @@
+cs_conf_access_lists:
+  DMZ:
+    sequence_numbers:
+      5:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      10:
+        action: permit icmp 10.59.0.0/16 10.59.0.0/16
+      15:
+        action: permit icmp 192.168.0.0/16 192.168.0.0/16
+      20:
+        action: permit icmp 10.59.0.0/16 192.168.0.0/16
+      25:
+        action: permit icmp 192.168.0.0/16 10.59.0.0/16
+      70:
+        action: deny ip 192.168.0.0/16 192.168.0.0/16
+      75:
+        action: deny ip 192.168.0.0/16 172.16.0.0/12
+      80:
+        action: deny ip 192.168.0.0/16 10.0.0.0/8
+      85:
+        action: deny ip 10.59.0.0/16 10.0.0.0/8
+      90:
+        action: deny ip 10.59.0.0/16 192.168.0.0/16
+      95:
+        action: deny ip 10.59.0.0/16 172.16.0.0/12
+      100:
+        action: permit ip 10.59.0.0/16 any
+      105:
+        action: permit ip 192.168.0.0/16 any
+  DMZ-DT:
+    sequence_numbers:
+      5:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      20:
+        action: permit icmp 10.230.0.0/16 10.230.0.0/16
+      25:
+        action: permit icmp 192.168.0.0/16 192.168.0.0/16
+      30:
+        action: permit icmp 10.230.0.0/16 192.168.0.0/16
+      35:
+        action: permit icmp 192.168.0.0/16 10.230.0.0/16
+      40:
+        action: permit icmp 192.168.0.0/16 10.232.0.0/16
+      45:
+        action: permit icmp 10.232.0.0/16 192.168.0.0/16
+      50:
+        action: permit ip 10.60.37.64/26 10.232.28.128/26
+      55:
+        action: deny ip 10.232.0.0/16 10.0.0.0/8
+      60:
+        action: deny ip 10.232.0.0/16 192.168.0.0/16
+      65:
+        action: deny ip 10.232.0.0/16 172.16.0.0/12
+      70:
+        action: deny ip 192.168.0.0/16 192.168.0.0/16
+      75:
+        action: deny ip 192.168.0.0/16 172.16.0.0/12
+      80:
+        action: deny ip 192.168.0.0/16 10.0.0.0/8
+      85:
+        action: deny ip 10.230.0.0/16 10.0.0.0/8
+      90:
+        action: deny ip 10.230.0.0/16 192.168.0.0/16
+      95:
+        action: deny ip 10.230.0.0/16 172.16.0.0/12
+      100:
+        action: permit ip 10.230.0.0/16 any
+      105:
+        action: permit ip 192.168.0.0/16 any
+      110:
+        action: permit ip 10.232.0.0/16 any
+  DT-dataguard:
+    sequence_numbers:
+      10:
+        action: permit tcp any 10.230.128.0/17 eq 1521
+      20:
+        action: permit tcp 10.230.128.0/17 eq 1521 any range 1024 65535
+      50:
+        action: permit tcp any 10.230.128.0/17 eq 22
+      60:
+        action: permit tcp 10.230.128.0/17 eq 22 any range 1024 65535
+      70:
+        action: permit icmp any 10.230.128.0/17 echo
+      80:
+        action: permit icmp any 10.230.128.0/17 echo-reply
+      90:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      100:
+        action: permit tcp any 10.230.168.0/25 eq sunrpc
+      110:
+        action: permit tcp any 10.230.168.0/25 eq 2049
+      120:
+        action: permit tcp 10.230.168.0/25 eq sunrpc any range 1024 65535
+      130:
+        action: permit tcp 10.230.168.0/25 eq 2049 any range 1024 65535
+      140:
+        action: permit icmp any 10.232.0.0/16 echo
+      150:
+        action: permit icmp any 10.232.0.0/16 echo-reply
+      160:
+        action: permit tcp any 10.232.0.0/16 eq 1521
+      170:
+        action: permit tcp 10.232.0.0/16 eq 1521 any range 1024 65535
+      180:
+        action: permit tcp any 10.232.0.0/16 eq 22
+      190:
+        action: permit tcp 10.232.0.0/16 eq 22 any range 1024 65535
+      200:
+        action: permit ip 10.230.248.64/27 10.232.0.0/24
+      210:
+        action: permit ip 10.230.167.128/25 10.232.0.0/24
+      220:
+        action: permit tcp any 10.230.128.0/17 eq 1526
+      230:
+        action: permit tcp 10.230.128.0/17 eq 1526 any range 1024 65535
+      240:
+        action: permit tcp 10.230.130.203/32 eq 2049 10.230.168.50/32 eq 2049
+      250:
+        action: permit tcp 10.230.130.203/32 eq sunrpc 10.230.168.50/32 eq sunrpc
+      260:
+        action: permit ip 10.230.217.14/32 10.230.135.189/32
+      270:
+        action: permit ip 10.232.34.0/24 10.230.7.0/24
+      280:
+        action: permit ip 10.230.7.0/24 10.232.34.0/24
+      290:
+        action: permit tcp 10.232.21.0/24 eq sunrpc 10.232.0.0/24
+      300:
+        action: permit tcp 10.232.21.0/24 eq 2049 10.232.0.0/24
+      310:
+        action: permit ip 10.232.0.0/24 10.232.21.0/25
+      320:
+        action: permit ip 10.232.21.0/25 10.232.0.0/24
+  DT-management-dataguard:
+    sequence_numbers:
+      10:
+        action: permit ip 10.230.181.96/27 10.230.181.96/27
+      20:
+        action: permit ip 10.230.181.96/27 10.230.181.128/26
+      30:
+        action: permit ip 10.230.181.128/26 10.230.181.96/27
+      40:
+        action: permit ip 10.230.181.128/26 10.230.181.128/26
+      50:
+        action: permit ip 224.0.0.102/32 any
+      60:
+        action: permit ip any 224.0.0.102/32
+  NTP_Peer:
+    sequence_numbers:
+      10:
+        action: permit ip any any
+  NTP_Utility:
+    sequence_numbers:
+      10:
+        action: deny ip any any
+  NWP_Tobias:
+    sequence_numbers:
+      3:
+        action: permit ip 10.230.216.0 255.255.255.0
+      6:
+        action: permit ip 10.230.135.0 255.255.255.0
+      9:
+        action: permit ip 10.230.149.128 255.255.255.128
+      12:
+        action: permit ip any 10.230.216.0
+      15:
+        action: permit ip any 10.230.135.0
+      18:
+        action: permit ip any 10.230.149.128
+  PROD-dataguard:
+    sequence_numbers:
+      10:
+        action: permit tcp any 10.59.0.0/16 eq 1521
+      20:
+        action: permit tcp 10.59.0.0/16 eq 1521 any range 1024 65535
+      30:
+        action: permit tcp any 10.59.0.0/16 eq 22
+      40:
+        action: permit tcp 10.59.0.0/16 eq 22 any range 1024 65535
+      50:
+        action: permit icmp any 10.59.0.0/16 echo
+      60:
+        action: permit icmp any 10.59.0.0/16 echo-reply
+      70:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      80:
+        action: permit tcp 10.59.0.128/25 10.59.1.0/25 range 7809 7820
+      90:
+        action: permit tcp 10.59.1.0/25 range 7809 7820 10.59.0.128/25 range 1024 65535
+      100:
+        action: permit tcp 10.59.1.0/25 10.59.0.128/25 range 7809 7820
+      110:
+        action: permit tcp 10.59.0.128/25 range 7809 7820 10.59.1.0/25 range 1024 65535
+      120:
+        action: permit tcp any 10.59.0.0/16 eq 1526
+      130:
+        action: permit tcp 10.59.0.0/16 eq 1526 any range 1024 65535
+      140:
+        action: permit tcp 10.59.0.151/32 eq 5201 10.59.139.137/32
+      150:
+        action: permit tcp 10.59.0.151/32 eq 5201 10.59.160.10/32
+      160:
+        action: permit tcp 10.59.105.112/32 eq 5201 10.59.139.137/32
+      170:
+        action: permit tcp 10.59.105.112/32 eq 5201 10.59.160.10/32
+      180:
+        action: permit tcp 10.59.117.40/29 10.59.21.136/29
+  PROD-dataguard-JDA:
+    sequence_numbers:
+      10:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      20:
+        action: permit ip 10.59.58.0/25 10.59.0.128/25
+      30:
+        action: permit ip 10.59.0.128/25 10.59.58.0/25
+      40:
+        action: permit ip 10.59.58.0/25 10.59.1.0/25
+      50:
+        action: permit ip 10.59.1.0/25 10.59.58.0/25
+      60:
+        action: permit icmp any 10.59.0.0/16 echo
+      70:
+        action: permit icmp any 10.59.0.0/16 echo-reply
+      140:
+        action: permit ip 10.59.58.0/25 10.59.51.0/25
+      150:
+        action: permit ip 10.59.51.0/25 10.59.58.0/25
+      160:
+        action: permit tcp any 10.59.0.0/16 eq 1521
+      170:
+        action: permit tcp 10.59.0.0/16 eq 1521 any range 1024 65535
+      180:
+        action: permit tcp any 10.59.0.0/16 eq 22
+      190:
+        action: permit tcp 10.59.0.0/16 eq 22 any range 1024 65535
+      200:
+        action: permit icmp any 10.59.0.0/16 echo
+      210:
+        action: permit icmp any 10.59.0.0/16 echo-reply
+      220:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      230:
+        action: permit tcp 10.59.0.128/25 10.59.1.0/25 range 7809 7820
+      240:
+        action: permit tcp 10.59.1.0/25 range 7809 7820 10.59.0.128/25 range 1024 65535
+      250:
+        action: permit tcp 10.59.1.0/25 10.59.0.128/25 range 7809 7820
+      260:
+        action: permit tcp 10.59.0.128/25 range 7809 7820 10.59.1.0/25 range 1024 65535
+      270:
+        action: permit tcp any 10.59.0.0/16 eq 1526
+      280:
+        action: permit tcp 10.59.0.0/16 eq 1526 any range 1024 65535
+      290:
+        action: permit ip 10.59.91.0/25 10.59.90.128/25
+      300:
+        action: permit ip 10.59.90.128/25 10.59.91.0/25
+      310:
+        action: permit tcp 10.59.91.0/25 10.59.90.128/25 range 7809 7820
+      320:
+        action: permit tcp 10.59.91.0/25 range 7809 7820 10.59.90.128/25 range 1024 65535
+      340:
+        action: permit tcp 10.59.90.128/25 10.59.91.0/25 range 7809 7820
+      350:
+        action: permit tcp 10.59.90.128/25 range 7809 7820 10.59.91.0/25 range 1024 65535
+      360:
+        action: permit ip 10.59.91.0/25 any
+  backup_:
+    sequence_numbers: {}
+  backup_client:
+    sequence_numbers:
+      5:
+        action: permit tcp 172.30.21.66/32 172.30.210.12/32
+      10:
+        action: permit tcp any 172.30.210.0/26 eq 1500
+      20:
+        action: permit tcp 172.30.210.0/26 eq 1500 any range 1024 65535
+      30:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      40:
+        action: permit icmp any 172.30.210.0/24 echo
+      50:
+        action: permit icmp any 172.23.128.0/24 echo
+      70:
+        action: permit icmp any 172.30.210.0/24 echo-reply
+      80:
+        action: permit icmp any 172.30.13.0/24 echo
+      120:
+        action: permit icmp any 172.30.52.0/24 echo
+      140:
+        action: permit icmp any 172.30.53.0/24 echo
+      150:
+        action: permit icmp any 172.30.53.0/24 echo-reply
+      160:
+        action: permit icmp any 172.30.57.0/24 echo
+      170:
+        action: permit icmp any 172.30.57.0/24 echo-reply
+      200:
+        action: permit tcp any 172.30.210.64/26 eq 2049
+      210:
+        action: permit udp any 172.30.210.64/26 eq 2049
+      220:
+        action: permit tcp any 172.30.210.64/26 eq sunrpc
+      230:
+        action: permit udp any 172.30.210.64/26 eq sunrpc
+      330:
+        action: permit icmp any 172.30.210.128/28 echo-reply
+      340:
+        action: permit icmp any 172.23.144.0/24 echo
+      350:
+        action: permit icmp any 172.23.144.0/24 echo-reply
+      400:
+        action: permit ip 172.30.21.1/32 172.30.217.166/32
+      410:
+        action: permit ip 172.30.217.166/32 172.30.21.1/32
+      420:
+        action: permit tcp any 172.23.144.0/24 eq sunrpc
+      430:
+        action: permit udp any 172.23.144.0/24 eq sunrpc
+      445:
+        action: permit tcp 172.30.210.128/28 eq sunrpc any range 100 65535
+      530:
+        action: permit tcp 172.30.210.128/28 eq 635 any range 100 65535
+      560:
+        action: permit udp 172.30.210.128/28 eq 4045 any range 100 65535
+      570:
+        action: permit tcp 172.30.210.128/28 eq 4046 any range 100 65535
+      580:
+        action: permit udp 172.30.210.128/28 eq 4046 any range 100 65535
+      590:
+        action: permit tcp 172.30.210.128/28 eq 4049 any range 100 65535
+      600:
+        action: permit udp 172.30.210.128/28 eq 4049 any range 100 65535
+      610:
+        action: permit udp 172.30.210.128/28 eq sunrpc any range 100 65535
+      620:
+        action: permit tcp 172.30.210.128/28 eq 2049 any range 100 65535
+      630:
+        action: permit tcp any 172.30.210.128/28 eq 22
+      640:
+        action: permit tcp 172.30.210.128/28 eq 22 any range 100 65535
+      650:
+        action: permit icmp 172.30.210.128/28 any echo
+      660:
+        action: permit icmp 172.30.210.128/28 any echo-reply
+      730:
+        action: permit tcp any 172.30.211.0/26 eq 2049
+      740:
+        action: permit udp any 172.30.211.0/26 eq 2049
+      750:
+        action: permit tcp any 172.30.211.0/26 eq sunrpc
+      760:
+        action: permit udp any 172.30.211.0/26 eq sunrpc
+      770:
+        action: permit icmp any 172.30.211.0/24 echo
+      780:
+        action: permit icmp any 172.30.211.0/24 echo-reply
+      790:
+        action: permit tcp any 172.23.246.0/24 range 4045 4046
+      800:
+        action: permit tcp any 172.23.246.0/24 eq 4049
+      810:
+        action: permit udp any 172.23.246.0/24 range 4045 4046
+      820:
+        action: permit udp any 172.23.246.0/24 eq 4049
+      830:
+        action: permit tcp any 172.30.211.0/26 range 4045 4046
+      840:
+        action: permit tcp any 172.30.211.0/26 eq 4049
+      850:
+        action: permit udp any 172.30.211.0/26 range 4045 4046
+      870:
+        action: permit tcp any 172.23.246.0/24 eq 2049
+      880:
+        action: permit udp any 172.23.246.0/24 eq 2049
+      890:
+        action: permit tcp any 172.23.246.0/24 eq sunrpc
+      900:
+        action: permit udp any 172.23.246.0/24 eq sunrpc
+      910:
+        action: permit icmp any 172.30.211.0/26 echo
+      920:
+        action: permit icmp any 172.30.211.0/26 echo-reply
+      930:
+        action: permit tcp any 172.30.211.0/26 eq 635
+      940:
+        action: permit udp any 172.30.211.0/26 eq 635
+      950:
+        action: permit tcp 172.30.211.0/26 172.30.44.0/23 eq 635
+      960:
+        action: permit udp 172.30.211.0/26 172.30.44.0/23 eq 635
+      990:
+        action: permit tcp any 172.23.246.0/24 eq 635
+      1000:
+        action: permit udp any 172.23.246.0/24 eq 635
+      1010:
+        action: permit tcp any 172.30.211.0/26 eq sunrpc
+      1020:
+        action: permit udp any 172.30.211.0/26 eq sunrpc
+      1030:
+        action: permit tcp 172.30.211.0/26 172.30.31.0/24 eq sunrpc
+      1040:
+        action: permit tcp 172.30.211.0/26 172.30.31.0/24 eq sunrpc
+      1050:
+        action: permit ip 172.30.27.0/24 172.30.27.0/24
+      1060:
+        action: permit ip 172.30.220.6/32 172.30.221.87/32
+      1070:
+        action: permit ip 172.24.112.64/32 172.23.248.11/31
+      1090:
+        action: permit tcp 172.30.211.0/26 172.30.31.0/24 eq 635
+      1100:
+        action: permit udp 172.30.211.0/26 172.30.31.0/24 eq 635
+      1120:
+        action: permit tcp any 172.23.246.0/24 eq 443
+      1130:
+        action: permit tcp any 172.23.246.0/24 eq 22
+      1131:
+        action: permit tcp any 172.23.246.0/24 eq www
+      1140:
+        action: permit tcp any 172.30.211.0/26 eq 443
+      1141:
+        action: permit tcp 172.23.160.0/23 172.23.246.0/24 eq 3260
+      1150:
+        action: permit tcp any 172.30.211.0/26 eq www
+      1160:
+        action: permit tcp any 172.30.211.0/26 eq 22
+      1170:
+        action: permit tcp any 172.30.210.110/32 eq 1521
+      1180:
+        action: permit tcp any 172.30.210.110/32 eq 22
+      1195:
+        action: permit tcp any 172.30.210.110/32 range 9001 9019
+      1196:
+        action: permit tcp any 172.30.210.110/32 range 32000 65535
+      1197:
+        action: permit udp any 172.30.210.110/32 range 32000 65535
+      1238:
+        action: permit ip 172.30.220.5/32 172.30.221.91/32
+      1239:
+        action: permit tcp 172.30.6.34/32 eq 1521 172.30.7.34/32 range 100 65535
+      1250:
+        action: permit ip 172.23.138.228/32 172.24.9.1/32
+      1260:
+        action: permit ip 172.23.138.229/32 172.24.9.1/32
+      1270:
+        action: permit udp any 172.24.111.69/32 eq 2049
+      1280:
+        action: permit ip 172.30.218.96/31 172.30.21.11/32
+      1290:
+        action: permit ip 172.30.21.11/32 172.30.218.96/31
+      1300:
+        action: permit tcp any 172.24.111.69/32 eq 2049
+      1310:
+        action: permit tcp 172.23.149.29/32 172.30.21.119/32 eq 2049
+      1340:
+        action: permit udp 172.23.149.29/32 172.30.21.119/32 eq sunrpc
+      1350:
+        action: permit tcp 172.23.149.29/32 172.30.21.119/32 range 32000 65535
+      1360:
+        action: permit tcp 172.30.21.119/32 eq 2049 172.23.149.29/32
+      1370:
+        action: permit udp 172.30.21.119/32 eq 2049 172.23.149.29/32
+      1380:
+        action: permit tcp 172.30.21.119/32 eq sunrpc 172.23.149.29/32
+      1390:
+        action: permit udp 172.30.21.119/32 eq sunrpc 172.23.149.29/32
+      1400:
+        action: permit tcp 172.30.21.119/32 range 32000 65535 172.23.149.29/32
+      1410:
+        action: permit udp 172.23.149.29/32 172.30.21.119/32 range 32000 65535
+      1420:
+        action: permit tcp 172.23.149.29/32 172.30.21.119/32 range 100 65535
+      1430:
+        action: permit tcp 172.30.21.119/32 range 100 65535 172.23.149.29/32
+      1440:
+        action: permit tcp 172.23.149.34/32 172.30.21.119/32 eq 2049
+      1450:
+        action: permit ip 172.30.21.119/32 172.23.149.34/32
+      1460:
+        action: permit tcp 172.23.149.34/32 172.30.21.119/32 eq sunrpc
+      1470:
+        action: permit ip 172.23.149.34/32 172.30.21.119/32
+      1480:
+        action: permit tcp 172.30.21.119/32 eq 2049 172.23.149.34/32
+      1490:
+        action: permit ip 172.30.21.119/32 172.30.218.74/32
+      1500:
+        action: permit ip 172.30.218.74/32 172.30.21.119/32
+      1530:
+        action: permit tcp 172.30.21.119/32 eq 9000 172.23.149.34/32
+      1570:
+        action: permit tcp 172.23.149.155/32 172.30.21.73/32 eq sunrpc
+      1590:
+        action: permit tcp 172.30.21.73/32 eq 2049 172.23.149.155/32
+      1610:
+        action: permit tcp 172.30.21.73/32 eq sunrpc 172.23.149.155/32
+      1630:
+        action: permit tcp 172.23.149.155/32 172.30.21.73/32 eq 9000
+      1640:
+        action: permit tcp 172.30.21.73/32 eq 9000 172.23.149.155/32
+      1650:
+        action: permit tcp 172.23.154.5/32 172.30.21.73/32 eq 2049
+      1680:
+        action: permit udp 172.23.154.5/32 172.30.21.73/32 eq sunrpc
+      1690:
+        action: permit tcp 172.30.21.73/32 eq 2049 172.23.154.5/32
+      1710:
+        action: permit tcp 172.30.21.73/32 eq sunrpc 172.23.154.5/32
+      1720:
+        action: permit udp 172.30.21.73/32 eq sunrpc 172.23.154.5/32
+      1730:
+        action: permit tcp 172.23.154.5/32 172.30.21.73/32 eq 9000
+      1740:
+        action: permit tcp 172.30.21.73/32 eq 9000 172.23.154.5/32
+      1750:
+        action: permit tcp 172.23.154.4/32 172.30.21.120/32 eq 2049
+      1770:
+        action: permit tcp 172.23.154.4/32 172.30.21.120/32 eq sunrpc
+      1780:
+        action: permit udp 172.23.154.4/32 172.30.21.120/32 eq sunrpc
+      1790:
+        action: permit tcp 172.30.21.120/32 eq 2049 172.23.154.4/32
+      1800:
+        action: permit ip 172.30.220.57/32 172.24.111.69/32
+      1810:
+        action: permit tcp 172.30.21.120/32 eq sunrpc 172.23.154.4/32
+      1820:
+        action: permit udp 172.30.21.120/32 eq sunrpc 172.23.154.4/32
+      1830:
+        action: permit tcp 172.23.154.4/32 172.30.21.120/32 eq 9000
+      1840:
+        action: permit tcp 172.30.21.120/32 eq 9000 172.23.154.4/32
+      1850:
+        action: permit tcp 172.23.149.35/32 172.30.21.120/32 eq 2049
+      1860:
+        action: permit ip 172.30.218.81/32 172.30.22.194/32
+      1870:
+        action: permit ip 172.23.248.214/32 172.30.22.194/32
+      1880:
+        action: permit udp 172.23.149.35/32 172.30.21.120/32 eq sunrpc
+      1890:
+        action: permit tcp 172.30.21.120/32 eq 2049 172.23.149.35/32
+      1920:
+        action: permit udp 172.30.21.120/32 eq sunrpc 172.23.149.35/32
+      1930:
+        action: permit tcp 172.23.149.35/32 172.30.21.120/32 eq 9000
+      1940:
+        action: permit tcp 172.30.21.120/32 eq 9000 172.23.149.35/32
+      2010:
+        action: permit ip 172.23.169.1/32 172.23.150.17/32
+      2020:
+        action: permit ip 172.30.21.73/32 172.30.21.120/32
+      2050:
+        action: permit tcp 172.23.149.0/24 172.23.149.29/32 eq 2049
+      2060:
+        action: permit udp 172.23.149.0/24 172.23.149.29/32 eq sunrpc
+      2070:
+        action: permit tcp 172.23.149.29/32 eq 2049 172.23.149.0/24
+      2080:
+        action: permit udp 172.23.149.29/32 eq sunrpc 172.23.149.0/24
+      2100:
+        action: permit tcp 172.23.149.29/32 eq 9000 172.23.149.0/24
+      2130:
+        action: permit tcp 172.23.149.29/32 eq 2049 172.23.154.0/24
+      2140:
+        action: permit ip 172.30.220.8/32 172.30.218.99/32
+      2190:
+        action: permit ip 172.23.149.59/32 172.23.150.3/32
+      2220:
+        action: permit ip 172.30.56.0/24 172.30.57.0/24
+      2270:
+        action: permit ip 172.30.52.0/23 172.30.210.0/25
+      2280:
+        action: permit ip 172.30.52.0/23 172.30.130.0/26
+      2290:
+        action: permit ip 172.30.52.0/23 172.30.211.0/26
+      2300:
+        action: permit ip 172.30.213.0/24 172.30.210.0/25
+      2310:
+        action: permit ip 172.30.213.0/24 172.30.130.0/26
+      2320:
+        action: permit ip 172.30.213.0/24 172.30.211.0/26
+      2330:
+        action: permit ip 172.30.56.0/24 172.30.210.0/25
+      2340:
+        action: permit ip 172.30.56.0/24 172.30.130.0/26
+      2350:
+        action: permit ip 172.30.56.0/24 172.30.211.0/26
+      2360:
+        action: permit ip 172.30.218.99/32 172.30.220.8/32
+      2370:
+        action: permit ip 172.30.220.7/32 172.30.221.90/32
+      2380:
+        action: permit ip 172.23.149.0/24 172.24.107.128/32
+      2390:
+        action: permit tcp any 172.26.38.0/23 eq sunrpc
+      2400:
+        action: permit tcp any 172.26.38.0/23 eq 443
+      2410:
+        action: permit tcp any 172.26.38.0/23 eq 2049
+      2420:
+        action: permit udp any 172.26.38.0/23 eq 2049
+      2430:
+        action: permit tcp any 172.26.38.0/23 eq 1514
+      2440:
+        action: permit tcp any 172.26.38.0/23 range 32764 32769
+      2450:
+        action: permit udp any 172.26.38.0/23 range 32764 32769
+      2460:
+        action: permit udp any 172.26.38.0/23 range netbios-ns netbios-dgm
+      2470:
+        action: permit tcp any 172.26.38.0/23 eq 139
+      2480:
+        action: permit tcp any 172.26.38.0/23 eq 445
+      2530:
+        action: permit tcp any 172.24.12.0/25 eq 1514
+      2540:
+        action: permit tcp any 172.24.12.0/25 range 32764 32769
+      2550:
+        action: permit udp any 172.24.12.0/25 range 32764 32769
+      2560:
+        action: permit udp any 172.24.12.0/25 range netbios-ns netbios-dgm
+      2570:
+        action: permit ip any 172.23.160.0/24
+      2580:
+        action: permit ip 172.23.160.0/24 any
+      2680:
+        action: permit ip 172.30.56.0/24 172.26.38.0/23
+      2700:
+        action: permit tcp any range 12800 12801 172.26.40.0/23
+      2710:
+        action: permit tcp any range 32764 32769 172.26.40.0/23
+      2720:
+        action: permit tcp any eq 902 172.26.38.0/23
+      2730:
+        action: permit tcp any range 32764 32769 172.26.38.0/23
+      2740:
+        action: permit tcp any range 12800 12801 172.26.38.0/23
+      2780:
+        action: permit tcp any range 32764 32769 172.26.3.64/26
+      2790:
+        action: permit tcp any range 12800 12801 172.26.3.64/26
+      2800:
+        action: permit ip any 172.26.38.0/23
+      2810:
+        action: permit ip any 172.26.40.0/23
+      2820:
+        action: permit ip any 172.26.3.64/26
+      2821:
+        action: permit tcp 172.30.212.128/26 172.30.212.192/26 range 11104 11105
+      2823:
+        action: permit udp 172.30.212.128/26 172.30.212.192/26 eq snmp
+      2825:
+        action: permit icmp 172.30.212.128/26 172.30.212.192/26 echo
+      2826:
+        action: permit icmp 172.30.212.128/26 172.30.212.192/26 echo-reply
+      2827:
+        action: permit tcp 172.30.212.128/26 range 11104 11105 172.30.212.192/26 range 1024 65535
+      2828:
+        action: permit udp 172.30.212.128/26 eq snmp 172.30.212.192/26 range 1024 65535
+      2829:
+        action: permit ip 172.30.218.73/32 172.23.248.163/32
+      2830:
+        action: permit ip 172.23.248.163/32 172.30.218.73/32
+      2840:
+        action: permit ip 172.23.160.129/32 172.23.133.20/24
+      2841:
+        action: permit ip 172.23.138.96/32 172.24.107.128/32
+      2850:
+        action: permit ip 172.30.56.0/24 172.30.63.64/26
+      2860:
+        action: permit ip 172.30.56.0/24 172.23.132.0/25
+      2870:
+        action: permit ip 172.30.63.64/26 172.30.56.0/24
+      2880:
+        action: permit ip 172.30.63.64/26 172.23.132.0/25
+      2890:
+        action: permit ip 172.23.132.0/25 172.30.63.64/26
+      2900:
+        action: permit ip 172.23.132.0/25 172.30.56.0/24
+      2910:
+        action: permit ip 172.30.56.0/24 172.30.65.64/26
+      2920:
+        action: permit ip 172.30.63.64/26 172.30.65.64/26
+      2930:
+        action: permit ip 172.23.132.0/25 172.30.65.64/26
+      2940:
+        action: permit ip 172.30.56.0/24 172.30.57.0/24
+      2950:
+        action: permit ip 172.30.63.64/26 172.30.57.0/24
+      2960:
+        action: permit ip 172.23.132.0/25 172.30.57.0/24
+      2970:
+        action: permit ip 172.30.27.91/32 172.24.9.1/32
+      2980:
+        action: permit ip 172.30.27.92/32 172.24.9.1/32
+      2990:
+        action: permit tcp any 172.23.150.63/32 eq 2049
+      3000:
+        action: permit ip 172.23.169.16/32 172.23.150.63/32
+      3010:
+        action: permit ip 172.30.27.68/32 172.30.217.4/32
+      3020:
+        action: permit ip 172.30.27.73/32 172.30.217.4/32
+      3030:
+        action: permit ip 172.30.45.24/32 172.30.43.37/32
+      3040:
+        action: permit tcp 172.30.45.24/32 eq 2049 172.23.249.183/32
+      3050:
+        action: permit tcp 172.30.45.24/32 eq sunrpc 172.23.249.183/32
+      3060:
+        action: permit tcp 172.30.45.24/32 eq 2049 172.23.249.193/32
+      3070:
+        action: permit tcp 172.30.45.24/32 eq sunrpc 172.23.249.193/32
+      3080:
+        action: permit tcp 172.30.45.24/32 eq 2049 172.30.216.64/28
+      3090:
+        action: permit tcp 172.30.45.24/32 eq sunrpc 172.30.216.64/28
+      3130:
+        action: permit ip 172.23.160.32/32 172.23.150.3/32
+      3140:
+        action: permit ip 172.30.27.89/31 172.30.217.4/32
+      3190:
+        action: permit ip 172.30.218.172/32 172.30.228.45/32
+      3200:
+        action: permit ip 172.30.228.45/32 172.30.218.172/32
+      3210:
+        action: permit ip 172.30.218.147/32 172.30.228.18/32
+      3220:
+        action: permit ip 172.30.228.18/32 172.30.218.147/32
+      3230:
+        action: permit ip 172.30.218.172/32 172.30.229.41/32
+      3240:
+        action: permit ip 172.30.229.41/32 172.30.218.172/32
+      3250:
+        action: permit ip 172.23.149.68/32 172.23.160.32/32
+      3260:
+        action: permit ip 172.30.77.60/32 172.30.221.88/32
+      3270:
+        action: permit ip 172.30.77.60/32 172.30.221.89/32
+      3280:
+        action: permit ip 172.30.21.119/32 172.30.17.166/32
+      3290:
+        action: permit ip 172.30.17.166/32 172.30.21.119/32
+      3300:
+        action: permit ip 172.23.149.11/32 172.23.169.44/32
+      3310:
+        action: permit ip 172.23.169.44/32 172.23.149.11/32
+      3320:
+        action: permit ip 172.30.27.190/32 172.30.216.206/27
+      3330:
+        action: permit ip 172.30.27.190/32 172.30.217.127/24
+      3340:
+        action: permit ip 172.23.169.8/32 172.24.112.133/32
+      3390:
+        action: permit ip 172.30.22.194/32 172.30.218.81/32
+      3400:
+        action: permit ip 172.30.22.194/32 172.23.248.214/32
+      3410:
+        action: permit ip 172.30.45.232/32 172.30.218.77/32
+      3420:
+        action: permit ip 172.30.218.77/32 172.30.45.232/32
+      3440:
+        action: permit ip 172.23.169.31/32 172.23.143.4/32
+      3560:
+        action: permit ip 172.30.62.0/25 172.30.130.0/26
+      3590:
+        action: permit tcp any 172.30.130.0/26 eq 635
+      3600:
+        action: permit udp any 172.30.130.0/26 eq 635
+      3610:
+        action: permit tcp any 172.30.130.0/26 eq 2049
+      3620:
+        action: permit udp any 172.30.130.0/26 eq 2049
+      3630:
+        action: permit tcp any 172.30.130.0/26 eq sunrpc
+      3640:
+        action: permit udp any 172.30.130.0/26 eq sunrpc
+      3650:
+        action: permit tcp any 172.30.130.0/26 range 4045 4046
+      3660:
+        action: permit tcp any 172.30.130.0/26 eq 4049
+      3670:
+        action: permit udp any 172.30.130.0/26 range 4045 4046
+      3680:
+        action: permit tcp any 172.30.130.0/26 eq 3260
+      3690:
+        action: permit ip 172.30.57.0/24 172.30.130.0/26
+      3700:
+        action: permit ip 172.23.160.189/32 172.30.27.68/32
+      3710:
+        action: permit ip 172.30.27.68/32 172.23.160.189/32
+      3720:
+        action: permit ip 172.30.21.119/32 172.30.22.177/32
+      3730:
+        action: permit ip 172.23.169.23/32 172.30.218.172/32
+      3740:
+        action: permit ip 172.30.218.172/32 172.23.169.23/32
+      3750:
+        action: permit ip 172.30.44.0/23 172.30.221.0/24
+      3760:
+        action: permit ip 172.30.44.0/23 172.30.218.0/24
+      3770:
+        action: permit ip 172.30.218.0/24 172.30.44.0/23
+      3780:
+        action: permit ip 172.30.21.1/32 172.23.160.32/32
+      3790:
+        action: permit ip 172.23.160.32/32 172.30.21.1/32
+      3800:
+        action: permit tcp any 172.30.231.160/28 eq 443
+      3810:
+        action: permit tcp any 172.30.231.160/28 eq www
+      3820:
+        action: permit ip 172.30.44.30/31 172.30.17.50/32
+      3830:
+        action: permit ip 172.30.44.10/32 172.30.17.50/32
+      3840:
+        action: permit ip 172.30.44.22/32 172.30.17.50/32
+      3850:
+        action: permit ip 172.30.44.5/32 172.30.17.50/32
+      3860:
+        action: permit ip 172.30.44.12/32 172.30.17.50/32
+      3870:
+        action: permit ip 172.30.44.16/32 172.30.17.50/32
+      3880:
+        action: permit ip 172.30.44.1/31 172.30.17.50/32
+      3890:
+        action: permit ip 172.24.112.64/32 172.23.248.13/32
+      3895:
+        action: permit ip 172.30.218.0/24 172.30.22.0/24
+      3900:
+        action: permit ip 172.30.21.0/24 172.30.11.0/24
+      3910:
+        action: permit ip 172.23.248.157/32 172.24.112.64/32
+  backup_server:
+    sequence_numbers:
+      5:
+        action: permit tcp 172.30.210.12/32 172.30.21.66/32 eq 1500
+      10:
+        action: permit tcp 172.30.210.0/26 eq 1500 any range 1024 65535
+      20:
+        action: permit tcp 172.30.210.0/26 172.30.0.0/16 established
+      30:
+        action: permit tcp 172.30.210.0/26 172.23.0.0/16 established
+      40:
+        action: permit ip 172.30.210.0/26 172.30.210.0/26
+      50:
+        action: permit udp 172.30.210.0/26 224.0.0.2/32 eq 1985
+      60:
+        action: permit icmp 172.30.210.0/26 172.30.0.0/16 echo
+      70:
+        action: permit icmp 172.30.210.0/26 172.23.0.0/16 echo
+      75:
+        action: permit icmp 172.30.210.0/26 172.26.0.0/16 echo
+      80:
+        action: permit icmp 172.30.210.0/26 any echo-reply
+      90:
+        action: permit icmp 172.30.52.0/24 172.30.210.0/26 echo
+      100:
+        action: permit icmp 172.30.52.0/24 172.30.210.0/26 echo-reply
+      110:
+        action: permit tcp 172.30.210.64/26 eq 2049 any range 1024 65535
+      120:
+        action: permit udp 172.30.210.64/26 eq 2049 any range 1024 65535
+      130:
+        action: permit icmp 172.30.210.64/26 172.30.0.0/16 echo
+      140:
+        action: permit icmp 172.30.210.64/26 172.23.0.0/16 echo
+      150:
+        action: permit icmp 172.30.210.64/26 any echo-reply
+      160:
+        action: permit udp any 224.0.0.2/32 eq 1985
+      170:
+        action: permit tcp 172.30.210.64/26 eq 2049 any
+      180:
+        action: permit udp 172.30.210.64/26 eq 2049 any
+      190:
+        action: permit tcp 172.30.210.64/26 eq sunrpc any
+      200:
+        action: permit udp 172.30.210.64/26 eq sunrpc any
+      210:
+        action: permit udp 172.30.210.93/32 range 32000 65535 any
+      220:
+        action: permit udp 172.30.210.94/32 range 32000 65535 any
+      230:
+        action: permit udp 172.30.210.95/32 range 32000 65535 any
+      240:
+        action: permit udp 172.30.210.96/32 range 32000 65535 any
+      250:
+        action: permit tcp 172.30.210.93/32 range 32000 65535 any
+      260:
+        action: permit tcp 172.30.210.94/32 range 32000 65535 any
+      270:
+        action: permit tcp 172.30.210.95/32 range 32000 65535 any
+      280:
+        action: permit tcp 172.30.210.96/32 range 32000 65535 any
+      290:
+        action: permit tcp 172.30.210.91/32 172.30.210.38/32 eq 1500
+      300:
+        action: permit tcp 172.30.210.38/32 eq 1500 172.30.210.91/32 range 1024 65535
+      350:
+        action: permit tcp 172.30.210.99/32 range 32000 65535 any
+      360:
+        action: permit udp 172.30.210.99/32 range 32000 65535 any
+      370:
+        action: permit tcp 172.30.210.105/32 range 32000 65535 any
+      380:
+        action: permit udp 172.30.210.105/32 range 32000 65535 any
+      390:
+        action: permit icmp 172.30.211.0/26 172.30.0.0/16 echo
+      400:
+        action: permit icmp 172.30.211.0/26 172.23.0.0/16 echo
+      410:
+        action: permit icmp 172.30.211.0/26 any echo-reply
+      420:
+        action: permit tcp 172.30.211.0/26 eq 2049 any
+      430:
+        action: permit udp 172.30.211.0/26 eq 2049 any
+      440:
+        action: permit tcp 172.30.211.0/26 eq sunrpc any
+      450:
+        action: permit udp 172.30.211.0/26 eq sunrpc any
+      460:
+        action: permit tcp 172.30.210.110/32 eq 1521 any
+      470:
+        action: permit tcp 172.30.210.110/32 eq 22 any
+      480:
+        action: permit tcp 172.30.210.110/32 eq 32771 any
+      486:
+        action: permit tcp 172.30.210.110/32 range 32000 65535 any
+      490:
+        action: permit tcp 172.30.210.110/32 eq 9000 any
+      500:
+        action: permit udp 172.30.210.110/32 range 100 65535 any
+      510:
+        action: permit tcp 172.30.210.110/32 range 100 65535 any
+      520:
+        action: permit ip 172.30.210.64/26 172.30.52.0/23
+      530:
+        action: permit ip 172.30.210.64/26 172.30.213.0/24
+      540:
+        action: permit ip 172.30.210.64/26 172.30.56.0/23
+      550:
+        action: permit ip 172.30.210.64/26 172.30.62.0/24
+      560:
+        action: permit ip 172.30.210.0/27 172.30.52.0/23
+      570:
+        action: permit ip 172.30.210.0/27 172.30.213.0/24
+      580:
+        action: permit ip 172.30.210.0/27 172.30.56.0/23
+      590:
+        action: permit ip 172.30.210.0/27 172.30.62.0/24
+      595:
+        action: permit ip 172.30.210.0/27 172.26.0.0/16
+      600:
+        action: permit ip 172.30.210.110/32 172.30.52.230/32
+      610:
+        action: permit ip 172.30.52.230/32 172.30.210.110/32
+      620:
+        action: permit ip 172.24.107.128/32 172.23.149.0/24
+      630:
+        action: permit tcp any 172.30.210.110/32 range 9001 9019
+      640:
+        action: permit tcp 172.30.210.110/32 range 9001 9019 any
+      650:
+        action: permit ip 172.30.210.110/32 172.30.22.0/24
+      660:
+        action: permit ip 172.30.229.0/24 172.30.210.110/32
+      670:
+        action: permit tcp any 172.30.231.160/28 eq 443
+      680:
+        action: permit tcp any 172.30.231.160/28 eq www
+      690:
+        action: permit ip 172.30.210.110/32 172.24.119.55/32
+  management-dataguard:
+    sequence_numbers:
+      10:
+        action: permit ip 10.59.28.192/26 10.59.28.192/26
+      20:
+        action: permit ip 10.59.28.192/26 10.59.29.0/25
+      30:
+        action: permit ip 10.59.29.0/25 10.59.28.192/26
+      40:
+        action: permit ip 10.59.29.0/25 10.59.29.0/25
+      50:
+        action: permit ip 224.0.0.102/32 any
+      60:
+        action: permit ip any 224.0.0.102/32
+  management-servers-admin:
+    sequence_numbers:
+      10:
+        action: permit ip 172.30.60.40/32 any
+      20:
+        action: permit ip 172.30.60.25/32 any
+      30:
+        action: permit ip 172.30.60.22/32 any
+  management-servers-cspc:
+    sequence_numbers:
+      10:
+        action: permit ip 172.30.60.62/32 any
+  tac-reply:
+    sequence_numbers:
+      10:
+        action: permit icmp 172.30.212.37/32 172.30.212.38/32
+      20:
+        action: permit ip any any
+  tac-request:
+    sequence_numbers:
+      10:
+        action: permit icmp 172.30.212.38/32 172.30.212.37/32
+      20:
+        action: permit ip any any
+cs_conf_vlan_interfaces:
+  Vlan2602:
+    access_group_in: backup_server
+  Vlan2603:
+    access_group_in: backup_server
+  Vlan2608:
+    access_group_in: DMZ-DT
+  Vlan2610:
+    access_group_in: PROD-dataguard
+  Vlan2611:
+    access_group_in: DMZ
+  Vlan2638:
+    access_group_in: backup_server
+  Vlan602:
+    pvlan_mapping: '603'
+  Vlan637:
+    pvlan_mapping: '638'
+  Vlan679:
+    access_group_in: DT-dataguard
+  Vlan831:
+    access_group_in: backup_server
+  Vlan844:
+    access_group_in: backup_server
+  Vlan852:
+    access_group_in: backup_server
+  Vlan870:
+    access_group_in: DMZ-DT
+  Vlan879:
+    access_group_in: DMZ-DT
+  Vlan880:
+    access_group_in: DMZ
+  Vlan894:
+    access_group_in: DT-dataguard
+  Vlan895:
+    access_group_in: PROD-dataguard
+cs_conf_vlans:
+  6:
+    name: mgnt_DC01_inf_isp
+    private_vlan:
+      primary_vlan: 5
+      type: isolated
+  8:
+    name: mgnt_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 7
+      type: isolated
+  16:
+    name: mgnt6_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 15
+      type: isolated
+  19:
+    name: DT_inf15_DC01_fw_iso
+    private_vlan:
+      primary_vlan: 18
+      type: isolated
+  31:
+    name: DT_mgnt_DC01_fw_iso
+    private_vlan:
+      primary_vlan: 30
+      type: isolated
+  58:
+    name: mgnt2_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 57
+      type: isolated
+  67:
+    name: mgnt3_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 66
+      type: isolated
+  74:
+    name: mgnt4_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 73
+      type: isolated
+  77:
+    name: mgnt_DC01_inf2_iso
+    private_vlan:
+      primary_vlan: 76
+      type: isolated
+  86:
+    name: mgnt5_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 85
+      type: isolated
+  100:
+    name: DT_mgnt_DC01_inf1_fw_iso
+    private_vlan:
+      primary_vlan: 99
+      type: isolated
+  114:
+    name: mgnt_DC01_inf4_iso
+    private_vlan:
+      primary_vlan: 113
+      type: isolated
+  116:
+    name: DT_mgnt_DC01_inf2_fw_iso
+    private_vlan:
+      primary_vlan: 115
+      type: isolated
+  127:
+    name: inf11_DC01_priv_fw_iso
+    private_vlan:
+      primary_vlan: 126
+      type: isolated
+  129:
+    name: inf12_DC01_priv_fw_iso
+    private_vlan:
+      primary_vlan: 128
+      type: isolated
+  133:
+    name: mgnt_DC01_publ_priv_fw_iso
+    private_vlan:
+      primary_vlan: 132
+      type: isolated
+  137:
+    name: DT_mgnt_DC01_publ_fw_iso
+    private_vlan:
+      primary_vlan: 136
+      type: isolated
+  141:
+    name: mgnt_DC01_publ2_fw_iso
+    private_vlan:
+      primary_vlan: 140
+      type: isolated
+  154:
+    name: DT_mgnt_DC01_publ1_fw_iso
+    private_vlan:
+      primary_vlan: 153
+      type: isolated
+  160:
+    name: DT_inf11_DC01_priv_fw_iso
+    private_vlan:
+      primary_vlan: 159
+      type: isolated
+  162:
+    name: DT_inf12_DC01_priv_fw_iso
+    private_vlan:
+      primary_vlan: 161
+      type: isolated
+  172:
+    name: DT_mgnt_DC01_publ1_lb_fw_iso
+    private_vlan:
+      primary_vlan: 171
+      type: isolated
+  191:
+    name: DT_mgnt_DC01_inf3_fw_iso
+    private_vlan:
+      primary_vlan: 190
+      type: isolated
+  193:
+    name: mgnt_DC01_inf6_fw_iso
+    private_vlan:
+      primary_vlan: 192
+      type: isolated
+  205:
+    name: mgnt_DC01_inf7_fw_iso
+    private_vlan:
+      primary_vlan: 204
+      type: isolated
+  208:
+    name: mgnt7_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 207
+      type: isolated
+  212:
+    name: DT_mgnt_DC01_inf4_fw_iso
+    private_vlan:
+      primary_vlan: 211
+      type: isolated
+  222:
+    name: mgnt_DC01_inf8_fw_iso
+    private_vlan:
+      primary_vlan: 221
+      type: isolated
+  235:
+    name: mgnt_DC01_inf9_fw_iso
+    private_vlan:
+      primary_vlan: 234
+      type: isolated
+  245:
+    name: mgnt_DC01_inf10_fw_iso
+    private_vlan:
+      primary_vlan: 244
+      type: isolated
+  252:
+    name: mgnt8_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 251
+      type: isolated
+  254:
+    name: DT_mgnt_DC01_inf5_fw_iso
+    private_vlan:
+      primary_vlan: 253
+      type: isolated
+  258:
+    name: DT_mgnt_DC01_priv5_fw_iso
+    private_vlan:
+      primary_vlan: 257
+      type: isolated
+  260:
+    name: mgnt_DC01_priv5_fw_iso
+    private_vlan:
+      primary_vlan: 259
+      type: isolated
+  263:
+    name: mgnt_DC01_inf20_fw_iso
+    private_vlan:
+      primary_vlan: 262
+      type: isolated
+  603:
+    name: mgnt_CN_publ_fw_iso
+    private_vlan:
+      primary_vlan: 602
+      type: isolated
+  625:
+    name: mgnt_CN_publ2_fw_iso
+    private_vlan:
+      primary_vlan: 624
+      type: isolated
+  629:
+    name: mgnt_CN_publ3_lb_fw_iso
+    private_vlan:
+      primary_vlan: 628
+      type: isolated
+  635:
+    name: ret1_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 634
+      type: isolated
+  638:
+    name: DT_mgnt_CN_publ2_fw_iso
+    private_vlan:
+      primary_vlan: 637
+      type: isolated
+  644:
+    name: ret2_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 643
+      type: isolated
+  646:
+    name: ret2_CN_fw_iso
+    private_vlan:
+      primary_vlan: 645
+      type: isolated
+  648:
+    name: ret3_CN_fw_iso
+    private_vlan:
+      primary_vlan: 647
+      type: isolated
+  652:
+    name: ret5_CN_fw_iso
+    private_vlan:
+      primary_vlan: 651
+      type: isolated
+  656:
+    name: DT_mgnt_CN_publ_lb_fw_iso
+    private_vlan:
+      primary_vlan: 655
+      type: isolated
+  661:
+    name: DT_ret2_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 660
+      type: isolated
+  663:
+    name: DT_ret2_CN_fw_iso
+    private_vlan:
+      primary_vlan: 662
+      type: isolated
+  667:
+    name: DT_ret4_CN_fw_iso
+    private_vlan:
+      primary_vlan: 666
+      type: isolated
+  702:
+    name: inf5_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 701
+      type: isolated
+  704:
+    name: inf6_CN_fw_iso
+    private_vlan:
+      primary_vlan: 703
+      type: isolated
+  713:
+    name: DT_inf2_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 712
+      type: isolated
+  715:
+    name: DT_inf6_CN_fw_iso
+    private_vlan:
+      primary_vlan: 714
+      type: isolated
+  753:
+    name: DT_ret8_CN_fw_iso
+    private_vlan:
+      primary_vlan: 752
+      type: isolated
+  759:
+    name: DT_ret5_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 758
+      type: isolated
+  776:
+    name: DT_ret9_CN_fw_iso
+    private_vlan:
+      primary_vlan: 775
+      type: isolated
+  778:
+    name: ret9_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 777
+      type: isolated
+  780:
+    name: ret10_CN_fw_iso
+    private_vlan:
+      primary_vlan: 779
+      type: isolated
+  783:
+    name: DT_ret10_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 782
+      type: isolated
+  785:
+    name: DT_ret11_CN_fw_iso
+    private_vlan:
+      primary_vlan: 784
+      type: isolated
+  787:
+    name: DT_ret12_CN_fw_iso
+    private_vlan:
+      primary_vlan: 786
+      type: isolated
+  790:
+    name: DT_ret14_CN_fw_iso
+    private_vlan:
+      primary_vlan: 789
+      type: isolated
+  2018:
+    name: inf31_DC01_fw_iso
+    private_vlan:
+      primary_vlan: 2017
+      type: isolated
+  2033:
+    name: DT_mgnt_DC01_inf6_fw_iso
+    private_vlan:
+      primary_vlan: 2032
+      type: isolated
+  2044:
+    name: mgnt_DC01_priv6_fw_iso
+    private_vlan:
+      primary_vlan: 2043
+      type: isolated
+  2050:
+    name: mgnt_DC01_priv7_fw_iso
+    private_vlan:
+      primary_vlan: 2049
+      type: isolated
+  2064:
+    name: inf41_DC01_fw_iso
+    private_vlan:
+      primary_vlan: 2063
+      type: isolated
+  2066:
+    name: DT_mgnt_DC01_inf7_fw_iso
+    private_vlan:
+      primary_vlan: 2065
+      type: isolated
+  2068:
+    name: mgnt_DC01_inf11_fw_iso
+    private_vlan:
+      primary_vlan: 2067
+      type: isolated
+  2102:
+    name: mgnt12_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 2101
+      type: isolated
+  2117:
+    name: mgnt13_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 2116
+      type: isolated
+  2137:
+    name: mgnt_DC01_inf18_fw_iso
+    private_vlan:
+      primary_vlan: 2136
+      type: isolated
+  2143:
+    name: DT_inf66_DC01_fw_iso
+    private_vlan:
+      primary_vlan: 2142
+      type: isolated
+  2148:
+    name: mgnt_DC01_drac_iso
+    private_vlan:
+      primary_vlan: 2147
+      type: isolated
+  2151:
+    name: DT_mgnt_DC01_inf17_fw_iso
+    private_vlan:
+      primary_vlan: 2150
+      type: isolated
+  2158:
+    name: mgnt_DC01_inf21_fw_iso
+    private_vlan:
+      primary_vlan: 2157
+      type: isolated
+  2164:
+    name: DT_mgnt_DC01_inf18_fw_iso
+    private_vlan:
+      primary_vlan: 2163
+      type: isolated
+  2180:
+    name: mgnt1_DC01_drac_iso
+    private_vlan:
+      primary_vlan: 2179
+      type: isolated
+  2193:
+    name: mgnt14_DC01_ilo_iso
+    private_vlan:
+      primary_vlan: 2192
+      type: isolated
+  2197:
+    name: mgnt_DC01_inf24_fw_iso
+    private_vlan:
+      primary_vlan: 2196
+      type: isolated
+  2211:
+    name: DT_mgnt_DC01_inf22_fw_iso
+    private_vlan:
+      primary_vlan: 2210
+      type: isolated
+  2263:
+    name: DT_mgnt_DC01_inf23_fw_iso
+    private_vlan:
+      primary_vlan: 2262
+      type: isolated
+  2265:
+    name: DT_mgnt_DC01_inf24_fw_iso
+    private_vlan:
+      primary_vlan: 2264
+      type: isolated
+  2267:
+    name: mgnt_DC01_inf28_fw_iso
+    private_vlan:
+      primary_vlan: 2266
+      type: isolated
+  2293:
+    name: mgnt_DC01_inf29_fw_iso
+    private_vlan:
+      primary_vlan: 2292
+      type: isolated
+  2295:
+    name: mgnt_DC01_inf30_fw_iso
+    private_vlan:
+      primary_vlan: 2294
+      type: isolated
+  2297:
+    name: mgnt_DC01_inf31_fw_iso
+    private_vlan:
+      primary_vlan: 2296
+      type: isolated
+  2626:
+    name: DT_ret22_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 2625
+      type: isolated
+  2628:
+    name: DT_ret23_CN_fw_iso
+    private_vlan:
+      primary_vlan: 2627
+      type: isolated
+  2630:
+    name: ret11_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 2629
+      type: isolated
+  2632:
+    name: ret17_CN_fw_iso
+    private_vlan:
+      primary_vlan: 2631
+      type: isolated
+  2642:
+    name: ret18_CN_fw_iso
+    private_vlan:
+      primary_vlan: 2641
+      type: isolated
+  2645:
+    name: ret12_CN_lb_fw_iso
+    private_vlan:
+      primary_vlan: 2644
+      type: isolated
+tenants:
+  acmegrp:
+    enable_mlag_ibgp_peering_vrfs: true
+    l2vlans:
+      3:
+        name: mgnt_DC01_san_fw
+        tags:
+          - dc01
+      4:
+        name: inf_DC01_fw
+        tags:
+          - dc01
+      5:
+        name: mgnt_DC01_inf
+        tags:
+          - dc01
+      6:
+        name: mgnt_DC01_inf_isp
+        tags:
+          - dc01
+      7:
+        name: mgnt_DC01_ilo
+        tags:
+          - dc01
+      8:
+        name: mgnt_DC01_ilo_iso
+        tags:
+          - dc01
+      9:
+        name: unnamed_9
+        tags:
+          - dc01
+      10:
+        name: inf8_DC01
+        tags:
+          - dc01
+      11:
+        name: inf4_DC01_fw
+        tags:
+          - dc01
+      12:
+        name: DT_inf4_DC01_fw
+        tags:
+          - dc01
+      13:
+        name: mgnt_DC01_inf3
+        tags:
+          - dc01
+      14:
+        name: DT_mgnt_DC01_inf3
+        tags:
+          - dc01
+      15:
+        name: mgnt6_DC01_ilo
+        tags:
+          - dc01
+      16:
+        name: mgnt6_DC01_ilo_iso
+        tags:
+          - dc01
+      17:
+        name: DT_inf14_DC01
+        tags:
+          - dc01
+      18:
+        name: DT_inf15_DC01_fw
+        tags:
+          - dc01
+      19:
+        name: DT_inf15_DC01_fw_iso
+        tags:
+          - dc01
+      20:
+        name: inst_DC01_fw
+        tags:
+          - dc01
+      21:
+        name: DT_inf3_DC01_fw
+        tags:
+          - dc01
+      22:
+        name: mgnt_DC01_rac
+        tags:
+          - dc01
+      23:
+        name: ret_DC01
+        tags:
+          - dc01
+      24:
+        name: supl2_DC01_fw
+        tags:
+          - dc01
+      25:
+        name: DT_inst_DC01_fw
+        tags:
+          - dc01
+      26:
+        name: DT_fin_DC01_fw
+        tags:
+          - dc01
+      27:
+        name: mgnt_DC01_hmc
+        tags:
+          - dc01
+      28:
+        name: DT_supl1_DC01_fw
+        tags:
+          - dc01
+      29:
+        name: DT_inf_DC01_fw
+        tags:
+          - dc01
+      30:
+        name: DT_mgnt_DC01_fw
+        tags:
+          - dc01
+      31:
+        name: DT_mgnt_DC01_fw_iso
+        tags:
+          - dc01
+      32:
+        name: mgnt_DC01_wmconsole_fw
+        tags:
+          - dc01
+      33:
+        name: mgnt_DC01_vmotion
+        tags:
+          - dc01
+      34:
+        name: scp_DC01_con
+        tags:
+          - dc01
+      35:
+        name: inf3_DC01_fw
+        tags:
+          - dc01
+      36:
+        name: inf2_DC01
+        tags:
+          - dc01
+      37:
+        name: DT_mgn2_DC01_rac
+        tags:
+          - dc01
+      38:
+        name: supl1_DC01_fw
+        tags:
+          - dc01
+      39:
+        name: DT_omr_DC01_fw
+        tags:
+          - dc01
+      40:
+        name: DT_omr2_DC01
+        tags:
+          - dc01
+      41:
+        name: unnamed_41
+        tags:
+          - dc01
+      42:
+        name: omr2_DC01
+        tags:
+          - dc01
+      43:
+        name: unnamed_43
+        tags:
+          - dc01
+      44:
+        name: DT_inf2_DC01
+        tags:
+          - dc01
+      45:
+        name: DT_inf7_DC01_fw
+        tags:
+          - dc01
+      46:
+        name: DT_inf2_DC01_fw
+        tags:
+          - dc01
+      47:
+        name: DT_ret_DC01
+        tags:
+          - dc01
+      48:
+        name: DT_ret_DC01_lb
+        tags:
+          - dc01
+      49:
+        name: ret_DC01_lb
+        tags:
+          - dc01
+      50:
+        name: DT_inf_DC01_lb_fw
+        tags:
+          - dc01
+      51:
+        name: DT_inf11_DC01
+        tags:
+          - dc01
+      52:
+        name: mgnt4_DC01_rac
+        tags:
+          - dc01
+      53:
+        name: mgnt5_DC01_hmc
+        tags:
+          - dc01
+      54:
+        name: DT_inf6_DC01_fw
+        tags:
+          - dc01
+      55:
+        name: DT_mgmt_DC01_hearb
+        tags:
+          - dc01
+      56:
+        name: DT_fin_DC01
+        tags:
+          - dc01
+      57:
+        name: mgnt2_DC01_ilo
+        tags:
+          - dc01
+      58:
+        name: mgnt2_DC01_ilo_iso
+        tags:
+          - dc01
+      59:
+        name: inf6_DC01_fw
+        tags:
+          - dc01
+      60:
+        name: ret1_DC01_fw
+        tags:
+          - dc01
+      61:
+        name: ret1_DC01_lb_fw
+        tags:
+          - dc01
+      62:
+        name: ret2_DC01_fw
+        tags:
+          - dc01
+      63:
+        name: ret3_DC01_fw
+        tags:
+          - dc01
+      64:
+        name: supl2_DC01_lb_fw
+        tags:
+          - dc01
+      65:
+        name: Heartb1_DC01_Win
+        tags:
+          - dc01
+      66:
+        name: mgnt3_DC01_ilo
+        tags:
+          - dc01
+      67:
+        name: mgnt3_DC01_ilo_iso
+        tags:
+          - dc01
+      68:
+        name: inf8_DC01_fw
+        tags:
+          - dc01
+      69:
+        name: inf8_DC01_lb_fw
+        tags:
+          - dc01
+      70:
+        name: DT_inf8_DC01_fw
+        tags:
+          - dc01
+      71:
+        name: DT_inf8_DC01_lb_fw
+        tags:
+          - dc01
+      72:
+        name: inf2_DC01_fw
+        tags:
+          - dc01
+      73:
+        name: mgnt4_DC01_ilo
+        tags:
+          - dc01
+      74:
+        name: mgnt4_DC01_ilo_iso
+        tags:
+          - dc01
+      75:
+        name: mgnt11_DC01_rac
+        tags:
+          - dc01
+      76:
+        name: mgnt_DC01_inf2
+        tags:
+          - dc01
+      77:
+        name: mgnt_DC01_inf2_iso
+        tags:
+          - dc01
+      78:
+        name: qua_DC01
+        tags:
+          - dc01
+      79:
+        name: DT_qua_DC01
+        tags:
+          - dc01
+      80:
+        name: DT_ret2_DC01_lb_fw
+        tags:
+          - dc01
+      81:
+        name: DT_ret1_DC01_fw
+        tags:
+          - dc01
+      82:
+        name: DT_ret2_DC01_fw
+        tags:
+          - dc01
+      83:
+        name: DT_ret3_DC01_fw
+        tags:
+          - dc01
+      84:
+        name: mgnt_DC01_bck
+        tags:
+          - dc01
+      85:
+        name: mgnt5_DC01_ilo
+        tags:
+          - dc01
+      86:
+        name: mgnt5_DC01_ilo_iso
+        tags:
+          - dc01
+      87:
+        name: DT_hrm_DC01
+        tags:
+          - dc01
+      88:
+        name: mgnt17_DC01_rac
+        tags:
+          - dc01
+      89:
+        name: unnamed_89
+        tags:
+          - dc01
+      90:
+        name: DT_ret5_DC01_fw
+        tags:
+          - dc01
+      91:
+        name: ret5_DC01_fw
+        tags:
+          - dc01
+      92:
+        name: DT_inf9_DC01_fw
+        tags:
+          - dc01
+      93:
+        name: inf9_DC01_fw
+        tags:
+          - dc01
+      94:
+        name: inf10_DC01
+        tags:
+          - dc01
+      95:
+        name: DT_inf10_DC01
+        tags:
+          - dc01
+      96:
+        name: DT_mgnt26_DC01_rac
+        tags:
+          - dc01
+      97:
+        name: inf11_DC01
+        tags:
+          - dc01
+      98:
+        name: inf11_DC01_lb
+        tags:
+          - dc01
+      99:
+        name: DT_mgnt_DC01_inf1_fw
+        tags:
+          - dc01
+      100:
+        name: DT_mgnt_DC01_inf1_fw_iso
+        tags:
+          - dc01
+      101:
+        name: supl_DC01_fw
+        tags:
+          - dc01
+      102:
+        name: supl_DC01_lb_fw
+        tags:
+          - dc01
+      103:
+        name: DT_supl_DC01_fw
+        tags:
+          - dc01
+      104:
+        name: DT_supl_DC01_lb_fw
+        tags:
+          - dc01
+      105:
+        name: DT_mcm_DC01
+        tags:
+          - dc01
+      106:
+        name: DT_mcm_DC01_lb
+        tags:
+          - dc01
+      107:
+        name: mcm_DC01
+        tags:
+          - dc01
+      108:
+        name: mcm_DC01_lb
+        tags:
+          - dc01
+      109:
+        name: inf10_DC01_fw
+        tags:
+          - dc01
+      110:
+        name: DT_supl_DC01_lb
+        tags:
+          - dc01
+      111:
+        name: inf7_DC01_fw
+        tags:
+          - dc01
+      112:
+        name: mgnt33_DC01_rac
+        tags:
+          - dc01
+      113:
+        name: mgnt_DC01_inf4
+        tags:
+          - dc01
+      114:
+        name: mgnt_DC01_inf4_iso
+        tags:
+          - dc01
+      115:
+        name: DT_mgnt_DC01_inf2_fw
+        tags:
+          - dc01
+      116:
+        name: DT_mgnt_DC01_inf2_fw_iso
+        tags:
+          - dc01
+      117:
+        name: DT_fin_DC01_lb
+        tags:
+          - dc01
+      118:
+        name: inst2_DC01_fw
+        tags:
+          - dc01
+      119:
+        name: DT_mgnt_DC01_inf20_fw
+        tags:
+          - dc01
+      120:
+        name: DT_inf5_DC01_fw
+        tags:
+          - dc01
+      121:
+        name: DT_mgnt50_DC01_rac
+        tags:
+          - dc01
+      122:
+        name: mgnt38_DC01_rac
+        tags:
+          - dc01
+      123:
+        name: mgnt_DC01_publ_fw
+        tags:
+          - dc01
+      124:
+        name: DT_mgnt40_DC01_rac
+        tags:
+          - dc01
+      125:
+        name: it4it_DC01
+        tags:
+          - dc01
+      126:
+        name: inf11_DC01_priv_fw
+        tags:
+          - dc01
+      127:
+        name: inf11_DC01_priv_fw_iso
+        tags:
+          - dc01
+      128:
+        name: inf12_DC01_priv_fw
+        tags:
+          - dc01
+      129:
+        name: inf12_DC01_priv_fw_iso
+        tags:
+          - dc01
+      130:
+        name: inf14_DC01
+        tags:
+          - dc01
+      131:
+        name: DT_inf_DC01_lb
+        tags:
+          - dc01
+      132:
+        name: mgnt_DC01_publ_priv_fw
+        tags:
+          - dc01
+      133:
+        name: mgnt_DC01_publ_priv_fw_iso
+        tags:
+          - dc01
+      134:
+        name: mgnt_DC01_priv_fw
+        tags:
+          - dc01
+      135:
+        name: inf13_DC01
+        tags:
+          - dc01
+      136:
+        name: DT_mgnt_DC01_publ_fw
+        tags:
+          - dc01
+      137:
+        name: DT_mgnt_DC01_publ_fw_iso
+        tags:
+          - dc01
+      138:
+        name: DT_mgnt_DC01_priv_fw
+        tags:
+          - dc01
+      139:
+        name: DT_inf13_DC01
+        tags:
+          - dc01
+      140:
+        name: mgnt_DC01_publ2_fw
+        tags:
+          - dc01
+      141:
+        name: mgnt_DC01_publ2_fw_iso
+        tags:
+          - dc01
+      142:
+        name: mgnt_DC01_priv2_fw
+        tags:
+          - dc01
+      143:
+        name: fin_DC01
+        tags:
+          - dc01
+      144:
+        name: fin_DC01_lb
+        tags:
+          - dc01
+      145:
+        name: fin_DC01_fw
+        tags:
+          - dc01
+      146:
+        name: unnamed_146
+        tags:
+          - dc01
+      147:
+        name: unnamed_147
+        tags:
+          - dc01
+      148:
+        name: DT_inf1_DC01_fw
+        tags:
+          - dc01
+      149:
+        name: unnamed_149
+        tags:
+          - dc01
+      150:
+        name: supr_DC01_fw
+        tags:
+          - dc01
+      151:
+        name: supr_DC01_lb_fw
+        tags:
+          - dc01
+      152:
+        name: unnamed_152
+        tags:
+          - dc01
+      153:
+        name: DT_mgnt_DC01_publ1_fw
+        tags:
+          - dc01
+      154:
+        name: DT_mgnt_DC01_publ1_fw_iso
+        tags:
+          - dc01
+      155:
+        name: DT_mgnt_DC01_priv1_fw
+        tags:
+          - dc01
+      156:
+        name: unnamed_156
+        tags:
+          - dc01
+      157:
+        name: supr_DC01_lb
+        tags:
+          - dc01
+      158:
+        name: mgnt_DC01_priv1_fw
+        tags:
+          - dc01
+      159:
+        name: DT_inf11_DC01_priv_fw
+        tags:
+          - dc01
+      160:
+        name: DT_inf11_DC01_priv_fw_iso
+        tags:
+          - dc01
+      161:
+        name: DT_inf12_DC01_priv_fw
+        tags:
+          - dc01
+      162:
+        name: DT_inf12_DC01_priv_fw_iso
+        tags:
+          - dc01
+      163:
+        name: supr1_DC01_fw
+        tags:
+          - dc01
+      164:
+        name: DT_supr1_DC01_fw
+        tags:
+          - dc01
+      165:
+        name: pim_DC01_fw
+        tags:
+          - dc01
+      166:
+        name: pim_DC01_lb_fw
+        tags:
+          - dc01
+      167:
+        name: pim1_DC01_fw
+        tags:
+          - dc01
+      168:
+        name: pim1_DC01_lb_fw
+        tags:
+          - dc01
+      169:
+        name: pim_DC01
+        tags:
+          - dc01
+      170:
+        name: supr1_DC01_lb_fw
+        tags:
+          - dc01
+      171:
+        name: DT_mgnt_DC01_publ1_lb_fw
+        tags:
+          - dc01
+      172:
+        name: DT_mgnt_DC01_publ1_lb_fw_iso
+        tags:
+          - dc01
+      173:
+        name: DT_mgnt_DC01_priv1_lb_fw
+        tags:
+          - dc01
+      174:
+        name: fin1_DC01_fw
+        tags:
+          - dc01
+      175:
+        name: DT_fin1_DC01_fw
+        tags:
+          - dc01
+      176:
+        name: inf15_DC01
+        tags:
+          - dc01
+      177:
+        name: DT_inf15_DC01
+        tags:
+          - dc01
+      178:
+        name: inf14_DC01_fw
+        tags:
+          - dc01
+      179:
+        name: inf15_DC01_fw
+        tags:
+          - dc01
+      180:
+        name: inf15_DC01_lb_fw
+        tags:
+          - dc01
+      181:
+        name: DT_inf10_DC01_fw
+        tags:
+          - dc01
+      182:
+        name: DT_inf10_DC01_lb_fw
+        tags:
+          - dc01
+      183:
+        name: mgnt2_DC01_hmc
+        tags:
+          - dc01
+      184:
+        name: DT_inf14_DC01_fw
+        tags:
+          - dc01
+      185:
+        name: DT_inf11_DC01_fw
+        tags:
+          - dc01
+      186:
+        name: DT_mgnt42_DC01_rac
+        tags:
+          - dc01
+      187:
+        name: mgnt43_dc01_rac
+        tags:
+          - dc01
+      188:
+        name: mgnt3_DC01_hmc
+        tags:
+          - dc01
+      189:
+        name: mgnt4_DC01_hmc
+        tags:
+          - dc01
+      190:
+        name: DT_mgnt_DC01_inf3_fw
+        tags:
+          - dc01
+      191:
+        name: DT_mgnt_DC01_inf3_fw_iso
+        tags:
+          - dc01
+      192:
+        name: mgnt_DC01_inf6_fw
+        tags:
+          - dc01
+      193:
+        name: mgnt_DC01_inf6_fw_iso
+        tags:
+          - dc01
+      194:
+        name: DT_supl2_DC01_fw
+        tags:
+          - dc01
+      195:
+        name: DT_supl2_DC01_lb_fw
+        tags:
+          - dc01
+      196:
+        name: mgnt_DC01_lpm
+        tags:
+          - dc01
+      197:
+        name: DT_supl3_DC01_fw
+        tags:
+          - dc01
+      198:
+        name: DT_inf16_DC01_fw
+        tags:
+          - dc01
+      199:
+        name: DT_inf16_DC01_lb_fw
+        tags:
+          - dc01
+      200:
+        name: inf16_DC01_fw
+        tags:
+          - dc01
+      201:
+        name: inf16_DC01_lb_fw
+        tags:
+          - dc01
+      202:
+        name: inf17_DC01_fw
+        tags:
+          - dc01
+      203:
+        name: supl_DC01_lb
+        tags:
+          - dc01
+      204:
+        name: mgnt_DC01_inf7_fw
+        tags:
+          - dc01
+      205:
+        name: mgnt_DC01_inf7_fw_iso
+        tags:
+          - dc01
+      206:
+        name: mgnt47_DC01_rac
+        tags:
+          - dc01
+      207:
+        name: mgnt7_DC01_ilo
+        tags:
+          - dc01
+      208:
+        name: mgnt7_DC01_ilo_iso
+        tags:
+          - dc01
+      209:
+        name: DT_inf17_DC01_fw
+        tags:
+          - dc01
+      210:
+        name: inf17_DC01
+        tags:
+          - dc01
+      211:
+        name: DT_mgnt_DC01_inf4_fw
+        tags:
+          - dc01
+      212:
+        name: DT_mgnt_DC01_inf4_fw_iso
+        tags:
+          - dc01
+      213:
+        name: inf6_DC01_lb_fw
+        tags:
+          - dc01
+      214:
+        name: DT_inf6_DC01_lb_fw
+        tags:
+          - dc01
+      215:
+        name: inf18_DC01_fw
+        tags:
+          - dc01
+      216:
+        name: inf19_DC01_fw
+        tags:
+          - dc01
+      217:
+        name: inf20_DC01_fw
+        tags:
+          - dc01
+      218:
+        name: inf20_DC01_lb_fw
+        tags:
+          - dc01
+      219:
+        name: mcm1_DC01
+        tags:
+          - dc01
+      220:
+        name: DT_mcm1_DC01
+        tags:
+          - dc01
+      221:
+        name: mgnt_DC01_inf8_fw
+        tags:
+          - dc01
+      222:
+        name: mgnt_DC01_inf8_fw_iso
+        tags:
+          - dc01
+      223:
+        name: unnamed_223
+        tags:
+          - dc01
+      224:
+        name: unnamed_224
+        tags:
+          - dc01
+      225:
+        name: unnamed_225
+        tags:
+          - dc01
+      226:
+        name: mgnt55_DC01_rac
+        tags:
+          - dc01
+      227:
+        name: unnamed_227
+        tags:
+          - dc01
+      228:
+        name: DT_mgnt62_DC01_rac
+        tags:
+          - dc01
+      229:
+        name: inf18_DC01_lb_fw
+        tags:
+          - dc01
+      230:
+        name: unnamed_230
+        tags:
+          - dc01
+      231:
+        name: DT_ret6_DC01_fw
+        tags:
+          - dc01
+      232:
+        name: mgnt62_DC01_rac
+        tags:
+          - dc01
+      233:
+        name: supr2_DC01_fw
+        tags:
+          - dc01
+      234:
+        name: mgnt_DC01_inf9_fw
+        tags:
+          - dc01
+      235:
+        name: mgnt_DC01_inf9_fw_iso
+        tags:
+          - dc01
+      236:
+        name: DT_inf18_DC01_fw
+        tags:
+          - dc01
+      237:
+        name: DT_inf18_DC01_lb_fw
+        tags:
+          - dc01
+      238:
+        name: DT_inf20_DC01_fw
+        tags:
+          - dc01
+      239:
+        name: inf11_DC01_fw
+        tags:
+          - dc01
+      240:
+        name: inf24_DC01_fw
+        tags:
+          - dc01
+      241:
+        name: unnamed_241
+        tags:
+          - dc01
+      242:
+        name: mgnt56_DC01_rac
+        tags:
+          - dc01
+      243:
+        name: DT_mgnt63_DC01_rac
+        tags:
+          - dc01
+      244:
+        name: mgnt_DC01_inf10_fw
+        tags:
+          - dc01
+      245:
+        name: mgnt_DC01_inf10_fw_iso
+        tags:
+          - dc01
+      246:
+        name: DT_pim2_DC01_fw
+        tags:
+          - dc01
+      247:
+        name: unnamed_247
+        tags:
+          - dc01
+      248:
+        name: pim2_DC01_fw
+        tags:
+          - dc01
+      249:
+        name: inf25_DC01_fw
+        tags:
+          - dc01
+      250:
+        name: inf26_DC01_fw
+        tags:
+          - dc01
+      251:
+        name: mgnt8_DC01_ilo
+        tags:
+          - dc01
+      252:
+        name: mgnt8_DC01_ilo_iso
+        tags:
+          - dc01
+      253:
+        name: DT_mgnt_DC01_inf5_fw
+        tags:
+          - dc01
+      254:
+        name: DT_mgnt_DC01_inf5_fw_iso
+        tags:
+          - dc01
+      255:
+        name: DT_inf21_DC01_fw
+        tags:
+          - dc01
+      256:
+        name: inf27_DC01_fw
+        tags:
+          - dc01
+      257:
+        name: DT_mgnt_DC01_priv5_fw
+        tags:
+          - dc01
+      258:
+        name: DT_mgnt_DC01_priv5_fw_iso
+        tags:
+          - dc01
+      259:
+        name: mgnt_DC01_priv5_fw
+        tags:
+          - dc01
+      260:
+        name: mgnt_DC01_priv5_fw_iso
+        tags:
+          - dc01
+      261:
+        name: mgnt3_DC01_con
+        tags:
+          - dc01
+      262:
+        name: mgnt_DC01_inf20_fw
+        tags:
+          - dc01
+      263:
+        name: mgnt_DC01_inf20_fw_iso
+        tags:
+          - dc01
+      264:
+        name: unnamed_264
+        tags:
+          - dc01
+      265:
+        name: mgnt2_DC01_con
+        tags:
+          - dc01
+      266:
+        name: pim_DC01_con
+        tags:
+          - dc01
+      267:
+        name: DT_supr_DC01_con
+        tags:
+          - dc01
+      268:
+        name: supr_DC01_con
+        tags:
+          - dc01
+      269:
+        name: DT_inf1_DC01_con
+        tags:
+          - dc01
+      270:
+        name: inf1_DC01_con
+        tags:
+          - dc01
+      271:
+        name: fin_DC01_con
+        tags:
+          - dc01
+      272:
+        name: DT_mgnt_DC01_publ_con
+        tags:
+          - dc01
+      273:
+        name: mgnt_DC01_publ_con
+        tags:
+          - dc01
+      274:
+        name: mgnt1_DC01_con
+        tags:
+          - dc01
+      275:
+        name: mgnt_DC01_priv_log
+        tags:
+          - dc01
+      276:
+        name: inf7_DC01_con
+        tags:
+          - dc01
+      277:
+        name: ret2_DC01_con
+        tags:
+          - dc01
+      278:
+        name: DT_ret1_DC01_con
+        tags:
+          - dc01
+      279:
+        name: inf1_DC01_fw
+        tags:
+          - dc01
+      280:
+        name: DT_inf2_DC01_con
+        tags:
+          - dc01
+      281:
+        name: inf5_DC01_fw
+        tags:
+          - dc01
+      282:
+        name: DT_supl_DC01_con
+        tags:
+          - dc01
+      283:
+        name: DT_inf12_DC01-_fw
+        tags:
+          - dc01
+      284:
+        name: DT_inf13_DC01_fw
+        tags:
+          - dc01
+      285:
+        name: unnamed_285
+        tags:
+          - dc01
+      286:
+        name: mgnt_dc01_publ_lb_fw
+        tags:
+          - dc01
+      287:
+        name: unnamed_287
+        tags:
+          - dc01
+      288:
+        name: mgnt_DC01_con
+        tags:
+          - dc01
+      289:
+        name: DT_inst2_DC01
+        tags:
+          - dc01
+      290:
+        name: DT_fin_DC01_con
+        tags:
+          - dc01
+      291:
+        name: DT_omr_DC01_con
+        tags:
+          - dc01
+      292:
+        name: unnamed_292
+        tags:
+          - dc01
+      293:
+        name: unnamed_293
+        tags:
+          - dc01
+      294:
+        name: DT_inf_DC01_con
+        tags:
+          - dc01
+      295:
+        name: DT_DC01_publ_con
+        tags:
+          - dc01
+      296:
+        name: DC01_publ_con
+        tags:
+          - dc01
+      297:
+        name: unnamed_297
+        tags:
+          - dc01
+      298:
+        name: unnamed_298
+        tags:
+          - dc01
+      299:
+        name: unnamed_299
+        tags:
+          - dc01
+      600:
+        name: mgmt_CN_priv_fw
+        tags:
+          - dc01
+      601:
+        name: inf1_CN
+        tags:
+          - dc01
+      602:
+        name: mgnt_CN_publ_fw
+        tags:
+          - dc01
+      603:
+        name: mgnt_CN_publ_fw_iso
+        tags:
+          - dc01
+      604:
+        name: unnamed_604
+        tags:
+          - dc01
+      605:
+        name: inf3_CN
+        tags:
+          - dc01
+      606:
+        name: DT_inf3_CN
+        tags:
+          - dc01
+      607:
+        name: DT_inf1_CN
+        tags:
+          - dc01
+      608:
+        name: mgnt_CN_nfs
+        tags:
+          - dc01
+      609:
+        name: DT_mgnt_CN_nfs
+        tags:
+          - dc01
+      610:
+        name: bz_cn_inf
+        tags:
+          - dc01
+      611:
+        name: bz_CN_fw
+        tags:
+          - dc01
+      612:
+        name: bz_CN_fw_fail
+        tags:
+          - dc01
+      613:
+        name: bz_CN_fw_con
+        tags:
+          - dc01
+      614:
+        name: bz_CN_fw_mgnt
+        tags:
+          - dc01
+      615:
+        name: mgnt_BZ_CN_ilo
+        tags:
+          - dc01
+      616:
+        name: bz_CN_inf_con
+        tags:
+          - dc01
+      617:
+        name: bz2_CN_fw
+        tags:
+          - dc01
+      618:
+        name: DT_ret3_CN_fw
+        tags:
+          - dc01
+      619:
+        name: unnamed_619
+        tags:
+          - dc01
+      620:
+        name: ret7_CN_fw
+        tags:
+          - dc01
+      621:
+        name: ret7_CN_lb_fw
+        tags:
+          - dc01
+      622:
+        name: mgnt_CN_priv2_fw
+        tags:
+          - dc01
+      623:
+        name: inf_CN_lb
+        tags:
+          - dc01
+      624:
+        name: mgnt_CN_publ2_fw
+        tags:
+          - dc01
+      625:
+        name: mgnt_CN_publ2_fw_iso
+        tags:
+          - dc01
+      626:
+        name: mgnt_CN_priv3_lb_fw
+        tags:
+          - dc01
+      627:
+        name: DT_inf2_CN
+        tags:
+          - dc01
+      628:
+        name: mgnt_CN_publ3_lb_fw
+        tags:
+          - dc01
+      629:
+        name: mgnt_CN_publ3_lb_fw_iso
+        tags:
+          - dc01
+      630:
+        name: mgnt_CN_publ3_fw
+        tags:
+          - dc01
+      631:
+        name: unnamed_631
+        tags:
+          - dc01
+      632:
+        name: unnamed_632
+        tags:
+          - dc01
+      633:
+        name: mgnt_CN_priv6_fw
+        tags:
+          - dc01
+      634:
+        name: ret1_CN_lb_fw
+        tags:
+          - dc01
+      635:
+        name: ret1_CN_lb_fw_iso
+        tags:
+          - dc01
+      636:
+        name: DT_mgnt_CN_priv2_fw
+        tags:
+          - dc01
+      637:
+        name: DT_mgnt_CN_publ2_fw
+        tags:
+          - dc01
+      638:
+        name: DT_mgnt_CN_publ2_fw_iso
+        tags:
+          - dc01
+      639:
+        name: scp_CN
+        tags:
+          - dc01
+      640:
+        name: scp_CN_lb
+        tags:
+          - dc01
+      641:
+        name: ret_CN
+        tags:
+          - dc01
+      642:
+        name: ret_CN_lb
+        tags:
+          - dc01
+      643:
+        name: ret2_CN_lb_fw
+        tags:
+          - dc01
+      644:
+        name: ret2_CN_lb_fw_iso
+        tags:
+          - dc01
+      645:
+        name: ret2_CN_fw
+        tags:
+          - dc01
+      646:
+        name: ret2_CN_fw_iso
+        tags:
+          - dc01
+      647:
+        name: ret3_CN_fw
+        tags:
+          - dc01
+      648:
+        name: ret3_CN_fw_iso
+        tags:
+          - dc01
+      649:
+        name: ret4_CN_fw
+        tags:
+          - dc01
+      650:
+        name: mgnt_CN_vmotion
+        tags:
+          - dc01
+      651:
+        name: ret5_CN_fw
+        tags:
+          - dc01
+      652:
+        name: ret5_CN_fw_iso
+        tags:
+          - dc01
+      653:
+        name: ret6_CN_fw
+        tags:
+          - dc01
+      654:
+        name: inf_CN_fw
+        tags:
+          - dc01
+      655:
+        name: DT_mgnt_CN_publ_lb_fw
+        tags:
+          - dc01
+      656:
+        name: DT_mgnt_CN_publ_lb_fw_iso
+        tags:
+          - dc01
+      657:
+        name: DT_mgmt_CN_priv_fw_lb
+        tags:
+          - dc01
+      658:
+        name: DT_inf_CN_fw
+        tags:
+          - dc01
+      659:
+        name: DT_ret_CN_lb
+        tags:
+          - dc01
+      660:
+        name: DT_ret2_CN_lb_fw
+        tags:
+          - dc01
+      661:
+        name: DT_ret2_CN_lb_fw_iso
+        tags:
+          - dc01
+      662:
+        name: DT_ret2_CN_fw
+        tags:
+          - dc01
+      663:
+        name: DT_ret2_CN_fw_iso
+        tags:
+          - dc01
+      664:
+        name: DT_inf_CN_lb
+        tags:
+          - dc01
+      665:
+        name: inf2_CN_lb
+        tags:
+          - dc01
+      666:
+        name: DT_ret4_CN_fw
+        tags:
+          - dc01
+      667:
+        name: DT_ret4_CN_fw_iso
+        tags:
+          - dc01
+      668:
+        name: unnamed_668
+        tags:
+          - dc01
+      669:
+        name: unnamed_669
+        tags:
+          - dc01
+      670:
+        name: DT_ret6_CN_fw
+        tags:
+          - dc01
+      671:
+        name: DT_scp_CN_lb
+        tags:
+          - dc01
+      672:
+        name: mgmt_CN_rac
+        tags:
+          - dc01
+      673:
+        name: DT_ret_CN
+        tags:
+          - dc01
+      674:
+        name: DT_scp_CN
+        tags:
+          - dc01
+      675:
+        name: inf2_CN_fw
+        tags:
+          - dc01
+      676:
+        name: DT_inf2_CN_fw
+        tags:
+          - dc01
+      677:
+        name: inf2_CN
+        tags:
+          - dc01
+      678:
+        name: DT_supl_CN_fw
+        tags:
+          - dc01
+      679:
+        name: DT_omr_CN_lb_fw
+        tags:
+          - dc01
+      680:
+        name: supl_CN_fw
+        tags:
+          - dc01
+      681:
+        name: omr_CN_lb_fw
+        tags:
+          - dc01
+      682:
+        name: inf3_CN_lb_fw
+        tags:
+          - dc01
+      683:
+        name: inf1_CN_fw
+        tags:
+          - dc01
+      684:
+        name: inf14_CN_fw
+        tags:
+          - dc01
+      685:
+        name: inf14_CN_lb_fw
+        tags:
+          - dc01
+      686:
+        name: mgnt_CN_mail
+        tags:
+          - dc01
+      687:
+        name: mgnt_CN_priv5_fw
+        tags:
+          - dc01
+      688:
+        name: inf6_CN_lb_fw
+        tags:
+          - dc01
+      689:
+        name: inf5_CN_fw
+        tags:
+          - dc01
+      690:
+        name: DT_mgnt_CN_mail
+        tags:
+          - dc01
+      691:
+        name: DT_mgnt_CN_priv5_fw
+        tags:
+          - dc01
+      692:
+        name: unnamed_692
+        tags:
+          - dc01
+      693:
+        name: DT_inf7_CN_lb_fw
+        tags:
+          - dc01
+      694:
+        name: unnamed_694
+        tags:
+          - dc01
+      695:
+        name: unnamed_695
+        tags:
+          - dc01
+      696:
+        name: DT_inf4_CN_fw
+        tags:
+          - dc01
+      697:
+        name: DT_inf4_CN_lb_fw
+        tags:
+          - dc01
+      698:
+        name: inf4_CN_fw
+        tags:
+          - dc01
+      699:
+        name: inf4_CN_lb_fw
+        tags:
+          - dc01
+      700:
+        name: DT_inf7_CN_fw
+        tags:
+          - dc01
+      701:
+        name: inf5_CN_lb_fw
+        tags:
+          - dc01
+      702:
+        name: inf5_CN_lb_fw_iso
+        tags:
+          - dc01
+      703:
+        name: inf6_CN_fw
+        tags:
+          - dc01
+      704:
+        name: inf6_CN_fw_iso
+        tags:
+          - dc01
+      705:
+        name: unnamed_705
+        tags:
+          - dc01
+      706:
+        name: unnamed_706
+        tags:
+          - dc01
+      707:
+        name: DT_fin_cn
+        tags:
+          - dc01
+      708:
+        name: DT_fin_CN-lb
+        tags:
+          - dc01
+      709:
+        name: unnamed_709
+        tags:
+          - dc01
+      710:
+        name: unnamed_710
+        tags:
+          - dc01
+      711:
+        name: Haertb1_CN_Linux
+        tags:
+          - dc01
+      712:
+        name: DT_inf2_CN_lb_fw
+        tags:
+          - dc01
+      713:
+        name: DT_inf2_CN_lb_fw_iso
+        tags:
+          - dc01
+      714:
+        name: DT_inf6_CN_fw
+        tags:
+          - dc01
+      715:
+        name: DT_inf6_CN_fw_iso
+        tags:
+          - dc01
+      716:
+        name: heartb1_CN
+        tags:
+          - dc01
+      717:
+        name: DT_heartb1_CN
+        tags:
+          - dc01
+      718:
+        name: proc_CN
+        tags:
+          - dc01
+      719:
+        name: proc_CN_lb
+        tags:
+          - dc01
+      720:
+        name: DT_proc_CN
+        tags:
+          - dc01
+      721:
+        name: DT_proc_CN_lb
+        tags:
+          - dc01
+      722:
+        name: inf8_CN_fw
+        tags:
+          - dc01
+      723:
+        name: inf8_CN_lb_fw
+        tags:
+          - dc01
+      724:
+        name: DT_inf8_CN_fw
+        tags:
+          - dc01
+      725:
+        name: DT_inf8_CN_lb_fw
+        tags:
+          - dc01
+      726:
+        name: inf9_CN_lb_fw
+        tags:
+          - dc01
+      727:
+        name: unnamed_727
+        tags:
+          - dc01
+      728:
+        name: unnamed_728
+        tags:
+          - dc01
+      729:
+        name: inf10_cn_lb_fw
+        tags:
+          - dc01
+      730:
+        name: inf12_cn_lb_fw
+        tags:
+          - dc01
+      731:
+        name: unnamed_731
+        tags:
+          - dc01
+      732:
+        name: inf13_cn_lb_fw
+        tags:
+          - dc01
+      733:
+        name: unnamed_733
+        tags:
+          - dc01
+      734:
+        name: DT_INF9_cn_lb_fw
+        tags:
+          - dc01
+      735:
+        name: DT_inf9_cn_fw
+        tags:
+          - dc01
+      736:
+        name: DT_inf10_cn_fw
+        tags:
+          - dc01
+      737:
+        name: DT_inf10_cn_lb_fw
+        tags:
+          - dc01
+      738:
+        name: DT_inf12_cn_lb_fw
+        tags:
+          - dc01
+      739:
+        name: DT_inf12_cn_fw
+        tags:
+          - dc01
+      740:
+        name: DT_inf13_cn_lb_fw
+        tags:
+          - dc01
+      741:
+        name: DT_inf13_cn_fw
+        tags:
+          - dc01
+      742:
+        name: DT_inf3_CN_lb_fw
+        tags:
+          - dc01
+      743:
+        name: DT_inf1_CN_fw
+        tags:
+          - dc01
+      744:
+        name: DT_inf14_CN_fw
+        tags:
+          - dc01
+      745:
+        name: DT_inf14_CN_lb_fw
+        tags:
+          - dc01
+      746:
+        name: DT_inf16_CN_lb_fw
+        tags:
+          - dc01
+      747:
+        name: inf7_CN_lb_fw
+        tags:
+          - dc01
+      748:
+        name: ret8_CN_fw
+        tags:
+          - dc01
+      749:
+        name: DT_ret7_CN_fw
+        tags:
+          - dc01
+      750:
+        name: mgnt_CN_publ5_fw
+        tags:
+          - dc01
+      751:
+        name: mgnt_CN_publ5_lb_fw
+        tags:
+          - dc01
+      752:
+        name: DT_ret8_CN_fw
+        tags:
+          - dc01
+      753:
+        name: DT_ret8_CN_fw_iso
+        tags:
+          - dc01
+      754:
+        name: DT_inf27_CN_fw
+        tags:
+          - dc01
+      755:
+        name: DT_inf27_CN_lb_fw
+        tags:
+          - dc01
+      756:
+        name: DT_inf28_CN_lb_fw
+        tags:
+          - dc01
+      757:
+        name: unnamed_757
+        tags:
+          - dc01
+      758:
+        name: DT_ret5_CN_lb_fw
+        tags:
+          - dc01
+      759:
+        name: DT_ret5_CN_lb_fw_iso
+        tags:
+          - dc01
+      760:
+        name: DT_inf29_CN_lb_fw
+        tags:
+          - dc01
+      761:
+        name: unnamed_761
+        tags:
+          - dc01
+      762:
+        name: unnamed_762
+        tags:
+          - dc01
+      763:
+        name: inf15_CN_fw
+        tags:
+          - dc01
+      764:
+        name: inf15_CN_lb_fw
+        tags:
+          - dc01
+      765:
+        name: inf16_CN_fw
+        tags:
+          - dc01
+      766:
+        name: inf16_CN_lb_fw
+        tags:
+          - dc01
+      767:
+        name: mgnt_CN_ADC_fw
+        tags:
+          - dc01
+      768:
+        name: bz3_CN_fw
+        tags:
+          - dc01
+      769:
+        name: unnamed_769
+        tags:
+          - dc01
+      770:
+        name: DT_inf30_CN_lb_fw
+        tags:
+          - dc01
+      771:
+        name: DT_mgnt_CN_priv3_fw
+        tags:
+          - dc01
+      772:
+        name: bz4_CN_fw
+        tags:
+          - dc01
+      773:
+        name: inf17_CN_fw
+        tags:
+          - dc01
+      774:
+        name: inf18_CN_fw
+        tags:
+          - dc01
+      775:
+        name: DT_ret9_CN_fw
+        tags:
+          - dc01
+      776:
+        name: DT_ret9_CN_fw_iso
+        tags:
+          - dc01
+      777:
+        name: ret9_CN_lb_fw
+        tags:
+          - dc01
+      778:
+        name: ret9_CN_lb_fw_iso
+        tags:
+          - dc01
+      779:
+        name: ret10_CN_fw
+        tags:
+          - dc01
+      780:
+        name: ret10_CN_fw_iso
+        tags:
+          - dc01
+      781:
+        name: ret11_CN_fw
+        tags:
+          - dc01
+      782:
+        name: DT_ret10_CN_lb_fw
+        tags:
+          - dc01
+      783:
+        name: DT_ret10_CN_lb_fw_iso
+        tags:
+          - dc01
+      784:
+        name: DT_ret11_CN_fw
+        tags:
+          - dc01
+      785:
+        name: DT_ret11_CN_fw_iso
+        tags:
+          - dc01
+      786:
+        name: DT_ret12_CN_fw
+        tags:
+          - dc01
+      787:
+        name: DT_ret12_CN_fw_iso
+        tags:
+          - dc01
+      788:
+        name: DT_ret13_CN_fw
+        tags:
+          - dc01
+      789:
+        name: DT_ret14_CN_fw
+        tags:
+          - dc01
+      790:
+        name: DT_ret14_CN_fw_iso
+        tags:
+          - dc01
+      791:
+        name: inf19_CN_fw
+        tags:
+          - dc01
+      792:
+        name: DT_inf33_CN_fw
+        tags:
+          - dc01
+      793:
+        name: unnamed_793
+        tags:
+          - dc01
+      794:
+        name: unnamed_794
+        tags:
+          - dc01
+      795:
+        name: DT_mgnt_CN_publ3_fw
+        tags:
+          - dc01
+      796:
+        name: DT_mgnt_CN_publ3_lb_fw
+        tags:
+          - dc01
+      797:
+        name: DT_inf34_CN_lb_fw
+        tags:
+          - dc01
+      798:
+        name: DT_inf44_cn_lb_fw
+        tags:
+          - dc01
+      799:
+        name: DT_inf45_cn_fw
+        tags:
+          - dc01
+      800:
+        name: inf46_CN_lb_fw
+        tags:
+          - dc01
+      801:
+        name: DT_inf46_cn_lb_fw
+        tags:
+          - dc01
+      802:
+        name: DT_ret1_CN
+        tags:
+          - dc01
+      803:
+        name: ret12_CN
+        tags:
+          - dc01
+      804:
+        name: inf47_CN
+        tags:
+          - dc01
+      805:
+        name: inf48_CN_fw
+        tags:
+          - dc01
+      806:
+        name: inf48_cn_lb_fw
+        tags:
+          - dc01
+      807:
+        name: inf49_cn_fw
+        tags:
+          - dc01
+      808:
+        name: inf49_cn_lb_fw
+        tags:
+          - dc01
+      809:
+        name: inf50_cn_fw
+        tags:
+          - dc01
+      810:
+        name: inf50_cn_lb_fw
+        tags:
+          - dc01
+      811:
+        name: inf51_cn_fw
+        tags:
+          - dc01
+      812:
+        name: inf51_cn_lb_fw
+        tags:
+          - dc01
+      813:
+        name: inf52_cn_fw
+        tags:
+          - dc01
+      814:
+        name: inf52_cn_lb_fw
+        tags:
+          - dc01
+      815:
+        name: inf53_cn_fw
+        tags:
+          - dc01
+      816:
+        name: inf53_cn_lb_fw
+        tags:
+          - dc01
+      817:
+        name: inf54_cn_fw
+        tags:
+          - dc01
+      818:
+        name: inf54_cn_lb_fw
+        tags:
+          - dc01
+      819:
+        name: DT_inf46_CN_fw
+        tags:
+          - dc01
+      820:
+        name: DT_inf7_CN_con
+        tags:
+          - dc01
+      821:
+        name: DT_inf47_CN_fw
+        tags:
+          - dc01
+      822:
+        name: DT_inf48_CN_fw
+        tags:
+          - dc01
+      823:
+        name: inf59_CN_fw
+        tags:
+          - dc01
+      824:
+        name: inf60_CN_fw
+        tags:
+          - dc01
+      825:
+        name: inf61_CN_fw
+        tags:
+          - dc01
+      826:
+        name: DT_inf8_CN_con
+        tags:
+          - dc01
+      827:
+        name: inf8_CN_con
+        tags:
+          - dc01
+      828:
+        name: inf9_CN_con
+        tags:
+          - dc01
+      829:
+        name: DT_inf10_CN_con
+        tags:
+          - dc01
+      830:
+        name: inf10_CN_con
+        tags:
+          - dc01
+      831:
+        name: mgnt_CN_nfs1
+        tags:
+          - dc01
+      832:
+        name: inf_CN_nfs1
+        tags:
+          - dc01
+      833:
+        name: DT_inf49_CN_fw
+        tags:
+          - dc01
+      834:
+        name: DT_inf50_CN_lb_fw
+        tags:
+          - dc01
+      835:
+        name: unnamed_835
+        tags:
+          - dc01
+      836:
+        name: DT_inf52_CN_fw
+        tags:
+          - dc01
+      837:
+        name: DT_inf53_CN_fw
+        tags:
+          - dc01
+      838:
+        name: inf63_CN_fw
+        tags:
+          - dc01
+      839:
+        name: inf64_CN_fw
+        tags:
+          - dc01
+      840:
+        name: DT_inf54_CN_fw
+        tags:
+          - dc01
+      841:
+        name: inf65_CN_fw
+        tags:
+          - dc01
+      842:
+        name: inf66_CN_fw
+        tags:
+          - dc01
+      843:
+        name: DT_inf55_CN_fw
+        tags:
+          - dc01
+      844:
+        name: DT_mgnt_CN_nas
+        tags:
+          - dc01
+      845:
+        name: DT_inf56_CN_fw
+        tags:
+          - dc01
+      846:
+        name: DT_inf57_CN_fw
+        tags:
+          - dc01
+      847:
+        name: DT_inf58_CN_fw
+        tags:
+          - dc01
+      848:
+        name: DT_inf59_CN_fw
+        tags:
+          - dc01
+      849:
+        name: DT_inf60_CN_fw
+        tags:
+          - dc01
+      850:
+        name: mgnt_CN_publ6_fw
+        tags:
+          - dc01
+      851:
+        name: mgnt_CN_publ6_lb_fw
+        tags:
+          - dc01
+      852:
+        name: DT_mgnt_CN_priv6_fw
+        tags:
+          - dc01
+      853:
+        name: DT_inf61_CN_fw
+        tags:
+          - dc01
+      854:
+        name: DT_inf65_CN_fw
+        tags:
+          - dc01
+      855:
+        name: DT_inf63_CN_fw
+        tags:
+          - dc01
+      856:
+        name: inf67_CN_fw
+        tags:
+          - dc01
+      857:
+        name: DT_ret15_CN_fw
+        tags:
+          - dc01
+      858:
+        name: DT_inf66_CN_fw
+        tags:
+          - dc01
+      859:
+        name: inf68_CN_fw
+        tags:
+          - dc01
+      860:
+        name: unnamed_860
+        tags:
+          - dc01
+      861:
+        name: inf69_CN_fw
+        tags:
+          - dc01
+      862:
+        name: mgmt_cn_sdw_fw
+        tags:
+          - dc01
+      863:
+        name: DT_inf67_CN_fw
+        tags:
+          - dc01
+      864:
+        name: unnamed_864
+        tags:
+          - dc01
+      865:
+        name: inf01_DC018_con
+        tags:
+          - dc01
+      866:
+        name: DT_pim_CN
+        tags:
+          - dc01
+      867:
+        name: DT_pim_CN_lb
+        tags:
+          - dc01
+      868:
+        name: pim_CN
+        tags:
+          - dc01
+      869:
+        name: pim_CN_lb
+        tags:
+          - dc01
+      870:
+        name: inf4_CN_DT_con
+        tags:
+          - dc01
+      871:
+        name: unnamed_871
+        tags:
+          - dc01
+      872:
+        name: unnamed_872
+        tags:
+          - dc01
+      873:
+        name: DT_inf1_CN_con
+        tags:
+          - dc01
+      874:
+        name: mgnt2_CN_con
+        tags:
+          - dc01
+      875:
+        name: mgnt_CN_priv_log_con
+        tags:
+          - dc01
+      876:
+        name: DT_mgnt_CN_con
+        tags:
+          - dc01
+      877:
+        name: DT_inf6_CN_con
+        tags:
+          - dc01
+      878:
+        name: inf6_CN_con
+        tags:
+          - dc01
+      879:
+        name: inf3_CN_DT_con
+        tags:
+          - dc01
+      880:
+        name: inf3_CN_con
+        tags:
+          - dc01
+      881:
+        name: DT_inf2_CN_con
+        tags:
+          - dc01
+      882:
+        name: inf2_CN_con
+        tags:
+          - dc01
+      883:
+        name: DT_omr_CN_con
+        tags:
+          - dc01
+      884:
+        name: unnamed_884
+        tags:
+          - dc01
+      885:
+        name: unnamed_885
+        tags:
+          - dc01
+      886:
+        name: unnamed_886
+        tags:
+          - dc01
+      887:
+        name: DT_ret_CN_con
+        tags:
+          - dc01
+      888:
+        name: ret_CN_con
+        tags:
+          - dc01
+      889:
+        name: DT_mgnt_CN_publ_con
+        tags:
+          - dc01
+      890:
+        name: CN_DT_transit_fw
+        tags:
+          - dc01
+      891:
+        name: CN_DT_transit_con
+        tags:
+          - dc01
+      892:
+        name: mgmt_CN_priv_log
+        tags:
+          - dc01
+      893:
+        name: CN_D2_transit_fw
+        tags:
+          - dc01
+      894:
+        name: DT_inf01_DC018_fw
+        tags:
+          - dc01
+      895:
+        name: inf01_DC018_fw
+        tags:
+          - dc01
+      896:
+        name: mgnt_CN_publ_con
+        tags:
+          - dc01
+      897:
+        name: mgnt_CN_priv_con
+        tags:
+          - dc01
+      898:
+        name: SWEp-CN-1_state
+        tags:
+          - dc01
+      899:
+        name: DT_inf01_DC018_con
+        tags:
+          - dc01
+      900:
+        name: unnamed_900
+        tags:
+          - dc01
+      901:
+        name: unnamed_901
+        tags:
+          - dc01
+      902:
+        name: VDI_Client_DC01_01
+        tags:
+          - dc01
+      903:
+        name: unnamed_903
+        tags:
+          - dc01
+      904:
+        name: unnamed_904
+        tags:
+          - dc01
+      905:
+        name: unnamed_905
+        tags:
+          - dc01
+      906:
+        name: unnamed_906
+        tags:
+          - dc01
+      907:
+        name: unnamed_907
+        tags:
+          - dc01
+      908:
+        name: unnamed_908
+        tags:
+          - dc01
+      909:
+        name: unnamed_909
+        tags:
+          - dc01
+      910:
+        name: unnamed_910
+        tags:
+          - dc01
+      911:
+        name: unnamed_911
+        tags:
+          - dc01
+      912:
+        name: unnamed_912
+        tags:
+          - dc01
+      913:
+        name: unnamed_913
+        tags:
+          - dc01
+      914:
+        name: unnamed_914
+        tags:
+          - dc01
+      915:
+        name: unnamed_915
+        tags:
+          - dc01
+      916:
+        name: unnamed_916
+        tags:
+          - dc01
+      917:
+        name: unnamed_917
+        tags:
+          - dc01
+      918:
+        name: unnamed_918
+        tags:
+          - dc01
+      919:
+        name: unnamed_919
+        tags:
+          - dc01
+      920:
+        name: unnamed_920
+        tags:
+          - dc01
+      921:
+        name: unnamed_921
+        tags:
+          - dc01
+      922:
+        name: unnamed_922
+        tags:
+          - dc01
+      923:
+        name: unnamed_923
+        tags:
+          - dc01
+      924:
+        name: unnamed_924
+        tags:
+          - dc01
+      925:
+        name: unnamed_925
+        tags:
+          - dc01
+      926:
+        name: unnamed_926
+        tags:
+          - dc01
+      927:
+        name: unnamed_927
+        tags:
+          - dc01
+      928:
+        name: unnamed_928
+        tags:
+          - dc01
+      929:
+        name: unnamed_929
+        tags:
+          - dc01
+      930:
+        name: unnamed_930
+        tags:
+          - dc01
+      931:
+        name: unnamed_931
+        tags:
+          - dc01
+      932:
+        name: unnamed_932
+        tags:
+          - dc01
+      933:
+        name: unnamed_933
+        tags:
+          - dc01
+      934:
+        name: unnamed_934
+        tags:
+          - dc01
+      935:
+        name: unnamed_935
+        tags:
+          - dc01
+      936:
+        name: unnamed_936
+        tags:
+          - dc01
+      937:
+        name: unnamed_937
+        tags:
+          - dc01
+      938:
+        name: unnamed_938
+        tags:
+          - dc01
+      939:
+        name: unnamed_939
+        tags:
+          - dc01
+      940:
+        name: unnamed_940
+        tags:
+          - dc01
+      941:
+        name: unnamed_941
+        tags:
+          - dc01
+      942:
+        name: unnamed_942
+        tags:
+          - dc01
+      943:
+        name: unnamed_943
+        tags:
+          - dc01
+      944:
+        name: unnamed_944
+        tags:
+          - dc01
+      945:
+        name: unnamed_945
+        tags:
+          - dc01
+      946:
+        name: unnamed_946
+        tags:
+          - dc01
+      947:
+        name: unnamed_947
+        tags:
+          - dc01
+      948:
+        name: unnamed_948
+        tags:
+          - dc01
+      949:
+        name: unnamed_949
+        tags:
+          - dc01
+      950:
+        name: unnamed_950
+        tags:
+          - dc01
+      951:
+        name: unnamed_951
+        tags:
+          - dc01
+      952:
+        name: unnamed_952
+        tags:
+          - dc01
+      953:
+        name: unnamed_953
+        tags:
+          - dc01
+      954:
+        name: unnamed_954
+        tags:
+          - dc01
+      955:
+        name: unnamed_955
+        tags:
+          - dc01
+      956:
+        name: unnamed_956
+        tags:
+          - dc01
+      957:
+        name: unnamed_957
+        tags:
+          - dc01
+      958:
+        name: unnamed_958
+        tags:
+          - dc01
+      959:
+        name: unnamed_959
+        tags:
+          - dc01
+      960:
+        name: unnamed_960
+        tags:
+          - dc01
+      961:
+        name: unnamed_961
+        tags:
+          - dc01
+      962:
+        name: unnamed_962
+        tags:
+          - dc01
+      963:
+        name: unnamed_963
+        tags:
+          - dc01
+      964:
+        name: unnamed_964
+        tags:
+          - dc01
+      965:
+        name: unnamed_965
+        tags:
+          - dc01
+      966:
+        name: unnamed_966
+        tags:
+          - dc01
+      967:
+        name: unnamed_967
+        tags:
+          - dc01
+      968:
+        name: unnamed_968
+        tags:
+          - dc01
+      969:
+        name: unnamed_969
+        tags:
+          - dc01
+      970:
+        name: unnamed_970
+        tags:
+          - dc01
+      971:
+        name: unnamed_971
+        tags:
+          - dc01
+      972:
+        name: unnamed_972
+        tags:
+          - dc01
+      973:
+        name: unnamed_973
+        tags:
+          - dc01
+      974:
+        name: unnamed_974
+        tags:
+          - dc01
+      975:
+        name: unnamed_975
+        tags:
+          - dc01
+      976:
+        name: unnamed_976
+        tags:
+          - dc01
+      977:
+        name: unnamed_977
+        tags:
+          - dc01
+      978:
+        name: unnamed_978
+        tags:
+          - dc01
+      979:
+        name: unnamed_979
+        tags:
+          - dc01
+      980:
+        name: unnamed_980
+        tags:
+          - dc01
+      981:
+        name: unnamed_981
+        tags:
+          - dc01
+      982:
+        name: unnamed_982
+        tags:
+          - dc01
+      983:
+        name: unnamed_983
+        tags:
+          - dc01
+      984:
+        name: unnamed_984
+        tags:
+          - dc01
+      985:
+        name: unnamed_985
+        tags:
+          - dc01
+      986:
+        name: unnamed_986
+        tags:
+          - dc01
+      987:
+        name: unnamed_987
+        tags:
+          - dc01
+      988:
+        name: unnamed_988
+        tags:
+          - dc01
+      989:
+        name: unnamed_989
+        tags:
+          - dc01
+      990:
+        name: unnamed_990
+        tags:
+          - dc01
+      991:
+        name: unnamed_991
+        tags:
+          - dc01
+      992:
+        name: unnamed_992
+        tags:
+          - dc01
+      993:
+        name: unnamed_993
+        tags:
+          - dc01
+      994:
+        name: unnamed_994
+        tags:
+          - dc01
+      995:
+        name: unnamed_995
+        tags:
+          - dc01
+      996:
+        name: unnamed_996
+        tags:
+          - dc01
+      997:
+        name: unnamed_997
+        tags:
+          - dc01
+      998:
+        name: unnamed_998
+        tags:
+          - dc01
+      999:
+        name: unnamed_999
+        tags:
+          - dc01
+      1000:
+        name: unnamed_1000
+        tags:
+          - dc01
+      1001:
+        name: dummy
+        tags:
+          - dc01
+      2000:
+        name: mgnt1_DC01_exa_fw
+        tags:
+          - dc01
+      2001:
+        name: unnamed_2001
+        tags:
+          - dc01
+      2002:
+        name: unnamed_2002
+        tags:
+          - dc01
+      2003:
+        name: inf28_DC01_fw
+        tags:
+          - dc01
+      2004:
+        name: inf29_DC01_fw
+        tags:
+          - dc01
+      2005:
+        name: inf30_DC01_fw
+        tags:
+          - dc01
+      2006:
+        name: DT_inf22_DC01_fw
+        tags:
+          - dc01
+      2007:
+        name: DT_inf23_DC01_fw
+        tags:
+          - dc01
+      2008:
+        name: DT_inf24_DC01_fw
+        tags:
+          - dc01
+      2009:
+        name: mgnt1_DC01_dg
+        tags:
+          - dc01
+      2010:
+        name: mgnt2_DC01_dg
+        tags:
+          - dc01
+      2011:
+        name: mgnt3_DC01_dg
+        tags:
+          - dc01
+      2012:
+        name: DT_mgnt1_DC01_dg
+        tags:
+          - dc01
+      2013:
+        name: DT_mgnt2_DC01_dg
+        tags:
+          - dc01
+      2014:
+        name: DT_mgnt3_DC01_dg
+        tags:
+          - dc01
+      2015:
+        name: inf1_DC01_exa_fw
+        tags:
+          - dc01
+      2016:
+        name: unnamed_2016
+        tags:
+          - dc01
+      2017:
+        name: inf31_DC01_fw
+        tags:
+          - dc01
+      2018:
+        name: inf31_DC01_fw_iso
+        tags:
+          - dc01
+      2019:
+        name: mgnt63_DC01_rac
+        tags:
+          - dc01
+      2020:
+        name: mgnt64_DC01_rac
+        tags:
+          - dc01
+      2021:
+        name: mgnt_DC01_ADC_fw
+        tags:
+          - dc01
+      2022:
+        name: inf32_DC01_fw
+        tags:
+          - dc01
+      2023:
+        name: mgnt65_DC01_rac
+        tags:
+          - dc01
+      2024:
+        name: mgnt66_DC01_rac
+        tags:
+          - dc01
+      2025:
+        name: DT_mgnt64_DC01_rac
+        tags:
+          - dc01
+      2026:
+        name: mgnt67_DC01_rac
+        tags:
+          - dc01
+      2027:
+        name: inf33_DC01_fw
+        tags:
+          - dc01
+      2028:
+        name: mgnt68_DC01_rac
+        tags:
+          - dc01
+      2029:
+        name: mgnt69_DC01_rac
+        tags:
+          - dc01
+      2030:
+        name: mgnt70_DC01_rac
+        tags:
+          - dc01
+      2031:
+        name: unnamed_2031
+        tags:
+          - dc01
+      2032:
+        name: DT_mgnt_DC01_inf6_fw
+        tags:
+          - dc01
+      2033:
+        name: DT_mgnt_DC01_inf6_fw_iso
+        tags:
+          - dc01
+      2034:
+        name: DT_mgnt65_DC01_rac
+        tags:
+          - dc01
+      2035:
+        name: DT_inf4_DC01_con
+        tags:
+          - dc01
+      2036:
+        name: DT_inf5_DC01_con
+        tags:
+          - dc01
+      2037:
+        name: inf2_DC01_con
+        tags:
+          - dc01
+      2038:
+        name: inf3_DC01_con
+        tags:
+          - dc01
+      2039:
+        name: DT_inf25_DC01_fw
+        tags:
+          - dc01
+      2040:
+        name: inf34_DC01_fw
+        tags:
+          - dc01
+      2041:
+        name: unnamed_2041
+        tags:
+          - dc01
+      2042:
+        name: unnamed_2042
+        tags:
+          - dc01
+      2043:
+        name: unnamed_2043
+        tags:
+          - dc01
+      2044:
+        name: unnamed_2044
+        tags:
+          - dc01
+      2045:
+        name: unnamed_2045
+        tags:
+          - dc01
+      2046:
+        name: unnamed_2046
+        tags:
+          - dc01
+      2047:
+        name: unnamed_2047
+        tags:
+          - dc01
+      2048:
+        name: unnamed_2048
+        tags:
+          - dc01
+      2049:
+        name: unnamed_2049
+        tags:
+          - dc01
+      2050:
+        name: unnamed_2050
+        tags:
+          - dc01
+      2051:
+        name: unnamed_2051
+        tags:
+          - dc01
+      2052:
+        name: unnamed_2052
+        tags:
+          - dc01
+      2053:
+        name: unnamed_2053
+        tags:
+          - dc01
+      2054:
+        name: unnamed_2054
+        tags:
+          - dc01
+      2055:
+        name: unnamed_2055
+        tags:
+          - dc01
+      2056:
+        name: unnamed_2056
+        tags:
+          - dc01
+      2057:
+        name: unnamed_2057
+        tags:
+          - dc01
+      2058:
+        name: unnamed_2058
+        tags:
+          - dc01
+      2059:
+        name: unnamed_2059
+        tags:
+          - dc01
+      2060:
+        name: unnamed_2060
+        tags:
+          - dc01
+      2061:
+        name: unnamed_2061
+        tags:
+          - dc01
+      2062:
+        name: unnamed_2062
+        tags:
+          - dc01
+      2063:
+        name: unnamed_2063
+        tags:
+          - dc01
+      2064:
+        name: unnamed_2064
+        tags:
+          - dc01
+      2065:
+        name: unnamed_2065
+        tags:
+          - dc01
+      2066:
+        name: unnamed_2066
+        tags:
+          - dc01
+      2067:
+        name: unnamed_2067
+        tags:
+          - dc01
+      2068:
+        name: unnamed_2068
+        tags:
+          - dc01
+      2069:
+        name: unnamed_2069
+        tags:
+          - dc01
+      2070:
+        name: unnamed_2070
+        tags:
+          - dc01
+      2071:
+        name: unnamed_2071
+        tags:
+          - dc01
+      2072:
+        name: unnamed_2072
+        tags:
+          - dc01
+      2073:
+        name: unnamed_2073
+        tags:
+          - dc01
+      2074:
+        name: unnamed_2074
+        tags:
+          - dc01
+      2075:
+        name: unnamed_2075
+        tags:
+          - dc01
+      2076:
+        name: mgnt01_DC01_svcnow_fw
+        tags:
+          - dc01
+      2077:
+        name: unnamed_2077
+        tags:
+          - dc01
+      2078:
+        name: unnamed_2078
+        tags:
+          - dc01
+      2079:
+        name: unnamed_2079
+        tags:
+          - dc01
+      2080:
+        name: unnamed_2080
+        tags:
+          - dc01
+      2081:
+        name: unnamed_2081
+        tags:
+          - dc01
+      2082:
+        name: unnamed_2082
+        tags:
+          - dc01
+      2083:
+        name: unnamed_2083
+        tags:
+          - dc01
+      2084:
+        name: unnamed_2084
+        tags:
+          - dc01
+      2085:
+        name: unnamed_2085
+        tags:
+          - dc01
+      2086:
+        name: unnamed_2086
+        tags:
+          - dc01
+      2087:
+        name: unnamed_2087
+        tags:
+          - dc01
+      2088:
+        name: unnamed_2088
+        tags:
+          - dc01
+      2089:
+        name: unnamed_2089
+        tags:
+          - dc01
+      2090:
+        name: unnamed_2090
+        tags:
+          - dc01
+      2091:
+        name: unnamed_2091
+        tags:
+          - dc01
+      2092:
+        name: unnamed_2092
+        tags:
+          - dc01
+      2093:
+        name: unnamed_2093
+        tags:
+          - dc01
+      2094:
+        name: unnamed_2094
+        tags:
+          - dc01
+      2095:
+        name: unnamed_2095
+        tags:
+          - dc01
+      2096:
+        name: unnamed_2096
+        tags:
+          - dc01
+      2097:
+        name: unnamed_2097
+        tags:
+          - dc01
+      2098:
+        name: unnamed_2098
+        tags:
+          - dc01
+      2099:
+        name: unnamed_2099
+        tags:
+          - dc01
+      2100:
+        name: unnamed_2100
+        tags:
+          - dc01
+      2101:
+        name: unnamed_2101
+        tags:
+          - dc01
+      2102:
+        name: unnamed_2102
+        tags:
+          - dc01
+      2103:
+        name: unnamed_2103
+        tags:
+          - dc01
+      2104:
+        name: unnamed_2104
+        tags:
+          - dc01
+      2105:
+        name: unnamed_2105
+        tags:
+          - dc01
+      2106:
+        name: unnamed_2106
+        tags:
+          - dc01
+      2107:
+        name: unnamed_2107
+        tags:
+          - dc01
+      2108:
+        name: unnamed_2108
+        tags:
+          - dc01
+      2109:
+        name: unnamed_2109
+        tags:
+          - dc01
+      2110:
+        name: unnamed_2110
+        tags:
+          - dc01
+      2111:
+        name: unnamed_2111
+        tags:
+          - dc01
+      2112:
+        name: unnamed_2112
+        tags:
+          - dc01
+      2113:
+        name: unnamed_2113
+        tags:
+          - dc01
+      2114:
+        name: unnamed_2114
+        tags:
+          - dc01
+      2115:
+        name: unnamed_2115
+        tags:
+          - dc01
+      2116:
+        name: unnamed_2116
+        tags:
+          - dc01
+      2117:
+        name: unnamed_2117
+        tags:
+          - dc01
+      2118:
+        name: unnamed_2118
+        tags:
+          - dc01
+      2119:
+        name: unnamed_2119
+        tags:
+          - dc01
+      2120:
+        name: unnamed_2120
+        tags:
+          - dc01
+      2121:
+        name: unnamed_2121
+        tags:
+          - dc01
+      2122:
+        name: unnamed_2122
+        tags:
+          - dc01
+      2123:
+        name: unnamed_2123
+        tags:
+          - dc01
+      2124:
+        name: unnamed_2124
+        tags:
+          - dc01
+      2125:
+        name: unnamed_2125
+        tags:
+          - dc01
+      2126:
+        name: unnamed_2126
+        tags:
+          - dc01
+      2127:
+        name: unnamed_2127
+        tags:
+          - dc01
+      2128:
+        name: unnamed_2128
+        tags:
+          - dc01
+      2129:
+        name: unnamed_2129
+        tags:
+          - dc01
+      2130:
+        name: unnamed_2130
+        tags:
+          - dc01
+      2131:
+        name: unnamed_2131
+        tags:
+          - dc01
+      2132:
+        name: unnamed_2132
+        tags:
+          - dc01
+      2133:
+        name: unnamed_2133
+        tags:
+          - dc01
+      2134:
+        name: unnamed_2134
+        tags:
+          - dc01
+      2135:
+        name: unnamed_2135
+        tags:
+          - dc01
+      2136:
+        name: unnamed_2136
+        tags:
+          - dc01
+      2137:
+        name: unnamed_2137
+        tags:
+          - dc01
+      2138:
+        name: mgnt4_DC01_con
+        tags:
+          - dc01
+      2139:
+        name: DT_mgnt_DC01_con
+        tags:
+          - dc01
+      2140:
+        name: unnamed_2140
+        tags:
+          - dc01
+      2141:
+        name: unnamed_2141
+        tags:
+          - dc01
+      2142:
+        name: unnamed_2142
+        tags:
+          - dc01
+      2143:
+        name: unnamed_2143
+        tags:
+          - dc01
+      2144:
+        name: inf68_DC01
+        tags:
+          - dc01
+      2145:
+        name: DT_mgnt_DC01_inf16_fw
+        tags:
+          - dc01
+      2146:
+        name: DT_inf67_DC01_fw
+        tags:
+          - dc01
+      2147:
+        name: mgnt_DC01_drac
+        tags:
+          - dc01
+      2148:
+        name: mgnt_DC01_drac_iso
+        tags:
+          - dc01
+      2149:
+        name: unnamed_2149
+        tags:
+          - dc01
+      2150:
+        name: unnamed_2150
+        tags:
+          - dc01
+      2151:
+        name: unnamed_2151
+        tags:
+          - dc01
+      2152:
+        name: inf69_DC01_fw
+        tags:
+          - dc01
+      2153:
+        name: mgnt_DC01_publ5_fw
+        tags:
+          - dc01
+      2154:
+        name: mgnt_DC01_publ8_fw
+        tags:
+          - dc01
+      2155:
+        name: mgnt_DC01_publ7_fw
+        tags:
+          - dc01
+      2156:
+        name: inf70_DC01_fw
+        tags:
+          - dc01
+      2157:
+        name: mgnt_DC01_inf21_fw
+        tags:
+          - dc01
+      2158:
+        name: mgnt_DC01_inf21_fw_iso
+        tags:
+          - dc01
+      2159:
+        name: DT_inf68_DC01_fw
+        tags:
+          - dc01
+      2160:
+        name: DT_inf69_DC01_fw
+        tags:
+          - dc01
+      2161:
+        name: mgnt75_DC01_rac
+        tags:
+          - dc01
+      2162:
+        name: DT_inf70_DC01_fw
+        tags:
+          - dc01
+      2163:
+        name: DT_mgnt_DC01_inf18_fw
+        tags:
+          - dc01
+      2164:
+        name: DT_mgnt_DC01_inf18_fw_iso
+        tags:
+          - dc01
+      2165:
+        name: DT_mgnt44_DC01_rac
+        tags:
+          - dc01
+      2166:
+        name: DT_Local_SLI_103_DC01
+        tags:
+          - dc01
+      2167:
+        name: DT_Local_SLI_104_DC01
+        tags:
+          - dc01
+      2168:
+        name: DT_Local_SLI_105_DC01
+        tags:
+          - dc01
+      2169:
+        name: DT_Local_SLI_106_DC01
+        tags:
+          - dc01
+      2170:
+        name: DT_Local_SLI_107_DC01
+        tags:
+          - dc01
+      2171:
+        name: DT_Local_SLI_108_DC01
+        tags:
+          - dc01
+      2172:
+        name: DT_Local_SLI_109_DC01
+        tags:
+          - dc01
+      2173:
+        name: DT_Local_SLI_110_DC01
+        tags:
+          - dc01
+      2174:
+        name: DT_inf59_DC01_fw
+        tags:
+          - dc01
+      2175:
+        name: DT_inf71_DC01_fw
+        tags:
+          - dc01
+      2176:
+        name: DT_inf72_DC01_fw
+        tags:
+          - dc01
+      2177:
+        name: inf72_DC01_fw
+        tags:
+          - dc01
+      2178:
+        name: inf73_DC01_fw
+        tags:
+          - dc01
+      2179:
+        name: mgnt1_DC01_drac
+        tags:
+          - dc01
+      2180:
+        name: mgnt1_DC01_drac_iso
+        tags:
+          - dc01
+      2181:
+        name: inf74_DC01_fw
+        tags:
+          - dc01
+      2182:
+        name: inf75_DC01_fw
+        tags:
+          - dc01
+      2183:
+        name: mgnt59_DC01_rac
+        tags:
+          - dc01
+      2184:
+        name: unnamed_2184
+        tags:
+          - dc01
+      2185:
+        name: mgnt1_DC01_lpm
+        tags:
+          - dc01
+      2186:
+        name: DT_inf74_DC01_fw
+        tags:
+          - dc01
+      2187:
+        name: DT_inf75_DC01_fw
+        tags:
+          - dc01
+      2188:
+        name: DT_mgnt_DC01_inf19_fw
+        tags:
+          - dc01
+      2189:
+        name: inf76_DC01_fw
+        tags:
+          - dc01
+      2190:
+        name: DT_mgnt71_DC01_fw
+        tags:
+          - dc01
+      2191:
+        name: mgnt_DC01_inf22_fw
+        tags:
+          - dc01
+      2192:
+        name: mgnt14_DC01_ilo
+        tags:
+          - dc01
+      2193:
+        name: mgnt14_DC01_ilo_iso
+        tags:
+          - dc01
+      2194:
+        name: inf78_DC01_fw
+        tags:
+          - dc01
+      2195:
+        name: inf79_DC01_fw
+        tags:
+          - dc01
+      2196:
+        name: mgnt_DC01_inf24_fw
+        tags:
+          - dc01
+      2197:
+        name: mgnt_DC01_inf24_fw_iso
+        tags:
+          - dc01
+      2198:
+        name: inf79_DC01
+        tags:
+          - dc01
+      2199:
+        name: inf80_DC01_fw
+        tags:
+          - dc01
+      2200:
+        name: mgnt_DC01_inf25_fw
+        tags:
+          - dc01
+      2201:
+        name: unnamed_2201
+        tags:
+          - dc01
+      2202:
+        name: inf83_DC01_fw
+        tags:
+          - dc01
+      2203:
+        name: inf84_DC01_fw
+        tags:
+          - dc01
+      2204:
+        name: inf85_DC01
+        tags:
+          - dc01
+      2205:
+        name: vdi_DC01
+        tags:
+          - dc01
+      2206:
+        name: DT_mgnt70_DC01_RAC
+        tags:
+          - dc01
+      2207:
+        name: mgnt_DC01_inf26
+        tags:
+          - dc01
+      2208:
+        name: DT_mgnt_DC01_inf21_fw
+        tags:
+          - dc01
+      2209:
+        name: mgnt_DC01_inf26_fw
+        tags:
+          - dc01
+      2210:
+        name: unnamed_2210
+        tags:
+          - dc01
+      2211:
+        name: unnamed_2211
+        tags:
+          - dc01
+      2212:
+        name: DT_inf76_DC01_fw
+        tags:
+          - dc01
+      2213:
+        name: unnamed_2213
+        tags:
+          - dc01
+      2214:
+        name: inf86_DC01
+        tags:
+          - dc01
+      2215:
+        name: DT_mgnt72_DC01_rac
+        tags:
+          - dc01
+      2216:
+        name: unnamed_2216
+        tags:
+          - dc01
+      2217:
+        name: DT_mgnt74_DC01_rac
+        tags:
+          - dc01
+      2218:
+        name: DT_mgnt75_DC01_RAC
+        tags:
+          - dc01
+      2219:
+        name: DT_inf77_DC01_fw
+        tags:
+          - dc01
+      2220:
+        name: DT_inf38_DC01
+        tags:
+          - dc01
+      2221:
+        name: inf87_DC01
+        tags:
+          - dc01
+      2222:
+        name: inf88_DC01
+        tags:
+          - dc01
+      2223:
+        name: unnamed_2223
+        tags:
+          - dc01
+      2224:
+        name: inf01_DC01_iis
+        tags:
+          - dc01
+      2225:
+        name: inf02_DC01_iis
+        tags:
+          - dc01
+      2226:
+        name: inf03_DC01_iis
+        tags:
+          - dc01
+      2227:
+        name: inf04_DC01_iis
+        tags:
+          - dc01
+      2228:
+        name: inf05_DC01_iis
+        tags:
+          - dc01
+      2229:
+        name: inf06_DC01_iis
+        tags:
+          - dc01
+      2230:
+        name: inf07_DC01_iis
+        tags:
+          - dc01
+      2231:
+        name: inf08_DC01_iis
+        tags:
+          - dc01
+      2232:
+        name: inf09_DC01_iis
+        tags:
+          - dc01
+      2233:
+        name: inf10_DC01_iis
+        tags:
+          - dc01
+      2234:
+        name: inf11_DC01_iis
+        tags:
+          - dc01
+      2235:
+        name: inf12_DC01_iis
+        tags:
+          - dc01
+      2236:
+        name: DT_inf79_DC01_fw
+        tags:
+          - dc01
+      2237:
+        name: inf13_DC01_iis_con
+        tags:
+          - dc01
+      2238:
+        name: inf14_DC01_iis_ilo
+        tags:
+          - dc01
+      2239:
+        name: unnamed_2239
+        tags:
+          - dc01
+      2240:
+        name: unnamed_2240
+        tags:
+          - dc01
+      2241:
+        name: unnamed_2241
+        tags:
+          - dc01
+      2242:
+        name: unnamed_2242
+        tags:
+          - dc01
+      2243:
+        name: unnamed_2243
+        tags:
+          - dc01
+      2244:
+        name: unnamed_2244
+        tags:
+          - dc01
+      2245:
+        name: unnamed_2245
+        tags:
+          - dc01
+      2246:
+        name: unnamed_2246
+        tags:
+          - dc01
+      2247:
+        name: inf85_DC01_bck_fw
+        tags:
+          - dc01
+      2248:
+        name: inf90_DC01_fw
+        tags:
+          - dc01
+      2249:
+        name: inf15_DC01_iis
+        tags:
+          - dc01
+      2250:
+        name: unnamed_2250
+        tags:
+          - dc01
+      2251:
+        name: unnamed_2251
+        tags:
+          - dc01
+      2252:
+        name: unnamed_2252
+        tags:
+          - dc01
+      2253:
+        name: mgnt_DC01_publ9_fw
+        tags:
+          - dc01
+      2254:
+        name: inf85_DC01_fw
+        tags:
+          - dc01
+      2255:
+        name: DT_inf81_DC01_fw
+        tags:
+          - dc01
+      2256:
+        name: unnamed_2256
+        tags:
+          - dc01
+      2257:
+        name: unnamed_2257
+        tags:
+          - dc01
+      2258:
+        name: unnamed_2258
+        tags:
+          - dc01
+      2259:
+        name: DT_inf7_DC01_con
+        tags:
+          - dc01
+      2260:
+        name: unnamed_2260
+        tags:
+          - dc01
+      2261:
+        name: inf91_DC01
+        tags:
+          - dc01
+      2262:
+        name: DT_mgnt_DC01_inf23_fw
+        tags:
+          - dc01
+      2263:
+        name: DT_mgnt_DC01_inf23_fw_iso
+        tags:
+          - dc01
+      2264:
+        name: DT_mgnt_DC01_inf24_fw
+        tags:
+          - dc01
+      2265:
+        name: DT_mgnt_DC01_inf24_fw_iso
+        tags:
+          - dc01
+      2266:
+        name: mgnt_DC01_inf28_fw
+        tags:
+          - dc01
+      2267:
+        name: mgnt_DC01_inf28_fw_iso
+        tags:
+          - dc01
+      2268:
+        name: DT_inf82_DC01_fw
+        tags:
+          - dc01
+      2269:
+        name: DT_inf83_DC01_fw
+        tags:
+          - dc01
+      2270:
+        name: inf86_DC01_fw
+        tags:
+          - dc01
+      2271:
+        name: inf87_DC01_fw
+        tags:
+          - dc01
+      2272:
+        name: inf88_DC01_fw
+        tags:
+          - dc01
+      2273:
+        name: DT_inf84_DC01_fw
+        tags:
+          - dc01
+      2274:
+        name: DT_inf85_DC01_fw
+        tags:
+          - dc01
+      2275:
+        name: inf89_DC01_fw
+        tags:
+          - dc01
+      2276:
+        name: unnamed_2276
+        tags:
+          - dc01
+      2277:
+        name: unnamed_2277
+        tags:
+          - dc01
+      2278:
+        name: DT_inf86_DC01_fw
+        tags:
+          - dc01
+      2279:
+        name: inf92_DC01_fw
+        tags:
+          - dc01
+      2280:
+        name: inf93_DC01_fw
+        tags:
+          - dc01
+      2281:
+        name: inf94_DC01_fw
+        tags:
+          - dc01
+      2282:
+        name: DT_inf87_DC01_fw
+        tags:
+          - dc01
+      2283:
+        name: unnamed_2283
+        tags:
+          - dc01
+      2284:
+        name: unnamed_2284
+        tags:
+          - dc01
+      2285:
+        name: DT_mgnt_DC01_Priv_con
+        tags:
+          - dc01
+      2286:
+        name: DT_inf89_DC01_fw
+        tags:
+          - dc01
+      2287:
+        name: inf94_DC01
+        tags:
+          - dc01
+      2288:
+        name: DT_inf88_DC01_fw
+        tags:
+          - dc01
+      2289:
+        name: inf95_DC01_fw
+        tags:
+          - dc01
+      2290:
+        name: inf96_DC01_fw
+        tags:
+          - dc01
+      2291:
+        name: unnamed_2291
+        tags:
+          - dc01
+      2292:
+        name: mgnt_DC01_inf29_fw
+        tags:
+          - dc01
+      2293:
+        name: mgnt_DC01_inf29_fw_iso
+        tags:
+          - dc01
+      2294:
+        name: mgnt_DC01_inf30_fw
+        tags:
+          - dc01
+      2295:
+        name: mgnt_DC01_inf30_fw_iso
+        tags:
+          - dc01
+      2296:
+        name: mgnt_DC01_inf31_fw
+        tags:
+          - dc01
+      2297:
+        name: mgnt_DC01_inf31_fw_iso
+        tags:
+          - dc01
+      2298:
+        name: DT_inf90_DC01_fw
+        tags:
+          - dc01
+      2299:
+        name: unnamed_2299
+        tags:
+          - dc01
+      2600:
+        name: DT_inf31_CN_fw
+        tags:
+          - dc01
+      2601:
+        name: DT_inf32_CN_fw
+        tags:
+          - dc01
+      2602:
+        name: DT_mgnt_CN_priv7_fw
+        tags:
+          - dc01
+      2603:
+        name: mgnt_CN_priv7_fw
+        tags:
+          - dc01
+      2604:
+        name: mgnt_CN_publ8_fw
+        tags:
+          - dc01
+      2605:
+        name: mgnt_CN_publ9_fw
+        tags:
+          - dc01
+      2606:
+        name: unnamed_2606
+        tags:
+          - dc01
+      2607:
+        name: DT_mgnt_CN_publ9_fw
+        tags:
+          - dc01
+      2608:
+        name: DT_inf68_CN_fw
+        tags:
+          - dc01
+      2609:
+        name: mgnt_CN_publ10_fw
+        tags:
+          - dc01
+      2610:
+        name: inf55_CN_fw
+        tags:
+          - dc01
+      2611:
+        name: inf74_CN_fw
+        tags:
+          - dc01
+      2612:
+        name: DT_ret16_CN_fw
+        tags:
+          - dc01
+      2613:
+        name: ret12_CN_fw
+        tags:
+          - dc01
+      2614:
+        name: unnamed_2614
+        tags:
+          - dc01
+      2615:
+        name: DT_ret17_CN_fw
+        tags:
+          - dc01
+      2616:
+        name: DT_ret18_CN_fw
+        tags:
+          - dc01
+      2617:
+        name: DT_ret19_CN_fw
+        tags:
+          - dc01
+      2618:
+        name: DT_ret20_CN_fw
+        tags:
+          - dc01
+      2619:
+        name: DT_ret21_CN_lb_fw
+        tags:
+          - dc01
+      2620:
+        name: ret13_CN_fw
+        tags:
+          - dc01
+      2621:
+        name: ret14_CN_fw
+        tags:
+          - dc01
+      2622:
+        name: ret15_CN_fw
+        tags:
+          - dc01
+      2623:
+        name: ret16_CN_fw
+        tags:
+          - dc01
+      2624:
+        name: ret10_CN_lb_fw
+        tags:
+          - dc01
+      2625:
+        name: DT_ret22_CN_lb_fw
+        tags:
+          - dc01
+      2626:
+        name: DT_ret22_CN_lb_fw_iso
+        tags:
+          - dc01
+      2627:
+        name: DT_ret23_CN_fw
+        tags:
+          - dc01
+      2628:
+        name: DT_ret23_CN_fw_iso
+        tags:
+          - dc01
+      2629:
+        name: ret11_CN_lb_fw
+        tags:
+          - dc01
+      2630:
+        name: ret11_CN_lb_fw_iso
+        tags:
+          - dc01
+      2631:
+        name: ret17_CN_fw
+        tags:
+          - dc01
+      2632:
+        name: ret17_CN_fw_iso
+        tags:
+          - dc01
+      2633:
+        name: SWEp-CN-DC018PA10-HA1-B
+        tags:
+          - dc01
+      2634:
+        name: SWEp-CN-DC018PA10-HA2-B
+        tags:
+          - dc01
+      2635:
+        name: SWEp-CN-DC018PA12-HA1-B
+        tags:
+          - dc01
+      2636:
+        name: SWEp-CN-DC018PA12-HA2-B
+        tags:
+          - dc01
+      2637:
+        name: inf2_CN_nfs1
+        tags:
+          - dc01
+      2638:
+        name: mgnt2_CN_nfs1
+        tags:
+          - dc01
+      2639:
+        name: DT_inf69_CN_fw
+        tags:
+          - dc01
+      2640:
+        name: DT_inf70_CN_fw
+        tags:
+          - dc01
+      2641:
+        name: ret18_CN_fw
+        tags:
+          - dc01
+      2642:
+        name: ret18_CN_fw_iso
+        tags:
+          - dc01
+      2643:
+        name: ret19_CN_fw
+        tags:
+          - dc01
+      2644:
+        name: ret12_CN_lb_fw
+        tags:
+          - dc01
+      2645:
+        name: ret12_CN_lb_fw_iso
+        tags:
+          - dc01
+      2646:
+        name: inf76_CN_fw
+        tags:
+          - dc01
+      2647:
+        name: Local_WH_104_DC018
+        tags:
+          - dc01
+      2648:
+        name: DT_inf71_DC018_fw
+        tags:
+          - dc01
+      2649:
+        name: inf05_DC018_fw
+        tags:
+          - dc01
+      2650:
+        name: inf06_DC018_fw
+        tags:
+          - dc01
+      2651:
+        name: inf07_DC018_fw
+        tags:
+          - dc01
+      2652:
+        name: unnamed_2652
+        tags:
+          - dc01
+      2653:
+        name: unnamed_2653
+        tags:
+          - dc01
+      2654:
+        name: DC018-AC_fail
+        tags:
+          - dc01
+      2655:
+        name: DC018-DT-AC_fail
+        tags:
+          - dc01
+      2656:
+        name: unnamed_2656
+        tags:
+          - dc01
+      2657:
+        name: adm02_DC018_con
+        tags:
+          - dc01
+      2658:
+        name: inf03_DC018_con
+        tags:
+          - dc01
+      2659:
+        name: DT_inf72_DC018_fw
+        tags:
+          - dc01
+      2660:
+        name: unnamed_2660
+        tags:
+          - dc01
+      2661:
+        name: unnamed_2661
+        tags:
+          - dc01
+      2662:
+        name: unnamed_2662
+        tags:
+          - dc01
+      2663:
+        name: unnamed_2663
+        tags:
+          - dc01
+      2664:
+        name: unnamed_2664
+        tags:
+          - dc01
+      2665:
+        name: unnamed_2665
+        tags:
+          - dc01
+      2666:
+        name: unnamed_2666
+        tags:
+          - dc01
+      2667:
+        name: unnamed_2667
+        tags:
+          - dc01
+      2668:
+        name: unnamed_2668
+        tags:
+          - dc01
+      2669:
+        name: unnamed_2669
+        tags:
+          - dc01
+      2670:
+        name: unnamed_2670
+        tags:
+          - dc01
+      2671:
+        name: unnamed_2671
+        tags:
+          - dc01
+      2672:
+        name: unnamed_2672
+        tags:
+          - dc01
+      2673:
+        name: unnamed_2673
+        tags:
+          - dc01
+      2674:
+        name: unnamed_2674
+        tags:
+          - dc01
+      2675:
+        name: unnamed_2675
+        tags:
+          - dc01
+      2676:
+        name: unnamed_2676
+        tags:
+          - dc01
+      2677:
+        name: unnamed_2677
+        tags:
+          - dc01
+      2678:
+        name: unnamed_2678
+        tags:
+          - dc01
+      2679:
+        name: unnamed_2679
+        tags:
+          - dc01
+      2680:
+        name: unnamed_2680
+        tags:
+          - dc01
+      2681:
+        name: unnamed_2681
+        tags:
+          - dc01
+      2682:
+        name: unnamed_2682
+        tags:
+          - dc01
+      2683:
+        name: unnamed_2683
+        tags:
+          - dc01
+      2684:
+        name: unnamed_2684
+        tags:
+          - dc01
+      2685:
+        name: unnamed_2685
+        tags:
+          - dc01
+      2686:
+        name: unnamed_2686
+        tags:
+          - dc01
+      2687:
+        name: unnamed_2687
+        tags:
+          - dc01
+      2688:
+        name: unnamed_2688
+        tags:
+          - dc01
+      2689:
+        name: unnamed_2689
+        tags:
+          - dc01
+      2690:
+        name: unnamed_2690
+        tags:
+          - dc01
+      2691:
+        name: unnamed_2691
+        tags:
+          - dc01
+      2692:
+        name: unnamed_2692
+        tags:
+          - dc01
+      2693:
+        name: unnamed_2693
+        tags:
+          - dc01
+      2694:
+        name: unnamed_2694
+        tags:
+          - dc01
+      2695:
+        name: unnamed_2695
+        tags:
+          - dc01
+      2696:
+        name: unnamed_2696
+        tags:
+          - dc01
+      2697:
+        name: unnamed_2697
+        tags:
+          - dc01
+      2698:
+        name: unnamed_2698
+        tags:
+          - dc01
+      2699:
+        name: unnamed_2699
+        tags:
+          - dc01
+      2700:
+        name: unnamed_2700
+        tags:
+          - dc01
+      2701:
+        name: unnamed_2701
+        tags:
+          - dc01
+      2702:
+        name: unnamed_2702
+        tags:
+          - dc01
+      2703:
+        name: unnamed_2703
+        tags:
+          - dc01
+      2704:
+        name: unnamed_2704
+        tags:
+          - dc01
+      2705:
+        name: unnamed_2705
+        tags:
+          - dc01
+      2706:
+        name: unnamed_2706
+        tags:
+          - dc01
+      2707:
+        name: unnamed_2707
+        tags:
+          - dc01
+      2708:
+        name: unnamed_2708
+        tags:
+          - dc01
+      2709:
+        name: unnamed_2709
+        tags:
+          - dc01
+      2710:
+        name: unnamed_2710
+        tags:
+          - dc01
+      2711:
+        name: unnamed_2711
+        tags:
+          - dc01
+      2712:
+        name: unnamed_2712
+        tags:
+          - dc01
+    mac_vrf_vni_base: 10000
+    vrfs:
+      Admin-DC01-Log:
+        mlag_ibgp_peering_vlan: 4001
+        svis:
+          274:
+            enabled: false
+            ip_address_virtual: 172.30.212.4/29
+            name: mgnt1_DC01_con
+            tags:
+              - dc01
+          275:
+            enabled: false
+            ip_address_virtual: 172.30.248.254/24
+            name: name
+            tags:
+              - dc01
+        vrf_vni: 4401
+      Admin-main:
+        mlag_ibgp_peering_vlan: 4002
+        svis:
+          265:
+            enabled: false
+            ip_address_virtual: 172.30.212.19/29
+            name: mgnt2_DC01_con
+            tags:
+              - dc01
+          288:
+            enabled: false
+            ip_address_virtual: 172.30.250.132/29
+            name: mgnt_DC01_con
+            tags:
+              - dc01
+          609:
+            enabled: false
+            ip_address_virtual: 172.23.135.126/26
+            name: DT_mgnt_CN_nfs
+            tags:
+              - dc01
+          874:
+            enabled: false
+            ip_address_virtual: 172.30.212.35/29
+            name: mgnt2_CN_con
+            tags:
+              - dc01
+          897:
+            enabled: false
+            ip_address_virtual: 172.30.1.252/29
+            name: mgnt_CN_priv_log
+            tags:
+              - dc01
+          2138:
+            enabled: false
+            ip_address_virtual: 172.30.212.46/29
+            name: mgnt4_DC01_con
+            tags:
+              - dc01
+          2139:
+            enabled: false
+            ip_address_virtual: 172.23.140.46/29
+            name: DT_mgnt_DC01_con
+            tags:
+              - dc01
+          2285:
+            enabled: false
+            ip_address_virtual: 172.23.255.83/29
+            name: DT_mgnt_DC01_Priv_con
+            tags:
+              - dc01
+          2656:
+            enabled: false
+            ip_address_virtual: 172.23.255.35/29
+            name: DT_mgnt_DC018_Priv_con
+            tags:
+              - dc01
+        vrf_vni: 4402
+      D2:
+        mlag_ibgp_peering_vlan: 4023
+        svis:
+          893:
+            enabled: false
+            ip_address_virtual: 10.62.191.190/29
+            name: CN_D2_transit_fw
+            tags:
+              - dc01
+        vrf_vni: 4423
+      DMZ:
+        mlag_ibgp_peering_vlan: 4003
+        svis:
+          126:
+            enabled: false
+            ip_address_virtual: 10.59.58.254/25
+            name: inf11_DC01_priv_fw
+            tags:
+              - dc01
+          279:
+            enabled: false
+            ip_address_virtual: 10.59.226.94/27
+            name: inf1_DC01_fw
+            tags:
+              - dc01
+          880:
+            enabled: false
+            ip_address_virtual: 192.168.36.254/24
+            name: inf3_CN_con
+            tags:
+              - dc01
+          2177:
+            enabled: false
+            ip_address_virtual: 10.59.213.62/26
+            name: inf72_DC01_fw
+            tags:
+              - dc01
+          2611:
+            enabled: false
+            ip_address_virtual: 10.59.215.62/26
+            name: inf74_CN_fw
+            tags:
+              - dc01
+        vrf_vni: 4403
+      DMZ-DT:
+        mlag_ibgp_peering_vlan: 4004
+        svis:
+          159:
+            enabled: false
+            ip_address_virtual: 10.230.187.126/25
+            name: DT_inf11_DC01_priv_fw
+            tags:
+              - dc01
+          283:
+            enabled: false
+            ip_address_virtual: 10.230.244.94/27
+            name: DT_inf12_DC01_fw
+            tags:
+              - dc01
+          870:
+            enabled: false
+            ip_address_virtual: 192.168.52.126/25
+            name: inf4_CN_DT_con
+            tags:
+              - dc01
+          879:
+            enabled: false
+            ip_address_virtual: 192.168.48.254/24
+            name: inf3_CN_DT_con
+            tags:
+              - dc01
+          2175:
+            enabled: false
+            ip_address_virtual: 10.232.37.62/26
+            name: DT_inf71_DC01_fw
+            tags:
+              - dc01
+          2608:
+            enabled: false
+            ip_address_virtual: 10.232.28.190/26
+            name: DT_inf68_CN_fw
+            tags:
+              - dc01
+        vrf_vni: 4404
+      DPBA-DC01-Admin:
+        mlag_ibgp_peering_vlan: 4005
+        svis:
+          2260:
+            enabled: false
+            ip_address_virtual: 172.30.64.181/29
+            name: mgnt12_DC01_dpba_con
+            tags:
+              - dc01
+        vrf_vni: 4405
+      DT:
+        mlag_ibgp_peering_vlan: 4006
+        svis:
+          17:
+            enabled: false
+            ip_address_virtual: 10.230.197.30/27
+            name: DT_inf14_DC01
+            tags:
+              - dc01
+          21:
+            enabled: false
+            ip_address_virtual: 10.230.138.254/24
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf3_DC01
+            tags:
+              - dc01
+          25:
+            enabled: false
+            ip_address_virtual: 10.230.249.30/27
+            ip_helpers:
+              10.230.170.143: {}
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inst_DC01
+            tags:
+              - dc01
+          26:
+            enabled: false
+            ip_address_virtual: 10.230.140.254/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: dt_fin_dc01_fw
+            tags:
+              - dc01
+          28:
+            enabled: false
+            ip_address_virtual: 10.230.130.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: dt_supl1_dc01_fw
+            tags:
+              - dc01
+          40:
+            enabled: false
+            ip_address_virtual: 10.230.134.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+              172.20.10.67: {}
+            name: DT_omr2_DC01
+            tags:
+              - dc01
+          44:
+            enabled: false
+            ip_address_virtual: 10.230.136.254/24
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf2_DC01
+            tags:
+              - dc01
+          47:
+            enabled: false
+            ip_address_virtual: 10.230.143.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_ret_DC01
+            tags:
+              - dc01
+          51:
+            enabled: false
+            ip_address_virtual: 10.230.170.254/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf11_DC01
+            tags:
+              - dc01
+          56:
+            enabled: false
+            ip_address_virtual: 10.230.151.126/25
+            ip_helpers:
+              10.59.252.13: {}
+              10.63.171.56: {}
+            name: DT_fin_DC01
+            tags:
+              - dc01
+          79:
+            enabled: false
+            ip_address_virtual: 10.230.160.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_qua_DC01
+            tags:
+              - dc01
+          87:
+            enabled: false
+            ip_address_virtual: 10.230.164.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_hrm_DC01
+            tags:
+              - dc01
+          95:
+            enabled: false
+            ip_address_virtual: 10.230.166.254/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf10_DC01
+            tags:
+              - dc01
+          105:
+            enabled: false
+            ip_address_virtual: 10.230.245.30/27
+            name: DT_mcm_DC01
+            tags:
+              - dc01
+          148:
+            enabled: false
+            ip_address_virtual: 10.230.250.94/27
+            ip_helpers:
+              10.230.170.143: {}
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inst1_DC01
+            tags:
+              - dc01
+          164:
+            enabled: false
+            ip_address_virtual: 10.230.180.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: dt_supr1_dc01_fw
+            tags:
+              - dc01
+          175:
+            enabled: false
+            ip_address_virtual: 10.230.251.90/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_fin1_dc01_fw
+            tags:
+              - dc01
+          177:
+            enabled: false
+            ip_address_virtual: 10.230.193.254/24
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf15_DC01
+            tags:
+              - dc01
+          220:
+            enabled: false
+            ip_address_virtual: 10.230.244.190/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_mcm1_DC01
+            tags:
+              - dc01
+          267:
+            enabled: false
+            ip_address_virtual: 10.230.250.222/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+              172.20.10.67: {}
+            name: DT_supr_DC01_con
+            tags:
+              - dc01
+          269:
+            enabled: false
+            ip_address_virtual: 10.230.250.158/27
+            name: DT_inf1_DC01_con
+            tags:
+              - dc01
+          272:
+            enabled: false
+            ip_address_virtual: 10.230.255.214/29
+            name: DT_mgnt_DC01_publ_con
+            tags:
+              - dc01
+          278:
+            enabled: false
+            ip_address_virtual: 10.230.255.190/29
+            name: DT_ret1_DC01_con
+            tags:
+              - dc01
+          280:
+            enabled: false
+            ip_address_virtual: 10.230.255.246/29
+            name: DT_inf2_DC01_con
+            tags:
+              - dc01
+          282:
+            enabled: false
+            ip_address_virtual: 10.230.246.254/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+              172.20.10.67: {}
+            name: DT_supl_DC01_con
+            tags:
+              - dc01
+          289:
+            enabled: false
+            ip_address_virtual: 10.232.62.222/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inst2_DC01
+            tags:
+              - dc01
+          290:
+            enabled: false
+            ip_address_virtual: 10.230.255.174/29
+            name: DT_fin_DC01_con
+            tags:
+              - dc01
+          291:
+            enabled: false
+            ip_address_virtual: 10.230.255.158/29
+            name: DT_omr_DC01_con
+            tags:
+              - dc01
+          294:
+            enabled: false
+            ip_address_virtual: 10.230.255.126/29
+            name: DT_inf_DC01_con
+            tags:
+              - dc01
+          295:
+            enabled: false
+            ip_address_virtual: 10.230.255.78/28
+            name: DT_DC01_publ_con
+            tags:
+              - dc01
+          606:
+            enabled: false
+            ip_address_virtual: 10.230.240.30/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf3_CN
+            tags:
+              - dc01
+          607:
+            enabled: false
+            ip_address_virtual: 10.230.132.190/26
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf1_CN
+            tags:
+              - dc01
+          627:
+            enabled: false
+            ip_address_virtual: 10.230.140.126/25
+            name: DT_inf2_CN
+            tags:
+              - dc01
+          673:
+            enabled: false
+            ip_address_virtual: 10.230.131.254/25
+            name: DT_ret_CN
+            tags:
+              - dc01
+          674:
+            enabled: false
+            ip_address_virtual: 10.230.132.126/25
+            name: DT_scp_CN
+            tags:
+              - dc01
+          707:
+            enabled: false
+            ip_address_virtual: 10.230.154.254/25
+            name: DT_fin_CN
+            tags:
+              - dc01
+          720:
+            enabled: false
+            ip_address_virtual: 10.230.159.126/25
+            name: DT_proc_CN
+            tags:
+              - dc01
+          802:
+            enabled: false
+            ip_address_virtual: 10.232.7.254/23
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_ret1_CN
+            tags:
+              - dc01
+          826:
+            enabled: false
+            ip_address_virtual: 10.232.10.158/29
+            name: DT_inf8_CN_con
+            tags:
+              - dc01
+          829:
+            enabled: false
+            ip_address_virtual: 10.232.11.118/29
+            name: DT_inf10_CN_con
+            tags:
+              - dc01
+          866:
+            enabled: false
+            ip_address_virtual: 10.230.218.126/25
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_pim_CN
+            tags:
+              - dc01
+          871:
+            enabled: false
+            ip_address_virtual: 10.230.254.6/29
+            name: DT_inf3_CN_con
+            tags:
+              - dc01
+          873:
+            enabled: false
+            ip_address_virtual: 10.230.249.214/29
+            name: DT_inf1_CN_con
+            tags:
+              - dc01
+          881:
+            enabled: false
+            ip_address_virtual: 10.230.255.182/29
+            name: DT_inf2_CN_con
+            tags:
+              - dc01
+          883:
+            enabled: false
+            ip_address_virtual: 10.230.255.150/29
+            name: DT_omr_CN_con
+            tags:
+              - dc01
+          887:
+            enabled: false
+            ip_address_virtual: 10.230.255.142/29
+            name: DT_ret_con
+            tags:
+              - dc01
+          889:
+            enabled: false
+            ip_address_virtual: 10.230.255.110/28
+            name: DT_mgnt_CN_publ_con
+            tags:
+              - dc01
+          891:
+            enabled: false
+            ip_address_virtual: 10.230.255.54/29
+            name: CN_transit_fw
+            tags:
+              - dc01
+          899:
+            enabled: false
+            ip_address_virtual: 10.232.11.125/29
+            name: DT_inf01_DC018_con
+            tags:
+              - dc01
+          2035:
+            enabled: false
+            ip_address_virtual: 10.230.249.222/29
+            name: DT_inf4_DC01_con
+            tags:
+              - dc01
+          2036:
+            enabled: false
+            ip_address_virtual: 10.230.198.38/29
+            name: DT_inf5_DC01_con
+            tags:
+              - dc01
+          2059:
+            enabled: false
+            ip_address_virtual: 10.230.235.254/23
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: DT_inf31_DC01
+            tags:
+              - dc01
+          2085:
+            enabled: false
+            ip_address_virtual: 10.232.3.190/26
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_adm01_DC01
+            tags:
+              - dc01
+          2090:
+            enabled: false
+            ip_address_virtual: 10.232.11.102/29
+            name: DT_inf6_DC01_con
+            tags:
+              - dc01
+          2095:
+            enabled: false
+            ip_address_virtual: 10.232.10.142/29
+            name: DT_adm02_DC01_con
+            tags:
+              - dc01
+          2173:
+            enabled: false
+            ip_address_virtual: 10.232.36.126/28
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_Local_SLI_110_DC01
+            tags:
+              - dc01
+          2220:
+            enabled: false
+            ip_address_virtual: 10.232.29.222/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: DT_inf38_DC01
+            tags:
+              - dc01
+          2259:
+            enabled: false
+            ip_address_virtual: 10.232.48.109/29
+            name: DT_inf7_DC01_con
+            tags:
+              - dc01
+          2283:
+            enabled: false
+            ip_address_virtual: 10.232.67.62/26
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf33_DC01
+            tags:
+              - dc01
+          2284:
+            enabled: false
+            ip_address_virtual: 172.26.16.222/27
+            ip_helpers:
+              10.230.253.16: {}
+              10.230.253.17: {}
+            name: DT_inf34_DC01
+            tags:
+              - dc01
+          2652:
+            enabled: false
+            ip_address_virtual: 10.232.17.30/29
+            name: DT_inf02_DC018_con
+            tags:
+              - dc01
+        vrf_vni: 4406
+      DT-PostGresDB:
+        mlag_ibgp_peering_vlan: 4007
+        svis:
+          2134:
+            enabled: false
+            ip_address_virtual: 10.232.25.92/27
+            name: DT_inf65_DC01_fw
+            tags:
+              - dc01
+        vrf_vni: 4407
+      DT-dataguard:
+        mlag_ibgp_peering_vlan: 4008
+        svis:
+          12:
+            enabled: false
+            ip_address_virtual: 10.230.165.124/25
+            name: DT_inf4_DC01_fw
+            tags:
+              - dc01
+          29:
+            enabled: false
+            ip_address_virtual: 10.230.131.123/25
+            name: DT_inf_DC01_fw
+            tags:
+              - dc01
+          46:
+            enabled: false
+            ip_address_virtual: 10.230.145.252/25
+            name: DT_inf2_DC01_fw
+            tags:
+              - dc01
+          103:
+            enabled: false
+            ip_address_virtual: 10.230.167.245/25
+            name: DT_supl_DC01_fw
+            tags:
+              - dc01
+          104:
+            enabled: false
+            ip_address_virtual: 10.230.168.123/25
+            name: DT_supl_DC01_lb_fw
+            tags:
+              - dc01
+          120:
+            enabled: false
+            ip_address_virtual: 10.230.173.252/24
+            name: DT_inf5_DC01_fw
+            tags:
+              - dc01
+          197:
+            enabled: false
+            ip_address_virtual: 10.230.248.92/27
+            name: DT_supl3_DC01_fw
+            tags:
+              - dc01
+          209:
+            enabled: false
+            ip_address_virtual: 10.230.205.125/24
+            name: DT_inf17_DC01_fw
+            tags:
+              - dc01
+          238:
+            enabled: false
+            ip_address_virtual: 10.230.217.124/25
+            name: DT_inf20_DC01_fw
+            tags:
+              - dc01
+          679:
+            enabled: false
+            ip_address_virtual: 10.230.135.239/25
+            name: DT_omr_CN_lb_fw
+            tags:
+              - dc01
+          894:
+            enabled: false
+            ip_address_virtual: 10.232.48.61/27
+            name: DT_inf01_DC018_fw
+            tags:
+              - dc01
+          2012:
+            enabled: false
+            ip_address_virtual: 10.230.181.110/28
+            name: DT_mgnt1_DC01_dg
+            tags:
+              - dc01
+          2013:
+            enabled: false
+            ip_address_virtual: 10.230.181.126/28
+            name: DT_mgnt2_DC01_dg
+            tags:
+              - dc01
+          2014:
+            enabled: false
+            ip_address_virtual: 10.230.181.142/28
+            name: DT_mgnt3_DC01_dg
+            tags:
+              - dc01
+          2039:
+            enabled: false
+            ip_address_virtual: 10.230.220.245/24
+            name: DT_inf25_DC01_fw
+            tags:
+              - dc01
+          2069:
+            enabled: false
+            ip_address_virtual: 10.230.229.252/24
+            name: DT_inf32_DC01_fw
+            tags:
+              - dc01
+          2070:
+            enabled: false
+            ip_address_virtual: 10.230.230.252/24
+            name: DT_inf33_DC01_fw
+            tags:
+              - dc01
+          2124:
+            enabled: false
+            ip_address_virtual: 10.232.21.124/25
+            name: DT_inf61_DC01_fw
+            tags:
+              - dc01
+          2125:
+            enabled: false
+            ip_address_virtual: 10.232.22.252/24
+            name: DT_inf62_DC01_fw
+            tags:
+              - dc01
+          2162:
+            enabled: false
+            ip_address_virtual: 10.232.34.252/24
+            name: DT_inf70_DC01_fw
+            tags:
+              - dc01
+          2219:
+            enabled: false
+            ip_address_virtual: 10.232.49.252/24
+            name: DT_inf77_DC01_fw
+            tags:
+              - dc01
+          2274:
+            enabled: false
+            ip_address_virtual: 10.232.63.253/25
+            name: DT_inf85_DC01_fw
+            tags:
+              - dc01
+          2282:
+            enabled: false
+            ip_address_virtual: 10.232.75.253/22
+            name: DT_inf87_DC01_fw
+            tags:
+              - dc01
+        vrf_vni: 4408
+      DTA:
+        mlag_ibgp_peering_vlan: 4024
+        svis:
+          876:
+            enabled: false
+            ip_address_virtual: 172.23.140.38/29
+            name: DT_mgnt_CN_con
+            tags:
+              - dc01
+        vrf_vni: 4424
+      DT_Client:
+        mlag_ibgp_peering_vlan: 4025
+        svis:
+          864:
+            enabled: false
+            ip_address_virtual: 10.62.223.78/29
+            name: CN_DT_Client_transit_fw
+            tags:
+              - dc01
+        vrf_vni: 4425
+      DT_IHP2-DC01:
+        mlag_ibgp_peering_vlan: 4009
+        svis:
+          80:
+            enabled: false
+            ip_address_virtual: 10.230.248.158/27
+            name: DT_IHP2-DC01
+            tags:
+              - dc01
+          877:
+            enabled: false
+            ip_address_virtual: 10.230.248.123/27
+            name: DT_IHP2-DC01
+            tags:
+              - dc01
+        vrf_vni: 4409
+      DT_mgnt_CN_publ2_fw:
+        mlag_ibgp_peering_vlan: 4010
+        svis:
+          637:
+            enabled: false
+            ip_helpers:
+              10.57.154.141: {}
+              10.63.174.116: {}
+              172.20.10.67: {}
+            name: Only
+            tags:
+              - dc01
+        vrf_vni: 4410
+      IHP2-DC01:
+        mlag_ibgp_peering_vlan: 4011
+        svis:
+          61:
+            enabled: false
+            ip_address_virtual: 10.59.228.222/27
+            name: IHP2-DC01
+            tags:
+              - dc01
+          878:
+            enabled: false
+            ip_address_virtual: 10.59.228.88/27
+            name: IHP2-DC01
+            tags:
+              - dc01
+        vrf_vni: 4411
+      ACME-GENERAL:
+        mlag_ibgp_peering_vlan: 4012
+        svis:
+          1:
+            enabled: false
+            name: unnamed_1
+            tags:
+              - dc01
+          10:
+            enabled: false
+            ip_address_virtual: 10.59.46.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf8_DC01
+            tags:
+              - dc01
+          20:
+            enabled: false
+            ip_address_virtual: 10.59.70.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inst_DC01_fw
+            tags:
+              - dc01
+          23:
+            enabled: false
+            ip_address_virtual: 10.59.2.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: ret_DC01
+            tags:
+              - dc01
+          34:
+            enabled: false
+            ip_address_virtual: 10.59.229.254/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: scp_DC01_con
+            tags:
+              - dc01
+          35:
+            enabled: false
+            ip_address_virtual: 10.59.17.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf3_DC01_fw
+            tags:
+              - dc01
+          36:
+            enabled: false
+            ip_address_virtual: 10.59.15.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf2_DC01
+            tags:
+              - dc01
+          38:
+            enabled: false
+            ip_address_virtual: 10.59.8.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: supl1_dc01_fw
+            tags:
+              - dc01
+          78:
+            enabled: false
+            ip_address_virtual: 10.59.41.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: qua_DC01
+            tags:
+              - dc01
+          94:
+            enabled: false
+            ip_address_virtual: 10.59.49.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf10_DC01
+            tags:
+              - dc01
+          97:
+            enabled: false
+            ip_address_virtual: 10.59.50.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf11_DC01
+            tags:
+              - dc01
+          107:
+            enabled: false
+            ip_address_virtual: 10.59.225.30/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: mcm_DC01
+            tags:
+              - dc01
+          118:
+            enabled: false
+            ip_address_virtual: 10.59.225.190/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inst2_DC01_fw
+            tags:
+              - dc01
+          125:
+            enabled: false
+            ip_address_virtual: 10.59.57.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: it4it_DC01
+            tags:
+              - dc01
+          130:
+            enabled: false
+            ip_address_virtual: 10.59.67.30/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf14_DC01
+            tags:
+              - dc01
+          143:
+            enabled: false
+            ip_address_virtual: 10.59.64.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: fin_DC01
+            tags:
+              - dc01
+          163:
+            enabled: false
+            ip_address_virtual: 10.59.66.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: supr1_dc01_fw
+            tags:
+              - dc01
+          165:
+            enabled: false
+            ip_address_virtual: 10.59.72.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: pim_dc01_fw
+            tags:
+              - dc01
+          169:
+            enabled: false
+            ip_address_virtual: 10.59.34.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: pim_DC01
+            tags:
+              - dc01
+          174:
+            enabled: false
+            ip_address_virtual: 10.59.230.190/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: fin1_dc01_fw
+            tags:
+              - dc01
+          176:
+            enabled: false
+            ip_address_virtual: 10.59.74.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf15_DC01
+            tags:
+              - dc01
+          200:
+            enabled: false
+            name: unnamed_200
+            tags:
+              - dc01
+          210:
+            enabled: false
+            ip_address_virtual: 10.59.91.254/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf17_DC01
+            tags:
+              - dc01
+          219:
+            enabled: false
+            ip_address_virtual: 10.59.225.254/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: mcm1_DC01
+            tags:
+              - dc01
+          225:
+            enabled: false
+            ip_address_virtual: 10.59.94.62/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf3_DC01
+            tags:
+              - dc01
+          261:
+            enabled: false
+            ip_address_virtual: 10.59.254.14/29
+            name: mgnt3_DC01_con
+            tags:
+              - dc01
+          266:
+            enabled: false
+            ip_address_virtual: 10.59.254.222/29
+            name: pim_DC01_con
+            tags:
+              - dc01
+          268:
+            enabled: false
+            ip_address_virtual: 10.59.254.206/29
+            name: supr_DC01_con
+            tags:
+              - dc01
+          270:
+            enabled: false
+            ip_address_virtual: 10.59.254.190/29
+            name: inf1_DC01_con
+            tags:
+              - dc01
+          271:
+            enabled: false
+            ip_address_virtual: 10.59.254.182/29
+            name: fin_DC01_con
+            tags:
+              - dc01
+          273:
+            enabled: false
+            ip_address_virtual: 10.59.254.166/29
+            name: mgnt_DC01_publ_con
+            tags:
+              - dc01
+          276:
+            enabled: false
+            ip_address_virtual: 10.59.254.158/29
+            name: inf7_DC01_con
+            tags:
+              - dc01
+          277:
+            enabled: false
+            ip_address_virtual: 10.59.254.134/29
+            name: ret2_DC01_con
+            tags:
+              - dc01
+          296:
+            enabled: false
+            ip_address_virtual: 10.59.254.30/28
+            name: DC01_publ_con
+            tags:
+              - dc01
+          601:
+            enabled: false
+            ip_address_virtual: 10.59.101.62/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf1_CN
+            tags:
+              - dc01
+          605:
+            enabled: false
+            ip_address_virtual: 10.59.240.30/27
+            name: inf3_CN
+            tags:
+              - dc01
+          610:
+            enabled: false
+            ip_address_virtual: 10.62.192.254/24
+            name: BZ_CN_inf
+            tags:
+              - dc01
+          613:
+            enabled: false
+            ip_address_virtual: 10.62.255.254/29
+            name: BZ_CN_fw_con
+            tags:
+              - dc01
+          616:
+            enabled: false
+            ip_address_virtual: 10.62.255.230/29
+            name: BZ_CN_inf_con
+            tags:
+              - dc01
+          639:
+            enabled: false
+            ip_address_virtual: 10.59.5.126/25
+            name: scp_CN
+            tags:
+              - dc01
+          641:
+            enabled: false
+            ip_address_virtual: 10.59.3.126/25
+            name: ret_CN
+            tags:
+              - dc01
+          677:
+            enabled: false
+            ip_address_virtual: 10.59.7.254/25
+            name: inf2_CN
+            tags:
+              - dc01
+          680:
+            enabled: false
+            ip_address_virtual: 10.59.10.254/25
+            name: supl_CN_fw
+            tags:
+              - dc01
+          718:
+            enabled: false
+            ip_address_virtual: 10.59.40.254/25
+            name: Proc_CN
+            tags:
+              - dc01
+          803:
+            enabled: false
+            ip_address_virtual: 10.59.203.254/23
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: ret12_CN
+            tags:
+              - dc01
+          804:
+            enabled: false
+            ip_address_virtual: 10.59.221.254/23
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf47_CN
+            tags:
+              - dc01
+          827:
+            enabled: false
+            ip_address_virtual: 10.59.233.150/29
+            name: inf8_CN_con
+            tags:
+              - dc01
+          830:
+            enabled: false
+            ip_address_virtual: 10.59.223.158/29
+            name: inf10_CN_con
+            tags:
+              - dc01
+          832:
+            enabled: false
+            ip_address_virtual: 10.59.223.254/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf_CN_nfs1
+            tags:
+              - dc01
+          865:
+            enabled: false
+            ip_address_virtual: 10.59.219.109/29
+            name: inf01_DC018_con
+            tags:
+              - dc01
+          868:
+            enabled: false
+            ip_address_virtual: 10.59.106.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: pim_CN
+            tags:
+              - dc01
+          872:
+            enabled: false
+            ip_address_virtual: 10.59.254.238/29
+            name: inf4_CN_con
+            tags:
+              - dc01
+          882:
+            enabled: false
+            ip_address_virtual: 10.59.254.118/29
+            name: inf2_CN_con
+            tags:
+              - dc01
+          888:
+            enabled: false
+            ip_address_virtual: 10.59.254.62/29
+            name: ret_CN_con
+            tags:
+              - dc01
+          890:
+            enabled: false
+            ip_address_virtual: 10.230.255.46/29
+            name: CN_transit_con
+            tags:
+              - dc01
+          896:
+            enabled: false
+            ip_address_virtual: 10.59.254.6/29
+            name: mgnt_CN_publ_con
+            tags:
+              - dc01
+          2037:
+            enabled: false
+            ip_address_virtual: 10.59.233.142/29
+            name: inf2_DC01_con
+            tags:
+              - dc01
+          2038:
+            enabled: false
+            ip_address_virtual: 10.59.239.206/29
+            name: inf3_DC01_con
+            tags:
+              - dc01
+          2058:
+            enabled: false
+            ip_address_virtual: 10.59.113.254/23
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf39_DC01
+            tags:
+              - dc01
+          2071:
+            enabled: false
+            ip_address_virtual: 10.59.118.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf42_DC01
+            tags:
+              - dc01
+          2082:
+            enabled: false
+            ip_address_virtual: 10.59.222.62/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: adm01_DC01
+            tags:
+              - dc01
+          2094:
+            enabled: false
+            ip_address_virtual: 10.59.101.102/29
+            name: adm02_DC01_con
+            tags:
+              - dc01
+          2100:
+            enabled: false
+            ip_address_virtual: 10.59.239.214/29
+            name: inf8_DC01_con
+            tags:
+              - dc01
+          2144:
+            enabled: false
+            ip_address_virtual: 10.59.128.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf68_DC01
+            tags:
+              - dc01
+          2198:
+            enabled: false
+            ip_address_virtual: 10.59.146.254/24
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf79_DC01
+            tags:
+              - dc01
+          2204:
+            enabled: false
+            ip_address_virtual: 10.59.154.62/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf85_DC01
+            tags:
+              - dc01
+          2221:
+            enabled: false
+            ip_address_virtual: 10.59.139.30/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf87_DC01
+            tags:
+              - dc01
+          2251:
+            enabled: false
+            ip_address_virtual: 10.59.154.101/29
+            name: inf9_DC01_con
+            tags:
+              - dc01
+          2261:
+            enabled: false
+            ip_address_virtual: 10.59.140.254/28
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf91_DC01
+            tags:
+              - dc01
+          2276:
+            enabled: false
+            ip_address_virtual: 10.59.214.126/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf92_DC01
+            tags:
+              - dc01
+          2277:
+            enabled: false
+            ip_address_virtual: 172.26.16.30/27
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf93_DC01
+            tags:
+              - dc01
+          2287:
+            enabled: false
+            ip_address_virtual: 10.59.183.254/22
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: inf94_DC01
+            tags:
+              - dc01
+          2637:
+            enabled: false
+            ip_address_virtual: 10.59.156.62/26
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: inf2_CN_nfs1
+            tags:
+              - dc01
+          2647:
+            enabled: false
+            ip_address_virtual: 10.59.162.126/25
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+            name: Local_WH_104_DC018
+            tags:
+              - dc01
+          2653:
+            enabled: false
+            ip_address_virtual: 10.59.214.22/29
+            name: inf02_DC018_con
+            tags:
+              - dc01
+          2658:
+            enabled: false
+            ip_address_virtual: 10.59.219.118/29
+            name: inf03_DC018_con
+            tags:
+              - dc01
+        vrf_vni: 4412
+      ACME-Voice:
+        mlag_ibgp_peering_vlan: 4013
+        svis:
+          2201:
+            enabled: false
+            ip_address_virtual: 10.59.153.30/27
+            name: inf82_DC01
+            tags:
+              - dc01
+        vrf_vni: 4413
+      SDWAN-control:
+        mlag_ibgp_peering_vlan: 4014
+        svis:
+          860:
+            enabled: false
+            ip_address_virtual: 10.59.219.222/27
+            name: mgnt_CN_publ7_fw
+            tags:
+              - dc01
+          862:
+            enabled: false
+            ip_address_virtual: 10.57.255.62/29
+            name: mgnt_CN_sdw_fw
+            tags:
+              - dc01
+          2154:
+            enabled: false
+            ip_address_virtual: 10.59.212.30/27
+            name: mgnt_DC01_publ8_fw
+            tags:
+              - dc01
+          2155:
+            enabled: false
+            ip_address_virtual: 10.59.232.238/28
+            name: mgnt_DC01_publ7_fw
+            tags:
+              - dc01
+          2253:
+            enabled: false
+            ip_address_virtual: 10.59.140.238/28
+            name: mgnt_DC01_publ9_fw
+            tags:
+              - dc01
+        vrf_vni: 4414
+      Vz-mgmt:
+        mlag_ibgp_peering_vlan: 4015
+        svis:
+          2202:
+            enabled: false
+            ip_address_virtual: 10.59.153.62/27
+            name: inf83_DC01_fw
+            tags:
+              - dc01
+        vrf_vni: 4415
+      backup:
+        mlag_ibgp_peering_vlan: 4016
+        svis:
+          5:
+            enabled: false
+            ip_address_virtual: 172.30.4.249/24
+            name: mgnt_DC01_inf
+            tags:
+              - dc01
+          13:
+            enabled: false
+            ip_address_virtual: 172.30.13.121/25
+            name: mgnt_DC01_inf3
+            tags:
+              - dc01
+          14:
+            enabled: false
+            ip_address_virtual: 172.23.128.121/25
+            name: DT_mgnt_DC01_inf3
+            tags:
+              - dc01
+          30:
+            enabled: false
+            ip_address_virtual: 172.23.250.249/24
+            name: DT_mgnt_DC01_fw
+            tags:
+              - dc01
+          76:
+            enabled: false
+            ip_address_virtual: 172.30.12.249/24
+            name: mgnt_DC01_inf2
+            tags:
+              - dc01
+          84:
+            enabled: false
+            ip_address_virtual: 172.30.210.30/27
+            ip_helpers:
+              172.30.0.16: {}
+              172.30.0.17: {}
+            name: mgnt_DC01_bck
+            tags:
+              - dc01
+          99:
+            enabled: false
+            ip_address_virtual: 172.23.147.249/24
+            name: DT_mgnt_DC01_inf1_fw
+            tags:
+              - dc01
+          113:
+            enabled: false
+            ip_address_virtual: 172.30.17.249/24
+            name: mgnt_DC01_inf4
+            tags:
+              - dc01
+          115:
+            enabled: false
+            ip_address_virtual: 172.23.144.249/24
+            name: DT_mgnt_DC01_inf2_fw
+            tags:
+              - dc01
+          119:
+            enabled: false
+            ip_address_virtual: 172.23.247.252/24
+            name: DT_mgnt_DC01_inf20_fw
+            tags:
+              - dc01
+          134:
+            enabled: false
+            ip_address_virtual: 172.30.58.249/24
+            name: mgnt_DC01_priv_fw
+            tags:
+              - dc01
+          138:
+            enabled: false
+            ip_address_virtual: 172.23.129.249/24
+            name: DT_mgnt_DC01_priv_fw
+            tags:
+              - dc01
+          142:
+            enabled: false
+            ip_address_virtual: 172.30.56.249/24
+            name: mgnt_DC01_priv2_fw
+            tags:
+              - dc01
+          155:
+            enabled: false
+            ip_address_virtual: 172.23.131.121/25
+            name: DT_mgnt_DC01_priv1_fw
+            tags:
+              - dc01
+          158:
+            enabled: false
+            ip_address_virtual: 172.30.60.249/24
+            name: mgnt_DC01_priv1_fw
+            tags:
+              - dc01
+          173:
+            enabled: false
+            ip_address_virtual: 172.23.132.120/25
+            name: dt_mgnt_dc01_priv1_lb_fw
+            tags:
+              - dc01
+          190:
+            enabled: false
+            ip_address_virtual: 172.23.149.249/24
+            name: DT_mgnt_DC01_inf3_fw
+            tags:
+              - dc01
+          192:
+            enabled: false
+            ip_address_virtual: 172.30.21.249/24
+            name: mgnt_DC01_inf6_fw
+            tags:
+              - dc01
+          204:
+            enabled: false
+            ip_address_virtual: 172.30.25.249/24
+            name: mgnt_DC01_inf7_fw
+            tags:
+              - dc01
+          211:
+            enabled: false
+            ip_address_virtual: 172.23.151.249/24
+            name: DT_mgnt_DC01_inf4_fw
+            tags:
+              - dc01
+          221:
+            enabled: false
+            ip_address_virtual: 172.30.27.249/24
+            name: mgnt_DC01_inf8_fw
+            tags:
+              - dc01
+          234:
+            enabled: false
+            ip_address_virtual: 172.30.31.249/24
+            name: mgnt_DC01_inf9_fw
+            tags:
+              - dc01
+          244:
+            enabled: false
+            ip_address_virtual: 172.30.45.249/23
+            name: mgnt_DC01_inf10_fw
+            tags:
+              - dc01
+          253:
+            enabled: false
+            ip_address_virtual: 172.23.152.249/24
+            name: DT_mgnt_DC01_inf5_fw
+            tags:
+              - dc01
+          257:
+            enabled: false
+            ip_address_virtual: 172.23.135.28/27
+            name: DT_mgnt_DC01_priv5_fw
+            tags:
+              - dc01
+          259:
+            enabled: false
+            ip_address_virtual: 172.30.65.28/27
+            name: mgnt_DC01_priv5_fw
+            tags:
+              - dc01
+          262:
+            enabled: false
+            ip_address_virtual: 172.30.218.252/24
+            name: mgnt_DC01_inf20_fw
+            tags:
+              - dc01
+          600:
+            enabled: false
+            ip_address_virtual: 172.30.0.249/24
+            name: mgmt_CN_priv_fw
+            tags:
+              - dc01
+          608:
+            enabled: false
+            ip_address_virtual: 172.30.210.126/26
+            name: mgnt_CN_nfs
+            tags:
+              - dc01
+          622:
+            enabled: false
+            ip_address_virtual: 172.30.52.249/24
+            name: mgnt_CN_priv2_fw
+            tags:
+              - dc01
+          626:
+            enabled: false
+            ip_address_virtual: 172.30.53.249/24
+            ip_helpers:
+              172.30.0.16: {}
+              172.30.0.17: {}
+            name: mgnt_CN_priv3_lb_fw
+            tags:
+              - dc01
+          633:
+            enabled: false
+            ip_address_virtual: 172.30.213.252/24
+            name: mgnt_CN_priv6_fw
+            tags:
+              - dc01
+          636:
+            enabled: false
+            ip_address_virtual: 172.23.253.248/24
+            name: DT_mgnt_CN_priv2_fw
+            tags:
+              - dc01
+          657:
+            enabled: false
+            ip_address_virtual: 172.23.252.249/24
+            name: DT_mgmt_CN_priv_fw_lb
+            tags:
+              - dc01
+          687:
+            enabled: false
+            ip_address_virtual: 172.30.10.249/24
+            name: mgnt_CN_priv5_fw
+            tags:
+              - dc01
+          691:
+            enabled: false
+            ip_address_virtual: 172.23.148.249/24
+            name: DT_mgnt_CN_priv5_fw
+            tags:
+              - dc01
+          771:
+            enabled: false
+            ip_address_virtual: 172.23.141.252/24
+            name: DT_mgnt_CN_priv3_fw
+            tags:
+              - dc01
+          831:
+            enabled: false
+            ip_address_virtual: 172.30.211.62/26
+            name: mgnt_CN_nfs1
+            tags:
+              - dc01
+          844:
+            enabled: false
+            ip_address_virtual: 172.23.246.254/24
+            name: DT_mgnt_CN_nas
+            tags:
+              - dc01
+          852:
+            enabled: false
+            ip_address_virtual: 172.23.228.28/27
+            name: DT_mgnt_CN_priv6_fw
+            tags:
+              - dc01
+          2032:
+            enabled: false
+            ip_address_virtual: 172.23.139.252/23
+            name: DT_mgnt_DC01_inf6_fw
+            tags:
+              - dc01
+          2043:
+            enabled: false
+            ip_address_virtual: 172.30.63.252/25
+            name: mgnt_DC01_priv6_fw
+            tags:
+              - dc01
+          2049:
+            enabled: false
+            ip_address_virtual: 172.30.66.124/25
+            name: mgnt_DC01_priv7_fw
+            tags:
+              - dc01
+          2052:
+            enabled: false
+            ip_address_virtual: 172.30.214.251/24
+            name: mgnt_DC01_priv1_lb_fw
+            tags:
+              - dc01
+          2065:
+            enabled: false
+            ip_address_virtual: 172.23.154.252/24
+            name: DT_mgnt_DC01_inf7_fw
+            tags:
+              - dc01
+          2067:
+            enabled: false
+            ip_address_virtual: 172.30.228.252/24
+            name: mgnt_DC01_inf11_fw
+            tags:
+              - dc01
+          2073:
+            enabled: false
+            ip_address_virtual: 172.23.157.252/23
+            name: DT_mgnt_DC01_inf8_fw
+            tags:
+              - dc01
+          2075:
+            enabled: false
+            ip_address_virtual: 172.30.64.28/27
+            name: mgnt72_dc01_fw
+            tags:
+              - dc01
+          2077:
+            enabled: false
+            ip_address_virtual: 172.30.48.124/25
+            name: mgnt_DC01_inf12_fw
+            tags:
+              - dc01
+          2084:
+            enabled: false
+            ip_address_virtual: 172.30.63.123/26
+            name: mgnt_DC01_priv2_lb_fw
+            tags:
+              - dc01
+          2087:
+            enabled: false
+            ip_address_virtual: 172.23.135.251/25
+            name: DT_mgnt1_DC01_priv1_lb_fw
+            tags:
+              - dc01
+          2091:
+            enabled: false
+            ip_address_virtual: 172.23.132.188/26
+            name: DT_mgnt_DC01_inf9_fw
+            tags:
+              - dc01
+          2092:
+            enabled: false
+            ip_address_virtual: 172.23.132.220/27
+            name: DT_mgnt_DC01_inf10_fw
+            tags:
+              - dc01
+          2093:
+            enabled: false
+            ip_address_virtual: 172.30.231.60/27
+            name: mgnt_DC01_inf13_fw
+            tags:
+              - dc01
+          2099:
+            enabled: false
+            ip_address_virtual: 172.30.65.252/26
+            name: mgnt_DC01_inf14_fw
+            tags:
+              - dc01
+          2107:
+            enabled: false
+            ip_address_virtual: 172.30.212.188/26
+            name: mgnt_dc01_nas_fw
+            tags:
+              - dc01
+          2108:
+            enabled: false
+            ip_address_virtual: 172.30.68.252/24
+            name: mgnt_DC01_inf15_fw
+            tags:
+              - dc01
+          2109:
+            enabled: false
+            ip_address_virtual: 172.30.69.252/24
+            name: mgnt_DC01_inf16_fw
+            tags:
+              - dc01
+          2110:
+            enabled: false
+            ip_address_virtual: 172.30.70.252/24
+            name: mgnt_DC01_inf17_fw
+            tags:
+              - dc01
+          2111:
+            enabled: false
+            ip_address_virtual: 172.23.240.252/24
+            name: DT_mgnt_DC01_inf12_fw
+            tags:
+              - dc01
+          2112:
+            enabled: false
+            ip_address_virtual: 172.23.241.252/24
+            name: DT_mgnt_DC01_inf13_fw
+            tags:
+              - dc01
+          2113:
+            enabled: false
+            ip_address_virtual: 172.23.242.252/24
+            name: DT_mgnt_DC01_inf14_fw
+            tags:
+              - dc01
+          2119:
+            enabled: false
+            ip_address_virtual: 172.23.244.60/26
+            name: DT_mgnt_DC01_inf15_fw
+            tags:
+              - dc01
+          2136:
+            enabled: false
+            ip_address_virtual: 172.30.77.252/23
+            name: mgnt_DC01_inf18_fw
+            tags:
+              - dc01
+          2140:
+            enabled: false
+            ip_address_virtual: 172.30.78.188/26
+            name: mgnt_DC01_inf19_fw
+            tags:
+              - dc01
+          2145:
+            enabled: false
+            ip_address_virtual: 172.23.230.60/26
+            name: DT_mgnt_DC01_inf16_fw
+            tags:
+              - dc01
+          2150:
+            enabled: false
+            ip_address_virtual: 172.23.161.252/23
+            name: DT_mgnt_DC01_inf17_fw
+            tags:
+              - dc01
+          2157:
+            enabled: false
+            ip_address_virtual: 172.30.220.252/24
+            name: mgnt_DC01_inf21_fw
+            tags:
+              - dc01
+          2163:
+            enabled: false
+            ip_address_virtual: 172.23.248.252/24
+            name: DT_mgnt_DC01_inf18_fw
+            tags:
+              - dc01
+          2188:
+            enabled: false
+            ip_address_virtual: 172.23.225.124/25
+            name: DT_mgnt_DC01_inf19_fw
+            tags:
+              - dc01
+          2191:
+            enabled: false
+            ip_address_virtual: 172.30.19.252/25
+            name: mgnt_DC01_inf22_fw
+            tags:
+              - dc01
+          2196:
+            enabled: false
+            ip_address_virtual: 172.30.224.252/24
+            name: mgnt_DC01_inf24_fw
+            tags:
+              - dc01
+          2200:
+            enabled: false
+            ip_address_virtual: 172.30.232.252/24
+            name: mgnt_DC01_inf25_fw
+            tags:
+              - dc01
+          2207:
+            enabled: false
+            ip_address_virtual: 172.30.234.254/24
+            name: mgnt_DC01_inf26
+            tags:
+              - dc01
+          2208:
+            enabled: false
+            ip_address_virtual: 172.23.162.124/25
+            name: DT_mgnt_DC01_inf21_fw
+            tags:
+              - dc01
+          2209:
+            enabled: false
+            ip_address_virtual: 172.30.19.124/25
+            name: mgnt_DC01_inf26_fw
+            tags:
+              - dc01
+          2210:
+            enabled: false
+            ip_address_virtual: 172.23.163.252/24
+            name: DT_mgnt_DC01_inf22_fw
+            tags:
+              - dc01
+          2245:
+            enabled: false
+            ip_address_virtual: 172.30.130.189/26
+            name: mgnt_DC01_inf27_fw
+            tags:
+              - dc01
+          2256:
+            enabled: false
+            ip_address_virtual: 172.30.211.110/28
+            name: mgnt9_DC01_con
+            tags:
+              - dc01
+          2258:
+            enabled: false
+            ip_address_virtual: 172.30.231.142/28
+            name: mgnt11_DC01_con
+            tags:
+              - dc01
+          2262:
+            enabled: false
+            ip_address_virtual: 172.23.167.252/24
+            name: DT_mgnt_DC01_inf23_fw
+            tags:
+              - dc01
+          2264:
+            enabled: false
+            ip_address_virtual: 172.23.169.252/24
+            name: DT_mgnt_DC01_inf24_fw
+            tags:
+              - dc01
+          2266:
+            enabled: false
+            ip_address_virtual: 172.30.245.253/24
+            name: mgnt_DC01_inf28_fw
+            tags:
+              - dc01
+          2292:
+            enabled: false
+            ip_address_virtual: 172.30.131.253/24
+            name: mgnt_DC01_inf29_fw
+            tags:
+              - dc01
+          2294:
+            enabled: false
+            ip_address_virtual: 172.30.132.253/24
+            name: mgnt_DC01_inf30_fw
+            tags:
+              - dc01
+          2296:
+            enabled: false
+            ip_address_virtual: 172.30.133.253/24
+            name: mgnt_DC01_inf31_fw
+            tags:
+              - dc01
+          2602:
+            enabled: false
+            ip_address_virtual: 172.23.224.252/24
+            name: DT_mgnt_CN_priv7_fw
+            tags:
+              - dc01
+          2603:
+            enabled: false
+            ip_address_virtual: 172.30.79.252/24
+            name: DT_mgnt_CN_priv7_fw
+            tags:
+              - dc01
+          2638:
+            enabled: false
+            ip_address_virtual: 172.30.130.62/26
+            name: mgnt2_CN_nfs1
+            tags:
+              - dc01
+          2657:
+            enabled: false
+            ip_address_virtual: 172.30.231.158/28
+            name: adm02_DC018_con
+            tags:
+              - dc01
+        vrf_vni: 4416
+      comm_admin:
+        mlag_ibgp_peering_vlan: 4017
+        svis:
+          2:
+            enabled: false
+            name: mgnt_DC01_access_fw
+            tags:
+              - dc01
+        vrf_vni: 4417
+      dataguard:
+        mlag_ibgp_peering_vlan: 4018
+        svis:
+          4:
+            enabled: false
+            ip_address_virtual: 10.59.0.252/25
+            name: inf_DC01_fw
+            tags:
+              - dc01
+          11:
+            enabled: false
+            ip_address_virtual: 10.59.45.237/25
+            name: inf4_DC01_fw
+            tags:
+              - dc01
+          64:
+            enabled: false
+            ip_address_virtual: 10.59.58.125/25
+            name: supl2_DC01_lb_fw
+            tags:
+              - dc01
+          72:
+            enabled: false
+            ip_address_virtual: 10.59.40.124/25
+            name: inf2_DC01_fw
+            tags:
+              - dc01
+          109:
+            enabled: false
+            ip_address_virtual: 10.59.52.111/25
+            name: inf10_DC01_fw
+            tags:
+              - dc01
+          202:
+            enabled: false
+            ip_address_virtual: 10.59.88.124/25
+            name: inf17_DC01_fw
+            tags:
+              - dc01
+          213:
+            enabled: false
+            ip_address_virtual: 10.59.91.111/25
+            name: inf6_DC01_lb_fw
+            tags:
+              - dc01
+          227:
+            enabled: false
+            ip_address_virtual: 10.59.99.124/25
+            name: inf23_DC01_fw
+            tags:
+              - dc01
+          239:
+            enabled: false
+            ip_address_virtual: 10.59.102.124/25
+            name: inf11_DC01_fw
+            tags:
+              - dc01
+          240:
+            enabled: false
+            ip_address_virtual: 10.59.105.124/25
+            name: inf24_DC01_fw
+            tags:
+              - dc01
+          895:
+            enabled: false
+            ip_address_virtual: 10.59.160.253/24
+            name: inf01_DC018_fw
+            tags:
+              - dc01
+          2009:
+            enabled: false
+            ip_address_virtual: 10.59.28.222/27
+            name: mgnt1_DC01_dg
+            tags:
+              - dc01
+          2010:
+            enabled: false
+            ip_address_virtual: 10.59.28.254/27
+            name: mgnt2_DC01_dg
+            tags:
+              - dc01
+          2011:
+            enabled: false
+            ip_address_virtual: 10.59.29.30/27
+            name: mgnt3_DC01_dg
+            tags:
+              - dc01
+          2022:
+            enabled: false
+            ip_address_virtual: 10.59.27.124/25
+            name: inf32_DC01_fw
+            tags:
+              - dc01
+          2027:
+            enabled: false
+            ip_address_virtual: 10.59.82.124/25
+            name: inf33_DC01_fw
+            tags:
+              - dc01
+          2040:
+            enabled: false
+            ip_address_virtual: 10.59.237.252/24
+            name: inf34_DC01_fw
+            tags:
+              - dc01
+          2062:
+            enabled: false
+            ip_address_virtual: 10.59.117.252/24
+            name: inf40_dc01_fw
+            tags:
+              - dc01
+          2133:
+            enabled: false
+            ip_address_virtual: 10.59.210.252/24
+            name: inf67_DC01_fw
+            tags:
+              - dc01
+          2149:
+            enabled: false
+            ip_address_virtual: 10.59.131.124/25
+            name: inf68_DC01_fw
+            tags:
+              - dc01
+          2156:
+            enabled: false
+            ip_address_virtual: 10.59.136.252/24
+            name: inf70_DC01_fw
+            tags:
+              - dc01
+          2194:
+            enabled: false
+            ip_address_virtual: 10.59.142.252/24
+            name: inf78_DC01_fw
+            tags:
+              - dc01
+          2275:
+            enabled: false
+            ip_address_virtual: 10.59.177.253/23
+            name: inf89_DC01_fw
+            tags:
+              - dc01
+          2281:
+            enabled: false
+            ip_address_virtual: 10.59.19.125/25
+            name: inf94_DC01_fw
+            tags:
+              - dc01
+          2610:
+            enabled: false
+            ip_address_virtual: 10.59.139.252/25
+            name: inf55_CN_fw
+            tags:
+              - dc01
+        vrf_vni: 4418
+      acmeiis:
+        mlag_ibgp_peering_vlan: 4019
+        svis:
+          2224:
+            enabled: false
+            ip_address_virtual: 10.101.112.30/27
+            name: inf01_DC01_iis
+            tags:
+              - dc01
+          2225:
+            enabled: false
+            ip_address_virtual: 10.101.112.62/27
+            name: inf02_DC01_iis
+            tags:
+              - dc01
+          2226:
+            enabled: false
+            ip_address_virtual: 10.101.112.126/26
+            name: inf03_DC01_iis
+            tags:
+              - dc01
+          2227:
+            enabled: false
+            ip_address_virtual: 10.101.112.158/27
+            name: inf04_DC01_iis
+            tags:
+              - dc01
+          2228:
+            enabled: false
+            ip_address_virtual: 10.101.112.190/27
+            name: inf05_DC01_iis
+            tags:
+              - dc01
+          2229:
+            enabled: false
+            ip_address_virtual: 10.101.112.254/26
+            ip_helpers:
+              10.101.112.195: {}
+              10.101.112.196: {}
+              10.101.113.141: {}
+            name: inf06_DC01_iis
+            tags:
+              - dc01
+          2230:
+            enabled: false
+            ip_address_virtual: 10.101.113.14/28
+            name: inf07_DC01_iis
+            tags:
+              - dc01
+          2231:
+            enabled: false
+            ip_address_virtual: 10.101.113.30/28
+            ip_helpers:
+              10.101.112.195: {}
+              10.101.112.196: {}
+              10.101.113.141: {}
+            name: inf08_DC01_iis
+            tags:
+              - dc01
+          2232:
+            enabled: false
+            ip_address_virtual: 10.101.113.126/26
+            name: inf09_DC01_iis
+            tags:
+              - dc01
+          2233:
+            enabled: false
+            ip_address_virtual: 10.101.113.190/26
+            name: inf10_DC01_iis
+            tags:
+              - dc01
+          2234:
+            enabled: false
+            ip_address_virtual: 10.101.113.254/26
+            name: inf11_DC01_iis
+            tags:
+              - dc01
+          2237:
+            enabled: false
+            ip_address_virtual: 10.101.114.5/29
+            name: inf13_DC01_iis_con
+            tags:
+              - dc01
+          2249:
+            enabled: false
+            ip_address_virtual: 10.101.115.14/28
+            name: inf15_DC01_iis
+            tags:
+              - dc01
+        vrf_vni: 4419
+      management:
+        svis: {}
+      mgnt_CN_publ_fw:
+        mlag_ibgp_peering_vlan: 4026
+        svis:
+          602:
+            enabled: false
+            ip_helpers:
+              10.59.253.16: {}
+              10.59.253.17: {}
+              10.59.50.29: {}
+            name: Only
+            tags:
+              - dc01
+        vrf_vni: 4426
+      mgnt_log:
+        mlag_ibgp_peering_vlan: 4027
+        svis:
+          875:
+            enabled: false
+            ip_address_virtual: 172.30.250.156/28
+            name: mgnt_CN_priv_log_con
+            tags:
+              - dc01
+          892:
+            enabled: false
+            ip_address_virtual: 172.30.251.254/24
+            name: mgnt_CN_priv_log
+            tags:
+              - dc01
+        vrf_vni: 4427
+      multicast_vl_2080:
+        mlag_ibgp_peering_vlan: 4021
+        svis:
+          2080:
+            enabled: false
+            name: Multicast_vlan_2080
+            tags:
+              - dc01
+        vrf_vni: 4421
+      office:
+        mlag_ibgp_peering_vlan: 4022
+        svis:
+          2205:
+            enabled: false
+            ip_address_virtual: 10.60.149.254/23
+            ip_helpers:
+              10.59.240.11: {}
+              10.59.240.12: {}
+              10.59.50.29: {}
+            name: vdi_DC01
+            tags:
+              - dc01
+        vrf_vni: 4422

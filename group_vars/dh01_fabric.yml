@@ -1,0 +1,115 @@
+---
+
+# DC Variables
+dc_name: dh01
+mgmt_gateway: 172.26.248.190
+
+# Spine Variables
+spine:
+  defaults:
+    platform: 7260X3
+    bgp_as: 64600
+    loopback_ipv4_pool: 10.253.32.0/24
+    bgp_defaults: 
+      - 'update wait-for-convergence'
+      - 'update wait-install'
+      - 'no bgp default ipv4-unicast'
+      - 'distance bgp 20 200 200'
+      - 'graceful-restart restart-time 300'
+      - 'graceful-restart'
+  nodes:
+    swex-dh01-sp01:
+      id: 1
+      mgmt_ip: 172.26.248.129/26
+    swex-dh01-sp02:
+      id: 2
+      platform: 7050CX3
+      mgmt_ip: 172.26.248.130/26
+
+# Leaf Variables
+l3leaf:
+  defaults:
+    platform: 7050SX3
+    loopback_ipv4_pool: 10.253.32.0/24
+    loopback_ipv4_offset: 4
+    vtep_loopback_ipv4_pool: 10.253.33.0/24
+    uplink_interfaces: ['Ethernet49/1', 'Ethernet50/1']
+    uplink_switches: ['swex-dh01-sp01', 'swex-dh01-sp02']
+    max_uplink_switches: 4
+    uplink_ipv4_pool: 10.253.34.0/24
+    mlag_peer_ipv4_pool: 10.253.36.0/24
+    mlag_peer_l3_ipv4_pool: 10.253.35.0/24
+    mlag_interfaces: [Ethernet55/1, Ethernet56/1]
+    spanning_tree_mode: mstp
+    spanning_tree_priority: 4096
+    virtual_router_mac_address: 00:1c:73:00:00:99
+    bgp_defaults: 
+      - 'update wait-for-convergence'
+      - 'update wait-install'
+      - 'no bgp default ipv4-unicast'
+      - 'distance bgp 20 200 200'
+      - 'graceful-restart restart-time 300'
+      - 'graceful-restart'
+  node_groups:
+    swex-dh01-le01:
+      platform: 7050CX3
+      mlag_interfaces: [Ethernet31/1, Ethernet32/1]
+      uplink_interfaces: ['Ethernet1/1', 'Ethernet2/1']
+      bgp_as: 64601
+      nodes:
+        swex-dh01-le01a:
+          id: 3
+          uplink_switch_interfaces: ['Ethernet1/1', 'Ethernet1/1']
+          mgmt_ip: 172.26.248.149/26
+        swex-dh01-le01b:
+          id: 4
+          uplink_switch_interfaces: ['Ethernet2/1', 'Ethernet2/1']
+          mgmt_ip: 172.26.248.150/26
+    swex-dh01-le02:
+      bgp_as: 64602
+      nodes:
+        swex-dh01-le02a:
+          id: 5
+          uplink_switch_interfaces: ['Ethernet5/1', 'Ethernet5/1']
+          mgmt_ip: 172.26.248.152/26
+        swex-dh01-le02b:
+          id: 6
+          uplink_switch_interfaces: ['Ethernet6/1', 'Ethernet6/1']
+          mgmt_ip: 172.26.248.150/26
+    swex-dh01-bl01:
+      bgp_as: 64619
+      nodes:
+        swex-dh01-bl01a:
+          id: 1
+          uplink_switch_interfaces: ['Ethernet3/1', 'Ethernet3/1']
+          mgmt_ip: 172.26.248.147/26
+        swex-dh01-bl01b:
+          id: 2
+          uplink_switch_interfaces: ['Ethernet4/1', 'Ethernet4/1']
+          mgmt_ip: 172.26.248.148/26
+
+# BFD
+bfd_multihop:
+  interval: 300
+  min_rx: 300
+  multiplier: 3
+
+# BGP Peer Groups
+bgp_peer_groups:
+  IPv4_UNDERLAY_PEERS:
+    password: "+lBCLt9VnYcg03kK0esQwg=="
+  MLAG_IPv4_UNDERLAY_PEER:
+    password: "IWPc0FZNVdXHq/ScCuikjA=="
+  EVPN_OVERLAY_PEERS:
+    password: "bIdYFtUM5l/dNEzAHZy5BA=="
+
+### TERMINATTR (CVP telemetry) ###
+cs_dh01_daemon_terminattr:
+  ingestgrpcurl:
+    ips:
+      - 10.59.56.154
+    port: 9910
+  ingestauth_key: cvpTel45Ing38key
+  smashexcludes: ale,flexCounter,hardware,kni,pulse,strata
+  ingestexclude: /Sysdb/cell/1/agent,/Sysdb/cell/2/agent
+  ingestvrf: MGMT

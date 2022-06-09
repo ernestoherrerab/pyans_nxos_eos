@@ -1,0 +1,11 @@
+{# eos - Router Multicast #}
+{% if router_multicast is arista.avd.defined %}
+!
+router multicast
+{%     if router_multicast.ipv4 is arista.avd.defined %}
+   ipv4
+{%         if router_multicast.ipv4.routing is arista.avd.defined(true) %}
+      routing
+{%         endif %}
+{%     endif %}
+{% endif %}

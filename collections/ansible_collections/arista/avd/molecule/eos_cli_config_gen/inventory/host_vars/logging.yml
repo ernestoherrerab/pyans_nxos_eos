@@ -1,0 +1,17 @@
+### Logging ###
+logging:
+  console: debugging
+  buffered:
+    size: 1000000
+    level: informational
+  trap: informational
+  source_interface:
+  vrfs:
+    mgt:
+      source_interface: Management0
+      hosts:
+        - 10.10.10.7
+    default:
+      source_interface: Loopback0
+      hosts:
+        - 20.20.20.7

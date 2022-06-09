@@ -1,0 +1,16 @@
+---
+- hosts: dh01_fabric
+  gather_facts: false
+  tasks:
+
+    - name: Generate device intended config and documention
+      import_role:
+         name: arista.avd.eos_cli_config_gen
+
+- hosts: dc_fabric
+  gather_facts: false
+  tasks:
+
+    - name: Generate device intended config and documention
+      import_role:
+         name: arista.avd.eos_cli_config_gen

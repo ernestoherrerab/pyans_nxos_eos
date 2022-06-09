@@ -1,0 +1,13 @@
+.env
+nornir.log
+.pyc
+config/defaults.yml
+Archive/
+__pycache__/
+sdn_fabric_data/
+nxos_conf/
+nxos_json_data/
+intended/
+eos_conf/
+config/
+data/
